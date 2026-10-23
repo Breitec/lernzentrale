@@ -20,6 +20,7 @@
   /* Layout: a desk of exercise books on ruled paper; each game is a coloured Schulheft with a handwritten label sticker */
   :root {
     --paper: #f7f9fc;
+    --card: #ffffff;
     --rule: #dbe4f0;
     --line: #c8d2e2;
     --ink: #1f2b44;
@@ -45,6 +46,7 @@
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --paper: #111827;
+      --card: #182134;
       --rule: #1f2a3f;
       --line: #2f3c56;
       --ink: #e8edf7;
@@ -58,6 +60,7 @@
   }
   :root[data-theme="dark"] {
     --paper: #111827;
+    --card: #182134;
     --rule: #1f2a3f;
     --line: #2f3c56;
     --ink: #e8edf7;
@@ -90,7 +93,7 @@
   .date { font: 600 1rem/1.2 var(--f-hand); color: var(--ink-soft); border-bottom: 2px solid var(--line); padding-bottom: 2px; white-space: nowrap; margin-top: .6em; }
   .intro { grid-column: 1 / -1; margin: 0; color: var(--ink-soft); font-size: 1.05rem; }
 
-  .resume { display: flex; align-items: center; justify-content: space-between; gap: 12px 16px; flex-wrap: wrap; padding: 14px 16px; border-radius: 14px; border: 1.5px solid var(--line); background: color-mix(in srgb, var(--paper) 60%, var(--label-bg)); }
+  .resume { display: flex; align-items: center; justify-content: space-between; gap: 12px 16px; flex-wrap: wrap; padding: 14px 16px; border-radius: 14px; border: 1.5px solid var(--line); background: var(--card); }
   .resume p { margin: 0; min-width: 0; }
   .resume strong { font-family: var(--f-hand); font-size: 1.15rem; }
   .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border-radius: 12px; background: var(--pen); color: var(--on-pen); font-weight: 700; text-decoration: none; }
@@ -128,11 +131,12 @@
     box-shadow: 0 1px 0 rgba(0, 0, 0, .12);
     display: flex; flex-direction: column; gap: 0;
   }
-  .field { display: flex; align-items: baseline; gap: 6px; min-height: 26px; min-width: 0; }
+  .field { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 6px; min-height: 26px; min-width: 0; }
   .field b { font: 700 .66rem/1 var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: var(--label-soft); flex: none; }
-  .field span { font: 600 clamp(.92rem, 3.2vw, 1.05rem)/1.25 var(--f-hand); overflow-wrap: anywhere; }
-  .title { font: 800 clamp(1.05rem, 4vw, 1.35rem)/1.15 var(--f-hand); margin: 4px 0 2px; text-wrap: balance; }
-  .progress { background: var(--label-bg); border-radius: 8px; padding: 8px 10px; display: flex; flex-direction: column; gap: 6px; font-size: .82rem; line-height: 1.25; font-variant-numeric: tabular-nums; }
+  .field span { font: 600 clamp(.88rem, 3.2vw, 1.05rem)/1.3 var(--f-hand); overflow-wrap: break-word; }
+  .title { font: 800 clamp(1rem, 4vw, 1.35rem)/1.15 var(--f-hand); margin: 4px 0 2px; text-wrap: balance; overflow-wrap: break-word; }
+  .progress { background: var(--label-bg); border-radius: 99px; padding: 5px; }
+  .status { font-size: .9rem; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; margin: 0; }
   .bar { height: 8px; border-radius: 99px; background: var(--label-rule); overflow: hidden; }
   .bar span { display: block; height: 100%; border-radius: 99px; background: var(--c); }
   .new {
@@ -142,7 +146,12 @@
     box-shadow: 0 3px 6px var(--shadow);
   }
   .blurb { margin: 0; font-size: .92rem; color: var(--ink-soft); }
-  .item { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+  .item { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .item .book { margin-bottom: 8px; }
+  @media (max-width: 520px) {
+    .book { padding: 16% 7% 8% 13%; }
+    .sticker { padding: 6px 9px 8px; }
+  }
 
   .slot {
     aspect-ratio: 5 / 7; max-width: 100%; border: 2px dashed var(--line); border-radius: 3px 10px 10px 3px;
@@ -224,11 +233,9 @@
             <div class="title">${esc(p.title)}</div>
             <div class="field"><b>Thema</b><span>${esc(p.topic)}</span></div>
           </div>
-          <div class="progress">
-            <span>${status}</span>
-            <div class="bar" aria-hidden="true"><span style="width:${pct}%"></span></div>
-          </div>
+          <div class="progress" aria-hidden="true"><div class="bar"><span style="width:${pct}%"></span></div></div>
         </a>
+        <p class="status">${status}</p>
         <p class="blurb">${esc(p.blurb)}</p>
       </div>`;
   }
