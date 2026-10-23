@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="de">
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Lernzentrale">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="/lernzentrale/icon.png">
+<link rel="icon" href="/lernzentrale/icon.png">
+<style>:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }</style>
+<title>Lernzentrale</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Playpen+Sans:wght@400;600;800&display=swap">
+<style>
+  /* Layout: a desk of exercise books on ruled paper; each game is a coloured Schulheft with a handwritten label sticker */
+  :root {
+    --paper: #f7f9fc;
+    --rule: #dbe4f0;
+    --line: #c8d2e2;
+    --ink: #1f2b44;
+    --ink-soft: #5a6782;
+    --pen: #2c4ea3;
+    --on-pen: #ffffff;
+    --pages: #e9edf3;
+    --shadow: rgba(31, 43, 68, .18);
+    --label-bg: #fffdf8;
+    --label-ink: #22304d;
+    --label-soft: #6b7690;
+    --label-rule: #cfdbec;
+    --s-deutsch: #d64a4a;
+    --s-mathe: #3f6fd1;
+    --s-englisch: #e7b324;
+    --s-sachkunde: #3f9a5b;
+    --s-musik: #8e5bc9;
+    --s-andere: #6b7a90;
+    --sun: #f5d64a;
+    --f-hand: 'Playpen Sans', 'Chalkboard SE', 'Comic Sans MS', cursive;
+    --f-body: 'Andika', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #111827;
+      --rule: #1f2a3f;
+      --line: #2f3c56;
+      --ink: #e8edf7;
+      --ink-soft: #a5b1c7;
+      --pen: #9db6ff;
+      --on-pen: #111827;
+      --pages: #2a3550;
+      --shadow: rgba(0, 0, 0, .45);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #111827;
+    --rule: #1f2a3f;
+    --line: #2f3c56;
+    --ink: #e8edf7;
+    --ink-soft: #a5b1c7;
+    --pen: #9db6ff;
+    --on-pen: #111827;
+    --pages: #2a3550;
+    --shadow: rgba(0, 0, 0, .45);
+    color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body {
+    margin: 0;
+    background-color: var(--paper);
+    background-image: repeating-linear-gradient(to bottom, transparent 0 33px, var(--rule) 33px 34px);
+    color: var(--ink);
+    font: 400 17px/1.5 var(--f-body);
+    -webkit-tap-highlight-color: transparent;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--pen); outline-offset: 3px; }
+  .wrap { max-width: 920px; margin: 0 auto; padding-block: 18px 56px; display: flex; flex-direction: column; gap: 26px; }
+
+  header { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; align-items: start; }
+  h1 { margin: 0; font: 800 clamp(2.1rem, 8vw, 3.2rem)/1.05 var(--f-hand); color: var(--pen); text-wrap: balance; }
+  .date { font: 600 1rem/1.2 var(--f-hand); color: var(--ink-soft); border-bottom: 2px solid var(--line); padding-bottom: 2px; white-space: nowrap; margin-top: .6em; }
+  .intro { grid-column: 1 / -1; margin: 0; color: var(--ink-soft); font-size: 1.05rem; }
+
+  .resume { display: flex; align-items: center; justify-content: space-between; gap: 12px 16px; flex-wrap: wrap; padding: 14px 16px; border-radius: 14px; border: 1.5px solid var(--line); background: color-mix(in srgb, var(--paper) 60%, var(--label-bg)); }
+  .resume p { margin: 0; min-width: 0; }
+  .resume strong { font-family: var(--f-hand); font-size: 1.15rem; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border-radius: 12px; background: var(--pen); color: var(--on-pen); font-weight: 700; text-decoration: none; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { min-height: 40px; padding: 0 14px; border-radius: 99px; border: 1.5px solid var(--line); background: transparent; color: var(--ink); font: 700 .95rem var(--f-body); cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+  .chip i { width: 12px; height: 12px; border-radius: 3px; background: var(--c); }
+  .chip[aria-pressed="true"] { background: var(--pen); border-color: var(--pen); color: var(--on-pen); }
+
+  .shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); gap: 30px 24px; }
+  @media (max-width: 520px) { .shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 14px; } }
+
+  /* Exercise book cover */
+  .book {
+    --c: var(--s-andere);
+    position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 12px;
+    aspect-ratio: 5 / 7; max-width: 100%;
+    padding: 18% 9% 9% 14%;
+    border-radius: 3px 10px 10px 3px;
+    background:
+      linear-gradient(90deg, rgba(0, 0, 0, .22) 0 7%, rgba(255, 255, 255, .12) 7% 8%, transparent 8%),
+      repeating-linear-gradient(-58deg, var(--c) 0 4px, color-mix(in srgb, var(--c) 86%, #fff) 4px 7px);
+    box-shadow: 5px 5px 0 -1px var(--pages), 5px 5px 0 0 var(--line), 0 14px 22px -10px var(--shadow);
+    text-decoration: none; color: var(--label-ink);
+    transform: rotate(var(--tilt, 0deg));
+    transition: transform .18s ease;
+  }
+  .book:hover { transform: rotate(0deg) translateY(-4px); }
+  .book:active { transform: scale(.98); }
+  .sticker {
+    background-color: var(--label-bg);
+    background-image: repeating-linear-gradient(to bottom, transparent 0 25px, var(--label-rule) 25px 26px);
+    background-position: 0 6px;
+    border-radius: 8px; padding: 8px 12px 10px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .12);
+    display: flex; flex-direction: column; gap: 0;
+  }
+  .field { display: flex; align-items: baseline; gap: 6px; min-height: 26px; min-width: 0; }
+  .field b { font: 700 .66rem/1 var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: var(--label-soft); flex: none; }
+  .field span { font: 600 clamp(.92rem, 3.2vw, 1.05rem)/1.25 var(--f-hand); overflow-wrap: anywhere; }
+  .title { font: 800 clamp(1.05rem, 4vw, 1.35rem)/1.15 var(--f-hand); margin: 4px 0 2px; text-wrap: balance; }
+  .progress { background: var(--label-bg); border-radius: 8px; padding: 8px 10px; display: flex; flex-direction: column; gap: 6px; font-size: .82rem; line-height: 1.25; font-variant-numeric: tabular-nums; }
+  .bar { height: 8px; border-radius: 99px; background: var(--label-rule); overflow: hidden; }
+  .bar span { display: block; height: 100%; border-radius: 99px; background: var(--c); }
+  .new {
+    position: absolute; top: -10px; right: -8px; width: 54px; height: 54px; border-radius: 50%;
+    display: grid; place-items: center; transform: rotate(12deg);
+    background: var(--sun); color: #3a2d00; font: 800 .8rem/1 var(--f-hand); letter-spacing: .04em;
+    box-shadow: 0 3px 6px var(--shadow);
+  }
+  .blurb { margin: 0; font-size: .92rem; color: var(--ink-soft); }
+  .item { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+
+  .slot {
+    aspect-ratio: 5 / 7; max-width: 100%; border: 2px dashed var(--line); border-radius: 3px 10px 10px 3px;
+    display: grid; place-items: center; text-align: center; padding: 16px; color: var(--ink-soft);
+    font: 600 1rem/1.35 var(--f-hand);
+  }
+
+  footer { color: var(--ink-soft); font-size: .9rem; border-top: 1.5px solid var(--line); padding-top: 14px; }
+
+  @media (prefers-reduced-motion: reduce) { .book { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Lernzentrale</h1>
+    <div class="date" id="date"></div>
+    <p class="intro">Such dir ein Heft aus und leg los. Jedes Heft ist ein Lernspiel zu einem Thema aus der Schule.</p>
+  </header>
+  <section class="resume" id="resume" hidden></section>
+  <div class="chips" id="chips" hidden></div>
+  <main class="shelf" id="shelf"></main>
+  <footer>Dein Fortschritt wird nur auf diesem Gerät gespeichert. Tipp: In Safari über „Teilen“ → „Zum Home-Bildschirm“ wird die Lernzentrale zur App.</footer>
+</div>
+
+<script>
+  // New learning games are added here (newest first). folder = project folder name = URL path.
+  const PROJECTS = [
+    {
+      folder: '2026-10_Wortfeld-Sagen',
+      title: 'Sagen-Sonne',
+      subject: 'Deutsch',
+      topic: 'Wortfeld „sagen“',
+      added: '2026-10-22',
+      total: 62,
+      unit: 'Wörter',
+      blurb: '62 Verben statt immer nur „sagte“: kennenlernen, abfragen, in Sätze einsetzen.'
+    }
+  ];
+
+  const SUBJECTS = { Deutsch: 'deutsch', Mathe: 'mathe', Englisch: 'englisch', Sachkunde: 'sachkunde', Musik: 'musik' };
+  const NEW_DAYS = 14;
+  const DAY = 864e5;
+
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const color = subject => `var(--s-${SUBJECTS[subject] || 'andere'})`;
+  let filter = null;
+
+  function progress(p) {
+    try {
+      const s = JSON.parse(localStorage.getItem(`lernzentrale:${p.folder}`) || 'null');
+      if (s && typeof s.done === 'number') return s;
+    } catch (e) {}
+    return null;
+  }
+
+  function when(ts) {
+    const days = Math.floor((new Date().setHours(0, 0, 0, 0) - new Date(ts).setHours(0, 0, 0, 0)) / DAY);
+    if (days <= 0) return 'heute';
+    if (days === 1) return 'gestern';
+    if (days < 7) return `vor ${days} Tagen`;
+    return new Date(ts).toLocaleDateString('de-DE', { day: 'numeric', month: 'long' });
+  }
+
+  function book(p, i) {
+    const s = progress(p);
+    const total = s?.total || p.total;
+    const done = s?.done || 0;
+    const pct = Math.round(100 * done / total);
+    const isNew = !s && Date.now() - new Date(p.added).getTime() < NEW_DAYS * DAY;
+    const status = s
+      ? `${done} von ${total} ${esc(p.unit)} gelernt${s.last ? `, zuletzt ${when(s.last)}` : ''}`
+      : 'Noch nicht angefangen';
+    return `
+      <div class="item">
+        <a class="book" href="${encodeURI(p.folder)}/" style="--c:${color(p.subject)};--tilt:${(i % 3 - 1) * 0.8}deg" aria-label="${esc(p.title)} öffnen, ${esc(p.subject)}, ${esc(status)}">
+          ${isNew ? '<span class="new" aria-hidden="true">NEU</span>' : ''}
+          <div class="sticker">
+            <div class="field"><b>Fach</b><span>${esc(p.subject)}</span></div>
+            <div class="title">${esc(p.title)}</div>
+            <div class="field"><b>Thema</b><span>${esc(p.topic)}</span></div>
+          </div>
+          <div class="progress">
+            <span>${status}</span>
+            <div class="bar" aria-hidden="true"><span style="width:${pct}%"></span></div>
+          </div>
+        </a>
+        <p class="blurb">${esc(p.blurb)}</p>
+      </div>`;
+  }
+
+  function render() {
+    document.getElementById('date').textContent = new Date().toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit', year: 'numeric' });
+
+    const sorted = PROJECTS.slice().sort((a, b) => (progress(b)?.last || 0) - (progress(a)?.last || 0) || b.added.localeCompare(a.added));
+    const last = sorted.find(p => progress(p)?.last);
+    const resume = document.getElementById('resume');
+    resume.hidden = !last;
+    if (last) {
+      const s = progress(last);
+      resume.innerHTML = `<p>Weiter mit <strong>${esc(last.title)}</strong>: ${s.done} von ${s.total || last.total} ${esc(last.unit)} geschafft.</p><a class="btn" href="${encodeURI(last.folder)}/">Weiter üben</a>`;
+    }
+
+    const subjects = [...new Set(PROJECTS.map(p => p.subject))];
+    const chips = document.getElementById('chips');
+    chips.hidden = subjects.length < 2;
+    chips.innerHTML = [null, ...subjects].map(s => `<button class="chip" data-subject="${s ? esc(s) : ''}" aria-pressed="${filter === s}">${s ? `<i style="--c:${color(s)}"></i>${esc(s)}` : 'Alle Fächer'}</button>`).join('');
+
+    const shown = sorted.filter(p => !filter || p.subject === filter);
+    document.getElementById('shelf').innerHTML = shown.map(book).join('') +
+      '<div class="item"><div class="slot">Hier kommt das nächste Heft hin.</div></div>';
+  }
+
+  document.getElementById('chips').addEventListener('click', e => {
+    const b = e.target.closest('[data-subject]');
+    if (!b) return;
+    filter = b.dataset.subject || null;
+    render();
+  });
+  window.addEventListener('pageshow', render);
+  render();
+</script>

@@ -1,0 +1,952 @@
+<!doctype html>
+<html lang="de">
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Lernzentrale">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="/lernzentrale/icon.png">
+<link rel="icon" href="/lernzentrale/icon.png">
+<style>:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }</style>
+<title>Sagen-Sonne</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Playpen+Sans:wght@400;600;800&display=swap">
+<style>
+  /* Layout: one centred notebook sheet on ruled paper; the "Sagen" sun on top, crayon paper strips as labels and tiles */
+  :root {
+    --paper: #f7f9fc;
+    --sheet: #ffffff;
+    --rule: #dbe4f0;
+    --line: #c8d2e2;
+    --ink: #1f2b44;
+    --ink-soft: #5a6782;
+    --pen: #2c4ea3;
+    --on-pen: #ffffff;
+    --good: #23824f;
+    --good-bg: #e2f4e9;
+    --bad: #b8460f;
+    --bad-bg: #fde9dd;
+    --strip-ink: #15171d;
+    --g-rot: #e45b5b;
+    --g-gruen: #a6d35a;
+    --g-gelb: #f5d64a;
+    --g-braun: #b08268;
+    --g-lila: #ad89de;
+    --g-orange: #f59b5c;
+    --g-grau: #a3a8b0;
+    --g-hellblau: #63bdea;
+    --g-dunkelblau: #6f8ed6;
+    --g-rosa: #f4a8cb;
+    --f-hand: 'Playpen Sans', 'Chalkboard SE', 'Comic Sans MS', cursive;
+    --f-body: 'Andika', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #111827;
+      --sheet: #182134;
+      --rule: #1f2a3f;
+      --line: #2f3c56;
+      --ink: #e8edf7;
+      --ink-soft: #a5b1c7;
+      --pen: #9db6ff;
+      --on-pen: #111827;
+      --good: #68d39a;
+      --good-bg: #16392a;
+      --bad: #ffa477;
+      --bad-bg: #44261a;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #111827;
+    --sheet: #182134;
+    --rule: #1f2a3f;
+    --line: #2f3c56;
+    --ink: #e8edf7;
+    --ink-soft: #a5b1c7;
+    --pen: #9db6ff;
+    --on-pen: #111827;
+    --good: #68d39a;
+    --good-bg: #16392a;
+    --bad: #ffa477;
+    --bad-bg: #44261a;
+    color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body {
+    margin: 0;
+    background-color: var(--paper);
+    background-image: repeating-linear-gradient(to bottom, transparent 0 33px, var(--rule) 33px 34px);
+    color: var(--ink);
+    font: 400 17px/1.5 var(--f-body);
+    -webkit-tap-highlight-color: transparent;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  button { font: inherit; color: inherit; }
+  button:focus-visible { outline: 3px solid var(--pen); outline-offset: 2px; }
+  .wrap { max-width: 760px; margin: 0 auto; padding-block: 10px 48px; display: flex; flex-direction: column; gap: 18px; }
+
+  header.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .hublink { align-self: flex-start; display: inline-flex; align-items: center; min-height: 36px; color: var(--pen); font-weight: 700; text-decoration: none; margin-bottom: -10px; }
+  .brand { font: 800 clamp(1.45rem, 5vw, 2rem)/1.1 var(--f-hand); color: var(--pen); background: none; border: 0; padding: 0; cursor: pointer; text-align: left; }
+  .pill { font: 700 .95rem/1 var(--f-body); padding: .5em .85em; border-radius: 999px; background: var(--sheet); border: 1.5px solid var(--line); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  h2 { font: 800 1.35rem/1.2 var(--f-hand); margin: 0; color: var(--ink); text-wrap: balance; }
+  .muted { color: var(--ink-soft); }
+  .label { font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
+
+  .sheet { background: var(--sheet); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 18px; }
+
+  /* Crayon paper strip, like the cut-out word cards in the notebook */
+  .strip {
+    --c: var(--g-gelb);
+    display: inline-flex; align-items: center; justify-content: center; gap: .4em;
+    padding: .32em .8em; border-radius: 3px;
+    font: 700 1rem/1.2 var(--f-body); color: var(--strip-ink);
+    background: repeating-linear-gradient(-62deg, var(--c) 0 3px, color-mix(in srgb, var(--c) 72%, #fff) 3px 5px);
+    border: 1px solid color-mix(in srgb, var(--c) 55%, #000);
+    transform: rotate(var(--tilt, 0deg));
+  }
+  .strip.plain { background: var(--sheet); color: var(--ink); border: 1.5px dashed var(--line); }
+  .strip.big { font-size: clamp(1.6rem, 7vw, 2.4rem); padding: .3em .9em; }
+
+  /* Home */
+  .hero { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 20px; align-items: center; }
+  .sun { width: 100%; max-width: 300px; height: auto; display: block; margin: 0 auto; }
+  .sun .ray { stroke: var(--pen); stroke-width: 2; stroke-linecap: round; opacity: .45; }
+  .sun .dot { stroke-width: 1.5; }
+  .sun .dot.off { fill: var(--sheet); stroke: color-mix(in srgb, var(--c) 70%, var(--line)); }
+  .sun .dot.half { fill: color-mix(in srgb, var(--c) 40%, var(--sheet)); stroke: var(--c); }
+  .sun .dot.on { fill: var(--c); stroke: var(--ink); stroke-width: 1; }
+  .sun .core { fill: color-mix(in srgb, var(--g-gelb) var(--glow), var(--sheet)); stroke: var(--pen); stroke-width: 2.5; }
+  .sun .core-label { font: 600 30px var(--f-hand); fill: var(--pen); text-anchor: middle; }
+  .count { font: 800 clamp(2rem, 8vw, 2.8rem)/1 var(--f-hand); color: var(--pen); font-variant-numeric: tabular-nums; }
+  .stats { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .bar { height: 12px; border-radius: 99px; background: var(--rule); overflow: hidden; }
+  .bar > span { display: block; height: 100%; background: var(--pen); border-radius: 99px; transition: width .4s; }
+
+  .tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  @media (min-width: 640px) { .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .tile { text-align: left; background: var(--sheet); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 14px 14px 16px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; cursor: pointer; min-height: 120px; transition: transform .12s; }
+  .tile:active { transform: scale(.97); }
+  .tile .strip { font-size: .95rem; text-align: left; }
+  .tile p { margin: 0; font-size: .92rem; color: var(--ink-soft); }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip { cursor: pointer; min-height: 44px; font-size: .95rem; }
+  .chip[aria-pressed="false"] { filter: grayscale(1); opacity: .45; }
+  .chip small { font-weight: 400; font-variant-numeric: tabular-nums; }
+  .linkbtn { background: none; border: 0; color: var(--pen); font-weight: 700; padding: 8px 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .spread { justify-content: space-between; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 0 22px; border-radius: 12px; border: 2px solid var(--pen); background: var(--pen); color: var(--on-pen); font-weight: 700; font-size: 1.05rem; cursor: pointer; }
+  .btn.ghost { background: var(--sheet); color: var(--pen); }
+  .btn.small { min-height: 44px; padding: 0 14px; font-size: .95rem; }
+  .btn svg { width: 20px; height: 20px; }
+
+  /* Quiz */
+  .qbar { display: flex; align-items: center; gap: 12px; }
+  .qbar .track { flex: 1; display: flex; gap: 4px; min-width: 0; }
+  .qbar .track span { flex: 1; height: 10px; border-radius: 99px; background: var(--rule); }
+  .qbar .track span.ok { background: var(--good); }
+  .qbar .track span.no { background: var(--bad); }
+  .qbar .track span.now { background: var(--pen); }
+  .iconbtn { width: 44px; height: 44px; flex: none; border-radius: 50%; border: 1.5px solid var(--line); background: var(--sheet); display: grid; place-items: center; cursor: pointer; color: var(--ink); }
+  .iconbtn svg { width: 20px; height: 20px; }
+  .timer { height: 12px; border-radius: 99px; background: var(--rule); overflow: hidden; flex: 1; }
+  .timer > span { display: block; height: 100%; background: var(--g-rot); }
+
+  .prompt { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; padding-block: 22px; }
+  .prompt .meaning { font: 600 clamp(1.15rem, 4.2vw, 1.45rem)/1.4 var(--f-hand); max-width: 34ch; text-wrap: balance; }
+  .prompt .cloze { font-size: clamp(1.1rem, 4vw, 1.3rem); line-height: 1.6; max-width: 40ch; }
+  .gap { display: inline-block; min-width: 4.5em; border-bottom: 3px solid var(--pen); color: var(--pen); font-weight: 700; padding: 0 .2em; }
+
+  .options { display: grid; gap: 10px; }
+  .options.words { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .options.groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .opt { min-height: 58px; text-align: left; padding: 12px 16px; border-radius: 12px; border: 2px solid var(--line); background: var(--sheet); cursor: pointer; font-size: 1.04rem; line-height: 1.35; display: flex; align-items: center; gap: 12px; transition: transform .1s; }
+  .options.words .opt { justify-content: center; text-align: center; font-weight: 700; font-size: 1.15rem; }
+  .options.groups .opt { justify-content: center; padding: 8px; }
+  .opt:active { transform: scale(.98); }
+  .opt .key { flex: none; width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; font-size: .8rem; color: var(--ink-soft); }
+  .options.words .key, .options.groups .key { display: none; }
+  .opt.correct { border-color: var(--good); background: var(--good-bg); }
+  .opt.wrong { border-color: var(--bad); background: var(--bad-bg); }
+  .opt.dim { opacity: .45; }
+  .opt[disabled] { cursor: default; }
+
+  .feedback { border-radius: var(--radius); padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; border: 2px solid var(--good); background: var(--good-bg); }
+  .feedback.no { border-color: var(--bad); background: var(--bad-bg); }
+  .feedback .verdict { font: 800 1.35rem/1.2 var(--f-hand); color: var(--good); }
+  .feedback.no .verdict { color: var(--bad); }
+  .feedback p { margin: 0; }
+  .example { font-style: italic; }
+
+  /* Learn cards */
+  .flip { perspective: 1200px; background: none; border: 0; padding: 0; cursor: pointer; width: 100%; }
+  .flip-inner { display: grid; transition: transform .5s; transform-style: preserve-3d; }
+  .flip.open .flip-inner { transform: rotateY(180deg); }
+  .face { grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden; min-height: 250px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 22px; text-align: center; }
+  .face.back { transform: rotateY(180deg); }
+  .face .meaning { font: 600 1.25rem/1.4 var(--f-hand); max-width: 32ch; text-wrap: balance; }
+  .wordlist { display: flex; flex-wrap: wrap; gap: 8px; }
+  .wordlist .strip { cursor: pointer; font-size: .9rem; min-height: 36px; }
+  .wordlist .strip.current { outline: 3px solid var(--pen); outline-offset: 2px; }
+
+  /* Result */
+  .stars { font-size: clamp(2.6rem, 12vw, 3.6rem); letter-spacing: .1em; line-height: 1; }
+  .stars .s-on { color: var(--g-gelb); -webkit-text-stroke: 1.5px color-mix(in srgb, var(--g-gelb) 50%, #000); }
+  .stars .s-off { color: var(--rule); }
+  .result { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+  .mistakes { display: flex; flex-direction: column; gap: 10px; }
+  .mistakes li { list-style: none; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+  .mistakes ul { margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+
+  /* Parents */
+  .tablewrap { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  th { font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
+  td.num { font-variant-numeric: tabular-nums; text-align: right; }
+  .lv { letter-spacing: .12em; color: var(--pen); white-space: nowrap; }
+  .confirm { border: 2px solid var(--bad); background: var(--bad-bg); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+
+  #confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50; }
+
+  @media (max-width: 600px) {
+    .hero { grid-template-columns: minmax(0, 1fr); }
+    .sun { max-width: 260px; }
+    .sheet { padding: 14px; }
+  }
+  @media (max-width: 380px) {
+    .options.words { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .flip-inner, .bar > span, .tile, .opt { transition: none; }
+  }
+</style>
+
+<div class="wrap">
+  <a class="hublink" id="hubLink" href="../" hidden>‹ Lernzentrale</a>
+  <header class="top">
+    <button class="brand" data-act="home" aria-label="Zur Startseite">Sagen-Sonne</button>
+    <span class="pill" id="points"></span>
+  </header>
+  <main id="view" aria-live="polite"></main>
+</div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<script>
+  // Groups in the order they sit around the sun, clockwise from the upper right (like in the notebook)
+  const GROUPS = [
+    { id: 'gelb', label: 'fröhlich' },
+    { id: 'braun', label: 'fragend' },
+    { id: 'lila', label: 'leise / undeutlich' },
+    { id: 'orange', label: 'antwortend' },
+    { id: 'grau', label: 'wütend' },
+    { id: 'dunkelblau', label: 'normal' },
+    { id: 'hellblau', label: 'laut' },
+    { id: 'rosa', label: 'besonders' },
+    { id: 'rot', label: 'bittend / fordernd' },
+    { id: 'gruen', label: 'unglücklich' }
+  ];
+
+  // [word, group, meaning, example, cloze sentence with ___ for the infinitive]
+  const RAW = [
+    ['bitten', 'rot', 'Höflich sagen, dass man gerne etwas hätte.', '„Gibst du mir bitte das Salz?“, bat Mia.', 'Mia will ihren Bruder ___: „Gibst du mir bitte das Salz?“'],
+    ['verlangen', 'rot', 'Deutlich und bestimmt sagen, dass man etwas haben will.', '„Ich will sofort mein Geld zurück!“, verlangte der Kunde.', 'Der Kunde wird lautstark ___: „Ich will sofort mein Geld zurück!“'],
+    ['flehen', 'rot', 'Ganz verzweifelt und inständig um etwas bitten.', '„Bitte, bitte, lass mich nicht allein!“, flehte der kleine Hase.', 'Der kleine Hase kann nur noch verzweifelt ___: „Bitte, bitte, lass mich nicht allein!“'],
+    ['befehlen', 'rot', 'Jemandem streng sagen, was er tun muss.', '„Alle Ritter sofort in den Burghof!“, befahl der König.', 'Der König will seinen Rittern streng ___: „Alle sofort in den Burghof!“'],
+    ['betteln', 'rot', 'Immer wieder und hartnäckig um etwas bitten.', '„Bitte, nur noch ein Eis! Bitte, bitte!“, bettelte Paul.', 'Paul fängt wieder an zu ___: „Bitte, nur noch ein Eis! Bitte, bitte!“'],
+    ['quengeln', 'rot', 'Nörgelig und weinerlich immer wieder etwas wollen, wie ein kleines Kind.', '„Mir ist langweilig! Wann sind wir endlich da?“, quengelte Ben.', 'Auf der langen Autofahrt muss Ben dauernd ___: „Mir ist langweilig! Wann sind wir endlich da?“'],
+
+    ['meckern', 'gruen', 'Unzufrieden an etwas herumnörgeln und sich beschweren.', '„Schon wieder Gemüse! Das mag ich nicht!“, meckerte Ben.', 'Beim Abendessen will Ben nur ___: „Schon wieder Gemüse! Das mag ich nicht!“'],
+    ['ächzen', 'gruen', 'Vor Anstrengung schwer schnaufen und stöhnen, während man spricht.', '„Uff, ist diese Kiste schwer!“, ächzte Papa.', 'Beim Tragen der schweren Kiste muss Papa ___: „Uff, ist die schwer!“'],
+    ['jammern', 'gruen', 'Lange und klagend darüber reden, was einem wehtut oder nicht gefällt.', '„Mein Bauch tut so weh, und keiner hilft mir!“, jammerte Max.', 'Max kann stundenlang ___: „Mein Bauch tut so weh, und keiner hilft mir!“'],
+    ['drohen', 'gruen', 'Jemandem sagen, dass etwas Unangenehmes passiert, wenn er nicht aufhört.', '„Wenn du das noch mal machst, sag ich es Mama!“, drohte Lea.', 'Lea will ihrem Bruder ___: „Wenn du das noch mal machst, sag ich es Mama!“'],
+    ['schluchzen', 'gruen', 'So sehr weinen, dass man beim Sprechen stoßweise nach Luft schnappt.', '„Mein Hamster ist weg“, schluchzte Emma.', 'Emma weint so sehr, dass sie nur ___ kann: „Mein Hamster ist weg!“'],
+    ['widersprechen', 'gruen', 'Sagen, dass man anderer Meinung ist und etwas nicht stimmt.', '„Nein, Wale sind keine Fische!“, widersprach Tim.', 'Tim muss seiner Freundin ___: „Nein, Wale sind keine Fische!“'],
+    ['seufzen', 'gruen', 'Tief und hörbar ausatmen, weil man traurig, müde oder enttäuscht ist.', '„Ach, schon wieder Regen“, seufzte Oma.', 'Oma schaut enttäuscht aus dem Fenster und muss ___: „Ach, schon wieder Regen.“'],
+
+    ['rätseln', 'gelb', 'Überlegen und herumraten, weil man etwas nicht genau weiß.', '„Ist das ein Hund oder ein Fuchs?“, rätselte Jana.', 'Jana sieht ein Tier im Gebüsch und muss ___: „Ist das ein Hund oder ein Fuchs?“'],
+    ['scherzen', 'gelb', 'Lustig sein und Witze machen.', '„Ich bin so müde, ich schlafe gleich im Stehen wie ein Pferd!“, scherzte Papa.', 'Papa will mit uns ___: „Ich bin so müde, ich schlafe gleich im Stehen wie ein Pferd!“'],
+    ['lachen', 'gelb', 'Fröhlich sprechen und dabei lachen.', '„Haha, das ist ja lustig!“, lachte Mia.', 'Über den Witz muss Mia laut ___: „Haha, das ist ja lustig!“'],
+    ['jauchzen', 'gelb', 'Vor lauter Freude hell und laut aufschreien.', '„Juhu, es schneit!“, jauchzte das kleine Mädchen.', 'Das kleine Mädchen muss vor Freude hell ___: „Juhu, es schneit!“'],
+    ['sich bedanken', 'gelb', '„Danke“ sagen, weil jemand etwas Nettes für einen getan hat.', '„Danke für das tolle Geschenk!“, bedankte sich Lena.', 'Lena möchte ___: „Danke für das tolle Geschenk!“'],
+    ['begrüßen', 'gelb', 'Jemanden willkommen heißen, wenn er ankommt.', '„Hallo, schön, dass ihr da seid!“, begrüßte Oma die Gäste.', 'Oma will die Gäste an der Tür ___: „Hallo, schön, dass ihr da seid!“'],
+    ['jubeln', 'gelb', 'Laut und begeistert vor Freude rufen, oft mit vielen zusammen.', '„Tor! Wir haben gewonnen!“, jubelten die Fans.', 'Nach dem Siegtor wollen die Fans ___: „Tor! Wir haben gewonnen!“'],
+
+    ['fragen', 'braun', 'Eine Frage stellen, weil man etwas wissen möchte.', '„Wie spät ist es?“, fragte Ben.', 'Ben möchte die Lehrerin etwas ___: „Wie spät ist es?“'],
+    ['wissen wollen', 'braun', 'Neugierig sein und unbedingt erfahren möchten, wie etwas ist.', '„Und was ist dann passiert?“, wollte Lena wissen.', 'Lena ist so neugierig, sie wird sofort ___: „Und was ist dann passiert?“'],
+
+    ['hauchen', 'lila', 'Ganz leise und mit viel Atem sprechen, fast ohne Stimme.', '„Ich hab dich lieb“, hauchte Mama.', 'Mama will ihrem Kind ganz zart ins Ohr ___: „Ich hab dich lieb.“'],
+    ['murmeln', 'lila', 'Leise und undeutlich vor sich hin sprechen.', '„Wo hab ich nur meine Brille hingelegt?“, murmelte Opa.', 'Opa sucht seine Brille und muss leise vor sich hin ___: „Wo hab ich sie nur hingelegt?“'],
+    ['flüstern', 'lila', 'Ganz leise sprechen, damit es sonst niemand hört.', '„Psst, das Baby schläft“, flüsterte Mama.', 'Mama muss ganz leise ___: „Psst, das Baby schläft.“'],
+    ['lispeln', 'lila', 'Beim S mit der Zunge an die Zähne stoßen, sodass es wie „th“ klingt.', '„Thuper Thache!“, lispelte der kleine Leo.', 'Leo hat eine Zahnlücke und muss beim S ___: „Thuper Thache!“'],
+    ['nuscheln', 'lila', 'So undeutlich sprechen, dass man die Wörter kaum versteht.', '„Daf fmeckt lecker“, nuschelte Tom mit vollem Mund.', 'Mit vollem Mund kann Tom nur ___: „Daf fmeckt lecker.“'],
+    ['wimmern', 'lila', 'Leise und kläglich jammern, weil etwas wehtut oder man Angst hat.', '„Aua, mein Knie …“, wimmerte der kleine Junge.', 'Der kleine Junge ist hingefallen und kann nur leise ___: „Aua, mein Knie …“'],
+    ['stottern', 'lila', 'Beim Sprechen hängen bleiben und Silben wiederholen, zum Beispiel vor Aufregung.', '„I-i-ich w-weiß es nicht“, stotterte Nils.', 'Vor lauter Aufregung muss Nils ___: „I-i-ich w-weiß es n-nicht.“'],
+    ['tuscheln', 'lila', 'Heimlich miteinander flüstern, damit andere es nicht mitbekommen.', '„Hast du gehört, was Lukas gemacht hat?“, tuschelten die Mädchen.', 'In der Pause wollen die Mädchen heimlich ___: „Hast du gehört, was Lukas gemacht hat?“'],
+
+    ['entgegnen', 'orange', 'Auf etwas antworten, oft mit einer anderen Meinung.', '„Ich finde Pizza aber besser!“, entgegnete Ben.', 'Mia sagt, Nudeln sind das beste Essen. Ben will ___: „Ich finde Pizza aber besser!“'],
+    ['sich erkundigen', 'orange', 'Höflich nachfragen, um eine Auskunft zu bekommen.', '„Wann fährt der nächste Zug nach Nürnberg?“, erkundigte sich die Dame.', 'Am Bahnhof will die Dame ___: „Wann fährt der nächste Zug nach Nürnberg?“'],
+    ['erläutern', 'orange', 'Etwas ganz genau und mit allen Einzelheiten erklären.', '„Zuerst kommt der Ton in die Form, dann in den Ofen, und danach wird bemalt“, erläuterte die Töpferin.', 'Die Töpferin will Schritt für Schritt ___: „Zuerst kommt der Ton in die Form, dann in den Ofen, und danach wird bemalt.“'],
+    ['behaupten', 'orange', 'Etwas als sicher hinstellen, auch wenn es vielleicht gar nicht stimmt.', '„Ich kann schneller laufen als ein Gepard!“, behauptete Finn.', 'Finn will einfach ___: „Ich kann schneller laufen als ein Gepard!“'],
+    ['berichten', 'orange', 'Erzählen, was passiert ist.', '„Im Zoo ist heute ein Elefantenbaby geboren worden“, berichtete die Reporterin.', 'Die Reporterin wird im Radio ___: „Im Zoo ist heute ein Elefantenbaby geboren worden.“'],
+    ['schildern', 'orange', 'Etwas so genau und lebendig erzählen, dass man es sich gut vorstellen kann.', '„Der Himmel war ganz rot, und über dem Meer kreisten Möwen“, schilderte Oma.', 'Oma will ihren Urlaub ganz lebendig ___: „Der Himmel war ganz rot, und über dem Meer kreisten Möwen.“'],
+    ['zugeben', 'orange', 'Sagen, dass man etwas falsch gemacht hat oder dass etwas stimmt.', '„Ja, ich habe die Vase kaputt gemacht“, gab Tim zu.', 'Tim muss ehrlich sein und ___: „Ja, ich habe die Vase kaputt gemacht.“'],
+    ['meinen', 'orange', 'Sagen, was man denkt oder glaubt.', '„Ich glaube, morgen regnet es“, meinte Opa.', 'Opa schaut in den Himmel und will seine Meinung sagen. Er wird ___: „Ich glaube, morgen regnet es.“'],
+    ['erklären', 'orange', 'Jemandem etwas so sagen, dass er es versteht.', '„Zuerst musst du das Wasser kochen“, erklärte Mama.', 'Mama will Ben das Rezept ___: „Zuerst musst du das Wasser kochen.“'],
+    ['überlegen', 'orange', 'Laut nachdenken, bevor man sich entscheidet.', '„Hm, soll ich die rote oder die blaue Jacke nehmen?“, überlegte Lena.', 'Lena steht vor dem Schrank und muss ___: „Hm, soll ich die rote oder die blaue Jacke nehmen?“'],
+    ['vermuten', 'orange', 'Sagen, was man glaubt, ohne es genau zu wissen.', '„Vielleicht hat der Hund den Kuchen gefressen“, vermutete Paul.', 'Der Kuchen ist weg. Paul kann nur ___: „Vielleicht hat ihn der Hund gefressen.“'],
+
+    ['tadeln', 'grau', 'Jemandem sagen, dass er etwas falsch gemacht hat. Das Gegenteil von loben.', '„Das war nicht in Ordnung von dir“, tadelte die Lehrerin.', 'Die Lehrerin muss Max ernst ___: „Das war nicht in Ordnung von dir.“'],
+    ['stöhnen', 'grau', 'Genervt oder gequält einen tiefen Laut von sich geben, während man spricht.', '„Nicht schon wieder Hausaufgaben!“, stöhnte Max.', 'Als Max die vielen Hausaufgaben sieht, muss er genervt ___: „Nicht schon wieder!“'],
+    ['schimpfen', 'grau', 'Wütend und laut mit jemandem reden, weil man sich ärgert.', '„Wer hat hier den ganzen Dreck gemacht?“, schimpfte der Hausmeister.', 'Der Hausmeister ärgert sich und muss ___: „Wer hat hier den ganzen Dreck gemacht?“'],
+    ['toben', 'grau', 'Vor Wut ganz wild und laut werden.', '„Das ist eine Frechheit!“, tobte der Trainer.', 'Der Trainer ist außer sich vor Wut und wird ___: „Das ist eine Frechheit!“'],
+
+    ['plappern', 'hellblau', 'Schnell, viel und ohne Pause reden.', '„Und dann, und dann, und dann haben wir noch …“, plapperte die kleine Ella.', 'Die kleine Ella kann ohne Pause ___: „Und dann, und dann, und dann haben wir noch …“'],
+    ['schreien', 'hellblau', 'Sehr laut rufen, zum Beispiel aus Angst oder Not.', '„Hilfe!“, schrie der Junge.', 'Der Junge ist in Gefahr und muss laut ___: „Hilfe!“'],
+    ['heulen', 'hellblau', 'Laut weinen und klagen.', '„Ich will aber noch nicht ins Bett!“, heulte der kleine Bruder.', 'Der kleine Bruder fängt laut an zu ___: „Ich will aber noch nicht ins Bett!“'],
+    ['rufen', 'hellblau', 'Laut sprechen, damit einen jemand weiter weg hört.', '„Essen ist fertig!“, rief Papa.', 'Papa steht in der Küche und will durchs Haus ___: „Essen ist fertig!“'],
+    ['brüllen', 'hellblau', 'Ganz laut und kräftig schreien, wie ein Löwe.', '„Alle sofort herkommen!“, brüllte der Trainer über den Platz.', 'Der Trainer will so laut wie ein Löwe über den Platz ___: „Alle sofort herkommen!“'],
+    ['grölen', 'hellblau', 'Laut und unschön singen oder rufen, oft in einer Gruppe.', '„Oleee, ole, ole, oleee!“, grölten die Fans im Bus.', 'Die Fans im Bus wollen laut und schief ___: „Oleee, ole, ole, oleee!“'],
+    ['kreischen', 'hellblau', 'Sehr hoch, schrill und laut schreien.', '„Iiih, eine Spinne!“, kreischte Lisa.', 'Lisa sieht eine Spinne und muss schrill ___: „Iiih!“'],
+    ['anschreien', 'hellblau', 'Jemanden direkt und wütend sehr laut anreden.', '„Hör endlich auf damit!“, schrie Jonas seinen Bruder an.', 'Jonas ist sauer und will seinen Bruder ___: „Hör endlich auf damit!“'],
+    ['protestieren', 'hellblau', 'Laut sagen, dass man gegen etwas ist.', '„Das ist unfair, wir wollen auch mitspielen!“, protestierten die Kinder.', 'Die Kinder finden das ungerecht und wollen ___: „Das ist unfair, wir wollen auch mitspielen!“'],
+
+    ['wiederholen', 'dunkelblau', 'Etwas noch einmal sagen.', '„Ich sage es noch einmal: Morgen ist Wandertag“, wiederholte die Lehrerin.', 'Weil es keiner gehört hat, muss die Lehrerin es ___: „Morgen ist Wandertag.“'],
+    ['empfehlen', 'dunkelblau', 'Jemandem einen guten Tipp geben, was er nehmen oder tun soll.', '„Probieren Sie unbedingt den Schokokuchen!“, empfahl der Kellner.', 'Der Kellner will uns etwas Leckeres ___: „Probieren Sie unbedingt den Schokokuchen!“'],
+    ['einwenden', 'dunkelblau', 'Ein „Aber …“ sagen, weil man Bedenken hat.', '„Aber dann kommen wir zu spät zum Training!“, wandte Mia ein.', 'Mia hat Bedenken und will etwas ___: „Aber dann kommen wir zu spät zum Training!“'],
+    ['zustimmen', 'dunkelblau', 'Sagen, dass man derselben Meinung ist.', '„Ja, genau, das sehe ich auch so!“, stimmte Ben zu.', 'Ben findet das auch und will Mia ___: „Ja, genau, das sehe ich auch so!“'],
+    ['hinzufügen', 'dunkelblau', 'Zu dem, was schon gesagt wurde, noch etwas ergänzen.', '„… und bringt eure Turnschuhe mit!“, fügte die Lehrerin hinzu.', 'Die Lehrerin hat noch etwas vergessen und will es ___: „… und bringt eure Turnschuhe mit!“'],
+
+    ['versprechen', 'rosa', 'Fest zusagen, dass man etwas ganz bestimmt tun wird.', '„Ich komme ganz sicher zu deinem Geburtstag“, versprach Clara.', 'Clara will ihrer Freundin fest ___: „Ich komme ganz sicher zu deinem Geburtstag.“'],
+    ['loben', 'rosa', 'Jemandem sagen, dass er etwas gut gemacht hat.', '„Toll, das hast du super gemalt!“, lobte die Lehrerin.', 'Die Lehrerin will Ella für ihr Bild ___: „Toll, das hast du super gemalt!“'],
+    ['beruhigen', 'rosa', 'Jemandem gut zureden, damit er keine Angst mehr hat.', '„Keine Sorge, alles wird wieder gut“, beruhigte Papa.', 'Papa will den ängstlichen Luis ___: „Keine Sorge, alles wird wieder gut.“']
+  ];
+
+  // Words too close in meaning to appear together as answer options
+  const SIMILAR = [
+    ['fragen', 'wissen wollen', 'sich erkundigen', 'rätseln'],
+    ['jauchzen', 'jubeln', 'grölen', 'kreischen', 'lachen'],
+    ['schreien', 'brüllen', 'kreischen', 'anschreien', 'rufen', 'toben', 'schimpfen', 'grölen'],
+    ['bitten', 'betteln', 'flehen', 'quengeln', 'verlangen'],
+    ['erklären', 'erläutern', 'berichten', 'schildern'],
+    ['meinen', 'vermuten', 'behaupten', 'überlegen'],
+    ['jammern', 'wimmern', 'heulen', 'schluchzen', 'quengeln', 'stöhnen', 'meckern'],
+    ['murmeln', 'nuscheln', 'flüstern', 'tuscheln', 'hauchen', 'lispeln', 'stottern'],
+    ['stöhnen', 'ächzen', 'seufzen'],
+    ['schimpfen', 'tadeln', 'toben', 'meckern', 'drohen'],
+    ['entgegnen', 'widersprechen', 'einwenden', 'protestieren'],
+    ['lachen', 'scherzen'],
+    ['zustimmen', 'zugeben'],
+    ['befehlen', 'verlangen', 'drohen']
+  ];
+
+  const MODES = {
+    learn: { title: 'Entdecken', sub: 'Karten umdrehen und alle Wörter kennenlernen', color: 'gelb' },
+    meaning: { title: 'Was bedeutet das?', sub: 'Du liest ein Wort und findest die passende Erklärung', color: 'lila' },
+    word: { title: 'Welches Wort passt?', sub: 'Du liest eine Erklärung und findest das Wort', color: 'orange' },
+    cloze: { title: 'Lückensatz', sub: 'Setze das fehlende Wort in den Satz ein', color: 'hellblau' },
+    sort: { title: 'Farben sortieren', sub: 'Wie im Heft: Zu welcher Farbe gehört das Wort?', color: 'rosa' },
+    blitz: { title: 'Blitzrunde', sub: '60 Sekunden gemischte Fragen. Schaffst du einen Rekord?', color: 'rot' }
+  };
+
+  const KEY = 'sagen-sonne-v1';
+  const HUB_KEY = 'lernzentrale:2026-10_Wortfeld-Sagen';
+  if (location.pathname.includes('/lernzentrale/')) document.getElementById('hubLink').hidden = false;
+  const MASTER = 3;
+  const WEIGHT = [8, 5, 3, 1];
+  const BLITZ_SECONDS = 60;
+  const PRAISE = ['Richtig!', 'Super!', 'Genau!', 'Klasse!', 'Stark!', 'Spitze!'];
+  const COMFORT = ['Fast!', 'Knapp daneben.', 'Nicht ganz.'];
+
+  const WORDS = RAW.map(([w, g, m, ex, cz], i) => ({ i, w, g, m, ex, cz }));
+  const GROUP = Object.fromEntries(GROUPS.map(g => [g.id, g]));
+  const similar = new Map();
+  SIMILAR.forEach(set => set.forEach(a => {
+    if (!similar.has(a)) similar.set(a, new Set());
+    set.forEach(b => { if (a !== b) similar.get(a).add(b); });
+  }));
+
+  const $view = document.getElementById('view');
+  let P = load();
+  let view = 'home';
+  let round = null;
+  let learn = null;
+  let resetAsk = false;
+  let tick = null;
+  let pending = null;
+
+  function load() {
+    const base = { levels: {}, wrong: {}, seen: {}, points: 0, blitzBest: 0, groups: GROUPS.map(g => g.id) };
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (raw) {
+        const p = Object.assign(base, JSON.parse(raw));
+        p.groups = (Array.isArray(p.groups) ? p.groups : []).filter(id => GROUP[id]);
+        if (!p.groups.length) p.groups = GROUPS.map(g => g.id);
+        return p;
+      }
+    } catch (e) {}
+    return base;
+  }
+  function save() {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(P));
+      localStorage.setItem(HUB_KEY, JSON.stringify({ done: WORDS.filter(mastered).length, total: WORDS.length, last: Date.now() }));
+    } catch (e) {}
+  }
+
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const lvl = w => Math.min(MASTER, P.levels[w.w] || 0);
+  const mastered = w => lvl(w) >= MASTER;
+  const groupWords = id => WORDS.filter(w => w.g === id);
+  const groupDone = id => groupWords(id).every(mastered);
+  const activeWords = () => WORDS.filter(w => P.groups.includes(w.g));
+  const pick = a => a[Math.floor(Math.random() * a.length)];
+  const tilt = i => ((i * 37) % 7 - 3) * 0.6;
+
+  function shuffle(a) {
+    a = a.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function weightedSample(pool, n) {
+    const items = pool.slice();
+    const out = [];
+    while (out.length < n && items.length) {
+      const total = items.reduce((s, w) => s + WEIGHT[lvl(w)], 0);
+      let r = Math.random() * total;
+      let i = 0;
+      for (; i < items.length - 1; i++) {
+        r -= WEIGHT[lvl(items[i])];
+        if (r <= 0) break;
+      }
+      out.push(items.splice(i, 1)[0]);
+    }
+    return out;
+  }
+
+  function pickRoundWords() {
+    const pool = activeWords();
+    const n = Math.min(10, pool.length * 2);
+    const list = weightedSample(pool, n);
+    if (list.length < n) {
+      const more = weightedSample(pool, n - list.length);
+      if (more.length > 1 && more[0] === list[list.length - 1]) more.push(more.shift());
+      list.push(...more);
+    }
+    return list;
+  }
+
+  function distractors(target, n) {
+    const cand = WORDS.filter(x => x.g !== target.g && !similar.get(target.w)?.has(x.w));
+    return shuffle(cand).slice(0, n);
+  }
+
+  function makeQuestion(type, w) {
+    if (type === 'sort') {
+      return { type, w, options: GROUPS.map(g => ({ html: strip(g.label, g.id), correct: g.id === w.g })) };
+    }
+    const all = shuffle([w, ...distractors(w, 3)]);
+    return { type, w, options: all.map(x => ({ html: esc(type === 'meaning' ? x.m : x.w), correct: x === w })) };
+  }
+
+  function strip(text, group, extra = '', t = 0) {
+    const c = group ? `--c:var(--g-${group});` : '';
+    return `<span class="strip ${group ? '' : 'plain'} ${extra}" style="${c}--tilt:${t}deg">${esc(text)}</span>`;
+  }
+
+  // ---------- Speech ----------
+  let deVoice = null;
+  function findVoice() {
+    try {
+      const voices = speechSynthesis.getVoices();
+      deVoice = voices.find(v => v.lang === 'de-DE' && /Anna|Petra|Helena|Google/i.test(v.name)) || voices.find(v => v.lang && v.lang.startsWith('de')) || null;
+    } catch (e) {}
+  }
+  const canSpeak = 'speechSynthesis' in window;
+  if (canSpeak) { findVoice(); speechSynthesis.onvoiceschanged = findVoice; }
+  function speak(text) {
+    if (!canSpeak) return;
+    try {
+      speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'de-DE';
+      if (deVoice) u.voice = deVoice;
+      u.rate = 0.92;
+      speechSynthesis.speak(u);
+    } catch (e) {}
+  }
+  const ICON_SPEAK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+  const ICON_CLOSE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>';
+  const speakBtn = (i, label = 'Vorlesen') => canSpeak ? `<button class="btn ghost small" data-act="speak" data-arg="${i}">${ICON_SPEAK}${label}</button>` : '';
+
+  // ---------- Sun ----------
+  function sunSVG() {
+    const cx = 200, cy = 200;
+    const done = WORDS.filter(mastered).length;
+    const glow = Math.round(12 + 88 * done / WORDS.length);
+    let s = `<svg class="sun" viewBox="0 0 400 400" role="img" aria-label="Sagen-Sonne: ${done} von ${WORDS.length} Wörtern leuchten">`;
+    GROUPS.forEach((g, gi) => {
+      const a = (-72 + gi * 36) * Math.PI / 180;
+      const dx = Math.cos(a), dy = Math.sin(a);
+      const ws = groupWords(g.id);
+      const end = 72 + (ws.length - 1) * 11.5;
+      s += `<line class="ray" x1="${(cx + dx * 56).toFixed(1)}" y1="${(cy + dy * 56).toFixed(1)}" x2="${(cx + dx * end).toFixed(1)}" y2="${(cy + dy * end).toFixed(1)}"/>`;
+      ws.forEach((w, i) => {
+        const r = 72 + i * 11.5;
+        const L = lvl(w);
+        const cls = L >= MASTER ? 'on' : L > 0 ? 'half' : 'off';
+        s += `<circle class="dot ${cls}" style="--c:var(--g-${g.id})" cx="${(cx + dx * r).toFixed(1)}" cy="${(cy + dy * r).toFixed(1)}" r="5.5"><title>${esc(w.w)}</title></circle>`;
+      });
+    });
+    s += `<circle class="core" style="--glow:${glow}%" cx="${cx}" cy="${cy}" r="48"/><text class="core-label" x="${cx}" y="${cy + 10}">Sagen</text></svg>`;
+    return s;
+  }
+
+  // ---------- Views ----------
+  function updatePoints() {
+    document.getElementById('points').textContent = `${P.points} Punkte`;
+  }
+
+  function show(v) {
+    stopTimers();
+    view = v;
+    render();
+    window.scrollTo(0, 0);
+  }
+
+  function render() {
+    updatePoints();
+    const fn = { home: renderHome, learn: renderLearn, quiz: renderQuiz, result: renderResult, parents: renderParents }[view];
+    $view.innerHTML = fn();
+    if (view === 'quiz' && round && round.type === 'blitz') updateTimer();
+  }
+
+  function renderHome() {
+    const done = WORDS.filter(mastered).length;
+    const pct = Math.round(100 * done / WORDS.length);
+    const chips = GROUPS.map((g, i) => {
+      const ws = groupWords(g.id);
+      const n = ws.filter(mastered).length;
+      const on = P.groups.includes(g.id);
+      return `<button class="strip chip" style="--c:var(--g-${g.id});--tilt:${tilt(i)}deg" data-act="toggleGroup" data-arg="${g.id}" aria-pressed="${on}">${esc(g.label)} <small>${n}/${ws.length}${n === ws.length ? ' ★' : ''}</small></button>`;
+    }).join('');
+    const tiles = Object.entries(MODES).map(([id, m], i) => `
+      <button class="tile" data-act="mode" data-arg="${id}">
+        ${strip(m.title, m.color, '', tilt(i + 3))}
+        <p>${esc(m.sub)}${id === 'blitz' && P.blitzBest ? ` Rekord: ${P.blitzBest}` : ''}</p>
+      </button>`).join('');
+    return `
+      <section class="sheet hero">
+        ${sunSVG()}
+        <div class="stats">
+          <span class="label">Deine Sonne</span>
+          <div class="count">${done} von ${WORDS.length}</div>
+          <div>Wörtern leuchten schon. Ein Wort leuchtet, wenn du es ${MASTER}-mal hintereinander richtig hast.</div>
+          <div class="bar" aria-hidden="true"><span style="width:${pct}%"></span></div>
+          <div class="muted">${done === WORDS.length ? 'Die ganze Sonne strahlt. Wahnsinn!' : WORDS.some(w => lvl(w) > 0) ? 'Halb gefüllte Punkte sind schon auf dem Weg.' : 'Fang mit „Entdecken“ an und spiel dann eine Runde.'}</div>
+        </div>
+      </section>
+      <section style="display:flex;flex-direction:column;gap:12px">
+        <h2>Was möchtest du spielen?</h2>
+        <div class="tiles">${tiles}</div>
+      </section>
+      <section class="sheet" style="display:flex;flex-direction:column;gap:12px">
+        <div class="row spread">
+          <h2>Diese Farben üben</h2>
+          <button class="linkbtn" data-act="allGroups">Alle auswählen</button>
+        </div>
+        <div class="chips">${chips}</div>
+        <div class="muted">${activeWords().length} Wörter ausgewählt. Tippe eine Farbe an, um sie an- oder auszuschalten.</div>
+      </section>
+      <div class="row spread">
+        <button class="linkbtn" data-act="parents">Für Eltern</button>
+        <span class="muted">Aus dem Deutschheft</span>
+      </div>`;
+  }
+
+  function renderLearn() {
+    const w = learn.list[learn.i];
+    const g = GROUP[w.g];
+    const list = learn.list.map((x, i) => `<button class="strip ${i === learn.i ? 'current' : ''}" style="--c:var(--g-${x.g});--tilt:${tilt(i)}deg" data-act="jump" data-arg="${i}">${esc(x.w)}</button>`).join('');
+    return `
+      <div class="qbar">
+        <button class="iconbtn" data-act="home" aria-label="Zurück zur Sonne">${ICON_CLOSE}</button>
+        <h2 style="flex:1">Entdecken</h2>
+        <span class="pill">${learn.i + 1} / ${learn.list.length}</span>
+      </div>
+      <button class="flip ${learn.open ? 'open' : ''}" data-act="flip" aria-label="Karte umdrehen">
+        <div class="flip-inner">
+          <div class="face front sheet">
+            ${strip(w.w, w.g, 'big')}
+            <span class="muted">Tippen zum Umdrehen</span>
+          </div>
+          <div class="face back sheet">
+            ${strip(w.w, w.g)}
+            <span class="label">${esc(g.label)}</span>
+            <div class="meaning">${esc(w.m)}</div>
+            <div class="example">${esc(w.ex)}</div>
+          </div>
+        </div>
+      </button>
+      <div class="row spread">
+        <button class="btn ghost" data-act="prevCard" ${learn.i === 0 ? 'disabled' : ''}>Zurück</button>
+        ${speakBtn(w.i)}
+        <button class="btn" data-act="nextCard">${learn.i === learn.list.length - 1 ? 'Fertig' : 'Weiter'}</button>
+      </div>
+      <section class="sheet" style="display:flex;flex-direction:column;gap:12px">
+        <div class="row spread">
+          <span class="label">Alle Wörter</span>
+          <button class="linkbtn" data-act="shuffleCards">Mischen</button>
+        </div>
+        <div class="wordlist">${list}</div>
+      </section>`;
+  }
+
+  function renderPrompt(q) {
+    const w = q.w;
+    if (q.type === 'meaning') return `<span class="label">Was bedeutet dieses Wort?</span>${strip(w.w, null, 'big')}`;
+    if (q.type === 'word') return `<span class="label">Welches Wort passt zu dieser Erklärung?</span><div class="meaning">${esc(w.m)}</div>`;
+    if (q.type === 'cloze') {
+      const filled = round.answered ? `<span class="gap">${esc(w.w)}</span>` : '<span class="gap">&nbsp;</span>';
+      return `<span class="label">Welches Wort fehlt?</span><div class="cloze">${esc(w.cz).replace('___', filled)}</div>`;
+    }
+    return `<span class="label">Welche Farbe hat dieses Wort im Heft?</span>${strip(w.w, null, 'big')}`;
+  }
+
+  function renderQuiz() {
+    const q = round.q;
+    const a = round.answered;
+    const blitz = round.type === 'blitz';
+    const head = blitz
+      ? `<div class="timer" aria-hidden="true"><span id="timerBar"></span></div><span class="pill" id="timerText"></span><span class="pill">${round.correct} richtig</span>`
+      : `<div class="track" aria-label="Frage ${round.idx + 1} von ${round.total}">${Array.from({ length: round.total }, (_, i) => `<span class="${round.marks[i] || (i === round.idx ? 'now' : '')}"></span>`).join('')}</div><span class="pill">${round.streak >= 3 ? `Serie ${round.streak}` : `${round.idx + 1}/${round.total}`}</span>`;
+    const optClass = q.type === 'sort' ? 'groups' : q.type === 'meaning' ? '' : 'words';
+    const opts = q.options.map((o, i) => {
+      let cls = '';
+      if (a) cls = o.correct ? 'correct' : i === a.i ? 'wrong' : 'dim';
+      return `<button class="opt ${cls}" data-act="answer" data-arg="${i}" ${a ? 'disabled' : ''}><span class="key">${i + 1}</span><span>${o.html}</span></button>`;
+    }).join('');
+    let fb = '';
+    if (a && !blitz) {
+      const w = q.w;
+      fb = `
+        <section class="feedback ${a.ok ? '' : 'no'}">
+          <div class="verdict">${esc(a.msg)}${a.ok && round.streak >= 3 ? ` ${round.streak} in Folge!` : ''}</div>
+          ${a.ok ? '' : '<p>Richtig ist:</p>'}
+          <div class="row">${strip(w.w, w.g)}<span class="label">${esc(GROUP[w.g].label)}</span></div>
+          <p>${esc(w.m)}</p>
+          <p class="example">${esc(w.ex)}</p>
+          ${a.newly ? `<p><strong>Neu in deiner Sonne:</strong> „${esc(w.w)}“ leuchtet jetzt!</p>` : ''}
+          <div class="row spread">${speakBtn(w.i)}<button class="btn" data-act="next" id="nextBtn">${round.idx + 1 >= round.total ? 'Ergebnis' : 'Weiter'}</button></div>
+        </section>`;
+    }
+    return `
+      <div class="qbar">
+        <button class="iconbtn" data-act="quit" aria-label="Runde beenden">${ICON_CLOSE}</button>
+        ${head}
+      </div>
+      <section class="sheet prompt">${renderPrompt(q)}</section>
+      <div class="options ${optClass}">${opts}</div>
+      ${fb}`;
+  }
+
+  function renderResult() {
+    const r = round;
+    const blitz = r.type === 'blitz';
+    const stars = blitz
+      ? (r.correct >= 15 ? 3 : r.correct >= 10 ? 2 : r.correct >= 5 ? 1 : 0)
+      : (r.correct === r.total ? 3 : r.correct >= r.total * 0.8 ? 2 : r.correct >= r.total * 0.5 ? 1 : 0);
+    const title = ['Weiter üben, du schaffst das!', 'Gut geübt!', 'Toll gemacht!', 'Spitze!'][stars];
+    const starHtml = [0, 1, 2].map(i => `<span class="${i < stars ? 's-on' : 's-off'}">★</span>`).join('');
+    const summary = blitz
+      ? `${r.correct} richtige Antworten in ${BLITZ_SECONDS} Sekunden.${r.record ? ' Neuer Rekord!' : ` Dein Rekord: ${P.blitzBest}.`}`
+      : `${r.correct} von ${r.total} richtig, ${r.points} Punkte.`;
+    const newly = r.newly.length ? `
+      <section class="sheet" style="display:flex;flex-direction:column;gap:10px">
+        <h2>Neu in deiner Sonne</h2>
+        <div class="wordlist">${r.newly.map((w, i) => strip(w.w, w.g, '', tilt(i))).join('')}</div>
+        ${r.groupsDone.map(id => `<p style="margin:0"><strong>Abzeichen:</strong> Alle Wörter für „${esc(GROUP[id].label)}“ leuchten!</p>`).join('')}
+      </section>` : '';
+    const misses = [...new Map(r.mistakes.map(w => [w.w, w])).values()];
+    const mist = misses.length ? `
+      <section class="sheet mistakes">
+        <h2>Diese Wörter üben wir noch</h2>
+        <ul>${misses.map(w => `<li>${strip(w.w, w.g)}<span>${esc(w.m)}</span></li>`).join('')}</ul>
+      </section>` : '';
+    return `
+      <section class="sheet result">
+        <div class="stars" aria-label="${stars} von 3 Sternen">${starHtml}</div>
+        <h2>${title}</h2>
+        <div>${summary}</div>
+        <div class="row" style="justify-content:center">
+          <button class="btn" data-act="mode" data-arg="${r.type}">Nochmal spielen</button>
+          <button class="btn ghost" data-act="home">Zur Sonne</button>
+        </div>
+      </section>
+      ${newly}
+      ${mist}`;
+  }
+
+  function renderParents() {
+    const done = WORDS.filter(mastered).length;
+    const seen = WORDS.filter(w => P.seen[w.w]).length;
+    const rows = WORDS.slice().sort((a, b) => (P.wrong[b.w] || 0) - (P.wrong[a.w] || 0) || lvl(a) - lvl(b) || a.i - b.i)
+      .map(w => `<tr><td>${strip(w.w, w.g)}</td><td>${esc(GROUP[w.g].label)}</td><td class="lv" aria-label="Stufe ${lvl(w)} von ${MASTER}">${'●'.repeat(lvl(w))}${'○'.repeat(MASTER - lvl(w))}</td><td class="num">${P.wrong[w.w] || 0}</td></tr>`).join('');
+    const reset = resetAsk
+      ? `<div class="confirm"><strong>Wirklich den ganzen Fortschritt löschen?</strong><span>Punkte, Rekord und alle leuchtenden Wörter werden auf null gesetzt.</span><div class="row"><button class="btn" data-act="resetYes">Ja, alles löschen</button><button class="btn ghost" data-act="resetNo">Abbrechen</button></div></div>`
+      : `<button class="btn ghost" data-act="resetAsk">Fortschritt zurücksetzen</button>`;
+    return `
+      <div class="qbar">
+        <button class="iconbtn" data-act="home" aria-label="Zurück zur Sonne">${ICON_CLOSE}</button>
+        <h2 style="flex:1">Für Eltern</h2>
+      </div>
+      <section class="sheet" style="display:flex;flex-direction:column;gap:8px">
+        <span class="label">Stand</span>
+        <div>${done} von ${WORDS.length} Wörtern gelernt, ${seen} Karten angeschaut, ${P.points} Punkte, Blitz-Rekord ${P.blitzBest}.</div>
+        <div class="muted">Ein Wort gilt als gelernt nach ${MASTER} richtigen Antworten in Folge. Ein Fehler setzt es auf Stufe 0 zurück. Fragen ziehen bevorzugt Wörter mit niedriger Stufe. Der Fortschritt wird nur auf diesem Gerät im Browser gespeichert.</div>
+      </section>
+      <section class="sheet" style="display:flex;flex-direction:column;gap:10px">
+        <span class="label">Wörter, schwierigste zuerst</span>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Wort</th><th>Gruppe</th><th>Stufe</th><th style="text-align:right">Fehler</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table></div>
+      </section>
+      <section style="display:flex;flex-direction:column;gap:10px">${reset}</section>`;
+  }
+
+  // ---------- Game flow ----------
+  function startMode(type) {
+    if (type === 'learn') {
+      learn = { list: activeWords(), i: 0, open: false };
+      show('learn');
+      return;
+    }
+    const blitz = type === 'blitz';
+    const words = blitz ? [] : pickRoundWords();
+    round = {
+      type, words, idx: 0, total: blitz ? 0 : words.length, correct: 0, streak: 0, points: 0,
+      marks: [], newly: [], groupsDone: [], mistakes: [], answered: null, q: null, last: null
+    };
+    round.q = blitz ? nextBlitzQuestion() : makeQuestion(type, words[0]);
+    show('quiz');
+    if (blitz) {
+      round.endAt = Date.now() + BLITZ_SECONDS * 1000;
+      tick = setInterval(updateTimer, 200);
+      updateTimer();
+    }
+  }
+
+  function nextBlitzQuestion() {
+    const pool = activeWords().filter(w => w !== round.last);
+    const w = weightedSample(pool.length ? pool : activeWords(), 1)[0];
+    round.last = w;
+    return makeQuestion(pick(['meaning', 'word', 'cloze', 'sort']), w);
+  }
+
+  function updateTimer() {
+    if (!round || round.type !== 'blitz') return;
+    const left = Math.max(0, round.endAt - Date.now());
+    const bar = document.getElementById('timerBar');
+    const txt = document.getElementById('timerText');
+    if (bar) bar.style.width = `${100 * left / (BLITZ_SECONDS * 1000)}%`;
+    if (txt) txt.textContent = `${Math.ceil(left / 1000)} s`;
+    if (left <= 0) finishRound();
+  }
+
+  function record(w, ok) {
+    const before = mastered(w);
+    if (ok) P.levels[w.w] = Math.min(MASTER, lvl(w) + 1);
+    else {
+      P.levels[w.w] = 0;
+      P.wrong[w.w] = (P.wrong[w.w] || 0) + 1;
+    }
+    return !before && mastered(w);
+  }
+
+  function answer(i) {
+    if (!round || round.answered) return;
+    const q = round.q;
+    const ok = q.options[i].correct;
+    const newly = record(q.w, ok);
+    if (ok) {
+      round.correct++;
+      round.streak++;
+      const pts = 10 + (round.streak >= 3 ? 5 : 0);
+      round.points += pts;
+      P.points += pts;
+    } else {
+      round.streak = 0;
+      round.mistakes.push(q.w);
+    }
+    if (newly) {
+      round.newly.push(q.w);
+      if (groupDone(q.w.g)) round.groupsDone.push(q.w.g);
+    }
+    round.marks[round.idx] = ok ? 'ok' : 'no';
+    round.answered = { i, ok, newly, msg: ok ? pick(PRAISE) : pick(COMFORT) };
+    save();
+    render();
+    if (round.type === 'blitz') {
+      pending = setTimeout(next, ok ? 550 : 1400);
+    } else {
+      document.getElementById('nextBtn')?.focus({ preventScroll: true });
+      document.querySelector('.feedback')?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest' });
+    }
+  }
+
+  function next() {
+    if (!round || !round.answered) return;
+    clearTimeout(pending);
+    round.answered = null;
+    round.idx++;
+    if (round.type === 'blitz') {
+      if (Date.now() >= round.endAt) return finishRound();
+      round.q = nextBlitzQuestion();
+      render();
+      return;
+    }
+    if (round.idx >= round.total) return finishRound();
+    round.q = makeQuestion(round.type, round.words[round.idx]);
+    render();
+    window.scrollTo(0, 0);
+  }
+
+  function finishRound() {
+    stopTimers();
+    if (round.type === 'blitz') {
+      round.total = round.idx;
+      if (round.correct > P.blitzBest) {
+        P.blitzBest = round.correct;
+        round.record = true;
+      }
+      save();
+    }
+    show('result');
+    const perfect = round.type !== 'blitz' && round.correct === round.total;
+    if (perfect || round.groupsDone.length || round.record) confetti();
+  }
+
+  function stopTimers() {
+    clearInterval(tick);
+    clearTimeout(pending);
+    tick = null;
+    pending = null;
+  }
+
+  // ---------- Confetti ----------
+  function confetti() {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const c = document.getElementById('confetti');
+    const ctx = c.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    const W = window.innerWidth, H = window.innerHeight;
+    c.width = W * dpr;
+    c.height = H * dpr;
+    ctx.scale(dpr, dpr);
+    const cs = getComputedStyle(document.documentElement);
+    const cols = GROUPS.map(g => cs.getPropertyValue(`--g-${g.id}`).trim());
+    const parts = Array.from({ length: 130 }, () => ({
+      x: W / 2 + (Math.random() - 0.5) * 160, y: H * 0.3,
+      vx: (Math.random() - 0.5) * 14, vy: -Math.random() * 13 - 4,
+      w: 6 + Math.random() * 8, h: 10 + Math.random() * 10,
+      r: Math.random() * 6, vr: (Math.random() - 0.5) * 0.3, c: pick(cols)
+    }));
+    const t0 = performance.now();
+    function frame(t) {
+      ctx.clearRect(0, 0, W, H);
+      parts.forEach(p => {
+        p.vy += 0.35; p.x += p.vx; p.y += p.vy; p.vx *= 0.99; p.r += p.vr;
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r);
+        ctx.fillStyle = p.c; ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      });
+      if (t - t0 < 2800) requestAnimationFrame(frame);
+      else ctx.clearRect(0, 0, W, H);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // ---------- Events ----------
+  const ACTIONS = {
+    home: () => { resetAsk = false; show('home'); },
+    mode: id => startMode(id),
+    parents: () => show('parents'),
+    toggleGroup: id => {
+      const on = P.groups.includes(id);
+      if (on && P.groups.length === 1) return;
+      P.groups = on ? P.groups.filter(g => g !== id) : [...P.groups, id];
+      save();
+      render();
+    },
+    allGroups: () => { P.groups = GROUPS.map(g => g.id); save(); render(); },
+    answer: i => answer(Number(i)),
+    next: () => next(),
+    quit: () => { stopTimers(); round = null; show('home'); },
+    flip: () => {
+      learn.open = !learn.open;
+      if (learn.open) { P.seen[learn.list[learn.i].w] = true; save(); }
+      render();
+    },
+    prevCard: () => { if (learn.i > 0) { learn.i--; learn.open = false; render(); } },
+    nextCard: () => {
+      if (learn.i >= learn.list.length - 1) return show('home');
+      learn.i++; learn.open = false; render();
+    },
+    jump: i => { learn.i = Number(i); learn.open = false; render(); window.scrollTo(0, 0); },
+    shuffleCards: () => { learn.list = shuffle(learn.list); learn.i = 0; learn.open = false; render(); },
+    speak: i => { const w = WORDS[Number(i)]; speak(`${w.w}. ${w.m} Zum Beispiel: ${w.ex}`); },
+    resetAsk: () => { resetAsk = true; render(); },
+    resetNo: () => { resetAsk = false; render(); },
+    resetYes: () => {
+      const groups = P.groups;
+      P = { levels: {}, wrong: {}, seen: {}, points: 0, blitzBest: 0, groups };
+      resetAsk = false;
+      save();
+      show('home');
+    }
+  };
+
+  document.addEventListener('click', e => {
+    const el = e.target.closest('[data-act]');
+    if (!el || el.disabled) return;
+    ACTIONS[el.dataset.act]?.(el.dataset.arg, el);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (view === 'quiz' && round) {
+      if (!round.answered && /^[0-9]$/.test(e.key)) {
+        const i = e.key === '0' ? 9 : Number(e.key) - 1;
+        if (i < round.q.options.length) answer(i);
+      } else if (round.answered && round.type !== 'blitz' && e.key === 'Enter' && document.activeElement?.id !== 'nextBtn') {
+        next();
+      }
+    } else if (view === 'learn') {
+      if (e.key === 'ArrowRight') ACTIONS.nextCard();
+      else if (e.key === 'ArrowLeft') ACTIONS.prevCard();
+      else if (e.key === ' ' && !e.target.closest('button')) { e.preventDefault(); ACTIONS.flip(); }
+    }
+  });
+
+  render();
+</script>
