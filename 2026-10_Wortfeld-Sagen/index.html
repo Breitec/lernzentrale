@@ -15,9 +15,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Playpen+Sans:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="../fonts/fonts.css">
 <style>
   /* Layout: one centred notebook sheet on ruled paper; the "Sagen" sun on top, crayon paper strips as labels and tiles */
   :root {
@@ -223,6 +221,9 @@
   .lv { letter-spacing: .12em; color: var(--pen); white-space: nowrap; }
   .confirm { border: 2px solid var(--bad); background: var(--bad-bg); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
 
+  .legal { text-align: center; font-size: .82rem; color: var(--ink-soft); padding-top: 8px; }
+  .legal a { color: inherit; display: inline-block; padding: 6px 4px; }
+
   #confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50; }
 
   @media (max-width: 600px) {
@@ -245,6 +246,7 @@
     <span class="pill" id="points"></span>
   </header>
   <main id="view" aria-live="polite"></main>
+  <footer class="legal"><a href="https://breitec.de/#impressum" target="_blank" rel="noopener">Impressum</a> · <a href="../#datenschutz">Datenschutz</a></footer>
 </div>
 <canvas id="confetti" aria-hidden="true"></canvas>
 

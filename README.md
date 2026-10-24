@@ -27,7 +27,7 @@ Kleine Lernspiele für die Schule, gebaut für Tablet und Handy. Jedes Spiel beh
 
 - Kein Konto, keine Anmeldung, kein Tracking, keine Cookies.
 - Der Spielstand liegt nur im Browser des jeweiligen Geräts (`localStorage`) und wird nirgends hingeschickt. iPad und iPhone haben deshalb getrennte Spielstände.
-- Einzige externe Verbindung: Schriftarten von Google Fonts. Ohne Internet laufen die Spiele mit Ersatzschriften weiter.
+- Keine Verbindungen zu anderen Anbietern. Auch die Schriftarten (Andika und Playpen Sans, SIL Open Font License) liegen hier im Repository unter `fonts/`.
 - Die Seiten sind für Suchmaschinen gesperrt (`noindex`).
 
 ## Aufbau
@@ -35,6 +35,7 @@ Kleine Lernspiele für die Schule, gebaut für Tablet und Handy. Jedes Spiel beh
 ```
 index.html              Lernzentrale (Übersicht aller Spiele)
 icon.png                App-Symbol für den Home-Bildschirm
+fonts/                  Schriftarten mit Lizenztexten (OFL)
 JJJJ-MM_Thema/index.html  ein Spiel pro Ordner
 ```
 
