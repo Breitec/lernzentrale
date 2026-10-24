@@ -1,0 +1,1424 @@
+<!doctype html>
+<html lang="de">
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Lernzentrale">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="/lernzentrale/icon.png">
+<link rel="icon" href="/lernzentrale/icon.png">
+<style>:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }</style>
+<title>Vokabel-Bus</title>
+<meta name="description" content="Englisch, Vokabeln aus dem Heft: 148 Wörter und Sätze hören, nachsprechen und schreiben, dazu das Alphabet.">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Playpen+Sans:wght@400;600;800&display=swap">
+<style>
+  /* Layout: one centred notebook sheet on ruled paper; a red London double-decker on top whose windows fill per lesson */
+  :root {
+    --paper: #f7f9fc;
+    --sheet: #ffffff;
+    --rule: #dbe4f0;
+    --line: #c8d2e2;
+    --ink: #1f2b44;
+    --ink-soft: #5a6782;
+    --pen: #1f3a8a;
+    --on-pen: #ffffff;
+    --good: #23824f;
+    --good-bg: #e2f4e9;
+    --almost: #8a5a00;
+    --almost-bg: #fdf1d3;
+    --bad: #b8460f;
+    --bad-bg: #fde9dd;
+    --mark: #ffd84d;
+    --strip-ink: #15171d;
+    --bus: #d42f2f;
+    --bus-dark: #a51f24;
+    --bus-band: #f4ead2;
+    --glass: #dcebf7;
+    --glass-ink: #1d2433;
+    --g-rot: #e45b5b;
+    --g-gruen: #a6d35a;
+    --g-gelb: #f5d64a;
+    --g-lila: #ad89de;
+    --g-orange: #f59b5c;
+    --g-hellblau: #63bdea;
+    --g-dunkelblau: #8fa8e6;
+    --g-rosa: #f4a8cb;
+    --f-hand: 'Playpen Sans', 'Chalkboard SE', 'Comic Sans MS', cursive;
+    --f-body: 'Andika', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #111827;
+      --sheet: #182134;
+      --rule: #1f2a3f;
+      --line: #2f3c56;
+      --ink: #e8edf7;
+      --ink-soft: #a5b1c7;
+      --pen: #9db6ff;
+      --on-pen: #111827;
+      --good: #68d39a;
+      --good-bg: #16392a;
+      --almost: #f3c35b;
+      --almost-bg: #3d3115;
+      --bad: #ffa477;
+      --bad-bg: #44261a;
+      --mark: #8a6d00;
+      --bus: #c93a3a;
+      --bus-dark: #8f2328;
+      --bus-band: #e6dcc4;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #111827;
+    --sheet: #182134;
+    --rule: #1f2a3f;
+    --line: #2f3c56;
+    --ink: #e8edf7;
+    --ink-soft: #a5b1c7;
+    --pen: #9db6ff;
+    --on-pen: #111827;
+    --good: #68d39a;
+    --good-bg: #16392a;
+    --almost: #f3c35b;
+    --almost-bg: #3d3115;
+    --bad: #ffa477;
+    --bad-bg: #44261a;
+    --mark: #8a6d00;
+    --bus: #c93a3a;
+    --bus-dark: #8f2328;
+    --bus-band: #e6dcc4;
+    color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body {
+    margin: 0;
+    background-color: var(--paper);
+    background-image: repeating-linear-gradient(to bottom, transparent 0 33px, var(--rule) 33px 34px);
+    color: var(--ink);
+    font: 400 17px/1.5 var(--f-body);
+    -webkit-tap-highlight-color: transparent;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  button, input { font: inherit; color: inherit; }
+  button:focus-visible, input:focus-visible { outline: 3px solid var(--pen); outline-offset: 2px; }
+  .wrap { max-width: 760px; margin: 0 auto; padding-block: 10px 48px; display: flex; flex-direction: column; gap: 18px; }
+
+  header.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .hublink { align-self: flex-start; display: inline-flex; align-items: center; min-height: 36px; color: var(--pen); font-weight: 700; text-decoration: none; margin-bottom: -10px; }
+  .brand { font: 800 clamp(1.45rem, 5vw, 2rem)/1.1 var(--f-hand); color: var(--pen); background: none; border: 0; padding: 0; cursor: pointer; text-align: left; }
+  .pill { font: 700 .95rem/1 var(--f-body); padding: .5em .85em; border-radius: 999px; background: var(--sheet); border: 1.5px solid var(--line); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  h2 { font: 800 1.35rem/1.2 var(--f-hand); margin: 0; color: var(--ink); text-wrap: balance; }
+  .muted { color: var(--ink-soft); }
+  .label { font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
+
+  .sheet { background: var(--sheet); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 18px; }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+
+  /* Crayon paper strip, like the cut-out word cards in the notebook */
+  .strip {
+    --c: var(--g-gelb);
+    display: inline-flex; align-items: center; justify-content: center; gap: .4em;
+    padding: .32em .8em; border-radius: 3px; max-width: 100%;
+    font: 700 1rem/1.25 var(--f-body); color: var(--strip-ink); overflow-wrap: anywhere;
+    background: repeating-linear-gradient(-62deg, var(--c) 0 3px, color-mix(in srgb, var(--c) 72%, #fff) 3px 5px);
+    border: 1px solid color-mix(in srgb, var(--c) 55%, #000);
+    transform: rotate(var(--tilt, 0deg));
+  }
+  .strip.plain { background: var(--sheet); color: var(--ink); border: 1.5px dashed var(--line); }
+  .strip.big { font-size: clamp(1.4rem, 6.4vw, 2.2rem); padding: .3em .9em; }
+
+  /* Home */
+  .hero { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 20px; align-items: center; }
+  .bus { width: 100%; height: auto; display: block; }
+  .bus .body { fill: var(--bus); }
+  .bus .roof { fill: var(--bus-dark); }
+  .bus .band { fill: var(--bus-band); }
+  .bus .glass { fill: var(--glass); }
+  .bus .win-label { font: 600 14px var(--f-hand); fill: var(--glass-ink); text-anchor: middle; }
+  .bus .win-count { font: 700 11px var(--f-body); fill: var(--glass-ink); text-anchor: middle; }
+  .bus .sign { fill: #14161c; }
+  .bus .sign-text { font: 700 10.5px var(--f-body); fill: #ffc83d; text-anchor: middle; letter-spacing: .08em; }
+  .bus .tyre { fill: #23252b; stroke: var(--paper); stroke-width: 3; }
+  .bus .hub { fill: #b9bec8; }
+  .bus .lamp { fill: #ffe58a; }
+  .count { font: 800 clamp(2rem, 8vw, 2.8rem)/1 var(--f-hand); color: var(--pen); font-variant-numeric: tabular-nums; }
+  .stats { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .bar { height: 12px; border-radius: 99px; background: var(--rule); overflow: hidden; }
+  .bar > span { display: block; height: 100%; background: var(--pen); border-radius: 99px; transition: width .4s; }
+
+  .tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  @media (min-width: 640px) { .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .tile { text-align: left; background: var(--sheet); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 14px 14px 16px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; cursor: pointer; min-height: 120px; transition: transform .12s; }
+  .tile:active { transform: scale(.97); }
+  .tile .strip { font-size: .95rem; text-align: left; }
+  .tile p { margin: 0; font-size: .92rem; color: var(--ink-soft); }
+  .tile.goal { border-color: var(--pen); border-width: 2.5px; }
+  .tile[disabled] { opacity: .5; cursor: default; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip { cursor: pointer; min-height: 44px; font-size: .95rem; }
+  .chip[aria-pressed="false"] { filter: grayscale(1); opacity: .45; }
+  .chip small { font-weight: 400; font-variant-numeric: tabular-nums; }
+  .linkbtn { background: none; border: 0; color: var(--pen); font-weight: 700; padding: 8px 0; min-height: 44px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .spread { justify-content: space-between; }
+  .center { justify-content: center; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 0 22px; border-radius: 12px; border: 2px solid var(--pen); background: var(--pen); color: var(--on-pen); font-weight: 700; font-size: 1.05rem; cursor: pointer; }
+  .btn.ghost { background: var(--sheet); color: var(--pen); }
+  .btn.small { min-height: 44px; padding: 0 14px; font-size: .95rem; }
+  .btn.good { background: var(--good); border-color: var(--good); color: var(--on-pen); }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .btn[disabled] { opacity: .45; cursor: default; }
+  .switch { display: inline-flex; align-items: center; gap: 10px; background: none; border: 0; padding: 6px 0; min-height: 44px; cursor: pointer; font-weight: 700; color: var(--ink); text-align: left; }
+  .switch .knob { width: 44px; height: 26px; border-radius: 99px; background: var(--rule); border: 1.5px solid var(--line); position: relative; flex: none; transition: background .2s; }
+  .switch .knob::after { content: ''; position: absolute; top: 2px; left: 2px; width: 19px; height: 19px; border-radius: 50%; background: var(--sheet); border: 1.5px solid var(--line); transition: transform .2s; }
+  .switch[aria-pressed="true"] .knob { background: var(--pen); border-color: var(--pen); }
+  .switch[aria-pressed="true"] .knob::after { transform: translateX(18px); }
+
+  /* Quiz */
+  .qbar { display: flex; align-items: center; gap: 12px; }
+  .qbar .track { flex: 1; display: flex; gap: 4px; min-width: 0; }
+  .qbar .track span { flex: 1; height: 10px; border-radius: 99px; background: var(--rule); }
+  .qbar .track span.ok { background: var(--good); }
+  .qbar .track span.almost { background: var(--almost); }
+  .qbar .track span.no { background: var(--bad); }
+  .qbar .track span.now { background: var(--pen); }
+  .iconbtn { width: 44px; height: 44px; flex: none; border-radius: 50%; border: 1.5px solid var(--line); background: var(--sheet); display: grid; place-items: center; cursor: pointer; color: var(--ink); }
+  .iconbtn svg { width: 20px; height: 20px; }
+  .timer { height: 12px; border-radius: 99px; background: var(--rule); overflow: hidden; flex: 1; }
+  .timer > span { display: block; height: 100%; background: var(--g-rot); }
+
+  .prompt { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; padding-block: 22px; }
+  .prompt .meaning { font: 600 clamp(1.15rem, 4.4vw, 1.5rem)/1.4 var(--f-hand); max-width: 34ch; text-wrap: balance; overflow-wrap: anywhere; }
+  .tip { font-size: .95rem; color: var(--ink-soft); }
+  .hint { font: 700 1.25rem/1.4 ui-monospace, 'SF Mono', Menlo, monospace; letter-spacing: .12em; color: var(--pen); overflow-wrap: anywhere; }
+  .bigspeak { width: 108px; height: 108px; border-radius: 50%; border: 3px solid var(--pen); background: var(--sheet); color: var(--pen); display: grid; place-items: center; cursor: pointer; }
+  .bigspeak svg { width: 52px; height: 52px; }
+  .bigspeak:active { transform: scale(.96); }
+
+  .options { display: grid; gap: 10px; }
+  .options.words { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .options.letters { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .opt { min-height: 58px; text-align: left; padding: 12px 16px; border-radius: 12px; border: 2px solid var(--line); background: var(--sheet); cursor: pointer; font-size: 1.04rem; line-height: 1.35; display: flex; align-items: center; gap: 12px; transition: transform .1s; overflow-wrap: anywhere; }
+  .options.words .opt { justify-content: center; text-align: center; font-weight: 700; }
+  .options.letters .opt { justify-content: center; font: 800 clamp(1.4rem, 7vw, 2rem)/1 var(--f-hand); min-height: 80px; padding: 8px 4px; white-space: nowrap; overflow-wrap: normal; }
+  .opt:active { transform: scale(.98); }
+  .opt .key { flex: none; width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; font-size: .8rem; color: var(--ink-soft); }
+  .options.words .key, .options.letters .key { display: none; }
+  .opt.correct { border-color: var(--good); background: var(--good-bg); }
+  .opt.wrong { border-color: var(--bad); background: var(--bad-bg); }
+  .opt.dim { opacity: .45; }
+  .opt[disabled] { cursor: default; }
+
+  .answer { display: flex; flex-direction: column; gap: 10px; }
+  .answer input { width: 100%; min-height: 58px; padding: 10px 16px; border-radius: 12px; border: 2px solid var(--line); background: var(--sheet); font-size: 1.3rem; }
+  .answer input:disabled { opacity: 1; -webkit-text-fill-color: var(--ink); }
+  .answer input.ok { border-color: var(--good); background: var(--good-bg); }
+  .answer input.almost { border-color: var(--almost); background: var(--almost-bg); }
+  .answer input.no { border-color: var(--bad); background: var(--bad-bg); }
+
+  .feedback { border-radius: var(--radius); padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; border: 2px solid var(--good); background: var(--good-bg); }
+  .feedback.no { border-color: var(--bad); background: var(--bad-bg); }
+  .feedback.almost { border-color: var(--almost); background: var(--almost-bg); }
+  .feedback .verdict { font: 800 1.35rem/1.2 var(--f-hand); color: var(--good); }
+  .feedback.no .verdict { color: var(--bad); }
+  .feedback.almost .verdict { color: var(--almost); }
+  .feedback p { margin: 0; }
+  .solution { font: 700 1.3rem/1.35 var(--f-body); overflow-wrap: anywhere; }
+  mark { background: var(--mark); color: inherit; border-radius: 3px; padding: 0 1px; text-decoration: underline; text-decoration-thickness: 2px; }
+  del { color: var(--bad); text-decoration-thickness: 2px; }
+  .examples { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 4px; }
+  .examples li { font-style: italic; }
+
+  /* Learn cards */
+  .flip { perspective: 1200px; background: none; border: 0; padding: 0; cursor: pointer; width: 100%; }
+  .flip-inner { display: grid; transition: transform .5s; transform-style: preserve-3d; }
+  .flip.open .flip-inner { transform: rotateY(180deg); }
+  .face { grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden; min-height: 240px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 22px; text-align: center; }
+  .face.back { transform: rotateY(180deg); }
+  .face .meaning { font: 600 1.25rem/1.4 var(--f-hand); max-width: 32ch; text-wrap: balance; overflow-wrap: anywhere; }
+  .wordlist { display: flex; flex-wrap: wrap; gap: 8px; }
+  .wordlist .strip { cursor: pointer; font-size: .9rem; min-height: 36px; }
+  .wordlist .strip.current { outline: 3px solid var(--pen); outline-offset: 2px; }
+
+  /* Alphabet */
+  .abc { display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); gap: 8px; }
+  .letter { min-height: 84px; border-radius: 12px; border: 2px solid var(--line); background: var(--sheet); cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 6px 4px; }
+  .letter b { font: 800 1.6rem/1 var(--f-hand); color: var(--pen); }
+  .letter span { font-size: .9rem; }
+  .letter i { font-style: normal; font-size: .7rem; letter-spacing: .1em; color: var(--ink-soft); }
+  .letter.current { border-color: var(--pen); background: color-mix(in srgb, var(--g-dunkelblau) 22%, var(--sheet)); }
+  .ipa { font-family: 'Andika', 'Lucida Grande', 'Segoe UI', sans-serif; }
+
+  /* Result */
+  .stars { font-size: clamp(2.6rem, 12vw, 3.6rem); letter-spacing: .1em; line-height: 1; }
+  .stars .s-on { color: var(--g-gelb); -webkit-text-stroke: 1.5px color-mix(in srgb, var(--g-gelb) 50%, #000); }
+  .stars .s-off { color: var(--rule); }
+  .result { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+  .mistakes ul { margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+  .mistakes li { list-style: none; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+
+  /* Parents */
+  .tablewrap { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  th { font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
+  td.num { font-variant-numeric: tabular-nums; text-align: right; }
+  td .strip { white-space: nowrap; overflow-wrap: normal; }
+  .lv { letter-spacing: .12em; color: var(--pen); white-space: nowrap; }
+  .confirm { border: 2px solid var(--bad); background: var(--bad-bg); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+
+  #confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50; }
+
+  @media (max-width: 600px) {
+    .hero { grid-template-columns: minmax(0, 1fr); }
+    .sheet { padding: 14px; }
+  }
+  @media (max-width: 380px) {
+    .options.words { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .flip-inner, .bar > span, .tile, .opt, .switch .knob, .switch .knob::after { transition: none; }
+  }
+</style>
+
+<div class="wrap">
+  <a class="hublink" id="hubLink" href="../" hidden>‹ Lernzentrale</a>
+  <header class="top">
+    <button class="brand" data-act="home" aria-label="Zur Startseite">Vokabel-Bus</button>
+    <span class="pill" id="points"></span>
+  </header>
+  <main id="view" aria-live="polite"></main>
+</div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<script>
+  // Lessons in notebook order; each one is a window of the bus
+  const LESSONS = [
+    { id: 'hallo', label: 'Hallo, Greenwich!', short: 'Hallo', color: 'gelb' },
+    { id: 'tiere', label: 'Tiere & Sport', short: 'Tiere', color: 'gruen' },
+    { id: 'freizeit', label: 'Freizeit & Farben', short: 'Freizeit', color: 'orange' },
+    { id: 'zuhause', label: 'Zuhause & Möbel', short: 'Zuhause', color: 'hellblau' },
+    { id: 'familie', label: 'Familie', short: 'Familie', color: 'rosa' },
+    { id: 'orte', label: 'Orte & Präpositionen', short: 'Orte', color: 'lila' }
+  ];
+
+  // [lesson, English, German, options] – exactly the notebook entries, spelling corrected (see README).
+  // options: say = text for the voice, ans = more accepted spellings, ok = also correct (with note), tip = hint for German → English
+  const RAW = [
+    ['hallo', "I'm from Greenwich.", 'Ich bin aus Greenwich.'],
+    ['hallo', 'Look!', 'Schau/Schaut mal!'],
+    ['hallo', 'two boys and a dog', 'zwei Jungen und ein Hund'],
+    ['hallo', 'in Greenwich Park', 'im Greenwich Park'],
+    ['hallo', 'Dogs are my friends, but not cats.', 'Hunde sind meine Freunde, aber Katzen nicht.'],
+    ['hallo', "I'm a mouse.", 'Ich bin eine Maus.'],
+    ['hallo', 'mouse (sg), mice (pl)', 'Maus, Mäuse (Pl.)', { say: 'mouse, mice', tip: 'Einzahl und Mehrzahl' }],
+    ['hallo', "Here's your ball.", 'Hier ist dein Ball.'],
+    ['hallo', 'Hello.', 'Hallo.'],
+    ['hallo', "I'm Pia.", 'Ich heiße Pia. / Ich bin Pia.', { ok: ['My name is Pia.'] }],
+    ['hallo', "You're a nice dog.", 'Du bist ein lieber Hund.'],
+    ['hallo', "What's your name?", 'Wie heißt du? / Wie heißen Sie?'],
+    ['hallo', 'Sorry!', 'Entschuldigung! / Tut mir leid!'],
+    ['hallo', 'My dog is crazy.', 'Mein Hund ist verrückt.'],
+    ['hallo', 'My name is Luke.', 'Ich heiße Luke.', { ok: ["I'm Luke."] }],
+    ['hallo', "We're from Greenwich.", 'Wir sind aus Greenwich.'],
+    ['hallo', 'Where are you from?', 'Woher kommst du? / Woher kommt ihr? / Woher kommen Sie?'],
+    ['hallo', 'Are you on holiday?', 'Sind Sie im Urlaub? / Seid ihr im Urlaub? / Bist du im Urlaub?'],
+    ['hallo', 'yes', 'ja'],
+    ['hallo', "I'm here with my parents.", 'Ich bin mit meinen Eltern hier.'],
+    ['hallo', 'How old are you?', 'Wie alt bist du? / Wie alt sind Sie?'],
+    ['hallo', 'You too?', 'Du auch?'],
+    ['hallo', 'no', 'nein'],
+    ['hallo', 'dictionary', 'Wörterbuch'],
+
+    ['tiere', 'German', 'deutsch; Deutsch; aus Deutschland; Deutsche/r'],
+    ['tiere', 'different', 'anders; unterschiedlich; verschieden'],
+    ['tiere', "I'm English.", 'Ich bin Engländer/in.'],
+    ['tiere', 'I love dogs.', 'Ich liebe Hunde. / Ich mag Hunde total gern.'],
+    ['tiere', 'Dogs love squirrels.', 'Hunde lieben Eichhörnchen.'],
+    ['tiere', 'That was close!', 'Das war knapp!'],
+    ['tiere', 'animal', 'Tier'],
+    ['tiere', 'Thank you.', 'Danke.', { ok: ['Thanks.'] }],
+    ['tiere', 'revision', 'Wiederholung'],
+    ['tiere', 'puzzle', 'Rätsel'],
+    ['tiere', 'rat', 'Ratte'],
+    ['tiere', "I'm not scared of dogs.", 'Ich habe keine Angst vor Hunden.'],
+    ['tiere', "I'm scared of cats.", 'Ich habe Angst vor Katzen.'],
+    ['tiere', 'Worms are OK.', 'Würmer sind o. k.'],
+    ['tiere', 'Rabbits are nice.', 'Kaninchen sind nett.'],
+    ['tiere', "They're my friends.", 'Sie sind meine Freunde.'],
+    ['tiere', "They don't eat mice.", 'Sie fressen keine Mäuse.'],
+    ['tiere', 'word', 'Wort'],
+    ['tiere', 'Inline skating is great.', 'Inlineskaten ist toll.'],
+    ['tiere', 'Volleyball is a great sport.', 'Volleyball ist ein toller Sport.'],
+    ['tiere', 'the same', 'der-/die-/dasselbe; der/die/das Gleiche'],
+    ['tiere', 'colour', 'Farbe'],
+    ['tiere', 'This is Pia.', 'Das (hier) ist Pia.'],
+    ['tiere', 'a girl from Germany', 'ein Mädchen aus Deutschland'],
+    ['tiere', 'school', 'Schule'],
+    ['tiere', 'Greenwich Park is big.', 'Der Greenwich Park ist groß.'],
+    ['tiere', "It's great for cycling.", 'Er ist super zum Radfahren.', { tip: '„Er“ ist der Park.' }],
+
+    ['freizeit', "I don't like cycling.", 'Ich fahre nicht gern Rad.'],
+    ['freizeit', 'My favourite sport is football.', 'Mein Lieblingssport ist Fußball.'],
+    ['freizeit', 'I like the boating lake.', 'Ich mag den See mit den Booten. / Mir gefällt der See mit den Booten.'],
+    ['freizeit', "What's that?", 'Was ist das?'],
+    ['freizeit', "Let's go!", 'Lass/Lasst uns hingehen! / Los, gehen wir hin.'],
+    ['freizeit', "It's fun.", 'Es macht Spaß.'],
+    ['freizeit', "What's your favourite colour?", 'Was ist deine Lieblingsfarbe?'],
+    ['freizeit', 'picture', 'Bild; Foto'],
+    ['freizeit', 'people', 'Leute; Menschen'],
+    ['freizeit', 'thing', 'Ding; Sache'],
+    ['freizeit', 'number', 'Zahl; Nummer'],
+    ['freizeit', 'Boat number eight is pink.', 'Boot Nummer acht ist rosa.'],
+    ['freizeit', 'I can see Sherlock.', 'Ich kann Sherlock sehen. / Ich sehe Sherlock.'],
+    ['freizeit', 'Roll two dice.', 'Würfle/Würfelt mit zwei Würfeln.'],
+    ['freizeit', 'Four and six is ten.', 'Vier plus sechs ist zehn.'],
+    ['freizeit', 'please', 'bitte'],
+    ['freizeit', 'Can you name four sports?', 'Kannst du vier Sportarten nennen?'],
+    ['freizeit', 'Say your phone number.', 'Sage deine Telefonnummer.'],
+    ['freizeit', 'What colour is Sherlock?', 'Welche Farbe hat Sherlock?'],
+    ['freizeit', 'alphabet', 'Alphabet'],
+    ['freizeit', 'Rap like me.', 'Rappe/Rappt wie ich.'],
+    ['freizeit', 'I love you.', 'Ich liebe dich. / Ich mag dich.'],
+
+    ['zuhause', 'at home', 'zu Hause'],
+    ['zuhause', 'family', 'Familie'],
+    ['zuhause', 'to live', 'wohnen; leben'],
+    ['zuhause', 'flat', 'Wohnung'],
+    ['zuhause', 'in the street', 'in der Straße; auf der Straße'],
+    ['zuhause', 'house', 'Haus'],
+    ['zuhause', 'door', 'Tür'],
+    ['zuhause', 'TV', 'Fernsehen; Fernseher'],
+    ['zuhause', 'chair', 'Stuhl; Sessel'],
+    ['zuhause', 'table', 'Tisch'],
+    ['zuhause', 'shower', 'Dusche'],
+    ['zuhause', 'bath', 'Bad; Badewanne'],
+    ['zuhause', 'toilet', 'Toilette'],
+    ['zuhause', 'bed', 'Bett'],
+    ['zuhause', 'clock', 'Uhr'],
+    ['zuhause', 'wardrobe', 'Kleiderschrank'],
+    ['zuhause', 'cupboard', 'Küchenschrank; Schrank'],
+    ['zuhause', 'cooker', 'Herd'],
+    ['zuhause', 'living room', 'Wohnzimmer'],
+    ['zuhause', 'bedroom', 'Schlafzimmer'],
+    ['zuhause', 'kitchen', 'Küche'],
+    ['zuhause', 'bathroom', 'Bad; Badezimmer'],
+    ['zuhause', 'good', 'gut'],
+    ['zuhause', 'biscuit', 'Keks'],
+    ['zuhause', 'under', 'unter'],
+    ['zuhause', 'to help', 'helfen'],
+    ['zuhause', 'to collect', 'sammeln'],
+    ['zuhause', 'new', 'neu'],
+    ['zuhause', 'small', 'klein'],
+
+    ['familie', 'sister', 'Schwester'],
+    ['familie', 'little', 'klein'],
+    ['familie', 'brother', 'Bruder'],
+    ['familie', 'father', 'Vater'],
+    ['familie', 'mother', 'Mutter'],
+    ['familie', 'cousin', 'Cousin/Cousine'],
+    ['familie', 'an', 'ein/eine', { tip: 'vor a, e, i, o, u' }],
+    ['familie', 'only child', 'Einzelkind'],
+    ['familie', 'dad', 'Papa'],
+    ['familie', "she's", 'sie ist'],
+    ['familie', "isn't", 'ist nicht'],
+    ['familie', 'always', 'immer; ständig'],
+    ['familie', 'easy', 'einfach; leicht'],
+    ['familie', "he's", 'er ist'],
+    ['familie', 'mum', 'Mama'],
+    ['familie', 'uncle', 'Onkel'],
+    ['familie', 'aunt', 'Tante'],
+    ['familie', 'grandad', 'Opa'],
+    ['familie', 'grandma', 'Oma'],
+    ['familie', 'family tree', 'Stammbaum'],
+    ['familie', 'Tell me about …', 'Erzähle mir von …', { say: 'Tell me about' }],
+    ['familie', 'guinea pig', 'Meerschweinchen'],
+    ['familie', 'quiet', 'still; ruhig; leise'],
+    ['familie', 'language', 'Sprache'],
+    ['familie', 'only', 'erst; bloß; nur'],
+    ['familie', 'problem', 'Problem; Schwierigkeit'],
+    ['familie', 'there is/are', 'da ist/sind; es gibt', { say: 'there is, there are', ans: ['there is', 'there are'] }],
+    ['familie', 'there', 'da; dort; dahin; dorthin'],
+    ['familie', 'garden', 'Garten'],
+
+    ['orte', 'behind', 'hinter'],
+    ['orte', 'Mr', 'Herr (Anrede)', { say: 'Mr.' }],
+    ['orte', 'Mrs', 'Frau (Anrede)', { say: 'Mrs.' }],
+    ['orte', 'now', 'jetzt; nun'],
+    ['orte', 'car', 'Auto'],
+    ['orte', 'everywhere', 'überall; überallhin'],
+    ['orte', 'again', 'wieder; noch einmal; nochmal'],
+    ['orte', 'floor', 'Fußboden'],
+    ['orte', 'next to', 'neben'],
+    ['orte', 'in front of', 'vor'],
+    ['orte', 'to listen (to)', 'zuhören; anhören', { say: 'to listen to', ans: ['to listen'] }],
+    ['orte', 'idea', 'Idee; Einfall'],
+    ['orte', 'loft', 'Dachboden'],
+    ['orte', 'own', 'eigene/-r/-s'],
+    ['orte', 'in the middle (of)', 'in der Mitte (von); mitten in', { say: 'in the middle of', ans: ['in the middle'] }],
+    ['orte', 'on the right', 'auf der rechten Seite; rechts'],
+    ['orte', 'on the left', 'auf der linken Seite; links']
+  ];
+
+  // Alphabet box from the notebook: [letter, IPA, memory aid]
+  const ALPHABET = [
+    ['a', 'eɪ', 'wie „äi“'], ['b', 'biː', ''], ['c', 'siː', 'wie „ßi“'], ['d', 'diː', ''],
+    ['e', 'iː', 'klingt wie ein deutsches „i“'], ['f', 'ef', ''], ['g', 'dʒiː', 'wie „dschi“'], ['h', 'eɪtʃ', 'wie „äitsch“'],
+    ['i', 'aɪ', 'klingt wie „ai“'], ['j', 'dʒeɪ', 'wie „dschäi“'], ['k', 'keɪ', 'wie „käi“'], ['l', 'el', ''],
+    ['m', 'em', ''], ['n', 'en', ''], ['o', 'əʊ', 'wie „ou“'], ['p', 'piː', ''],
+    ['q', 'kjuː', 'wie „kju“'], ['r', 'ɑː', 'wie ein langes „a“, ohne r'], ['s', 'es', ''], ['t', 'tiː', ''],
+    ['u', 'juː', 'wie „ju“'], ['v', 'viː', 'wie „wi“, mit den Zähnen auf der Lippe'], ['w', 'ˈdʌbljuː', '„double u“, also doppel-u'], ['x', 'eks', ''],
+    ['y', 'waɪ', 'wie „wai“'], ['z', 'zed', 'britisch „zed“, mit weichem s']
+  ];
+  // Letters German speakers mix up; the quiz likes to offer them together
+  const CONFUSE = [['a', 'e', 'i', 'r', 'h'], ['e', 'i', 'y'], ['g', 'j'], ['v', 'w', 'b'], ['k', 'q', 'c'], ['u', 'w', 'q']];
+
+  const MODES = {
+    learn: { title: 'Kennenlernen', sub: 'Karteikarten anhören und umdrehen', color: 'gelb' },
+    listen: { title: 'Hör-Quiz', sub: 'Englisch hören und die Bedeutung finden', color: 'hellblau', speech: true },
+    read: { title: 'Was heißt das?', sub: 'Englisch lesen und die Bedeutung finden', color: 'gruen' },
+    type: { title: 'Schreiben', sub: 'Deutsch lesen, Englisch tippen. Das ist das Ziel!', color: 'orange', goal: true },
+    speak: { title: 'Nachsprechen', sub: 'Anhören, laut nachsprechen, vergleichen', color: 'rosa', speech: true },
+    abc: { title: 'Alphabet', sub: 'Buchstaben hören, raten und buchstabieren', color: 'dunkelblau' },
+    blitz: { title: 'Blitzrunde', sub: '60 Sekunden gemischte Fragen. Schaffst du einen Rekord?', color: 'rot' }
+  };
+
+  const KEY = 'vokabel-bus-v1';
+  const HUB_KEY = 'lernzentrale:2026-10_Englisch-Vokabeln';
+  if (location.pathname.includes('/lernzentrale/')) document.getElementById('hubLink').hidden = false;
+  const MASTER = 3;
+  const WEIGHT = [8, 5, 3, 1];
+  const REVIEW_DAYS = 4;
+  const DAY = 864e5;
+  const ROUND = 10;
+  const MAX_RETRY = 5;
+  const BLITZ_SECONDS = 60;
+  const PRAISE = ['Richtig!', 'Super!', 'Genau!', 'Klasse!', 'Stark!', 'Spitze!', 'Well done!', 'Great!'];
+  const COMFORT = ['Nicht ganz.', 'Knapp daneben.', 'Das üben wir noch.'];
+
+  const WORDS = RAW.map(([l, en, de, o = {}], i) => ({ i, l, en, de, ...o, kind: /[.!?…]$/.test(en) ? 'sentence' : 'word' }));
+  const LESSON = Object.fromEntries(LESSONS.map(l => [l.id, l]));
+  const LETTERS = ALPHABET.map(([c, ipa, tip], i) => ({ i, c, ipa, tip }));
+  const TOTAL = WORDS.length + LETTERS.length;
+
+  const $view = document.getElementById('view');
+  let P = load();
+  let view = 'home';
+  let round = null;
+  let learn = null;
+  let abcSel = null;
+  let resetAsk = false;
+  let tick = null;
+  let pending = null;
+
+  function fresh(lessons = LESSONS.map(l => l.id)) {
+    return { prod: {}, rec: {}, wrong: {}, seen: {}, said: {}, last: {}, abc: {}, points: 0, blitzBest: 0, auto: true, lessons };
+  }
+  function load() {
+    const base = fresh();
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (raw) {
+        const p = Object.assign(base, JSON.parse(raw));
+        p.lessons = (Array.isArray(p.lessons) ? p.lessons : []).filter(id => LESSON[id]);
+        if (!p.lessons.length) p.lessons = LESSONS.map(l => l.id);
+        return p;
+      }
+    } catch (e) {}
+    return base;
+  }
+  function save() {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(P));
+      localStorage.setItem(HUB_KEY, JSON.stringify({ done: doneCount(), total: TOTAL, last: Date.now() }));
+    } catch (e) {}
+  }
+
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const lvl = e => Math.min(MASTER, P.prod[e.en] || 0);
+  const recLvl = e => Math.min(MASTER, P.rec[e.en] || 0);
+  const mastered = e => lvl(e) >= MASTER;
+  const abcLvl = l => Math.min(MASTER, P.abc[l.c] || 0);
+  const letterDone = l => abcLvl(l) >= MASTER;
+  const doneCount = () => WORDS.filter(mastered).length + LETTERS.filter(letterDone).length;
+  const lessonWords = id => WORDS.filter(e => e.l === id);
+  const lessonDone = id => lessonWords(id).every(mastered);
+  const activeWords = () => WORDS.filter(e => P.lessons.includes(e.l));
+  const pick = a => a[Math.floor(Math.random() * a.length)];
+  const tilt = i => ((i * 37) % 7 - 3) * 0.6;
+  const color = e => LESSON[e.l].color;
+  const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function shuffle(a) {
+    a = a.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function weightedSample(pool, n, weight) {
+    const items = pool.slice();
+    const out = [];
+    while (out.length < n && items.length) {
+      const total = items.reduce((s, x) => s + weight(x), 0);
+      let r = Math.random() * total;
+      let i = 0;
+      for (; i < items.length - 1; i++) {
+        r -= weight(items[i]);
+        if (r <= 0) break;
+      }
+      out.push(items.splice(i, 1)[0]);
+    }
+    return out;
+  }
+
+  // Spaced repetition: low levels come up often, learned words return after a few days
+  const due = e => Date.now() - (P.last[e.en] || 0) > REVIEW_DAYS * DAY;
+  const weightProd = e => mastered(e) && due(e) ? 4 : WEIGHT[lvl(e)];
+  const weightRec = e => recLvl(e) >= MASTER && due(e) ? 3 : WEIGHT[recLvl(e)];
+  const weightSaid = e => WEIGHT[Math.min(3, P.said[e.en] || 0)];
+  const weightLetter = l => WEIGHT[abcLvl(l)];
+
+  function distractors(e, n) {
+    const others = WORDS.filter(x => x !== e && x.kind === e.kind && x.de !== e.de);
+    const same = shuffle(others.filter(x => x.l === e.l)).slice(0, 2);
+    const rest = shuffle(others.filter(x => !same.includes(x)));
+    return [...same, ...rest].slice(0, n);
+  }
+
+  function makeQuestion(type, e) {
+    if (type === 'read' || type === 'listen') {
+      const all = shuffle([e, ...distractors(e, 3)]);
+      return { type, e, options: all.map(x => ({ html: esc(x.de), correct: x === e })) };
+    }
+    return { type, e };
+  }
+
+  function letterQuestion(l) {
+    const near = shuffle([...new Set(CONFUSE.filter(s => s.includes(l.c)).flat())].filter(c => c !== l.c));
+    const rest = shuffle(LETTERS.map(x => x.c).filter(c => c !== l.c && !near.includes(c)));
+    const opts = shuffle([l.c, ...[...near.slice(0, 2), ...rest].slice(0, 3)]);
+    return { type: 'letter', l, options: opts.map(c => ({ html: `${c.toUpperCase()}${c}`, correct: c === l.c, c })) };
+  }
+
+  function strip(text, c, extra = '', t = 0, lang = 'en') {
+    const col = c ? `--c:var(--g-${c});` : '';
+    return `<span class="strip ${c ? '' : 'plain'} ${extra}" lang="${lang}" style="${col}--tilt:${t}deg">${esc(text)}</span>`;
+  }
+
+  // ---------- Checking typed answers ----------
+  const SHORT = { "i'm": 'i am', "you're": 'you are', "we're": 'we are', "they're": 'they are', "what's": 'what is', "here's": 'here is', "it's": 'it is', "that's": 'that is', "let's": 'let us', "don't": 'do not', "isn't": 'is not', "she's": 'she is', "he's": 'he is', "can't": 'cannot', "aren't": 'are not' };
+  function norm(s, expand = true) {
+    let t = String(s).toLowerCase()
+      .replace(/[’‘`´]/g, "'")
+      .replace(/\((sg|pl)\.?\)/g, ' ')
+      .replace(/[-/]/g, ' ')
+      .replace(/[^a-z0-9' ]+/g, ' ')
+      .replace(/\s+/g, ' ').trim()
+      .replace(/\bokay\b/g, 'ok');
+    if (expand) t = t.split(' ').map(w => SHORT[w] || w).join(' ');
+    return t;
+  }
+  const bare = s => s.replace(/'/g, '');
+  function forms(e, expand = true) {
+    const list = [e.en, ...(e.ans || [])].map(a => norm(a, expand));
+    list.slice().forEach(a => { if (a.startsWith('to ')) list.push(a.slice(3)); });
+    // Same German prompt on another card (e.g. "klein") → that English word is just as right
+    WORDS.forEach(o => { if (o !== e && o.de === e.de) list.push(norm(o.en, expand)); });
+    return [...new Set(list)];
+  }
+
+  function lev(a, b) {
+    const d = Array.from({ length: b.length + 1 }, (_, j) => j);
+    for (let i = 1; i <= a.length; i++) {
+      let prev = d[0];
+      d[0] = i;
+      for (let j = 1; j <= b.length; j++) {
+        const tmp = d[j];
+        d[j] = Math.min(d[j] + 1, d[j - 1] + 1, prev + (a[i - 1] === b[j - 1] ? 0 : 1));
+        prev = tmp;
+      }
+    }
+    return d[b.length];
+  }
+
+  function grade(e, input) {
+    const x = norm(input);
+    if (!x) return { kind: 'empty' };
+    if (forms(e).includes(x)) return { kind: 'ok' };
+    if ((e.ok || []).some(a => norm(a) === x)) return { kind: 'ok', alt: true };
+    if (forms(e, false).some(a => bare(a) === bare(norm(input, false)))) return { kind: 'almost', why: 'apos' };
+    const other = WORDS.find(o => o !== e && forms(o).includes(x));
+    if (other) return { kind: 'other', other };
+    const dist = Math.min(...forms(e).map(a => lev(a, x)));
+    const len = norm(e.en).length;
+    const tol = len <= 3 ? 0 : len <= 7 ? 1 : len <= 20 ? 2 : 3;
+    return dist <= tol ? { kind: 'almost', why: 'typo' } : { kind: 'wrong' };
+  }
+
+  // Marks the letters of a that are missing in b: in the right answer (mark) or extra in the typed one (del)
+  function highlight(target, input, tag = 'mark') {
+    const fold = s => String(s).toLowerCase().replace(/[’‘`´]/g, "'");
+    const a = String(target), al = fold(a), b = fold(input);
+    const n = a.length, m = b.length;
+    const dp = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
+    for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--) {
+      dp[i][j] = al[i] === b[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
+    }
+    let i = 0, j = 0, out = '';
+    while (i < n) {
+      if (j < m && al[i] === b[j]) { out += esc(a[i]); i++; j++; }
+      else if (j < m && dp[i][j + 1] >= dp[i + 1][j]) j++;
+      else { out += /[a-z']/i.test(a[i]) ? `<${tag}>${esc(a[i])}</${tag}>` : esc(a[i]); i++; }
+    }
+    return out;
+  }
+
+  const hintText = en => en.replace(/([A-Za-z])([A-Za-z']*)/g, (m, first, rest) => first + rest.replace(/[A-Za-z]/g, '_'));
+
+  // Notebook sentences that contain the word, used as examples
+  function examples(e) {
+    if (e.kind === 'sentence') return [];
+    const heads = (e.say || e.en).split(',').map(h => h.replace(/\(.*?\)/g, '').replace(/^to /, '').replace(/[.]/g, '').trim()).filter(h => h.length > 1);
+    return WORDS.filter(o => o !== e && heads.some(h => new RegExp(`\\b${h.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i').test(o.en))).slice(0, 2);
+  }
+
+  // ---------- Speech (British voice, no microphone) ----------
+  let enVoice = null;
+  const NICE = /Daniel|Kate|Serena|Arthur|Martha|Oliver|Stephanie|Google UK English|Libby|Sonia|Ryan|Hazel|George|Susan/i;
+  const NOVELTY = /Eddy|Flo|Grandma|Grandpa|Reed|Rocko|Sandy|Shelley|Bad News|Bells|Boing|Bubbles|Cellos|Wobble|Whisper|Zarvox|Trinoids|Jester|Organ|Superstar|Ralph|Albert|Fred|Junior|Kathy/i;
+  function findVoice() {
+    try {
+      const voices = speechSynthesis.getVoices().filter(v => !NOVELTY.test(v.name));
+      const gb = voices.filter(v => /^en[-_]GB/i.test(v.lang));
+      enVoice = gb.find(v => NICE.test(v.name)) || gb[0] || voices.find(v => /^en/i.test(v.lang)) || null;
+    } catch (e) {}
+  }
+  const canSpeak = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+  if (canSpeak) { findVoice(); speechSynthesis.onvoiceschanged = findVoice; }
+  function speak(text, slow = false) {
+    if (!canSpeak || !text) return;
+    try {
+      speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'en-GB';
+      if (enVoice) u.voice = enVoice;
+      u.rate = slow ? 0.6 : 0.9;
+      speechSynthesis.speak(u);
+    } catch (e) {}
+  }
+  const sayText = e => e.say || e.en.replace(/\s*…$/, '');
+  const letterSay = c => `${c.toUpperCase()}.`;
+  const spellSay = w => w.toUpperCase().split('').join(', ') + '.';
+  const voiceName = () => enVoice ? `${enVoice.name} (${enVoice.lang.replace('_', '-')})` : canSpeak ? 'Standardstimme' : 'keine';
+
+  const ICON_SPEAK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+  const ICON_CLOSE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>';
+  // data-arg: "w12" = card 12, "l3" = letter 3, "s12" = card 12 spelled; data-slow for the slow voice
+  const speakBtns = (arg, label = 'Anhören') => canSpeak
+    ? `<button class="btn ghost small" data-act="speak" data-arg="${arg}">${ICON_SPEAK}${label}</button><button class="btn ghost small" data-act="speak" data-arg="${arg}" data-slow="1">Langsam</button>`
+    : '';
+  function speakArg(arg, slow) {
+    const n = Number(arg.slice(1));
+    if (arg[0] === 'w') speak(sayText(WORDS[n]), slow);
+    else if (arg[0] === 'l') speak(letterSay(LETTERS[n].c), slow);
+    else if (arg[0] === 's') speak(spellSay(WORDS[n].en), true);
+  }
+  const autoSay = e => { if (P.auto) speak(sayText(e)); };
+
+  // ---------- Bus ----------
+  function busSVG() {
+    const units = [
+      ...LESSONS.map(l => {
+        const ws = lessonWords(l.id);
+        return { short: l.short, c: l.color, n: ws.length, done: ws.filter(mastered).length, started: ws.filter(e => lvl(e) > 0 || recLvl(e) > 0).length };
+      }),
+      { short: 'ABC', c: 'dunkelblau', n: LETTERS.length, done: LETTERS.filter(letterDone).length, started: LETTERS.filter(l => abcLvl(l) > 0).length }
+    ];
+    const pos = [[34, 40], [114, 40], [194, 40], [274, 40], [34, 128], [114, 128], [194, 128]];
+    const W = 70, H = 62;
+    let s = `<svg class="bus" viewBox="0 0 400 252" role="img" aria-label="Vokabel-Bus: ${doneCount()} von ${TOTAL} gelernt">`;
+    s += '<rect class="roof" x="22" y="14" width="356" height="16" rx="8"/>';
+    s += '<rect class="body" x="14" y="20" width="372" height="200" rx="20"/>';
+    s += '<rect class="band" x="14" y="108" width="372" height="12"/>';
+    units.forEach((u, i) => {
+      const [x, y] = pos[i];
+      const light = H * u.started / u.n, solid = H * u.done / u.n;
+      s += `<clipPath id="win${i}"><rect x="${x}" y="${y}" width="${W}" height="${H}" rx="7"/></clipPath>`;
+      s += `<g clip-path="url(#win${i})"><rect class="glass" x="${x}" y="${y}" width="${W}" height="${H}"/>`;
+      s += `<rect x="${x}" y="${(y + H - light).toFixed(1)}" width="${W}" height="${light.toFixed(1)}" style="fill:color-mix(in srgb, var(--g-${u.c}) 40%, var(--glass))"/>`;
+      s += `<rect x="${x}" y="${(y + H - solid).toFixed(1)}" width="${W}" height="${solid.toFixed(1)}" style="fill:var(--g-${u.c})"/></g>`;
+      s += `<text class="win-label" x="${x + W / 2}" y="${y + 26}">${esc(u.short)}${u.done === u.n ? ' ★' : ''}</text>`;
+      s += `<text class="win-count" x="${x + W / 2}" y="${y + 46}">${u.done}/${u.n}</text>`;
+    });
+    s += '<rect class="glass" x="274" y="128" width="98" height="62" rx="7" style="opacity:.75"/>';
+    s += '<rect class="sign" x="274" y="128" width="98" height="20" rx="5"/><text class="sign-text" x="323" y="142">GREENWICH</text>';
+    s += '<circle class="lamp" cx="379" cy="204" r="5"/>';
+    [92, 312].forEach(cx => { s += `<circle class="tyre" cx="${cx}" cy="220" r="25"/><circle class="hub" cx="${cx}" cy="220" r="9"/>`; });
+    return s + '</svg>';
+  }
+
+  // ---------- Views ----------
+  function updatePoints() {
+    document.getElementById('points').textContent = `${P.points} Punkte`;
+  }
+
+  function show(v) {
+    stopTimers();
+    view = v;
+    render();
+    window.scrollTo(0, 0);
+  }
+
+  function render() {
+    updatePoints();
+    const fn = { home: renderHome, learn: renderLearn, quiz: renderQuiz, result: renderResult, parents: renderParents, abc: renderAbc }[view];
+    $view.innerHTML = fn();
+    if (view === 'quiz' && round && round.type === 'blitz') updateTimer();
+  }
+
+  function renderHome() {
+    const done = doneCount();
+    const pct = Math.round(100 * done / TOTAL);
+    const chips = LESSONS.map((l, i) => {
+      const ws = lessonWords(l.id);
+      const n = ws.filter(mastered).length;
+      const on = P.lessons.includes(l.id);
+      return `<button class="strip chip" lang="de" style="--c:var(--g-${l.color});--tilt:${tilt(i)}deg" data-act="toggleLesson" data-arg="${l.id}" aria-pressed="${on}">${esc(l.label)} <small>${n}/${ws.length}${n === ws.length ? ' ★' : ''}</small></button>`;
+    }).join('');
+    const tiles = Object.entries(MODES).map(([id, m], i) => {
+      const off = m.speech && !canSpeak;
+      return `
+      <button class="tile ${m.goal ? 'goal' : ''}" data-act="mode" data-arg="${id}" ${off ? 'disabled' : ''}>
+        ${strip(m.title, m.color, '', tilt(i + 3), 'de')}
+        <p>${off ? 'Auf diesem Gerät gibt es keine Vorlesestimme.' : esc(m.sub)}${id === 'blitz' && P.blitzBest ? ` Rekord: ${P.blitzBest}` : ''}</p>
+      </button>`;
+    }).join('');
+    const started = WORDS.some(e => lvl(e) > 0 || recLvl(e) > 0);
+    return `
+      <section class="sheet hero">
+        ${busSVG()}
+        <div class="stats">
+          <span class="label">Dein Bus</span>
+          <div class="count">${done} von ${TOTAL}</div>
+          <div>Karten gelernt. Eine Vokabel gilt als gelernt, wenn du sie ${MASTER}-mal hintereinander richtig <strong>schreibst</strong>. Jedes Fenster ist eine Lektion.</div>
+          <div class="bar" aria-hidden="true"><span style="width:${pct}%"></span></div>
+          <div class="muted">${done === TOTAL ? 'Alle Fenster leuchten. Next stop: Greenwich!' : started ? 'Hell gefüllt heißt: schon geübt. Kräftig gefüllt heißt: gelernt.' : 'Tipp: Erst „Kennenlernen“, dann „Hör-Quiz“, dann „Schreiben“.'}</div>
+        </div>
+      </section>
+      <section class="stack">
+        <h2>Was möchtest du üben?</h2>
+        <div class="tiles">${tiles}</div>
+      </section>
+      <section class="sheet stack">
+        <div class="row spread">
+          <h2>Diese Lektionen üben</h2>
+          <button class="linkbtn" data-act="allLessons">Alle auswählen</button>
+        </div>
+        <div class="chips">${chips}</div>
+        <div class="muted">${activeWords().length} Vokabeln ausgewählt. Tippe eine Lektion an, um sie an- oder auszuschalten. Gemischt üben hilft beim Merken.</div>
+        ${canSpeak ? `<button class="switch" data-act="toggleAuto" aria-pressed="${P.auto}"><span class="knob" aria-hidden="true"></span>Englisch automatisch vorlesen</button>` : ''}
+      </section>
+      <div class="row spread">
+        <button class="linkbtn" data-act="parents">Für Eltern</button>
+        <span class="muted">Aus dem Englischheft</span>
+      </div>`;
+  }
+
+  function renderLearn() {
+    const e = learn.list[learn.i];
+    const ex = examples(e);
+    const list = learn.list.map((x, i) => `<button class="strip ${i === learn.i ? 'current' : ''}" lang="en" style="--c:var(--g-${color(x)});--tilt:${tilt(i)}deg" data-act="jump" data-arg="${i}">${esc(x.en)}</button>`).join('');
+    return `
+      <div class="qbar">
+        <button class="iconbtn" data-act="home" aria-label="Zurück zum Bus">${ICON_CLOSE}</button>
+        <h2 style="flex:1">Kennenlernen</h2>
+        <span class="pill">${learn.i + 1} / ${learn.list.length}</span>
+      </div>
+      <button class="flip ${learn.open ? 'open' : ''}" data-act="flip" aria-label="Karte umdrehen">
+        <div class="flip-inner">
+          <div class="face front sheet">
+            ${strip(e.en, color(e), 'big')}
+            <span class="muted">Tippen zum Umdrehen</span>
+          </div>
+          <div class="face back sheet">
+            ${strip(e.en, color(e))}
+            <span class="label">${esc(LESSON[e.l].label)}</span>
+            <div class="meaning">${esc(e.de)}</div>
+            ${ex.length ? `<div class="muted">Im Heft: ${ex.map(o => `<span lang="en">${esc(o.en)}</span>`).join(' · ')}</div>` : ''}
+          </div>
+        </div>
+      </button>
+      <div class="row center">${speakBtns(`w${e.i}`)}</div>
+      <div class="row spread">
+        <button class="btn ghost" data-act="prevCard" ${learn.i === 0 ? 'disabled' : ''}>Zurück</button>
+        <button class="btn" data-act="nextCard">${learn.i === learn.list.length - 1 ? 'Fertig' : 'Weiter'}</button>
+      </div>
+      <section class="sheet stack">
+        <div class="row spread">
+          <span class="label">Alle Karten</span>
+          <button class="linkbtn" data-act="shuffleCards">Mischen</button>
+        </div>
+        <div class="wordlist">${list}</div>
+      </section>`;
+  }
+
+  function renderAbc() {
+    const sel = abcSel === null ? null : LETTERS[abcSel];
+    const grid = LETTERS.map(l => `<button class="letter ${abcSel === l.i ? 'current' : ''}" data-act="letter" data-arg="${l.i}" aria-label="${l.c.toUpperCase()}, Lautschrift ${l.ipa}"><b>${l.c.toUpperCase()}${l.c}</b><span class="ipa">[${esc(l.ipa)}]</span><i aria-hidden="true">${'●'.repeat(abcLvl(l))}${'○'.repeat(MASTER - abcLvl(l))}</i></button>`).join('');
+    return `
+      <div class="qbar">
+        <button class="iconbtn" data-act="home" aria-label="Zurück zum Bus">${ICON_CLOSE}</button>
+        <h2 style="flex:1">Alphabet</h2>
+        <span class="pill">${LETTERS.filter(letterDone).length} / ${LETTERS.length}</span>
+      </div>
+      <section class="sheet stack">
+        <div>${canSpeak ? 'Tippe einen Buchstaben an und hör dir seinen englischen Namen an.' : 'Hier siehst du, wie die Buchstaben auf Englisch heißen.'} In den eckigen Klammern steht die Lautschrift aus deinem Heft.</div>
+        <div class="row" style="min-height:52px">${sel ? `${strip(sel.c.toUpperCase() + sel.c, 'dunkelblau', '', 0)}<span class="ipa"><strong>[${esc(sel.ipa)}]</strong></span>${sel.tip ? `<span>${esc(sel.tip)}</span>` : ''}` : '<span class="muted">Noch kein Buchstabe gewählt.</span>'}</div>
+        <div class="abc">${grid}</div>
+      </section>
+      <div class="tiles">
+        <button class="tile" data-act="mode" data-arg="letters" ${canSpeak ? '' : 'disabled'}>${strip('Buchstaben-Quiz', 'dunkelblau', '', -1, 'de')}<p>${canSpeak ? 'Hör einen Buchstaben und tippe den richtigen an.' : 'Braucht eine Vorlesestimme.'}</p></button>
+        <button class="tile" data-act="mode" data-arg="spell" ${canSpeak ? '' : 'disabled'}>${strip('Buchstabieren', 'lila', '', 1, 'de')}<p>${canSpeak ? 'Ein Wort wird buchstabiert. Schreib es auf!' : 'Braucht eine Vorlesestimme.'}</p></button>
+      </div>`;
+  }
+
+  function trackHtml() {
+    return `<div class="track" aria-label="Frage ${round.idx + 1} von ${round.total}">${Array.from({ length: round.total }, (_, i) => `<span class="${round.marks[i] || (i === round.idx ? 'now' : '')}"></span>`).join('')}</div><span class="pill">${round.streak >= 3 ? `Serie ${round.streak}` : `${round.idx + 1}/${round.total}`}</span>`;
+  }
+
+  function renderPrompt(q) {
+    const a = round.answered;
+    const e = q.e;
+    if (q.type === 'read') return `<span class="label">Was heißt das?</span>${strip(e.en, null, 'big')}<div class="row center">${speakBtns(`w${e.i}`)}</div>`;
+    if (q.type === 'listen') return `<span class="label">Hör genau zu: Was bedeutet das?</span>
+      <button class="bigspeak" data-act="speak" data-arg="w${e.i}" aria-label="Nochmal anhören">${ICON_SPEAK}</button>
+      ${a ? strip(e.en, color(e)) : `<button class="btn ghost small" data-act="speak" data-arg="w${e.i}" data-slow="1">Langsam</button>`}`;
+    if (q.type === 'type') return `<span class="label">Wie heißt das auf Englisch?</span><div class="meaning" lang="de">${esc(e.de)}</div>
+      ${e.tip ? `<div class="tip">Tipp: ${esc(e.tip)}</div>` : ''}
+      ${round.hint && !a ? `<div class="hint" lang="en" aria-label="Anfangsbuchstaben">${esc(hintText(e.en))}</div>` : ''}`;
+    if (q.type === 'speak') return `<span class="label">Anhören und laut nachsprechen</span>${strip(e.en, color(e), 'big')}<div class="muted" lang="de">${esc(e.de)}</div><div class="row center">${speakBtns(`w${e.i}`)}</div>`;
+    if (q.type === 'letter') return `<span class="label">Welchen Buchstaben hörst du?</span>
+      <button class="bigspeak" data-act="speak" data-arg="l${q.l.i}" aria-label="Nochmal anhören">${ICON_SPEAK}</button>`;
+    if (q.type === 'spell') return `<span class="label">Hör zu: Welches Wort wird buchstabiert?</span>
+      <button class="bigspeak" data-act="speak" data-arg="s${e.i}" aria-label="Nochmal buchstabieren">${ICON_SPEAK}</button>
+      <div class="muted">Das Wort hat ${e.en.length} Buchstaben.</div>`;
+    return '';
+  }
+
+  function feedbackHtml() {
+    const q = round.q;
+    const a = round.answered;
+    const e = q.e;
+    const last = round.idx + 1 >= round.total;
+    const nextBtn = `<button class="btn" data-act="next" id="nextBtn">${last ? 'Ergebnis' : 'Weiter'}</button>`;
+    if (q.type === 'letter') {
+      const l = q.l;
+      return `
+        <section class="feedback ${a.ok ? '' : 'no'}">
+          <div class="verdict">${esc(a.msg)}</div>
+          ${a.ok ? '' : `<p>Du hast <strong>${q.options[a.i].c.toUpperCase()}</strong> gewählt. Gehört hast du:</p>`}
+          <div class="row">${strip(l.c.toUpperCase() + l.c, 'dunkelblau')}<span class="ipa"><strong>[${esc(l.ipa)}]</strong></span>${l.tip ? `<span>${esc(l.tip)}</span>` : ''}</div>
+          ${a.newly ? `<p><strong>Gelernt:</strong> Den Buchstaben ${l.c.toUpperCase()} kennst du jetzt!</p>` : ''}
+          <div class="row spread"><div class="row">${speakBtns(`l${l.i}`)}</div>${nextBtn}</div>
+        </section>`;
+    }
+    const cls = a.kind === 'ok' ? '' : a.kind === 'almost' || a.kind === 'other' ? 'almost' : 'no';
+    let lead = '';
+    if (q.type === 'type' || q.type === 'spell') {
+      if (a.kind === 'ok' && a.alt) lead = `<p>Auch richtig! Im Heft steht:</p>`;
+      else if (a.kind === 'ok' && a.hinted) lead = '<p>Mit Tipp geschafft. Nächstes Mal ohne Tipp, dann zählt es für den Bus.</p>';
+      else if (a.kind === 'almost' && a.why === 'apos') lead = '<p>Da fehlt nur der Apostroph (\'). So schreibt man es:</p>';
+      else if (a.kind === 'almost') {
+        const extra = highlight(a.typed, e.en, 'del');
+        lead = `<p>Du hast geschrieben: <strong lang="en">${extra}</strong>.${extra.includes('<del>') ? ' Durchgestrichen = zu viel.' : ''} ${highlight(e.en, a.typed).includes('<mark>') ? 'Gelb = diese Buchstaben musst du noch üben:' : 'Richtig ist:'}</p>`;
+      }
+      else if (a.kind === 'other') lead = `<p>„<span lang="en">${esc(a.other.en)}</span>“ ist auch aus deinem Heft, heißt aber „${esc(a.other.de)}“. Gesucht war:</p>`;
+      else if (a.kind === 'wrong' && a.typed) lead = `<p>Du hast geschrieben: <strong lang="en">${esc(a.typed)}</strong>. Richtig ist:</p>`;
+      else if (a.kind === 'wrong') lead = '<p>So heißt es richtig:</p>';
+    } else if (!a.ok) lead = '<p>Richtig ist:</p>';
+    const solution = (q.type === 'type' || q.type === 'spell') && a.typed && a.kind !== 'ok' && a.why !== 'apos' ? highlight(e.en, a.typed) : esc(e.en);
+    const ex = examples(e);
+    const verdict = a.kind === 'ok' || a.ok ? a.msg : a.kind === 'almost' ? 'Fast richtig!' : a.kind === 'other' ? 'Anderes Wort!' : a.msg;
+    const extra = q.type === 'spell'
+      ? `<div class="row">${e.en.split('').map(c => { const l = LETTERS.find(x => x.c === c.toLowerCase()); return l ? `<span class="pill ipa">${c.toUpperCase()} [${esc(l.ipa)}]</span>` : ''; }).join('')}</div>`
+      : '';
+    return `
+      <section class="feedback ${cls}">
+        <div class="verdict">${esc(verdict)}${(a.kind === 'ok' || a.ok) && round.streak >= 3 ? ` ${round.streak} in Folge!` : ''}</div>
+        ${lead}
+        <div class="row"><span class="solution" lang="en">${solution}</span></div>
+        <p lang="de">${esc(e.de)}</p>
+        ${ex.length ? `<ul class="examples">${ex.map(o => `<li><span lang="en">${esc(o.en)}</span> – ${esc(o.de)}</li>`).join('')}</ul>` : ''}
+        ${extra}
+        ${a.retry ? '<p class="muted">Diese Vokabel kommt in dieser Runde gleich nochmal.</p>' : ''}
+        ${a.newly ? `<p><strong>Gelernt:</strong> „<span lang="en">${esc(e.en)}</span>“ leuchtet jetzt in deinem Bus!</p>` : ''}
+        <div class="row spread"><div class="row">${speakBtns(`w${e.i}`)}</div>${nextBtn}</div>
+      </section>`;
+  }
+
+  function renderQuiz() {
+    const q = round.q;
+    const a = round.answered;
+    const blitz = round.type === 'blitz';
+    const head = blitz
+      ? `<div class="timer" aria-hidden="true"><span id="timerBar"></span></div><span class="pill" id="timerText"></span><span class="pill">${round.correct} richtig</span>`
+      : trackHtml();
+    let body = '';
+    if (q.options) {
+      const optClass = q.type === 'letter' ? 'letters' : q.e.kind === 'word' ? 'words' : '';
+      body = `<div class="options ${optClass}">${q.options.map((o, i) => {
+        let cls = '';
+        if (a) cls = o.correct ? 'correct' : i === a.i ? 'wrong' : 'dim';
+        return `<button class="opt ${cls}" data-act="answer" data-arg="${i}" ${a ? 'disabled' : ''} ${q.type === 'letter' ? 'lang="en"' : 'lang="de"'}><span class="key">${i + 1}</span><span>${o.html}</span></button>`;
+      }).join('')}</div>`;
+    } else if (q.type === 'type' || q.type === 'spell') {
+      const state = a ? (a.kind === 'ok' ? 'ok' : a.kind === 'wrong' ? 'no' : 'almost') : '';
+      body = `
+        <form class="answer" data-form="type" autocomplete="off">
+          <label class="label" for="ans">${q.type === 'spell' ? 'Das Wort' : 'Auf Englisch'}</label>
+          <input id="ans" class="${state}" lang="en" type="text" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" value="${esc(a ? a.typed : round.draft || '')}" ${a ? 'disabled' : ''}>
+          ${a ? '' : `<div class="row spread">
+            <div class="row">${q.type === 'type' && !round.hint ? '<button type="button" class="linkbtn" data-act="hint">Tipp zeigen</button>' : ''}<button type="button" class="linkbtn" data-act="giveUp">Weiß ich nicht</button></div>
+            <button class="btn" type="submit">Prüfen</button>
+          </div>`}
+        </form>`;
+    } else if (q.type === 'speak' && !a) {
+      body = `
+        <section class="sheet stack" style="text-align:center">
+          <p style="margin:0">Sprich es laut nach, so wie die Stimme. Hör ruhig mehrmals hin, auch langsam.</p>
+          <h2>Klang es gleich?</h2>
+          <div class="row center">
+            <button class="btn good" data-act="selfRate" data-arg="1">Ja, klang gleich</button>
+            <button class="btn ghost" data-act="selfRate" data-arg="0">Noch nicht ganz</button>
+          </div>
+        </section>`;
+    }
+    let fb = '';
+    if (a && !blitz) {
+      fb = q.type === 'speak'
+        ? `<section class="feedback ${a.ok ? '' : 'almost'}"><div class="verdict">${esc(a.msg)}</div><p>${a.ok ? 'Toll nachgesprochen.' : 'Kein Problem. Hör nochmal langsam hin, die Vokabel kommt gleich wieder.'}</p><div class="row spread"><div class="row">${speakBtns(`w${q.e.i}`)}</div><button class="btn" data-act="next" id="nextBtn">${round.idx + 1 >= round.total ? 'Ergebnis' : 'Weiter'}</button></div></section>`
+        : feedbackHtml();
+    }
+    return `
+      <div class="qbar">
+        <button class="iconbtn" data-act="quit" aria-label="Runde beenden">${ICON_CLOSE}</button>
+        ${head}
+      </div>
+      <section class="sheet prompt">${renderPrompt(q)}</section>
+      ${body}
+      ${fb}`;
+  }
+
+  function renderResult() {
+    const r = round;
+    const blitz = r.type === 'blitz';
+    const stars = blitz
+      ? (r.correct >= 15 ? 3 : r.correct >= 10 ? 2 : r.correct >= 5 ? 1 : 0)
+      : (r.correct === r.total ? 3 : r.correct >= r.total * 0.8 ? 2 : r.correct >= r.total * 0.5 ? 1 : 0);
+    const title = ['Weiter üben, du schaffst das!', 'Gut geübt!', 'Toll gemacht!', 'Brilliant!'][stars];
+    const starHtml = [0, 1, 2].map(i => `<span class="${i < stars ? 's-on' : 's-off'}">★</span>`).join('');
+    const summary = blitz
+      ? `${r.correct} richtige Antworten in ${BLITZ_SECONDS} Sekunden.${r.record ? ' Neuer Rekord!' : ` Dein Rekord: ${P.blitzBest}.`}`
+      : `${r.correct} von ${r.total} richtig, ${r.points} Punkte.`;
+    const newly = r.newly.length ? `
+      <section class="sheet stack">
+        <h2>Neu gelernt</h2>
+        <div class="wordlist">${r.newly.map((x, i) => x.c ? strip(x.c.toUpperCase() + x.c, 'dunkelblau', '', tilt(i)) : strip(x.en, color(x), '', tilt(i))).join('')}</div>
+        ${r.lessonsDone.map(id => `<p style="margin:0"><strong>Abzeichen:</strong> Das Fenster „${esc(LESSON[id].label)}“ leuchtet ganz!</p>`).join('')}
+      </section>` : '';
+    const abcRound = r.type === 'letters' || r.type === 'spell';
+    const misses = [...new Map(r.mistakes.map(x => [x.en || x.c, x])).values()];
+    const mist = misses.length ? `
+      <section class="sheet mistakes stack">
+        <h2>Das üben wir noch</h2>
+        <ul>${misses.map(x => x.c
+          ? `<li>${strip(x.c.toUpperCase() + x.c, 'dunkelblau')}<span class="ipa">[${esc(x.ipa)}] ${esc(x.tip)}</span></li>`
+          : `<li>${strip(x.en, color(x))}<span>${esc(x.de)}</span></li>`).join('')}</ul>
+      </section>` : '';
+    return `
+      <section class="sheet result">
+        <div class="stars" aria-label="${stars} von 3 Sternen">${starHtml}</div>
+        <h2>${title}</h2>
+        <div>${summary}</div>
+        <div class="row center">
+          <button class="btn" data-act="mode" data-arg="${r.type}">Nochmal spielen</button>
+          ${abcRound ? '<button class="btn ghost" data-act="mode" data-arg="abc">Zum Alphabet</button>' : '<button class="btn ghost" data-act="home">Zum Bus</button>'}
+        </div>
+      </section>
+      ${newly}
+      ${mist}`;
+  }
+
+  function renderParents() {
+    const done = WORDS.filter(mastered).length;
+    const seen = WORDS.filter(e => P.seen[e.en]).length;
+    const said = WORDS.filter(e => P.said[e.en]).length;
+    const dots = n => `${'●'.repeat(n)}${'○'.repeat(MASTER - n)}`;
+    const rows = WORDS.slice().sort((a, b) => (P.wrong[b.en] || 0) - (P.wrong[a.en] || 0) || lvl(a) - lvl(b) || a.i - b.i)
+      .map(e => `<tr><td>${strip(e.en, color(e))}</td><td>${esc(e.de)}</td><td class="lv" aria-label="Schreiben Stufe ${lvl(e)} von ${MASTER}">${dots(lvl(e))}</td><td class="lv" aria-label="Erkennen Stufe ${recLvl(e)} von ${MASTER}">${dots(recLvl(e))}</td><td class="num">${P.wrong[e.en] || 0}</td></tr>`).join('');
+    const reset = resetAsk
+      ? `<div class="confirm"><strong>Wirklich den ganzen Fortschritt löschen?</strong><span>Punkte, Rekord, Alphabet und alle gelernten Vokabeln werden auf null gesetzt.</span><div class="row"><button class="btn" data-act="resetYes">Ja, alles löschen</button><button class="btn ghost" data-act="resetNo">Abbrechen</button></div></div>`
+      : `<button class="btn ghost" data-act="resetAsk">Fortschritt zurücksetzen</button>`;
+    return `
+      <div class="qbar">
+        <button class="iconbtn" data-act="home" aria-label="Zurück zum Bus">${ICON_CLOSE}</button>
+        <h2 style="flex:1">Für Eltern</h2>
+      </div>
+      <section class="sheet stack">
+        <span class="label">Stand</span>
+        <div>${done} von ${WORDS.length} Vokabeln sicher geschrieben, ${LETTERS.filter(letterDone).length} von ${LETTERS.length} Buchstaben erkannt, ${seen} ${seen === 1 ? 'Karte' : 'Karten'} angeschaut, ${said} ${said === 1 ? 'Vokabel' : 'Vokabeln'} nachgesprochen, ${P.points} Punkte, Blitz-Rekord ${P.blitzBest}.</div>
+        <div class="muted">„Gelernt“ heißt: ${MASTER}-mal hintereinander richtig auf Englisch getippt. Ein Fehler setzt auf Stufe 0 zurück, ein kleiner Tippfehler nicht. Multiple-Choice-Fragen zählen nur für „Erkennen“. Gelernte Vokabeln kommen nach ${REVIEW_DAYS} Tagen zur Wiederholung. Der Fortschritt bleibt nur auf diesem Gerät.</div>
+        <div class="muted">Vorlesestimme: ${esc(voiceName())}. Es wird kein Mikrofon benutzt; beim Nachsprechen bewertet das Kind selbst.</div>
+      </section>
+      <section class="sheet stack">
+        <span class="label">Vokabeln, schwierigste zuerst</span>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Englisch</th><th>Deutsch</th><th>Schreiben</th><th>Erkennen</th><th style="text-align:right">Fehler</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table></div>
+      </section>
+      <section class="stack">${reset}</section>`;
+  }
+
+  // ---------- Game flow ----------
+  function startMode(type) {
+    if (type === 'learn') {
+      learn = { list: activeWords(), i: 0, open: false };
+      show('learn');
+      autoSay(learn.list[0]);
+      return;
+    }
+    if (type === 'abc') { show('abc'); return; }
+    const blitz = type === 'blitz';
+    let items = [];
+    if (type === 'letters') items = weightedSample(LETTERS, ROUND, weightLetter);
+    else if (type === 'spell') items = weightedSample(activeWords().filter(e => /^[a-z]{3,10}$/i.test(e.en)), 6, e => WEIGHT[lvl(e)]);
+    else if (type === 'speak') items = weightedSample(activeWords(), 8, weightSaid);
+    else if (type === 'type') items = weightedSample(activeWords(), ROUND, weightProd);
+    else if (!blitz) items = weightedSample(activeWords(), ROUND, weightRec);
+    round = {
+      type, items, idx: 0, total: items.length, correct: 0, streak: 0, points: 0,
+      marks: [], newly: [], lessonsDone: [], mistakes: [], retried: new Set(), answered: null, q: null, last: null, hint: false, draft: ''
+    };
+    round.q = blitz ? nextBlitzQuestion() : questionFor(items[0]);
+    show('quiz');
+    if (blitz) {
+      round.endAt = Date.now() + BLITZ_SECONDS * 1000;
+      tick = setInterval(updateTimer, 200);
+      updateTimer();
+    }
+    afterQuestion();
+  }
+
+  function questionFor(item) {
+    const t = round.type;
+    if (t === 'letters') return letterQuestion(item);
+    if (t === 'spell') return { type: 'spell', e: item };
+    return makeQuestion(t, item);
+  }
+
+  // Plays the sound a question needs and puts the cursor into the answer field
+  function afterQuestion() {
+    const q = round.q;
+    if (q.type === 'listen' || q.type === 'speak') speak(sayText(q.e));
+    else if (q.type === 'letter') speak(letterSay(q.l.c));
+    else if (q.type === 'spell') speak(spellSay(q.e.en), true);
+    document.getElementById('ans')?.focus({ preventScroll: true });
+  }
+
+  function nextBlitzQuestion() {
+    const pool = activeWords().filter(e => e !== round.last);
+    const e = weightedSample(pool.length ? pool : activeWords(), 1, weightRec)[0];
+    round.last = e;
+    return makeQuestion(canSpeak && Math.random() < 0.35 ? 'listen' : 'read', e);
+  }
+
+  function updateTimer() {
+    if (!round || round.type !== 'blitz') return;
+    const left = Math.max(0, round.endAt - Date.now());
+    const bar = document.getElementById('timerBar');
+    const txt = document.getElementById('timerText');
+    if (bar) bar.style.width = `${100 * left / (BLITZ_SECONDS * 1000)}%`;
+    if (txt) txt.textContent = `${Math.ceil(left / 1000)} s`;
+    if (left <= 0) finishRound();
+  }
+
+  // Wrong or almost-right items come back once at the end of the round
+  function retry(item) {
+    if (round.type === 'blitz' || round.retried.has(item) || round.retried.size >= MAX_RETRY) return false;
+    round.retried.add(item);
+    round.items.push(item);
+    round.total++;
+    return true;
+  }
+
+  function score(ok, base = 10) {
+    if (ok) {
+      round.correct++;
+      round.streak++;
+      const pts = base + (round.streak >= 3 ? 5 : 0);
+      round.points += pts;
+      P.points += pts;
+    } else round.streak = 0;
+  }
+
+  function noteMastered(item, newly) {
+    if (!newly) return;
+    round.newly.push(item);
+    if (item.l && lessonDone(item.l)) round.lessonsDone.push(item.l);
+  }
+
+  function answer(i) {
+    if (!round || round.answered) return;
+    const q = round.q;
+    const ok = q.options[i].correct;
+    let newly = false;
+    if (q.type === 'letter') {
+      const before = letterDone(q.l);
+      P.abc[q.l.c] = ok ? Math.min(MASTER, abcLvl(q.l) + 1) : 0;
+      newly = !before && letterDone(q.l);
+      if (!ok) round.mistakes.push(q.l);
+    } else {
+      const e = q.e;
+      P.rec[e.en] = ok ? Math.min(MASTER, recLvl(e) + 1) : 0;
+      P.last[e.en] = Date.now();
+      if (!ok) { P.wrong[e.en] = (P.wrong[e.en] || 0) + 1; round.mistakes.push(e); }
+    }
+    score(ok);
+    noteMastered(q.l || q.e, newly);
+    round.marks[round.idx] = ok ? 'ok' : 'no';
+    const again = !ok && retry(q.l || q.e);
+    round.answered = { i, ok, kind: ok ? 'ok' : 'wrong', newly, retry: again, msg: ok ? pick(PRAISE) : pick(COMFORT) };
+    save();
+    render();
+    if (round.type === 'blitz') {
+      pending = setTimeout(next, ok ? 550 : 1400);
+    } else {
+      if (q.type !== 'letter') autoSay(q.e);
+      focusFeedback();
+    }
+  }
+
+  function answerTyped(text, giveUp = false) {
+    if (!round || round.answered) return;
+    const q = round.q;
+    const e = q.e;
+    const typed = String(text || '').trim();
+    let res = giveUp ? { kind: 'wrong' } : grade(e, typed);
+    if (res.kind === 'empty') return;
+    if (q.type === 'spell' && res.kind === 'other') res = { kind: 'wrong' };
+    const hinted = round.hint && res.kind === 'ok';
+    let newly = false;
+    if (q.type === 'type') {
+      const before = mastered(e);
+      if (res.kind === 'ok' && !hinted) { P.prod[e.en] = Math.min(MASTER, lvl(e) + 1); P.rec[e.en] = MASTER; }
+      else if (res.kind === 'wrong') { P.prod[e.en] = 0; P.wrong[e.en] = (P.wrong[e.en] || 0) + 1; }
+      P.last[e.en] = Date.now();
+      newly = !before && mastered(e);
+    }
+    const ok = res.kind === 'ok';
+    score(ok, q.type === 'type' && !hinted ? 15 : 10);
+    if (!ok) {
+      if (res.kind !== 'wrong') { round.points += 5; P.points += 5; }
+      round.mistakes.push(e);
+    }
+    noteMastered(e, newly);
+    round.marks[round.idx] = ok ? 'ok' : res.kind === 'wrong' ? 'no' : 'almost';
+    const again = !ok && retry(e);
+    round.answered = { ...res, ok, typed, hinted, newly, retry: again, msg: ok ? pick(PRAISE) : pick(COMFORT) };
+    save();
+    render();
+    autoSay(e);
+    focusFeedback();
+  }
+
+  function selfRate(ok) {
+    if (!round || round.answered) return;
+    const e = round.q.e;
+    if (ok) P.said[e.en] = (P.said[e.en] || 0) + 1;
+    score(ok, 5);
+    round.marks[round.idx] = ok ? 'ok' : 'almost';
+    const again = !ok && retry(e);
+    if (!ok) round.mistakes.push(e);
+    round.answered = { ok, retry: again, msg: ok ? pick(PRAISE) : 'Weiter üben!' };
+    save();
+    render();
+    if (!ok) speak(sayText(e), true);
+    focusFeedback();
+  }
+
+  function focusFeedback() {
+    document.getElementById('nextBtn')?.focus({ preventScroll: true });
+    document.querySelector('.feedback')?.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'nearest' });
+  }
+
+  function next() {
+    if (!round || !round.answered) return;
+    clearTimeout(pending);
+    round.answered = null;
+    round.hint = false;
+    round.draft = '';
+    round.idx++;
+    if (round.type === 'blitz') {
+      if (Date.now() >= round.endAt) return finishRound();
+      round.q = nextBlitzQuestion();
+      render();
+      afterQuestion();
+      return;
+    }
+    if (round.idx >= round.total) return finishRound();
+    round.q = questionFor(round.items[round.idx]);
+    render();
+    window.scrollTo(0, 0);
+    afterQuestion();
+  }
+
+  function finishRound() {
+    stopTimers();
+    if (round.type === 'blitz') {
+      round.total = round.idx;
+      if (round.correct > P.blitzBest) {
+        P.blitzBest = round.correct;
+        round.record = true;
+      }
+      save();
+    }
+    show('result');
+    const perfect = round.type !== 'blitz' && round.correct === round.total;
+    if (perfect || round.lessonsDone.length || round.record) confetti();
+  }
+
+  function stopTimers() {
+    clearInterval(tick);
+    clearTimeout(pending);
+    tick = null;
+    pending = null;
+  }
+
+  // ---------- Confetti ----------
+  function confetti() {
+    if (reduced()) return;
+    const c = document.getElementById('confetti');
+    const ctx = c.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    const W = window.innerWidth, H = window.innerHeight;
+    c.width = W * dpr;
+    c.height = H * dpr;
+    ctx.scale(dpr, dpr);
+    const cs = getComputedStyle(document.documentElement);
+    const cols = ['rot', 'gelb', 'gruen', 'hellblau', 'rosa', 'lila', 'orange', 'dunkelblau'].map(g => cs.getPropertyValue(`--g-${g}`).trim());
+    const parts = Array.from({ length: 130 }, () => ({
+      x: W / 2 + (Math.random() - 0.5) * 160, y: H * 0.3,
+      vx: (Math.random() - 0.5) * 14, vy: -Math.random() * 13 - 4,
+      w: 6 + Math.random() * 8, h: 10 + Math.random() * 10,
+      r: Math.random() * 6, vr: (Math.random() - 0.5) * 0.3, c: pick(cols)
+    }));
+    const t0 = performance.now();
+    function frame(t) {
+      ctx.clearRect(0, 0, W, H);
+      parts.forEach(p => {
+        p.vy += 0.35; p.x += p.vx; p.y += p.vy; p.vx *= 0.99; p.r += p.vr;
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r);
+        ctx.fillStyle = p.c; ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      });
+      if (t - t0 < 2800) requestAnimationFrame(frame);
+      else ctx.clearRect(0, 0, W, H);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // ---------- Events ----------
+  const ACTIONS = {
+    home: () => { resetAsk = false; show('home'); },
+    mode: id => startMode(id),
+    parents: () => show('parents'),
+    toggleLesson: id => {
+      const on = P.lessons.includes(id);
+      if (on && P.lessons.length === 1) return;
+      P.lessons = on ? P.lessons.filter(l => l !== id) : [...P.lessons, id];
+      save();
+      render();
+    },
+    allLessons: () => { P.lessons = LESSONS.map(l => l.id); save(); render(); },
+    toggleAuto: () => { P.auto = !P.auto; save(); render(); },
+    answer: i => answer(Number(i)),
+    selfRate: v => selfRate(v === '1'),
+    hint: () => { round.draft = document.getElementById('ans')?.value || ''; round.hint = true; render(); document.getElementById('ans')?.focus({ preventScroll: true }); },
+    giveUp: () => answerTyped(document.getElementById('ans')?.value, true),
+    next: () => next(),
+    quit: () => { stopTimers(); const back = round && (round.type === 'letters' || round.type === 'spell') ? 'abc' : 'home'; round = null; show(back); },
+    speak: (arg, el) => speakArg(arg, !!el.dataset.slow),
+    letter: i => { abcSel = Number(i); render(); speak(letterSay(LETTERS[abcSel].c)); },
+    flip: () => {
+      learn.open = !learn.open;
+      if (learn.open) { P.seen[learn.list[learn.i].en] = true; save(); }
+      render();
+    },
+    prevCard: () => { if (learn.i > 0) { learn.i--; learn.open = false; render(); autoSay(learn.list[learn.i]); } },
+    nextCard: () => {
+      if (learn.i >= learn.list.length - 1) return show('home');
+      learn.i++; learn.open = false; render(); autoSay(learn.list[learn.i]);
+    },
+    jump: i => { learn.i = Number(i); learn.open = false; render(); window.scrollTo(0, 0); autoSay(learn.list[learn.i]); },
+    shuffleCards: () => { learn.list = shuffle(learn.list); learn.i = 0; learn.open = false; render(); },
+    resetAsk: () => { resetAsk = true; render(); },
+    resetNo: () => { resetAsk = false; render(); },
+    resetYes: () => {
+      P = fresh(P.lessons);
+      resetAsk = false;
+      save();
+      show('home');
+    }
+  };
+
+  document.addEventListener('click', e => {
+    const el = e.target.closest('[data-act]');
+    if (!el || el.disabled) return;
+    ACTIONS[el.dataset.act]?.(el.dataset.arg, el);
+  });
+
+  document.addEventListener('submit', e => {
+    if (!e.target.matches('[data-form="type"]')) return;
+    e.preventDefault();
+    answerTyped(document.getElementById('ans')?.value);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (view === 'quiz' && round) {
+      const q = round.q;
+      if (!round.answered && q.options && /^[1-9]$/.test(e.key)) {
+        const i = Number(e.key) - 1;
+        if (i < q.options.length) answer(i);
+      } else if (round.answered && round.type !== 'blitz' && e.key === 'Enter' && document.activeElement?.id !== 'nextBtn') {
+        e.preventDefault();
+        next();
+      }
+    } else if (view === 'learn') {
+      if (e.key === 'ArrowRight') ACTIONS.nextCard();
+      else if (e.key === 'ArrowLeft') ACTIONS.prevCard();
+      else if (e.key === ' ' && !e.target.closest('button')) { e.preventDefault(); ACTIONS.flip(); }
+    }
+  });
+
+  render();
+</script>
