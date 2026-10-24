@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="de">
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Lernzentrale">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="/lernzentrale/icon.png">
+<link rel="icon" href="/lernzentrale/icon.png">
+<style>:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }</style>
+<title>Datenschutz</title>
+<meta name="description" content="Datenschutzhinweise der Lernzentrale">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  /* Plain legal page in the Lernzentrale look: ruled paper, one card */
+  :root {
+    --paper: #f7f9fc;
+    --card: #ffffff;
+    --rule: #dbe4f0;
+    --line: #c8d2e2;
+    --ink: #1f2b44;
+    --ink-soft: #5a6782;
+    --pen: #2c4ea3;
+    --f-hand: 'Playpen Sans', 'Chalkboard SE', 'Comic Sans MS', cursive;
+    --f-body: 'Andika', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --paper: #111827; --card: #182134; --rule: #1f2a3f; --line: #2f3c56; --ink: #e8edf7; --ink-soft: #a5b1c7; --pen: #9db6ff; color-scheme: dark; }
+  }
+  :root[data-theme="dark"] { --paper: #111827; --card: #182134; --rule: #1f2a3f; --line: #2f3c56; --ink: #e8edf7; --ink-soft: #a5b1c7; --pen: #9db6ff; color-scheme: dark; }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background-color: var(--paper);
+    background-image: repeating-linear-gradient(to bottom, transparent 0 33px, var(--rule) 33px 34px);
+    color: var(--ink);
+    font: 400 17px/1.55 var(--f-body);
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  a { color: var(--pen); }
+  a:focus-visible { outline: 3px solid var(--pen); outline-offset: 3px; }
+  .wrap { max-width: 720px; margin: 0 auto; padding-block: 18px 56px; display: flex; flex-direction: column; gap: 16px; }
+  .back { align-self: flex-start; min-height: 36px; display: inline-flex; align-items: center; font-weight: 700; text-decoration: none; }
+  h1 { margin: 0; font: 800 clamp(1.8rem, 7vw, 2.6rem)/1.1 var(--f-hand); color: var(--pen); }
+  .card { background: var(--card); border: 1.5px solid var(--line); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+  h2 { margin: 0; font: 800 1.1rem/1.25 var(--f-hand); }
+  p { margin: 0; }
+  section { display: flex; flex-direction: column; gap: 4px; }
+  .muted { color: var(--ink-soft); font-size: .92rem; }
+</style>
+
+<div class="wrap">
+  <a class="back" href="./">‹ Lernzentrale</a>
+  <h1>Datenschutz</h1>
+  <div class="card">
+    <section>
+      <h2>Verantwortlich</h2>
+      <p>Verantwortlich für die Lernzentrale ist der Betreiber laut <a href="https://breitec.de/#impressum" target="_blank" rel="noopener">Impressum</a>. Dort steht auch, wie du ihn erreichst.</p>
+    </section>
+    <section>
+      <h2>Hosting</h2>
+      <p>Die Seiten liegen bei GitHub Pages (GitHub, Inc., USA). Beim Aufruf verarbeitet GitHub technische Daten wie die IP-Adresse, um die Seiten auszuliefern und vor Angriffen zu schützen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. GitHub nimmt nach eigenen Angaben am EU-US Data Privacy Framework teil. Mehr dazu in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
+    </section>
+    <section>
+      <h2>Keine Cookies, kein Tracking, keine Anmeldung</h2>
+      <p>Alle Dateien einschließlich der Schriftarten kommen von diesem Server. Es werden keine Daten an andere Anbieter geschickt.</p>
+    </section>
+    <section>
+      <h2>Spielstand</h2>
+      <p>Fortschritt und Punkte speichert nur der Browser auf diesem Gerät (localStorage). Sie werden nie übertragen. Das ist für die Spiele technisch nötig (§ 25 Abs. 2 Nr. 2 TDDDG). Löschen lässt sich alles im Elternbereich des jeweiligen Spiels oder über die Website-Daten in den Browser-Einstellungen.</p>
+    </section>
+    <section>
+      <h2>Vorlesen</h2>
+      <p>Die Spiele nutzen die eingebaute Sprachausgabe des Geräts. Ein Mikrofon wird nicht verwendet.</p>
+    </section>
+    <section>
+      <h2>Deine Rechte</h2>
+      <p>Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch (Art. 15 bis 21 DSGVO) sowie Beschwerde bei einer Aufsichtsbehörde, in Bayern beim Bayerischen Landesamt für Datenschutzaufsicht.</p>
+    </section>
+    <p class="muted">Stand: Oktober 2026 · <a href="https://breitec.de/#impressum" target="_blank" rel="noopener">Impressum</a></p>
+  </div>
+</div>

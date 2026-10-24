@@ -160,10 +160,6 @@
   footer { color: var(--ink-soft); font-size: .9rem; border-top: 1.5px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 8px; }
   footer p { margin: 0; }
   footer a { color: var(--pen); font-weight: 700; }
-  .privacy { color: var(--ink-soft); font-size: .88rem; display: flex; flex-direction: column; gap: 8px; scroll-margin-top: 16px; }
-  .privacy h2 { margin: 0; font: 800 1.1rem/1.2 var(--f-hand); color: var(--ink); }
-  .privacy p { margin: 0; }
-  .privacy a { color: var(--pen); }
 
   @media (prefers-reduced-motion: reduce) { .book { transition: none; } }
 </style>
@@ -179,18 +175,8 @@
   <main class="shelf" id="shelf"></main>
   <footer>
     <p>Dein Fortschritt wird nur auf diesem Gerät gespeichert. Tipp: In Safari über „Teilen“ → „Zum Home-Bildschirm“ wird die Lernzentrale zur App.</p>
-    <p><a href="https://breitec.de/#impressum" target="_blank" rel="noopener">Impressum</a> · <a href="#datenschutz">Datenschutz</a></p>
+    <p><a href="https://breitec.de/#impressum" target="_blank" rel="noopener">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Erstellt von <a href="https://breitec.de" target="_blank" rel="noopener">Breitec</a></p>
   </footer>
-  <section class="privacy" id="datenschutz" aria-labelledby="ds-h">
-    <h2 id="ds-h">Datenschutz</h2>
-    <p><strong>Verantwortlich</strong> ist der Betreiber laut <a href="https://breitec.de/#impressum" target="_blank" rel="noopener">Impressum</a>. Dort steht auch, wie du ihn erreichst.</p>
-    <p><strong>Hosting:</strong> Die Seiten liegen bei GitHub Pages (GitHub, Inc., USA). Beim Aufruf verarbeitet GitHub technische Daten wie die IP-Adresse, um die Seiten auszuliefern und vor Angriffen zu schützen (Art. 6 Abs. 1 lit. f DSGVO). GitHub nimmt nach eigenen Angaben am EU-US Data Privacy Framework teil. Mehr dazu in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
-    <p><strong>Keine Cookies, kein Tracking, keine Anmeldung.</strong> Alle Dateien einschließlich der Schriftarten kommen von diesem Server. Es werden keine Daten an andere Anbieter geschickt.</p>
-    <p><strong>Spielstand:</strong> Fortschritt und Punkte speichert nur der Browser auf diesem Gerät (localStorage). Sie werden nie übertragen. Das ist für die Spiele technisch nötig (§ 25 Abs. 2 Nr. 2 TDDDG). Löschen lässt sich alles im Elternbereich des jeweiligen Spiels oder über die Website-Daten in den Browser-Einstellungen.</p>
-    <p><strong>Vorlesen:</strong> Die Spiele nutzen die eingebaute Sprachausgabe des Geräts. Ein Mikrofon wird nicht verwendet.</p>
-    <p><strong>Deine Rechte:</strong> Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch (Art. 15 bis 21 DSGVO) sowie Beschwerde bei einer Aufsichtsbehörde, in Bayern beim Bayerischen Landesamt für Datenschutzaufsicht.</p>
-    <p>Stand: Oktober 2026</p>
-  </section>
 </div>
 
 <script>
