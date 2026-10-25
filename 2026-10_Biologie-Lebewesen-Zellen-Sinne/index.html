@@ -1,0 +1,1821 @@
+<!doctype html>
+<html lang="de">
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Lernzentrale">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="/lernzentrale/icon.png">
+<link rel="icon" href="/lernzentrale/icon.png">
+<style>:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }</style>
+<title>Bio-Labor</title>
+<meta name="description" content="Natur und Technik, Biologie: Kennzeichen von Lebewesen, Zellen, Sinnesorgane und Reiz-Reaktions-Kette.">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<style>
+  /* Layout: one centred sheet on squared (kariert) paper; a microscope view of plant tissue on top whose cells fill per learning area */
+  :root {
+    --paper: #f6faf7;
+    --sheet: #ffffff;
+    --rule: #dde7e1;
+    --line: #c3d2c9;
+    --ink: #1d2b24;
+    --ink-soft: #56685e;
+    --pen: #1d6b3f;
+    --on-pen: #ffffff;
+    --good: #23824f;
+    --good-bg: #e2f4e9;
+    --almost: #8a5a00;
+    --almost-bg: #fdf1d3;
+    --bad: #b8460f;
+    --bad-bg: #fde9dd;
+    --mark: #ffd84d;
+    --strip-ink: #15171d;
+    --field: #fbfcf2;
+    --scope: #2b3330;
+    --cell-empty: #eef4e4;
+    --cellwall: #9bb58a;
+    --wall: #d3e3ab;
+    --wall-edge: #7c9a45;
+    --plasma: #f6f2d8;
+    --membrane: #8a6a3a;
+    --vacuole: #cfe7f6;
+    --vacuole-edge: #6fa6cf;
+    --nucleus: #d9c8f0;
+    --nucleus-edge: #7a5aa8;
+    --chloro: #58b05f;
+    --chloro-edge: #2c7537;
+    --mito: #f3a76b;
+    --mito-edge: #b0602a;
+    --glow: #ff7a00;
+    --glow-fill: #ffe7a1;
+    --g-rot: #e45b5b;
+    --g-gruen: #8fcf6a;
+    --g-gelb: #f5d64a;
+    --g-lila: #ad89de;
+    --g-orange: #f59b5c;
+    --g-hellblau: #63bdea;
+    --g-dunkelblau: #8fa8e6;
+    --g-rosa: #f4a8cb;
+    --g-tuerkis: #5fcfbf;
+    --g-oliv: #c3cf5a;
+    --f-hand: 'Playpen Sans', 'Chalkboard SE', 'Comic Sans MS', cursive;
+    --f-body: 'Andika', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0f1a15;
+      --sheet: #16231d;
+      --rule: #1b2a23;
+      --line: #2d4237;
+      --ink: #e6f0ea;
+      --ink-soft: #a3b8ac;
+      --pen: #7fd6a0;
+      --on-pen: #0f1a15;
+      --good: #68d39a;
+      --good-bg: #16392a;
+      --almost: #f3c35b;
+      --almost-bg: #3d3115;
+      --bad: #ffa477;
+      --bad-bg: #44261a;
+      --mark: #8a6d00;
+      --field: #1b2620;
+      --scope: #050807;
+      --cell-empty: #1f2e26;
+      --cellwall: #456352;
+      --wall: #5a7633;
+      --wall-edge: #b4d27f;
+      --plasma: #3e3b28;
+      --membrane: #e2bd80;
+      --vacuole: #2c5371;
+      --vacuole-edge: #8cc4ea;
+      --nucleus: #574483;
+      --nucleus-edge: #c9aef2;
+      --chloro: #3f9a4a;
+      --chloro-edge: #a3e6aa;
+      --mito: #ae6631;
+      --mito-edge: #f6b788;
+      --glow: #ffb347;
+      --glow-fill: #6b5a1a;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0f1a15;
+    --sheet: #16231d;
+    --rule: #1b2a23;
+    --line: #2d4237;
+    --ink: #e6f0ea;
+    --ink-soft: #a3b8ac;
+    --pen: #7fd6a0;
+    --on-pen: #0f1a15;
+    --good: #68d39a;
+    --good-bg: #16392a;
+    --almost: #f3c35b;
+    --almost-bg: #3d3115;
+    --bad: #ffa477;
+    --bad-bg: #44261a;
+    --mark: #8a6d00;
+    --field: #1b2620;
+    --scope: #050807;
+    --cell-empty: #1f2e26;
+    --cellwall: #456352;
+    --wall: #5a7633;
+    --wall-edge: #b4d27f;
+    --plasma: #3e3b28;
+    --membrane: #e2bd80;
+    --vacuole: #2c5371;
+    --vacuole-edge: #8cc4ea;
+    --nucleus: #574483;
+    --nucleus-edge: #c9aef2;
+    --chloro: #3f9a4a;
+    --chloro-edge: #a3e6aa;
+    --mito: #ae6631;
+    --mito-edge: #f6b788;
+    --glow: #ffb347;
+    --glow-fill: #6b5a1a;
+    color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body {
+    margin: 0;
+    background-color: var(--paper);
+    background-image: linear-gradient(var(--rule) 1px, transparent 1px), linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+    background-size: 22px 22px;
+    color: var(--ink);
+    font: 400 17px/1.5 var(--f-body);
+    -webkit-tap-highlight-color: transparent;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  button, input { font: inherit; color: inherit; }
+  button:focus-visible, input:focus-visible { outline: 3px solid var(--pen); outline-offset: 2px; }
+  .wrap { max-width: 760px; margin: 0 auto; padding-block: 10px 48px; display: flex; flex-direction: column; gap: 18px; }
+
+  header.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .hublink { align-self: flex-start; display: inline-flex; align-items: center; min-height: 36px; color: var(--pen); font-weight: 700; text-decoration: none; margin-bottom: -10px; }
+  .brand { display: inline-flex; align-items: center; gap: 8px; font: 800 clamp(1.45rem, 5vw, 2rem)/1.1 var(--f-hand); color: var(--pen); background: none; border: 0; padding: 0; min-height: 44px; cursor: pointer; text-align: left; }
+  .brand svg { width: 34px; height: 34px; flex: none; }
+  .pill { font: 700 .95rem/1 var(--f-body); padding: .5em .85em; border-radius: 999px; background: var(--sheet); border: 1.5px solid var(--line); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  h2 { font: 800 1.35rem/1.2 var(--f-hand); margin: 0; color: var(--ink); text-wrap: balance; }
+  h3 { font: 800 1.1rem/1.25 var(--f-hand); margin: 0; }
+  p { margin: 0; }
+  .muted { color: var(--ink-soft); }
+  .label { font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
+
+  .sheet { background: var(--sheet); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 18px; min-width: 0; }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+
+  /* Crayon paper strip, like cut-out labels in the notebook */
+  .strip {
+    --c: var(--g-gelb);
+    display: inline-flex; align-items: center; justify-content: center; gap: .4em;
+    padding: .32em .8em; border-radius: 3px; max-width: 100%;
+    font: 700 1rem/1.25 var(--f-body); color: var(--strip-ink); overflow-wrap: anywhere;
+    background: repeating-linear-gradient(-62deg, var(--c) 0 3px, color-mix(in srgb, var(--c) 72%, #fff) 3px 5px);
+    border: 1px solid color-mix(in srgb, var(--c) 55%, #000);
+    transform: rotate(var(--tilt, 0deg));
+  }
+
+  /* Home */
+  .hero { display: grid; grid-template-columns: minmax(0, 330px) minmax(0, 1fr); gap: 20px; align-items: center; }
+  .tissue { width: 100%; height: auto; display: block; }
+  .tissue .ring { fill: none; stroke: var(--scope); stroke-width: 12; }
+  .tissue .field { fill: var(--field); }
+  .tissue .cellbg { fill: var(--cell-empty); }
+  .tissue .cellline { fill: none; stroke: var(--cellwall); stroke-width: 4; stroke-linejoin: round; }
+  .tissue .nuc { fill: var(--nucleus); stroke: var(--nucleus-edge); stroke-width: 1.5; opacity: .9; }
+  .tissue .t-name { font: 700 15px var(--f-hand); fill: var(--strip-ink); text-anchor: middle; }
+  .tissue .t-count { font: 700 12.5px var(--f-body); fill: var(--strip-ink); text-anchor: middle; }
+  .tissue .t-name.empty, .tissue .t-count.empty { fill: var(--ink); }
+  .count { font: 800 clamp(2rem, 8vw, 2.8rem)/1 var(--f-hand); color: var(--pen); font-variant-numeric: tabular-nums; }
+  .stats { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .bar { height: 12px; border-radius: 99px; background: var(--rule); overflow: hidden; }
+  .bar > span { display: block; height: 100%; background: var(--pen); border-radius: 99px; transition: width .4s; }
+  .rank { font: 700 1.05rem/1.3 var(--f-hand); }
+  .stamps { display: flex; flex-wrap: wrap; gap: 6px; }
+  .stamp { border-radius: 99px; padding: 3px 10px; font: 700 .78rem/1.3 var(--f-body); border: 2px dashed var(--line); color: var(--ink-soft); }
+  .stamp.on { border: 2px solid color-mix(in srgb, var(--c) 60%, #000); background: var(--c); color: var(--strip-ink); transform: rotate(-4deg); }
+  .stamp.on::before { content: '★ '; }
+
+  .tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  @media (min-width: 640px) { .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .tile { text-align: left; background: var(--sheet); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 14px 14px 16px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; cursor: pointer; min-height: 120px; transition: transform .12s; min-width: 0; }
+  .tile:active { transform: scale(.97); }
+  .tile .strip { font-size: .95rem; text-align: left; }
+  .tile p { font-size: .92rem; color: var(--ink-soft); }
+  .tile .mini { margin-top: auto; width: 100%; display: flex; align-items: center; gap: 8px; font-size: .85rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .tile .mini .bar { flex: 1; height: 8px; }
+  .tile .mini .bar > span { background: var(--c); }
+  .stagehead { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+
+  .linkbtn { background: none; border: 0; color: var(--pen); font-weight: 700; padding: 8px 0; min-height: 44px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .spread { justify-content: space-between; }
+  .center { justify-content: center; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 0 22px; border-radius: 12px; border: 2px solid var(--pen); background: var(--pen); color: var(--on-pen); font-weight: 700; font-size: 1.05rem; cursor: pointer; text-align: center; }
+  .btn.ghost { background: var(--sheet); color: var(--pen); }
+  .btn.small { min-height: 48px; padding: 0 14px; font-size: .95rem; }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .btn[disabled] { opacity: .45; cursor: default; }
+
+  /* Quiz */
+  .qbar { display: flex; align-items: center; gap: 12px; }
+  .qbar .track { flex: 1; display: flex; gap: 4px; min-width: 0; }
+  .qbar .track span { flex: 1; height: 10px; border-radius: 99px; background: var(--rule); }
+  .qbar .track span.ok { background: var(--good); }
+  .qbar .track span.almost { background: var(--almost); }
+  .qbar .track span.no { background: var(--bad); }
+  .qbar .track span.now { background: var(--pen); }
+  .iconbtn { width: 48px; height: 48px; flex: none; border-radius: 50%; border: 1.5px solid var(--line); background: var(--sheet); display: grid; place-items: center; cursor: pointer; color: var(--ink); }
+  .iconbtn svg { width: 20px; height: 20px; }
+
+  .prompt { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; padding-block: 20px; }
+  .question { font: 600 clamp(1.12rem, 4.2vw, 1.4rem)/1.4 var(--f-hand); max-width: 36ch; text-wrap: balance; overflow-wrap: anywhere; }
+  .clue { font: 700 clamp(1.1rem, 4.4vw, 1.35rem)/1.4 var(--f-body); padding: 12px 16px; border-radius: 12px; border: 2px dashed var(--pen); max-width: 34ch; overflow-wrap: anywhere; }
+  .scenario { font-size: 1.02rem; color: var(--ink); background: color-mix(in srgb, var(--g-gelb) 22%, var(--sheet)); border-radius: 10px; padding: 10px 14px; max-width: 40ch; }
+  .bigicon { font-size: 3.6rem; line-height: 1; }
+  .prompt .cellsvg { max-width: 260px; }
+
+  .options { display: grid; gap: 10px; }
+  .options.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .opt { min-height: 58px; text-align: left; padding: 12px 16px; border-radius: 12px; border: 2px solid var(--line); background: var(--sheet); cursor: pointer; font-size: 1.04rem; line-height: 1.35; display: flex; align-items: center; gap: 12px; transition: transform .1s; overflow-wrap: anywhere; min-width: 0; }
+  .options.two .opt { justify-content: center; text-align: center; font-weight: 700; }
+  .opt:active { transform: scale(.98); }
+  .opt .key { flex: none; width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; font-size: .8rem; color: var(--ink-soft); }
+  .options.two .key { display: none; }
+  .opt.correct { border-color: var(--good); background: var(--good-bg); }
+  .opt.wrong { border-color: var(--bad); background: var(--bad-bg); }
+  .opt.chosen { border-color: var(--pen); border-width: 3px; }
+  .opt.dim { opacity: .45; }
+  .opt[disabled] { cursor: default; }
+  .shake { animation: shake .35s; }
+  @keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+
+  .confask { border: 2px solid var(--pen); border-radius: var(--radius); padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; background: var(--sheet); }
+
+  .feedback { border-radius: var(--radius); padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; border: 2px solid var(--good); background: var(--good-bg); min-width: 0; }
+  .feedback.no { border-color: var(--bad); background: var(--bad-bg); }
+  .feedback.almost { border-color: var(--almost); background: var(--almost-bg); }
+  .feedback.info { border-color: var(--line); background: var(--sheet); }
+  .feedback .verdict { font: 800 1.35rem/1.2 var(--f-hand); color: var(--good); }
+  .feedback.no .verdict { color: var(--bad); }
+  .feedback.almost .verdict { color: var(--almost); }
+  .feedback.info .verdict { color: var(--pen); }
+  .heft { margin: 0; padding: 10px 14px; border-left: 4px solid var(--pen); background: var(--sheet); border-radius: 0 10px 10px 0; font: 500 1rem/1.5 var(--f-hand); display: flex; flex-direction: column; gap: 2px; overflow-wrap: anywhere; }
+  .heft .label { font-family: var(--f-body); }
+  .hintbox { border-radius: 12px; padding: 12px 14px; border: 2px solid var(--almost); background: var(--almost-bg); }
+
+  /* Order task */
+  .chain { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .chain li { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border-radius: 12px; border: 2px solid var(--good); background: var(--good-bg); }
+  .chain li.help { border-color: var(--almost); background: var(--almost-bg); }
+  .chain li.slot { border: 2px dashed var(--line); background: transparent; color: var(--ink-soft); }
+  .chain li b { flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--sheet); border: 1.5px solid var(--line); font-size: .9rem; }
+
+  /* Gap text */
+  .gaptext { font: 500 1.12rem/2.3 var(--f-body); text-align: left; }
+  .gap { min-height: 44px; min-width: 110px; padding: 2px 12px; border-radius: 10px; border: 2px dashed var(--pen); background: var(--sheet); cursor: pointer; font-weight: 700; vertical-align: middle; }
+  .gap.active { border-style: solid; border-width: 3px; background: color-mix(in srgb, var(--g-gelb) 30%, var(--sheet)); }
+  .gap.ok { border: 2px solid var(--good); background: var(--good-bg); cursor: default; }
+  .gap.help { border: 2px solid var(--almost); background: var(--almost-bg); cursor: default; }
+  .bank { display: flex; flex-wrap: wrap; gap: 10px; }
+  .term { min-height: 50px; padding: 8px 16px; border-radius: 10px; border: 2px solid var(--line); background: var(--sheet); cursor: pointer; font-weight: 700; text-align: left; overflow-wrap: anywhere; }
+  .term:active { transform: scale(.97); }
+  .term.sel { border-color: var(--pen); border-width: 3px; background: color-mix(in srgb, var(--g-gelb) 30%, var(--sheet)); }
+
+  /* Living check */
+  .checks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .checks li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 8px; align-items: start; }
+  .checks .ic { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; background: var(--sheet); border: 2px solid var(--line); }
+  .checks .ok .ic { border-color: var(--good); color: var(--good); }
+  .checks .no .ic { border-color: var(--bad); color: var(--bad); }
+  .checks .looks .ic { border-color: var(--almost); color: var(--almost); }
+
+  /* Cell lab */
+  .tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tab { min-height: 48px; padding: 0 14px; border-radius: 99px; border: 1.5px solid var(--line); background: var(--sheet); font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+  .tab[aria-pressed="true"] { background: var(--pen); border-color: var(--pen); color: var(--on-pen); }
+  .tab small { font-weight: 400; font-variant-numeric: tabular-nums; }
+  .scope { display: flex; justify-content: center; }
+  .scope .cellsvg { max-width: min(400px, 68vh); }
+  .cellsvg { width: 100%; max-width: 400px; height: auto; display: block; touch-action: manipulation; }
+  .cellsvg .ring { fill: none; stroke: var(--scope); stroke-width: 10; }
+  .cellsvg .field { fill: var(--field); }
+  .cellsvg .shape { transition: stroke .15s, fill .15s; }
+  .cellsvg .hit { fill: transparent; stroke: transparent; }
+  .cellsvg.pick .part { cursor: pointer; }
+  .cellsvg .part.sel .shape { stroke: var(--glow); stroke-width: 5; animation: glow 1.1s ease-in-out infinite; }
+  .cellsvg .part.sel .shape.fillhi { fill: var(--glow-fill); }
+  .cellsvg.has-sel .part:not(.sel) { opacity: .55; }
+  @keyframes glow { 50% { stroke-opacity: .35; } }
+  .cellsvg .badge circle { stroke: var(--sheet); stroke-width: 2.5; }
+  .cellsvg .badge.ok circle { fill: var(--good); }
+  .cellsvg .badge.help circle { fill: var(--almost); }
+  .cellsvg .badge text { font: 800 14px var(--f-body); fill: var(--on-pen); text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+  .legend { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px 12px; }
+  .legend li { display: flex; align-items: center; gap: 8px; font-weight: 700; }
+  .legend li b { flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: .85rem; border: 1.5px solid var(--line); }
+  .legend li.ok b { background: var(--good); border-color: var(--good); color: var(--on-pen); }
+  .legend li.help b { background: var(--almost); border-color: var(--almost); color: var(--on-pen); }
+  .legend li:not(.ok):not(.help) span { color: var(--ink-soft); }
+
+  .tray { display: flex; flex-wrap: wrap; gap: 8px; min-height: 50px; }
+  .venn { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+  .zone { min-height: 190px; padding: 12px 8px; border: 2px solid var(--line); cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; min-width: 0; }
+  .zone.z-p { border-radius: 90px 0 0 90px; background: color-mix(in srgb, var(--g-gruen) 26%, var(--sheet)); border-right: 0; }
+  .zone.z-b { background: color-mix(in srgb, var(--g-gruen) 20%, color-mix(in srgb, var(--g-orange) 22%, var(--sheet))); border-left: 2px dashed var(--line); border-right: 2px dashed var(--line); }
+  .zone.z-t { border-radius: 0 90px 90px 0; background: color-mix(in srgb, var(--g-orange) 26%, var(--sheet)); border-left: 0; }
+  .zone.ready { outline: 3px solid var(--pen); outline-offset: -3px; }
+  .zone .label { color: var(--ink); }
+  .placed { display: flex; flex-direction: column; gap: 6px; align-items: center; width: 100%; }
+  .chipok { font-size: .86rem; font-weight: 700; padding: 4px 8px; border-radius: 8px; background: var(--sheet); border: 2px solid var(--good); max-width: 100%; overflow-wrap: anywhere; }
+  .chipok.help { border-color: var(--almost); }
+  @media (max-width: 520px) {
+    .venn { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .zone { min-height: 90px; }
+    .zone.z-p { border-radius: 60px 60px 0 0; border: 2px solid var(--line); border-bottom: 0; }
+    .zone.z-b { border: 2px solid var(--line); border-top: 2px dashed var(--line); border-bottom: 2px dashed var(--line); }
+    .zone.z-t { border-radius: 0 0 60px 60px; border: 2px solid var(--line); border-top: 0; }
+    .placed { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+  }
+
+  /* Senses puzzle */
+  .prow { display: flex; flex-direction: column; gap: 4px; }
+  .slot { min-height: 56px; width: 100%; text-align: left; padding: 10px 14px; border-radius: 12px; border: 2px dashed var(--line); background: var(--sheet); cursor: pointer; font-weight: 700; overflow-wrap: anywhere; }
+  .slot.active { border: 3px solid var(--pen); background: color-mix(in srgb, var(--g-gelb) 24%, var(--sheet)); }
+  .slot.ok { border: 2px solid var(--good); background: var(--good-bg); cursor: default; }
+  .slot.help { border: 2px solid var(--almost); background: var(--almost-bg); cursor: default; }
+  .slot .muted { font-weight: 400; }
+  .prow > .feedback, .prow > .options { margin-top: 6px; }
+  .prow > .label + .options { margin-top: 0; }
+
+  /* Recall */
+  .answer { display: flex; gap: 10px; }
+  .answer input { flex: 1; min-width: 0; min-height: 56px; padding: 10px 16px; border-radius: 12px; border: 2px solid var(--line); background: var(--sheet); font-size: 1.2rem; }
+  .entries { display: flex; flex-wrap: wrap; gap: 8px; }
+  .entry { display: inline-flex; align-items: center; gap: 4px; padding: 4px 4px 4px 12px; border-radius: 99px; border: 1.5px solid var(--line); background: var(--sheet); font-weight: 700; max-width: 100%; overflow-wrap: anywhere; }
+  .entry button { width: 40px; height: 40px; border: 0; background: none; cursor: pointer; border-radius: 50%; color: var(--ink-soft); flex: none; }
+  .reslist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .reslist li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 8px; align-items: start; }
+
+  /* Videos */
+  .vlist { display: grid; gap: 12px; }
+  .vcard { text-align: left; display: flex; gap: 14px; align-items: center; padding: 14px; border-radius: var(--radius); border: 1.5px solid var(--line); background: var(--sheet); cursor: pointer; min-height: 80px; }
+  .vcard .play { width: 52px; height: 52px; border-radius: 50%; flex: none; display: grid; place-items: center; background: var(--g-hellblau); color: var(--strip-ink); }
+  .vcard .play svg { width: 22px; height: 22px; }
+  .vbox { position: relative; border-radius: 12px; overflow: hidden; background: #000; aspect-ratio: 16 / 9; }
+  .vbox video { width: 100%; height: 100%; display: block; }
+  .vph { border-radius: 12px; border: 2px dashed var(--line); aspect-ratio: 16 / 9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; padding: 16px; background: var(--sheet); }
+  .vph b { font: 800 1.3rem/1.2 var(--f-hand); color: var(--pen); }
+
+  /* Notes (Lernzettel) */
+  .notes ul, .notes ol { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 4px; }
+  .merk { border: 2.5px solid var(--g-rot); background: color-mix(in srgb, var(--g-rot) 14%, var(--sheet)); border-radius: 10px; padding: 10px 14px; font: 600 1.05rem/1.45 var(--f-hand); }
+  .cards2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 10px; }
+  .ncard { border: 1.5px solid var(--line); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .ncard dl { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .ncard dt { font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-soft); margin-top: 4px; }
+  .ncard dd { margin: 0; overflow-wrap: anywhere; }
+  .cellpair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  @media (max-width: 520px) { .cellpair { grid-template-columns: minmax(0, 1fr); } }
+
+  /* Result */
+  .stars { font-size: clamp(2.6rem, 12vw, 3.6rem); letter-spacing: .1em; line-height: 1; }
+  .stars .s-on { color: var(--g-gelb); -webkit-text-stroke: 1.5px color-mix(in srgb, var(--g-gelb) 50%, #000); }
+  .stars .s-off { color: var(--rule); }
+  .result { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+  .mistakes ul { margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; list-style: none; }
+
+  /* Parents */
+  .tablewrap { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: .92rem; }
+  th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
+  td.num { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+  .lv { letter-spacing: .12em; color: var(--pen); white-space: nowrap; }
+  .confirm { border: 2px solid var(--bad); background: var(--bad-bg); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .kpis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .kpi { border: 1.5px solid var(--line); border-radius: 10px; padding: 8px 10px; }
+  .kpi b { display: block; font: 800 1.4rem/1.1 var(--f-hand); font-variant-numeric: tabular-nums; }
+  .kpi.alert { border-color: var(--bad); background: var(--bad-bg); }
+
+  .legal { text-align: center; font-size: .82rem; color: var(--ink-soft); padding-top: 8px; }
+  .legal a { color: inherit; display: inline-block; padding: 6px 4px; }
+
+  #confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50; }
+
+  @media (max-width: 600px) {
+    .hero { grid-template-columns: minmax(0, 1fr); justify-items: center; }
+    .hero .tissue { max-width: 320px; }
+    .hero .stats { width: 100%; }
+    .sheet { padding: 14px; }
+  }
+  @media (max-width: 380px) {
+    .options.two { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bar > span, .tile, .opt, .cellsvg .shape { transition: none; }
+    .cellsvg .part.sel .shape, .shake { animation: none; }
+  }
+</style>
+
+<div class="wrap">
+  <a class="hublink" id="hubLink" href="../" hidden>‹ Lernzentrale</a>
+  <header class="top">
+    <button class="brand" data-act="home" aria-label="Zur Startseite">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3h6l-1 3h-4z" fill="currentColor"/><path d="M14 6l-3 9 4 1.5 3-9"/><path d="M9 19h11"/><path d="M15 16.5v2.5"/><path d="M21 9a8 8 0 0 1 2 13"/><path d="M6 28h20"/><path d="M11 28c0-3 2-5 5-6"/></svg>
+      Bio-Labor
+    </button>
+    <span class="pill" id="points"></span>
+  </header>
+  <main id="view" aria-live="polite"></main>
+  <footer class="legal"><a href="https://breitec.de/#impressum" target="_blank" rel="noopener">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></footer>
+</div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<script>
+  // ---------- Content: exactly the notebook pages, spelling corrected (see README) ----------
+  const KZ = [
+    { id: 'bewegung', name: 'aktive Bewegung' },
+    { id: 'fortpflanzung', name: 'Fortpflanzung' },
+    { id: 'wachstum', name: 'Wachstum und Entwicklung' },
+    { id: 'zellen', name: 'Aufbau aus Zellen' },
+    { id: 'stoffwechsel', name: 'Stoffwechsel', detail: 'Aufnahme von Stoffen aus der Umwelt (Nahrung, Sauerstoff) → Veränderung der Stoffe → Ausscheidung anderer Stoffe (Abfallstoffe)' },
+    { id: 'reizbarkeit', name: 'Reizbarkeit', detail: 'Aufnahme von Informationen aus der Umwelt → Informationsverarbeitung → Reaktion' }
+  ];
+  const KZ_BY = Object.fromEntries(KZ.map(k => [k.id, k]));
+  const MERK = 'Alle Lebewesen besitzen ALLE Kennzeichen. Ist eins nicht erfüllt, ist es kein Lebewesen.';
+  const HEFT_KZ = `Kennzeichen von Lebewesen: ${KZ.map(k => k.name).join(', ')}.`;
+  const HEFT_TEIL = 'Das Zellinnere ist durch vielfältige Membransysteme in verschiedene Teilräume gegliedert (= Zellorganellen) → So können verschiedene Stoffwechselprozesse gleichzeitig ablaufen, ohne sich zu stören.';
+  const HEFT_MIKRO = 'Um Zellen betrachten zu können, benötigt man ein Vergrößerungsgerät – ein Mikroskop.';
+
+  const ORG = {
+    wand: { name: 'Zellwand', fn: ['Sie schützt die Zelle.', 'Sie verleiht dem Ganzen Stabilität.'] },
+    membran: { name: 'Zellmembran', fn: ['reguliert Stoffaustausch', 'Hülle der Zelle → Abgrenzung des Zellplasmas'] },
+    plasma: { name: 'Zellplasma', fn: ['Grundsubstanz („Suppe“)', 'gallertige Flüssigkeit, in der die Zellorganellen („Gemüse“) liegen'] },
+    kern: { name: 'Zellkern', fn: ['Kommandozentrale → steuert alle Vorgänge', 'enthält Erbinformation der Pflanze (DNA)'] },
+    vakuole: { name: 'Zellsaftvakuole', fn: ['Mülldeponie'] },
+    chloro: { name: 'Chloroplasten', fn: ['enthalten grünen Farbstoff (Chlorophyll)', 'Ort der Fotosynthese → aus Kohlendioxid und Wasser wird Traubenzucker und Sauerstoff'] },
+    mito: { name: 'Mitochondrien', fn: ['Energiebereitstellung durch Zellatmung → aus Traubenzucker und Sauerstoff entstehen Kohlendioxid und Wasser', 'Mitochondrien = „Kraftwerke der Zelle“'] }
+  };
+  const PLANT = ['wand', 'membran', 'plasma', 'kern', 'vakuole', 'chloro', 'mito'];
+  const ANIMAL = ['membran', 'plasma', 'kern', 'mito'];
+  const PLURAL = k => k === 'chloro' || k === 'mito';
+  const ORG_HEFT = k => `${ORG[k].name}: ${ORG[k].fn.join('; ')}`;
+  const HEFT_GEMEINSAM = 'Sowohl tierische als auch pflanzliche Zellen besitzen Zellmembran, Zellplasma, Zellkern, Mitochondrien.';
+  const HEFT_UNTERSCHIED = 'Tierische Zellen besitzen im Gegensatz zu pflanzlichen Zellen keine Zellwand, Vakuole, Chloroplasten.';
+
+  const REIZ_INTRO = ['Informationen aus der Umwelt = Reize', 'Reize werden durch Sinneszellen aufgenommen', 'Sinneszellen mit ähnlichen Aufgaben sind oft ähnlich gebaut und in Sinnesorganen zusammengefasst'];
+  const CHAIN = [
+    'Sinnesorgan nimmt passenden Reiz mit Sinneszellen auf (Reizart muss zu Sinneszellen passen)',
+    'Sinneszellen wandeln Reiz in ein elektrisches Signal um',
+    'Signal wird über sensorische Nerven zum Gehirn geleitet',
+    'Gehirn verarbeitet die Information (Wahrnehmung), entscheidet über eine passende Reaktion und wandelt in einen elektrischen Befehl',
+    'Befehl wird über motorische Nerven zu Erfolgsorganen geleitet (Muskeln, Drüsen)',
+    'Reaktion'
+  ];
+  const HEFT_CHAIN = `Die Reiz-Reaktions-Kette: ${CHAIN.join(' → ')}`;
+  // Application example (not from the notebook), each step mapped to the notebook step above
+  const BALL = [
+    'Dein Auge sieht den Ball: Die Lichtsinneszellen nehmen die Lichtstrahlen auf.',
+    'Die Sinneszellen wandeln den Reiz in ein elektrisches Signal um.',
+    'Das Signal läuft über sensorische Nerven zu deinem Gehirn.',
+    'Dein Gehirn erkennt den Ball und entscheidet: Fangen!',
+    'Der Befehl läuft über motorische Nerven zu deinen Armmuskeln.',
+    'Du fängst den Ball.'
+  ];
+
+  const COLS = [
+    { id: 'organ', label: 'Sinnesorgan', q: 'Welches ist das Sinnesorgan?' },
+    { id: 'zellen', label: 'Sinneszellen und Ort der Reizaufnahme', q: 'Welche Sinneszellen nehmen die Reize auf, und wo sitzen sie?' },
+    { id: 'reiz', label: 'Umweltreize', q: 'Welche Umweltreize werden aufgenommen?' },
+    { id: 'wahr', label: 'Wahrnehmung', q: 'Was nimmst du damit wahr?' }
+  ];
+  const SENSES = [
+    { id: 'hoer', sinn: 'Hörsinn', act: 'Hören', organ: 'Ohr', zellen: 'Hörsinneszellen in der Schnecke des Innenohres', reiz: 'Akustische Reize (Schallwellen)', wahr: 'Lautstärken, Tonhöhen' },
+    { id: 'tast', sinn: 'Tastsinn', act: 'Tasten/Fühlen', organ: 'Haut', zellen: 'Verschiedene Sinneszellen in allen drei Hautschichten (Oberhaut, Lederhaut, Unterhaut)', reiz: 'Druck, Vibration, Dehnung, Temperatur', wahr: 'Wärme/Kälte, Schmerz, Vibration, Berührung' },
+    { id: 'geschmack', sinn: 'Geschmackssinn', act: 'Schmecken', organ: 'Zunge', zellen: 'Sinneszellen in den Geschmacksknospen der Zunge und des Gaumens', reiz: 'Chemische Reize (Geschmacksstoffe)', wahr: 'Geschmacksqualität: süß, sauer, bitter, salzig' },
+    { id: 'seh', sinn: 'Sehsinn', act: 'Sehen', organ: 'Auge', zellen: 'Lichtsinneszellen (Stäbchen und Zapfen) in der Netzhaut des Auges', reiz: 'optische Reize (Lichtstrahlen)', wahr: 'Hell/Dunkel, Farben, Bewegung …' },
+    { id: 'geruch', sinn: 'Geruchssinn', act: 'Riechen', organ: 'Nase', zellen: 'Riechsinneszellen in der Nasenschleimhaut', reiz: 'Chemische Reize (Geruchsstoffe)', wahr: 'Geruchsqualität: würzig, faulig, blumig' }
+  ];
+  const senseHeft = s => `${s.sinn} (≙ ${s.act}) – Sinnesorgan: ${s.organ}. Sinneszellen und Ort der Reizaufnahme: ${s.zellen}. Umweltreize: ${s.reiz}. Wahrnehmung: ${s.wahr}`;
+  const GLEICH = {
+    parts: ['Zusätzlich zu den 5 Hauptsinnen gibt es zum Beispiel den ', 0, '. Die entsprechenden Sinneszellen sitzen in den Bogengängen des ', 1, '. Sie nehmen ', 2, ' des Körpers und die ', 3, ' wahr.'],
+    answers: ['Gleichgewichtssinn', 'Innenohrs', 'Lageveränderung', 'Schwerkraft'],
+    distract: ['Tastsinn', 'Auges', 'Temperatur', 'Lautstärke']
+  };
+  const HEFT_GLEICH = GLEICH.parts.map(p => typeof p === 'number' ? GLEICH.answers[p] : p).join('');
+
+  const PROTECT = [
+    { id: 'auge', organ: 'Auge', dein: 'deine Augen', gefahr: 'intensive UV-Strahlung', schutz: 'Sonnenbrille mit UV-Schutz – nicht direkt in die Sonne schauen', scene: 'Ein Tag am Strand, die Sonne ist grell.' },
+    { id: 'ohr', organ: 'Ohr', dein: 'deine Ohren', gefahr: 'sehr laute Musik', schutz: 'Gehörschutz bei sehr lauter Musik, Kopfhörer nicht zu laut einstellen', scene: 'Du gehst auf ein lautes Konzert und hörst danach Musik mit Kopfhörern.' },
+    { id: 'nase', organ: 'Nase', dein: 'deine Nase', gefahr: 'reizende Dämpfe', schutz: 'Einatmen von Rauch und schädlichen Dämpfen vermeiden', scene: 'Beim Grillen zieht dir Rauch ins Gesicht.' },
+    { id: 'zunge', organ: 'Zunge', dein: 'deine Zunge', gefahr: 'sehr heiße Getränke', schutz: 'heiße Getränke und Speisen abkühlen lassen', scene: 'Dein Kakao kommt dampfend aus der Mikrowelle.' },
+    { id: 'haut', organ: 'Haut', dein: 'deine Haut', gefahr: 'intensive UV-Strahlung', schutz: 'Sonnencreme, auch mal in den Schatten', scene: 'Sommerferien am See, du bist den ganzen Tag draußen.' }
+  ];
+  const protectHeft = p => `${p.organ} – mögliche Gefahr: ${p.gefahr}. Schutzmaßnahme: ${p.schutz}`;
+
+  // Application examples (not from the notebook). looks = seems to fit, sure = clearly missing
+  const LIVING = [
+    { id: 'hund', is: 'Ein Hund ist', icon: '🐕', name: 'Hund', desc: 'Ein Hund tobt über die Wiese, frisst sein Futter und bellt, wenn es klingelt.', living: true,
+      has: { bewegung: 'läuft und springt von selbst', fortpflanzung: 'bekommt Welpen', wachstum: 'aus dem Welpen wird ein großer Hund', zellen: 'besteht aus Tierzellen', stoffwechsel: 'frisst, atmet Sauerstoff und scheidet Abfallstoffe aus', reizbarkeit: 'hört die Klingel und bellt' } },
+    { id: 'mensch', is: 'Du bist', icon: '🧒', name: 'Du selbst', desc: 'Du schwimmst, radelst und läufst, frühstückst jeden Morgen und wirst jedes Jahr ein Stück größer.', living: true,
+      has: { bewegung: 'du schwimmst, radelst und läufst', fortpflanzung: 'Menschen bekommen Kinder', wachstum: 'du wächst und entwickelst dich', zellen: 'auch du bestehst aus Zellen', stoffwechsel: 'du isst, atmest und scheidest Abfallstoffe aus', reizbarkeit: 'du hörst deinen Namen und drehst dich um' } },
+    { id: 'amsel', is: 'Eine Amsel ist', icon: '🐦', name: 'Amsel', desc: 'Eine Amsel zieht einen Wurm aus dem Rasen und fliegt weg, als die Katze kommt.', living: true,
+      has: { bewegung: 'fliegt und hüpft von selbst', fortpflanzung: 'legt Eier, aus denen Küken schlüpfen', wachstum: 'aus dem Küken wird eine Amsel', zellen: 'besteht aus Tierzellen', stoffwechsel: 'frisst Würmer, atmet und scheidet Abfallstoffe aus', reizbarkeit: 'sieht die Katze und fliegt weg' } },
+    { id: 'goldfisch', is: 'Ein Goldfisch ist', icon: '🐟', name: 'Goldfisch', desc: 'Ein Goldfisch schwimmt im Teich und kommt sofort, wenn du Futter ins Wasser streust.', living: true,
+      has: { bewegung: 'schwimmt von selbst', fortpflanzung: 'legt Eier, aus denen kleine Fische schlüpfen', wachstum: 'wird größer', zellen: 'besteht aus Tierzellen', stoffwechsel: 'frisst Futter, braucht Sauerstoff und scheidet Abfallstoffe aus', reizbarkeit: 'sieht das Futter und schwimmt hin' } },
+    { id: 'feuer', is: 'Feuer ist', icon: '🔥', name: 'Feuer', desc: 'Ein Lagerfeuer wird immer größer, flackert hin und her und braucht Sauerstoff zum Brennen.', living: false,
+      looks: { wachstum: 'es wird größer', stoffwechsel: 'es braucht Sauerstoff', bewegung: 'es flackert hin und her' },
+      sure: { zellen: 'Feuer besteht nicht aus Zellen.' } },
+    { id: 'roboter', is: 'Ein Roboter ist', icon: '🤖', name: 'Roboter', desc: 'Ein Staubsauger-Roboter fährt durchs Zimmer und dreht um, wenn er an die Wand stößt.', living: false,
+      looks: { bewegung: 'er fährt herum', reizbarkeit: 'er merkt die Wand und dreht um' },
+      sure: { zellen: 'Er besteht aus Metall, Kunststoff und Kabeln, nicht aus Zellen.', wachstum: 'Er wird nicht größer.', fortpflanzung: 'Er bekommt keine Roboter-Kinder.' } },
+    { id: 'stein', is: 'Ein Stein ist', icon: '🪨', name: 'Stein', desc: 'Ein Stein liegt seit Jahren am Wegrand.', living: false,
+      looks: {},
+      sure: { bewegung: 'Er bewegt sich nicht von selbst.', fortpflanzung: 'Er pflanzt sich nicht fort.', wachstum: 'Er wächst nicht.', zellen: 'Er besteht nicht aus Zellen.', stoffwechsel: 'Er nimmt keine Nahrung und keinen Sauerstoff auf.', reizbarkeit: 'Er reagiert nicht auf Reize.' } },
+    { id: 'auto', is: 'Ein Auto ist', icon: '🚗', name: 'Auto', desc: 'Ein Auto fährt los, tankt Benzin, braucht Luft und stößt Abgase aus.', living: false,
+      looks: { bewegung: 'es fährt', stoffwechsel: 'es tankt Benzin, braucht Luft und stößt Abgase aus' },
+      sure: { zellen: 'Es besteht aus Metall und Kunststoff, nicht aus Zellen.', wachstum: 'Es wird nicht größer.', fortpflanzung: 'Es bekommt keine Auto-Kinder.' } },
+    { id: 'eiszapfen', is: 'Ein Eiszapfen ist', icon: '🧊', name: 'Eiszapfen', desc: 'Ein Eiszapfen am Dach wird an jedem kalten Tag ein Stück länger.', living: false,
+      looks: { wachstum: 'er wird länger' },
+      sure: { zellen: 'Er besteht aus gefrorenem Wasser, nicht aus Zellen.', fortpflanzung: 'Er pflanzt sich nicht fort.', bewegung: 'Er bewegt sich nicht von selbst.' } },
+    { id: 'tablet', is: 'Ein Tablet ist', icon: '📱', name: 'Tablet', desc: 'Ein Tablet leuchtet auf, wenn du es antippst, und spielt dann Musik ab.', living: false,
+      looks: { reizbarkeit: 'es reagiert, wenn du es antippst' },
+      sure: { zellen: 'Es besteht aus Glas, Metall und Elektronik, nicht aus Zellen.', wachstum: 'Es wird nicht größer.', fortpflanzung: 'Es pflanzt sich nicht fort.', bewegung: 'Es bewegt sich nicht von selbst.' } }
+  ];
+
+  const VIDEOS = [
+    { id: 'v1', file: 'v1-lebewesen', title: 'Woran erkennt man ein Lebewesen?', pre: { q: 'Wie viele Kennzeichen von Lebewesen stehen in deinem Heft?', options: ['3', '4', '6', '10'], correct: 2 } },
+    { id: 'v2', file: 'v2-zellen', title: 'Pflanzenzelle und Tierzelle', pre: { q: 'Was hat nur die Pflanzenzelle, aber nicht die Tierzelle?', options: ['Zellkern', 'Chloroplasten', 'Zellmembran', 'Mitochondrien'], correct: 1 } },
+    { id: 'v3', file: 'v3-reiz-reaktion', title: 'Die Reiz-Reaktions-Kette', pre: { q: 'Wohin wird das Signal von den Sinneszellen geleitet?', options: ['zu den Muskeln', 'zum Gehirn', 'zum Herzen', 'zur Haut'], correct: 1 } }
+  ];
+
+  const RECALL = [
+    { id: 'kennzeichen', title: 'Kennzeichen von Lebewesen', ask: 'Schreib alle 6 Kennzeichen von Lebewesen auf.', heft: HEFT_KZ, items: [
+      { name: 'aktive Bewegung', syn: ['aktive bewegung', 'bewegung', 'bewegen', 'sich bewegen', 'aktiv bewegen'] },
+      { name: 'Fortpflanzung', syn: ['fortpflanzung', 'fortpflanzen', 'vermehrung', 'vermehren', 'nachwuchs'] },
+      { name: 'Wachstum und Entwicklung', syn: ['wachstum und entwicklung', 'wachstum', 'entwicklung', 'wachsen', 'entwickeln'] },
+      { name: 'Aufbau aus Zellen', syn: ['aufbau aus zellen', 'zellen', 'aus zellen', 'zellaufbau', 'zelle'] },
+      { name: 'Stoffwechsel', syn: ['stoffwechsel'] },
+      { name: 'Reizbarkeit', syn: ['reizbarkeit', 'reizbar', 'reize', 'reiz', 'reaktion auf reize'] }
+    ] },
+    { id: 'pflanzenzelle', title: 'Teile der Pflanzenzelle', ask: 'Nenne die 7 Teile der Pflanzenzelle.', heft: `Pflanzenzelle: ${PLANT.map((k, i) => `${i + 1} ${ORG[k].name}`).join(', ')}`, items: PLANT.map(k => ({ name: ORG[k].name, syn: SYN_ORG(k) })) },
+    { id: 'tierzelle', title: 'Teile der Tierzelle', ask: 'Nenne die 4 Teile der Tierzelle.', heft: `Tierzelle: ${ANIMAL.map((k, i) => `${i + 1} ${ORG[k].name}`).join(', ')}`, items: ANIMAL.map(k => ({ name: ORG[k].name, syn: SYN_ORG(k) })),
+      hints: ['wand', 'vakuole', 'chloro'].map(k => ({ syn: SYN_ORG(k), text: `${ORG[k].name}: Die hat nur die Pflanzenzelle. ${HEFT_UNTERSCHIED}` })) },
+    { id: 'unterschiede', title: 'Was der Tierzelle fehlt', ask: 'Was besitzen tierische Zellen im Gegensatz zu pflanzlichen Zellen NICHT? (3 Teile)', heft: HEFT_UNTERSCHIED, items: [
+      { name: 'Zellwand', syn: SYN_ORG('wand') }, { name: 'Vakuole', syn: SYN_ORG('vakuole') }, { name: 'Chloroplasten', syn: SYN_ORG('chloro') }
+    ], hints: ANIMAL.map(k => ({ syn: SYN_ORG(k), text: `${ORG[k].name}: Das haben beide Zellen. ${HEFT_GEMEINSAM}` })) },
+    { id: 'sinne', title: 'Die 5 Hauptsinne', ask: 'Nenne die 5 Hauptsinne des Menschen.', heft: `Die 5 Hauptsinne: ${SENSES.map(s => `${s.sinn} (≙ ${s.act})`).join(', ')}`, items: [
+      { name: 'Hörsinn', syn: ['hoersinn', 'hoeren', 'gehoer', 'gehoersinn'] },
+      { name: 'Tastsinn', syn: ['tastsinn', 'tasten', 'fuehlen', 'fuehlsinn'] },
+      { name: 'Geschmackssinn', syn: ['geschmackssinn', 'schmecken', 'geschmack'] },
+      { name: 'Sehsinn', syn: ['sehsinn', 'sehen'] },
+      { name: 'Geruchssinn', syn: ['geruchssinn', 'riechen', 'geruch', 'riechsinn'] }
+    ], hints: [{ syn: ['gleichgewichtssinn', 'gleichgewicht'], text: 'Gleichgewichtssinn: Den gibt es auch, er zählt aber nicht zu den 5 Hauptsinnen. Im Heft: „Zusätzlich zu den 5 Hauptsinnen gibt es zum Beispiel den Gleichgewichtssinn.“' }] },
+    { id: 'organe', title: 'Die 5 Sinnesorgane', ask: 'Nenne die 5 Sinnesorgane aus der Tabelle.', heft: `Sinnesorgane: ${SENSES.map(s => `${s.organ} (${s.sinn})`).join(', ')}`, items: [
+      { name: 'Ohr', syn: ['ohr', 'ohren'] }, { name: 'Haut', syn: ['haut'] }, { name: 'Zunge', syn: ['zunge'] }, { name: 'Auge', syn: ['auge', 'augen'] }, { name: 'Nase', syn: ['nase'] }
+    ] }
+  ];
+  function SYN_ORG(k) {
+    return {
+      wand: ['zellwand', 'wand'], membran: ['zellmembran', 'membran'], plasma: ['zellplasma', 'plasma', 'zytoplasma', 'cytoplasma'],
+      kern: ['zellkern', 'kern'], vakuole: ['zellsaftvakuole', 'vakuole', 'zellsaft'], chloro: ['chloroplasten', 'chloroplast', 'chloroplasen'],
+      mito: ['mitochondrien', 'mitochondrium', 'mitochondrie']
+    }[k];
+  }
+
+  // ---------- Learning areas ----------
+  const MODULES = [
+    { id: 'zettel', title: 'Lernzettel', sub: 'Alles aus dem Heft zum Nachlesen und Anhören', color: 'gelb', stage: 1 },
+    { id: 'videos', title: 'Erklärvideos', short: 'Videos', sub: 'Erst raten, dann schauen, dann prüfen', color: 'hellblau', stage: 1 },
+    { id: 'recall', title: 'Gedächtnis leeren', short: 'Erinnern', sub: 'Schreib alles auf, was du noch weißt', color: 'lila', stage: 2 },
+    { id: 'zellen', title: 'Zell-Labor', short: 'Zellen', sub: 'Zellen unter dem Mikroskop beschriften und vergleichen', color: 'gruen', stage: 2 },
+    { id: 'organell', title: 'Organell-Detektiv', short: 'Organelle', sub: 'Wer ist die Mülldeponie? Wer das Kraftwerk? Und warum?', color: 'orange', stage: 2 },
+    { id: 'kette', title: 'Reiz-Reaktions-Kette', short: 'Kette', sub: 'Vom Reiz bis zur Reaktion in die richtige Reihenfolge', color: 'rot', stage: 2 },
+    { id: 'sinne', title: 'Sinnes-Tabelle', short: 'Sinne', sub: 'Die Tabelle der fünf Sinne als Puzzle', color: 'tuerkis', stage: 2 },
+    { id: 'schutz', title: 'Schutz-Check', short: 'Schutz', sub: 'Gefahren für die Sinnesorgane und wie du sie schützt', color: 'rosa', stage: 2 },
+    { id: 'leben', title: 'Ist das ein Lebewesen?', short: 'Leben?', sub: 'Feuer, Roboter, Hund: Prüf die sechs Kennzeichen', color: 'dunkelblau', stage: 3 },
+    { id: 'mix', title: 'Mix-Runde', sub: 'Gemischte Fragen aus allem. Wie sicher bist du?', color: 'oliv', stage: 3 }
+  ];
+  const MOD = Object.fromEntries(MODULES.map(m => [m.id, m]));
+  const STAGES = [[1, 'Kennenlernen'], [2, 'Üben'], [3, 'Anwenden']];
+
+  // ---------- Cards (Leitner) ----------
+  const CARDS = [];
+  const add = c => CARDS.push(c);
+  const shuffle = a => {
+    a = a.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  };
+  const pick = a => a[Math.floor(Math.random() * a.length)];
+  function mcq(prompt, right, wrongs, extra = {}) {
+    const options = shuffle([right, ...shuffle(wrongs).slice(0, 3)]);
+    return { prompt, options, correct: options.indexOf(right), ...extra };
+  }
+
+  // Videos: two check questions per video
+  add({ id: 'v1-a', mod: 'videos', video: 'v1', type: 'mc', title: 'Was zum Stoffwechsel gehört', heft: `Stoffwechsel: ${KZ_BY.stoffwechsel.detail}`,
+    mc: () => mcq('Was gehört alles zum Stoffwechsel?', 'Stoffe aus der Umwelt aufnehmen, verändern und andere Stoffe ausscheiden', ['nur essen und trinken', 'nur atmen', 'wachsen und größer werden']) });
+  add({ id: 'v1-b', mod: 'videos', video: 'v1', type: 'mc', title: 'Was zur Reizbarkeit gehört', heft: `Reizbarkeit: ${KZ_BY.reizbarkeit.detail}`,
+    mc: () => mcq('Was gehört zur Reizbarkeit?', 'Informationen aus der Umwelt aufnehmen, verarbeiten und darauf reagieren', ['Nahrung aufnehmen und Abfallstoffe ausscheiden', 'größer werden und sich entwickeln', 'Nachkommen bekommen']) });
+  add({ id: 'v2-a', mod: 'videos', video: 'v2', type: 'mc', title: 'Gemeinsamkeiten der Zellen', heft: HEFT_GEMEINSAM,
+    mc: () => mcq('Was besitzen tierische UND pflanzliche Zellen?', 'Zellmembran, Zellplasma, Zellkern, Mitochondrien', ['Zellwand, Vakuole, Chloroplasten', 'Zellwand, Zellkern, Chloroplasten', 'nur Zellmembran und Zellwand']) });
+  add({ id: 'v2-b', mod: 'videos', video: 'v2', type: 'mc', title: 'Womit man Zellen betrachtet', heft: HEFT_MIKRO,
+    mc: () => mcq('Womit kann man Zellen betrachten?', 'mit einem Vergrößerungsgerät, einem Mikroskop', ['mit einem Fernglas', 'mit bloßem Auge', 'mit einer Taschenlampe']) });
+  add({ id: 'v3-a', mod: 'videos', video: 'v3', type: 'mc', title: 'Anfang der Reiz-Reaktions-Kette', heft: HEFT_CHAIN,
+    mc: () => mcq('Womit beginnt die Reiz-Reaktions-Kette?', 'Ein Sinnesorgan nimmt einen passenden Reiz mit Sinneszellen auf.', ['Das Gehirn schickt einen Befehl los.', 'Die Muskeln bewegen sich.', 'Die motorischen Nerven leiten ein Signal.']) });
+  add({ id: 'v3-b', mod: 'videos', video: 'v3', type: 'mc', title: 'Ende der Reiz-Reaktions-Kette', heft: HEFT_CHAIN,
+    mc: () => mcq('Womit endet die Reiz-Reaktions-Kette?', 'mit einer Reaktion', ['mit der Wahrnehmung im Gehirn', 'mit einem elektrischen Signal in den Sinneszellen', 'mit einem neuen Reiz']) });
+
+  // Free recall lists
+  RECALL.forEach(l => add({ id: `rc-${l.id}`, mod: 'recall', type: 'recall', title: l.title, heft: l.heft, list: l }));
+
+  // Cell lab: labelling and comparing
+  const orgNames = keys => keys.map(k => ORG[k].name);
+  [['p', 'pflanze', PLANT, 'Pflanzenzelle'], ['t', 'tier', ANIMAL, 'Tierzelle']].forEach(([c, cell, keys, cellName]) => {
+    keys.forEach((k, i) => add({
+      id: `l-${c}-${k}`, mod: 'zellen', type: 'label', cell, part: k, title: `${cellName}: ${ORG[k].name} beschriften`, heft: `${cellName} (Nummer ${i + 1}) – ${ORG_HEFT(k)}`,
+      mc: () => mcq(PLURAL(k) ? 'Wie heißen die leuchtenden Teile?' : 'Wie heißt das leuchtende Teil?', ORG[k].name, orgNames(PLANT.filter(o => o !== k)), { visual: cellSVG(cell, { sel: k }), label: cellName })
+    }));
+  });
+  const ZONES = { pflanze: 'nur in der Pflanzenzelle', beide: 'in beiden Zellen', tier: 'nur in der Tierzelle' };
+  const zoneOf = k => ANIMAL.includes(k) ? 'beide' : 'pflanze';
+  PLANT.forEach(k => add({
+    id: `vn-${k}`, mod: 'zellen', type: 'venn', part: k, title: `${ORG[k].name}: Pflanzen-, Tierzelle oder beide?`, heft: zoneOf(k) === 'beide' ? HEFT_GEMEINSAM : HEFT_UNTERSCHIED,
+    mc: () => { const opts = Object.keys(ZONES); return { prompt: `Wo gibt es „${ORG[k].name}“?`, options: opts.map(z => ZONES[z]), correct: opts.indexOf(zoneOf(k)) }; }
+  }));
+
+  // Organelle detective: function / memory image → organelle, plus "why" questions
+  Object.entries(ORG).forEach(([k, o]) => o.fn.forEach((f, i) => add({
+    id: `f-${k}-${i}`, mod: 'organell', type: 'mc', title: `${o.name}: ${f}`, heft: ORG_HEFT(k),
+    mc: () => mcq('Zu welchem Zellorganell passt das?', o.name, orgNames(PLANT.filter(x => x !== k)), { clue: f.replace(/^Mitochondrien = /, '') })
+  })));
+  const WHY = [
+    ['w-teilraeume', 'Warum ist das Zellinnere durch Membransysteme in verschiedene Teilräume (Zellorganellen) gegliedert?', 'Damit verschiedene Stoffwechselprozesse gleichzeitig ablaufen können, ohne sich zu stören.', ['Damit die Zelle schneller wächst.', 'Damit die Zelle grün wird.', 'Damit man die Zelle ohne Mikroskop sehen kann.'], HEFT_TEIL],
+    ['w-kraftwerk', 'Warum nennt man die Mitochondrien „Kraftwerke der Zelle“?', 'Sie sorgen durch Zellatmung für die Energiebereitstellung.', ['Sie enthalten grünen Farbstoff.', 'Sie schützen die Zelle.', 'Sie sind die Mülldeponie der Zelle.'], ORG_HEFT('mito')],
+    ['w-kommando', 'Warum ist der Zellkern die „Kommandozentrale“?', 'Er steuert alle Vorgänge.', ['Er verleiht dem Ganzen Stabilität.', 'Er ist der Ort der Fotosynthese.', 'Er reguliert nur den Stoffaustausch.'], ORG_HEFT('kern')],
+    ['w-suppe', 'Warum vergleicht man das Zellplasma mit einer „Suppe“?', 'Es ist eine gallertige Flüssigkeit, in der die Zellorganellen liegen wie Gemüse in einer Suppe.', ['Weil es heiß ist.', 'Weil es die Zelle von außen schützt.', 'Weil es aus Traubenzucker besteht.'], ORG_HEFT('plasma')],
+    ['w-gruen', 'Woher kommt die grüne Farbe in der Pflanzenzelle?', 'Die Chloroplasten enthalten grünen Farbstoff (Chlorophyll).', ['Die Zellwand ist grün angemalt.', 'Die Vakuole ist mit grünem Saft gefüllt.', 'Der Zellkern enthält grüne Erbinformation.'], ORG_HEFT('chloro')],
+    ['w-stabil', 'Warum ist eine Pflanzenzelle stabiler als eine Tierzelle?', 'Sie hat eine Zellwand, die dem Ganzen Stabilität verleiht. Tierzellen haben keine Zellwand.', ['Sie hat mehr Mitochondrien.', 'Sie hat keine Zellmembran.', 'Ihr Zellkern ist größer.'], `${ORG_HEFT('wand')} – ${HEFT_UNTERSCHIED}`],
+    ['w-fotosynthese', 'Warum findet in einer Tierzelle keine Fotosynthese statt?', 'Tierzellen haben keine Chloroplasten, und die Chloroplasten sind der Ort der Fotosynthese.', ['Tierzellen haben keinen Zellkern.', 'Tierzellen haben keine Zellmembran.', 'Tierzellen haben keine Mitochondrien.'], `${ORG_HEFT('chloro')} – ${HEFT_UNTERSCHIED}`],
+    ['w-atmung', 'Was entsteht in den Mitochondrien aus Traubenzucker und Sauerstoff?', 'Kohlendioxid und Wasser', ['Traubenzucker und Sauerstoff', 'grüner Farbstoff (Chlorophyll)', 'Erbinformation (DNA)'], ORG_HEFT('mito')],
+    ['w-foto', 'Was wird in den Chloroplasten aus Kohlendioxid und Wasser?', 'Traubenzucker und Sauerstoff', ['Kohlendioxid und Wasser', 'Zellsaft für die Vakuole', 'Erbinformation (DNA)'], ORG_HEFT('chloro')]
+  ];
+  WHY.forEach(([id, q, a, w, heft]) => add({ id, mod: 'organell', type: 'mc', title: q, heft, mc: () => mcq(q, a, w) }));
+
+  // Stimulus-response chain
+  function nextStepMc(steps, intro) {
+    const i = Math.floor(Math.random() * (steps.length - 1));
+    return mcq(`${intro} Was kommt direkt danach?`, steps[i + 1], steps.filter((_, j) => j !== i && j !== i + 1), { clue: steps[i] });
+  }
+  add({ id: 'r-kette', mod: 'kette', type: 'order', title: 'Reiz-Reaktions-Kette ordnen', heft: HEFT_CHAIN, steps: CHAIN,
+    ask: 'Tippe die 6 Schritte der Reiz-Reaktions-Kette in der richtigen Reihenfolge an.', mc: () => nextStepMc(CHAIN, 'Reiz-Reaktions-Kette:') });
+  add({ id: 'r-ball', mod: 'kette', type: 'order', title: 'Anwendung: Ein Ball fliegt auf dich zu', heft: HEFT_CHAIN, steps: BALL, map: true,
+    ask: 'Ein Ball fliegt auf dich zu, und du fängst ihn. Tippe an, was nacheinander passiert.', mc: () => nextStepMc(BALL, 'Ein Ball fliegt auf dich zu.') });
+  const GAPS = [
+    ['r-reize', 'Informationen aus der Umwelt nennt man …', 'Reize', ['Signale', 'Befehle', 'Nerven'], REIZ_INTRO[0]],
+    ['r-sinneszellen', 'Reize werden aufgenommen durch …', 'Sinneszellen', ['Muskeln', 'Drüsen', 'motorische Nerven'], REIZ_INTRO[1]],
+    ['r-organe', 'Sinneszellen mit ähnlichen Aufgaben sind oft ähnlich gebaut und zusammengefasst in …', 'Sinnesorganen', ['Erfolgsorganen', 'Zellorganellen', 'Muskeln'], REIZ_INTRO[2]],
+    ['r-reizart', 'Ein Sinnesorgan nimmt einen passenden Reiz auf. Was muss passen?', 'Die Reizart muss zu den Sinneszellen passen.', ['Der Reiz muss besonders laut sein.', 'Die Nerven müssen zu den Muskeln passen.', 'Der Reiz muss vom Gehirn kommen.'], CHAIN[0]],
+    ['r-signal', 'Sinneszellen wandeln den Reiz um in …', 'ein elektrisches Signal', ['einen Befehl an die Muskeln', 'Traubenzucker', 'eine Reaktion'], CHAIN[1]],
+    ['r-sensorisch', 'Über welche Nerven wird das Signal zum Gehirn geleitet?', 'über sensorische Nerven', ['über motorische Nerven', 'über die Muskeln', 'über die Drüsen'], CHAIN[2]],
+    ['r-gehirn', 'Was macht das Gehirn mit der Information?', 'Es verarbeitet sie (Wahrnehmung), entscheidet über eine passende Reaktion und wandelt sie in einen elektrischen Befehl.', ['Es nimmt den Reiz mit Sinneszellen auf.', 'Es schickt das Signal über sensorische Nerven zurück.', 'Es leitet den Reiz direkt zu den Drüsen weiter, ohne etwas zu entscheiden.'], CHAIN[3]],
+    ['r-motorisch', 'Über welche Nerven wird der Befehl zu den Erfolgsorganen geleitet?', 'über motorische Nerven', ['über sensorische Nerven', 'über die Sinneszellen', 'über die Netzhaut'], CHAIN[4]],
+    ['r-erfolgsorgane', 'Welche gehören zu den Erfolgsorganen?', 'Muskeln, Drüsen', ['Auge, Ohr', 'Gehirn, Nerven', 'Sinneszellen, Sinnesorgane'], CHAIN[4]],
+    ['r-wahrnehmung', 'Wo findet die Wahrnehmung statt?', 'im Gehirn, wenn es die Information verarbeitet', ['in den Muskeln', 'in den motorischen Nerven', 'in den Drüsen'], CHAIN[3]]
+  ];
+  GAPS.forEach(([id, q, a, w, heft]) => add({ id, mod: 'kette', type: 'mc', title: q, heft, mc: () => mcq(q, a, w) }));
+
+  // Senses table: one card per cell, plus the balance gap text
+  SENSES.forEach(s => COLS.forEach(c => add({
+    id: `s-${s.id}-${c.id}`, mod: 'sinne', type: 'puzzle', sense: s.id, col: c.id, title: `${s.sinn}: ${c.label}`, heft: senseHeft(s),
+    mc: () => mcq(c.q, s[c.id], SENSES.filter(o => o !== s).map(o => o[c.id]), { clue: `${s.sinn} (≙ ${s.act})` })
+  })));
+  add({ id: 's-gleichgewicht', mod: 'sinne', type: 'gaps', title: 'Lückentext Gleichgewichtssinn', heft: HEFT_GLEICH, gaps: GLEICH,
+    mc: () => {
+      const i = Math.floor(Math.random() * GLEICH.answers.length);
+      const text = GLEICH.parts.map(p => typeof p === 'number' ? (p === i ? '___' : GLEICH.answers[p]) : p).join('');
+      return mcq('Was gehört in die Lücke?', GLEICH.answers[i], [...GLEICH.distract, ...GLEICH.answers.filter((_, j) => j !== i)], { clue: text });
+    } });
+
+  // Protection of the sense organs
+  const GEFAHREN = [...new Set(PROTECT.map(p => p.gefahr))];
+  PROTECT.forEach(p => {
+    add({ id: `p-${p.id}-gefahr`, mod: 'schutz', type: 'mc', title: `${p.organ}: mögliche Gefahr`, heft: protectHeft(p),
+      mc: () => Math.random() < 0.5
+        ? mcq(`Welche mögliche Gefahr steht im Heft beim Sinnesorgan ${p.organ}?`, p.gefahr, GEFAHREN.filter(g => g !== p.gefahr))
+        : mcq(`Welches Sinnesorgan ist durch „${p.gefahr}“ gefährdet? Ein Organ ist richtig.`, p.organ, PROTECT.filter(o => o.gefahr !== p.gefahr).map(o => o.organ)) });
+    add({ id: `p-${p.id}-schutz`, mod: 'schutz', type: 'mc', title: `${p.organ}: Schutzmaßnahme`, heft: protectHeft(p),
+      mc: () => Math.random() < 0.5
+        ? mcq(`Wie schützt du ${p.dein}? (Gefahr: ${p.gefahr})`, p.schutz, PROTECT.filter(o => o !== p).map(o => o.schutz), { scene: p.scene })
+        : mcq(`Welches Sinnesorgan schützt du so: „${p.schutz}“?`, p.organ, PROTECT.filter(o => o !== p).map(o => o.organ)) });
+  });
+
+  // Living things: recognise the features, check examples
+  const KZ_EX = [
+    ['k-bewegung', 'Ein Pferd galoppiert über die Koppel.', 'bewegung'],
+    ['k-fortpflanzung', 'Eine Katze bekommt vier Junge.', 'fortpflanzung'],
+    ['k-wachstum', 'Aus einer Kaulquappe wird ein Frosch.', 'wachstum'],
+    ['k-zellen', 'Unter dem Mikroskop sieht man, dass ein Blatt aus vielen kleinen Bausteinen besteht.', 'zellen'],
+    ['k-stoffwechsel', 'Ein Hase frisst Möhren, verdaut sie und scheidet Kot aus.', 'stoffwechsel'],
+    ['k-reizbarkeit', 'Du hörst deinen Namen und drehst dich um.', 'reizbarkeit']
+  ];
+  KZ_EX.forEach(([id, scene, kz]) => add({ id, mod: 'leben', type: 'mc', title: `Kennzeichen erkennen: ${KZ_BY[kz].name}`, heft: KZ_BY[kz].detail ? `${KZ_BY[kz].name}: ${KZ_BY[kz].detail}` : HEFT_KZ, example: true,
+    mc: () => mcq('Welches Kennzeichen von Lebewesen erkennst du hier?', KZ_BY[kz].name, KZ.filter(k => k.id !== kz).map(k => k.name), { scene }) }));
+  add({ id: 'k-alle', mod: 'leben', type: 'mc', title: 'Alle Kennzeichen nötig', heft: MERK,
+    mc: () => mcq('Etwas hat fünf der sechs Kennzeichen von Lebewesen. Ist es ein Lebewesen?', 'Nein. Alle Lebewesen besitzen ALLE Kennzeichen.', ['Ja, fünf von sechs reichen.', 'Ja, wenn es sich bewegen kann.', 'Ja, wenn es wächst.']) });
+  LIVING.forEach(ex => add({ id: `lw-${ex.id}`, mod: 'leben', type: 'living', ex, title: `Lebewesen? ${ex.name}`, heft: MERK, example: true,
+    mc: () => {
+      if (ex.living) return mcq('Ist das ein Lebewesen?', 'Ja. Alle sechs Kennzeichen treffen zu.', ['Nein. Es besteht nicht aus Zellen.', 'Nein. Es hat keinen Stoffwechsel.'], { scene: `${ex.icon} ${ex.desc}` });
+      const [kz, why] = Object.entries(ex.sure)[0];
+      return mcq('Ist das ein Lebewesen?', `Nein. ${why}`, ['Ja. Alle sechs Kennzeichen treffen zu.', ...Object.values(ex.looks).map(l => `Ja, denn ${l}.`)].slice(0, 3), { scene: `${ex.icon} ${ex.desc}` });
+    } }));
+
+  const CARD = Object.fromEntries(CARDS.map(c => [c.id, c]));
+  const TOTAL = CARDS.length;
+  const MIXABLE = CARDS.filter(c => c.type !== 'recall');
+
+  // ---------- State ----------
+  const KEY = 'bio-labor-v1';
+  const HUB_KEY = 'lernzentrale:2026-10_Biologie-Lebewesen-Zellen-Sinne';
+  if (location.pathname.includes('/lernzentrale/')) document.getElementById('hubLink').hidden = false;
+  const MASTER = 3;
+  const WEIGHT = [8, 5, 3, 1];
+  const REVIEW_DAYS = 4;
+  const DAY = 864e5;
+  const MAX_RETRY = 4;
+  const PRAISE = ['Richtig!', 'Super!', 'Genau!', 'Klasse!', 'Stark!', 'Spitze!', 'Forscherblick!'];
+  const COMFORT = ['Nicht ganz.', 'Knapp daneben.', 'Das üben wir noch.'];
+  const RANKS = [[0, 'Lupe'], [0.2, 'Mikroskop'], [0.45, 'Laborkittel'], [0.7, 'Forscherbrille'], [1, 'Goldenes Mikroskop']];
+
+  const $view = document.getElementById('view');
+  let P = load();
+  let view = 'home';
+  let round = null;
+  let lab = null;
+  let pz = null;
+  let rc = null;
+  let vd = null;
+  let resetAsk = false;
+
+  function fresh() {
+    return { lv: {}, last: {}, wrong: {}, right: {}, conf: {}, vid: {}, points: 0 };
+  }
+  function load() {
+    const base = fresh();
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (raw) {
+        const p = JSON.parse(raw);
+        if (p && typeof p === 'object') return Object.assign(base, p);
+      }
+    } catch (e) {}
+    return base;
+  }
+  function save() {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(P));
+      localStorage.setItem(HUB_KEY, JSON.stringify({ done: doneCount(), total: TOTAL, last: Date.now() }));
+    } catch (e) {}
+  }
+
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const lvl = id => Math.min(MASTER, P.lv[id] || 0);
+  const mastered = id => lvl(id) >= MASTER;
+  const started = id => lvl(id) > 0 || (P.wrong[id] || 0) > 0;
+  const doneCount = () => CARDS.filter(c => mastered(c.id)).length;
+  const modCards = m => CARDS.filter(c => c.mod === m);
+  const modDone = m => modCards(m).filter(c => mastered(c.id)).length;
+  const modComplete = m => modCards(m).every(c => mastered(c.id));
+  const CARD_MODS = MODULES.filter(m => modCards(m.id).length);
+  const tilt = i => ((i * 37) % 7 - 3) * 0.6;
+  const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const due = id => Date.now() - (P.last[id] || 0) > REVIEW_DAYS * DAY;
+  const weightOf = c => mastered(c.id) && due(c.id) ? 4 : WEIGHT[lvl(c.id)];
+  const dots = n => `${'●'.repeat(n)}${'○'.repeat(MASTER - n)}`;
+
+  function weightedSample(pool, n) {
+    const items = pool.slice();
+    const out = [];
+    while (out.length < n && items.length) {
+      const total = items.reduce((s, x) => s + weightOf(x), 0);
+      let r = Math.random() * total;
+      let i = 0;
+      for (; i < items.length - 1; i++) {
+        r -= weightOf(items[i]);
+        if (r <= 0) break;
+      }
+      out.push(items.splice(i, 1)[0]);
+    }
+    return out;
+  }
+
+  // Leitner: 3 correct in a row = learned, a mistake resets to 0
+  function record(card, ok) {
+    const before = mastered(card.id);
+    const mBefore = modComplete(card.mod);
+    P.lv[card.id] = ok ? Math.min(MASTER, lvl(card.id) + 1) : 0;
+    P.last[card.id] = Date.now();
+    if (ok) P.right[card.id] = (P.right[card.id] || 0) + 1;
+    else P.wrong[card.id] = (P.wrong[card.id] || 0) + 1;
+    return { newly: !before && mastered(card.id), modDone: !mBefore && modComplete(card.mod) };
+  }
+  function addPoints(n) {
+    P.points += n;
+    if (round) round.points += n;
+  }
+
+  function strip(text, c, extra = '', t = 0) {
+    return `<span class="strip ${extra}" style="--c:var(--g-${c});--tilt:${t}deg">${esc(text)}</span>`;
+  }
+  const heftQuote = text => `<blockquote class="heft"><span class="label">Im Heft</span>${esc(text)}</blockquote>`;
+
+  // ---------- Speech (German voice) ----------
+  let deVoice = null;
+  function findVoice() {
+    try {
+      const voices = speechSynthesis.getVoices();
+      deVoice = voices.find(v => v.lang === 'de-DE' && /Anna|Petra|Helena|Google/i.test(v.name)) || voices.find(v => v.lang && v.lang.startsWith('de')) || null;
+    } catch (e) {}
+  }
+  const canSpeak = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+  if (canSpeak) { findVoice(); speechSynthesis.onvoiceschanged = findVoice; }
+  function speak(text) {
+    if (!canSpeak || !text) return;
+    try {
+      speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text.replace(/≙/g, 'entspricht').replace(/→/g, ', dann ').replace(/\|/g, ','));
+      u.lang = 'de-DE';
+      if (deVoice) u.voice = deVoice;
+      u.rate = 0.92;
+      speechSynthesis.speak(u);
+    } catch (e) {}
+  }
+  const ICON_SPEAK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+  const ICON_CLOSE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>';
+  const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+  const speakBtn = (text, label = 'Vorlesen') => canSpeak ? `<button class="btn ghost small" data-act="speak" data-say="${esc(text)}">${ICON_SPEAK}${label}</button>` : '';
+  const closeBtn = (act = 'home', label = 'Zurück zum Labor', arg = '') => `<button class="iconbtn" data-act="${act}" ${arg ? `data-arg="${arg}"` : ''} aria-label="${label}">${ICON_CLOSE}</button>`;
+
+  // ---------- Drawings ----------
+  // Microscope view of tissue: 8 learning areas around the total in the middle
+  function tissueSVG() {
+    const xs = [86, 200, 314], ys = [96, 200, 304], w = 106, h = 96;
+    const J = [[-4, 3, 5, -2, 2, 4, -3, -1], [3, -2, -3, 4, -2, -3, 4, 2], [-2, -4, 4, 2, -5, 3, 2, -3], [4, 2, -2, -3, 3, -2, -4, 4], [0, 0, 0, 0, 0, 0, 0, 0], [-3, 4, 2, -4, 4, 2, -2, -2], [2, -3, -4, 3, -2, 4, 3, 2], [-4, -2, 3, 4, 2, -3, -3, 3], [3, 4, -2, -3, -4, 2, 4, -4]];
+    const order = ['videos', 'recall', 'zellen', 'organell', null, 'kette', 'sinne', 'schutz', 'leben'];
+    let s = `<svg class="tissue" viewBox="0 0 400 400" role="img" aria-label="Mikroskop-Blick: ${doneCount()} von ${TOTAL} Karten gelernt"><defs><clipPath id="scopeClip"><circle cx="200" cy="200" r="186"/></clipPath></defs>`;
+    s += '<circle class="field" cx="200" cy="200" r="186"/><g clip-path="url(#scopeClip)">';
+    order.forEach((m, i) => {
+      const x = xs[i % 3], y = ys[Math.floor(i / 3)], j = J[i];
+      const pts = [[x - w / 2 + j[0], y - h / 2 + j[1]], [x + w / 2 + j[2], y - h / 2 + j[3]], [x + w / 2 + j[4], y + h / 2 + j[5]], [x - w / 2 + j[6], y + h / 2 + j[7]]].map(p => p.join(',')).join(' ');
+      const cards = m ? modCards(m) : CARDS;
+      const n = cards.length, done = cards.filter(c => mastered(c.id)).length, st = cards.filter(c => started(c.id)).length;
+      const c = m ? `var(--g-${MOD[m].color})` : 'var(--g-gruen)';
+      const light = (h + 12) * st / n, solid = (h + 12) * done / n, bottom = y + h / 2 + 6;
+      s += `<clipPath id="tc${i}"><polygon points="${pts}"/></clipPath><polygon class="cellbg" points="${pts}"/>`;
+      s += `<g clip-path="url(#tc${i})"><rect x="${x - w}" y="${(bottom - light).toFixed(1)}" width="${w * 2}" height="${light.toFixed(1)}" style="fill:color-mix(in srgb, ${c} 38%, var(--cell-empty))"/>`;
+      s += `<rect x="${x - w}" y="${(bottom - solid).toFixed(1)}" width="${w * 2}" height="${solid.toFixed(1)}" style="fill:${c}"/></g>`;
+      s += `<polygon class="cellline" points="${pts}"/>`;
+      s += `<circle class="nuc" cx="${x + w / 2 - 20}" cy="${y - h / 2 + 18}" r="${m ? 6 : 9}"/>`;
+      const dark = done / n < 0.45;
+      s += `<text class="t-name ${dark ? 'empty' : ''}" x="${x}" y="${y + 2}">${esc(m ? MOD[m].short : 'Gesamt')}${done === n ? ' ★' : ''}</text>`;
+      s += `<text class="t-count ${dark ? 'empty' : ''}" x="${x}" y="${y + 22}">${done}/${n}</text>`;
+    });
+    return s + '</g><circle class="ring" cx="200" cy="200" r="190"/></svg>';
+  }
+
+  const PLANT_OUT = '60,100 300,78 345,165 330,305 105,325 52,215';
+  const PLANT_IN = '76,114 293,95 328,168 315,290 112,308 69,214';
+  const ANIMAL_BLOB = 'M200,62 C282,58 342,112 342,192 C342,272 288,338 204,338 C122,338 60,284 60,202 C60,120 118,66 200,62 Z';
+  const CHLORO_POS = [[150, 128, -5], [205, 122, -5], [258, 117, -5], [296, 142, 40], [306, 218, 85], [288, 280, -10], [225, 288, -5], [165, 292, -5], [106, 258, 55]];
+  const MITO_PLANT = [[110, 224, 70], [316, 182, 92], [258, 268, -10], [178, 141, 5]];
+  const MITO_ANIMAL = [[118, 170, 60], [150, 282, -20], [270, 128, 30], [292, 252, -60], [232, 300, 10]];
+  const BADGE = {
+    pflanze: { wand: [62, 160], membran: [322, 232], plasma: [134, 246], kern: [108, 180], vakuole: [215, 205], chloro: [205, 122], mito: [258, 268] },
+    tier: { membran: [340, 200], plasma: [130, 236], kern: [200, 196], mito: [270, 128] }
+  };
+  const chloroEl = ([x, y, r]) => `<g transform="translate(${x} ${y}) rotate(${r})"><circle class="hit" r="16"/><ellipse class="shape" rx="14" ry="7.5" fill="var(--chloro)" stroke="var(--chloro-edge)" stroke-width="1.6"/><path d="M-7-2.5v5M0-3.5v7M7-2.5v5" stroke="var(--chloro-edge)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>`;
+  const mitoEl = ([x, y, r]) => `<g transform="translate(${x} ${y}) rotate(${r})"><circle class="hit" r="15"/><ellipse class="shape" rx="12" ry="6.5" fill="var(--mito)" stroke="var(--mito-edge)" stroke-width="1.6"/><path d="M-8 0l2.6-3.2 2.6 6.4 2.6-6.4 2.6 6.4 2.6-6.4 2.6 3.2" stroke="var(--mito-edge)" stroke-width="1.3" fill="none" stroke-linejoin="round"/></g>`;
+
+  // Light-microscope style drawing; each part is a tappable group (data-part)
+  function cellSVG(kind, o = {}) {
+    const keys = kind === 'pflanze' ? PLANT : ANIMAL;
+    const cls = k => `part ${o.sel === k ? 'sel' : ''}`;
+    const name = kind === 'pflanze' ? 'Pflanzenzelle' : 'Tierzelle';
+    let s = `<svg class="cellsvg ${o.pick ? 'pick' : ''} ${o.sel ? 'has-sel' : ''}" viewBox="0 0 400 400" role="img" aria-label="${name} unter dem Mikroskop${o.sel ? `, ein Teil leuchtet` : ''}">`;
+    s += '<circle class="field" cx="200" cy="200" r="190"/>';
+    if (kind === 'pflanze') {
+      s += `<g class="${cls('wand')}" data-part="wand"><polygon class="shape" points="${PLANT_OUT}" fill="var(--wall)" stroke="var(--wall-edge)" stroke-width="2.5" stroke-linejoin="round"/><polygon class="hit" points="${PLANT_OUT}" fill="none" stroke-width="18" stroke-linejoin="round" style="fill:none;pointer-events:stroke"/></g>`;
+      s += `<g class="${cls('plasma')}" data-part="plasma"><polygon class="shape fillhi" points="${PLANT_IN}" fill="var(--plasma)" stroke="none"/></g>`;
+      s += `<g class="${cls('membran')}" data-part="membran"><polygon class="shape" points="${PLANT_IN}" fill="none" stroke="var(--membrane)" stroke-width="2.5" stroke-linejoin="round" style="pointer-events:none"/><polygon class="hit" points="${PLANT_IN}" stroke-width="14" stroke-linejoin="round" style="fill:none;pointer-events:stroke"/></g>`;
+      s += `<g class="${cls('vakuole')}" data-part="vakuole"><ellipse class="shape" cx="215" cy="205" rx="75" ry="58" transform="rotate(-8 215 205)" fill="var(--vacuole)" stroke="var(--vacuole-edge)" stroke-width="2"/></g>`;
+      s += `<g class="${cls('kern')}" data-part="kern"><circle class="shape" cx="108" cy="180" r="24" fill="var(--nucleus)" stroke="var(--nucleus-edge)" stroke-width="2"/><circle cx="114" cy="176" r="8" fill="var(--nucleus-edge)" opacity=".7"/></g>`;
+      s += `<g class="${cls('chloro')}" data-part="chloro">${CHLORO_POS.map(chloroEl).join('')}</g>`;
+      s += `<g class="${cls('mito')}" data-part="mito">${MITO_PLANT.map(mitoEl).join('')}</g>`;
+    } else {
+      s += `<g class="${cls('plasma')}" data-part="plasma"><path class="shape fillhi" d="${ANIMAL_BLOB}" fill="var(--plasma)" stroke="none"/></g>`;
+      s += `<g class="${cls('membran')}" data-part="membran"><path class="shape" d="${ANIMAL_BLOB}" fill="none" stroke="var(--membrane)" stroke-width="3" style="pointer-events:none"/><path class="hit" d="${ANIMAL_BLOB}" stroke-width="18" style="fill:none;pointer-events:stroke"/></g>`;
+      s += `<g class="${cls('kern')}" data-part="kern"><circle class="shape" cx="200" cy="196" r="34" fill="var(--nucleus)" stroke="var(--nucleus-edge)" stroke-width="2"/><circle cx="210" cy="188" r="10" fill="var(--nucleus-edge)" opacity=".7"/></g>`;
+      s += `<g class="${cls('mito')}" data-part="mito">${MITO_ANIMAL.map(mitoEl).join('')}</g>`;
+    }
+    if (o.done) keys.forEach((k, i) => {
+      if (!o.done[k]) return;
+      const [x, y] = BADGE[kind][k];
+      s += `<g class="badge ${o.done[k]}" aria-hidden="true"><circle cx="${x}" cy="${y}" r="13"/><text x="${x}" y="${y + 1}">${i + 1}</text></g>`;
+    });
+    return s + '<circle class="ring" cx="200" cy="200" r="194"/></svg>';
+  }
+
+  // ---------- Views ----------
+  function show(v) {
+    view = v;
+    render();
+    window.scrollTo(0, 0);
+  }
+  function render() {
+    document.getElementById('points').textContent = `${P.points} Punkte`;
+    const fn = { home: renderHome, zettel: renderZettel, videos: renderVideos, video: renderVideo, recall: renderRecall, lab: renderLab, sinne: renderSinne, quiz: renderQuiz, result: renderResult, parents: renderParents }[view];
+    $view.innerHTML = fn();
+    if (view === 'video') wireVideo();
+  }
+
+  function renderHome() {
+    const done = doneCount();
+    const pct = done / TOTAL;
+    const rankIdx = RANKS.reduce((r, [t], i) => pct >= t ? i : r, 0);
+    const nextRank = RANKS[rankIdx + 1];
+    const stamps = CARD_MODS.map(m => `<span class="stamp ${modComplete(m.id) ? 'on' : ''}" style="--c:var(--g-${m.color})" title="${esc(m.title)}">${esc(m.short)}</span>`).join('');
+    const stages = STAGES.map(([st, name]) => {
+      const tiles = MODULES.filter(m => m.stage === st).map((m, i) => {
+        const cards = modCards(m.id);
+        const n = cards.length, d = cards.filter(c => mastered(c.id)).length;
+        const mini = n ? `<div class="mini" style="--c:var(--g-${m.color})"><div class="bar" aria-hidden="true"><span style="width:${Math.round(100 * d / n)}%"></span></div>${d}/${n}${d === n ? ' ★' : ''}</div>` : '';
+        return `<button class="tile" data-act="mod" data-arg="${m.id}">${strip(m.title, m.color, '', tilt(i + st))}<p>${esc(m.sub)}</p>${mini}</button>`;
+      }).join('');
+      return `<section class="stack"><div class="stagehead"><h2>${st}. ${name}</h2></div><div class="tiles">${tiles}</div></section>`;
+    }).join('');
+    return `
+      <section class="sheet hero">
+        ${tissueSVG()}
+        <div class="stats">
+          <span class="label">Forscherausweis</span>
+          <div class="count">${done} von ${TOTAL}</div>
+          <div>Karten gelernt. Eine Karte ist gelernt, wenn du sie ${MASTER}-mal hintereinander richtig beantwortest.</div>
+          <div class="bar" aria-hidden="true"><span style="width:${Math.round(100 * pct)}%"></span></div>
+          <div class="rank">Stufe ${rankIdx + 1}: ${RANKS[rankIdx][1]}</div>
+          <div class="muted">${nextRank ? `Nächste Stufe „${nextRank[1]}“ ab ${Math.ceil(nextRank[0] * TOTAL)} Karten.` : 'Alles gelernt. Du bist eine echte Biologie-Expertin oder ein echter Biologie-Experte!'} Jede Zelle im Mikroskop ist ein Bereich: hell = geübt, kräftig = gelernt.</div>
+          <div class="stamps" aria-label="Stempel für fertige Bereiche">${stamps}</div>
+        </div>
+      </section>
+      ${stages}
+      <div class="row spread">
+        <button class="linkbtn" data-act="parents">Für Eltern</button>
+        <span class="muted">Aus dem Heft „Natur und Technik“</span>
+      </div>`;
+  }
+
+  // Notebook content to read and listen to
+  function renderZettel() {
+    const cellLegend = keys => `<ol class="legend">${keys.map((k, i) => `<li class="ok"><b>${i + 1}</b><span>${esc(ORG[k].name)}</span></li>`).join('')}</ol>`;
+    const secs = [
+      ['Biologie = Wissenschaft der Lebewesen', `<h3>Kennzeichen von Lebewesen (= LW)</h3><ul>${KZ.map(k => `<li><strong>${esc(k.name)}</strong>${k.detail ? `: ${esc(k.detail)}` : ''}</li>`).join('')}</ul><div class="merk">${esc(MERK)}</div>`],
+      ['Lebewesen sind aus Zellen aufgebaut', `<p>Pflanzen und Tiere sind aus verschiedenen Zellen aufgebaut. ${esc(HEFT_TEIL)}</p><p>${esc(HEFT_MIKRO)}</p>
+        <div class="cellpair"><div class="stack"><h3>Pflanzenzelle</h3>${cellSVG('pflanze', { done: Object.fromEntries(PLANT.map(k => [k, 'ok'])) })}${cellLegend(PLANT)}</div>
+        <div class="stack"><h3>Tierzelle</h3>${cellSVG('tier', { done: Object.fromEntries(ANIMAL.map(k => [k, 'ok'])) })}${cellLegend(ANIMAL)}</div></div>`],
+      ['Vergleich pflanzlicher und tierischer Zellen', `<div class="cards2">${PLANT.map(k => `<div class="ncard"><h3>${esc(ORG[k].name)}</h3><ul>${ORG[k].fn.map(f => `<li>${esc(f)}</li>`).join('')}</ul></div>`).join('')}</div>
+        <p><em>Vergleichen bedeutet Gemeinsamkeiten und Unterschiede zu beschreiben.</em></p><p><strong>Gemeinsamkeiten:</strong> ${esc(HEFT_GEMEINSAM)}</p><p><strong>Unterschiede:</strong> ${esc(HEFT_UNTERSCHIED)}</p>`],
+      ['Informationsaufnahme, Informationsverarbeitung und Reaktion (Reizbarkeit)', `<ul>${REIZ_INTRO.map(t => `<li>${esc(t)}</li>`).join('')}</ul><h3>Die Reiz-Reaktions-Kette</h3><ol>${CHAIN.map(t => `<li>${esc(t)}</li>`).join('')}</ol>`],
+      ['Die Sinnesorgane des Menschen', `<div class="cards2">${SENSES.map(s => `<div class="ncard"><h3>${esc(s.sinn)} (≙ ${esc(s.act)})</h3><dl>${COLS.map(c => `<dt>${esc(c.label)}</dt><dd>${esc(s[c.id])}</dd>`).join('')}</dl></div>`).join('')}</div><p>${esc(HEFT_GLEICH)}</p>`],
+      ['Gefahren und Schutz der Sinnesorgane', `<div class="cards2">${PROTECT.map(p => `<div class="ncard"><h3>${esc(p.organ)}</h3><dl><dt>Mögliche Gefahr</dt><dd>${esc(p.gefahr)}</dd><dt>Schutzmaßnahme</dt><dd>${esc(p.schutz)}</dd></dl></div>`).join('')}</div>`]
+    ];
+    return `
+      <div class="qbar">${closeBtn()}<h2 style="flex:1">Lernzettel</h2></div>
+      <p class="muted">Alles aus deinem Heft, sauber abgeschrieben. Lies es durch oder lass es dir vorlesen, dann ab zum Üben.</p>
+      ${secs.map(([t, body], i) => `<section class="sheet stack notes" id="z${i}"><h2>${esc(t)}</h2>${body}<div class="row">${canSpeak ? `<button class="btn ghost small" data-act="speakSection" data-arg="${i}">${ICON_SPEAK}Vorlesen</button>` : ''}</div></section>`).join('')}
+      <div class="row center"><button class="btn" data-act="home">Zum Labor</button></div>`;
+  }
+
+  function renderVideos() {
+    const list = VIDEOS.map((v, i) => {
+      const cards = CARDS.filter(c => c.video === v.id);
+      const d = cards.filter(c => mastered(c.id)).length;
+      const st = P.vid[v.id] || {};
+      return `<button class="vcard" data-act="openVideo" data-arg="${v.id}"><span class="play">${ICON_PLAY}</span><span class="stack" style="gap:2px"><strong>Video ${i + 1}: ${esc(v.title)}</strong><span class="muted">${st.watched ? 'Geschaut' : 'Noch nicht geschaut'} · Fragen ${d}/${cards.length} gelernt</span></span></button>`;
+    }).join('');
+    return `
+      <div class="qbar">${closeBtn()}<h2 style="flex:1">Erklärvideos</h2></div>
+      <section class="sheet stack">
+        <p>So geht's: Vor jedem Video <strong>rätst du erst</strong>, auch wenn du es noch nicht weißt. Dann schaust du das Video und beantwortest zwei Fragen. Wer vorher rät, merkt sich die Antwort danach besser.</p>
+      </section>
+      <div class="vlist">${list}</div>`;
+  }
+
+  function renderVideo() {
+    const v = VIDEOS.find(x => x.id === vd.id);
+    const st = P.vid[v.id] || {};
+    const pre = v.pre;
+    let body;
+    if (vd.step === 'pre') {
+      body = `
+        <section class="sheet prompt"><span class="label">Rate vorher</span><div class="question">${esc(pre.q)}</div><p class="muted">Kein Problem, wenn du es nicht weißt. Tipp einfach.</p></section>
+        <div class="options two">${pre.options.map((o, i) => `<button class="opt" data-act="preGuess" data-arg="${i}">${esc(o)}</button>`).join('')}</div>`;
+    } else {
+      const base = `videos/${v.file}`;
+      body = `
+        ${st.guess !== undefined ? `<p class="muted">Dein Tipp vorher: <strong>${esc(pre.options[st.guess])}</strong>. Ob er stimmt, erfährst du nach den Fragen.</p>` : ''}
+        <div id="vwrap">${vd.missing ? videoMissing() : `<div class="vbox"><video id="vid" controls playsinline preload="none" poster="${base}.jpg"><source src="${base}.mp4" type="video/mp4"><track kind="captions" srclang="de" label="Deutsch" src="${base}.vtt" default></video></div>`}</div>
+        <div class="row spread"><button class="btn ghost" data-act="mod" data-arg="videos">Alle Videos</button><button class="btn" data-act="videoQuiz">${st.watched || vd.missing ? 'Zu den 2 Fragen' : 'Geschaut: zu den 2 Fragen'}</button></div>`;
+    }
+    return `
+      <div class="qbar">${closeBtn('mod', 'Zurück zu den Videos', 'videos')}<h2 style="flex:1">${esc(v.title)}</h2></div>
+      ${body}`;
+  }
+  const videoMissing = () => '<div class="vph"><b>Video folgt bald</b><span>Das Video ist noch nicht fertig. Die Fragen kannst du trotzdem schon beantworten, alles steht auch im Lernzettel.</span></div>';
+
+  // Shows the placeholder as soon as the poster or the video file is missing
+  function wireVideo() {
+    const el = document.getElementById('vid');
+    if (!el) return;
+    const v = VIDEOS.find(x => x.id === vd.id);
+    const fail = () => {
+      if (vd.missing) return;
+      vd.missing = true;
+      const w = document.getElementById('vwrap');
+      if (w) w.innerHTML = videoMissing();
+    };
+    el.addEventListener('error', fail, true);
+    el.querySelector('source')?.addEventListener('error', fail);
+    el.addEventListener('ended', () => {
+      P.vid[v.id] = { ...(P.vid[v.id] || {}), watched: true };
+      save();
+    });
+    el.addEventListener('play', () => {
+      P.vid[v.id] = { ...(P.vid[v.id] || {}), watched: true };
+      save();
+    }, { once: true });
+    const probe = new Image();
+    probe.onerror = fail;
+    probe.src = `videos/${v.file}.jpg`;
+  }
+
+  // ---------- Free recall ----------
+  function norm(s) {
+    return String(s).toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
+      .replace(/[^a-z ]+/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+  function lev(a, b) {
+    const d = Array.from({ length: b.length + 1 }, (_, j) => j);
+    for (let i = 1; i <= a.length; i++) {
+      let prev = d[0];
+      d[0] = i;
+      for (let j = 1; j <= b.length; j++) {
+        const tmp = d[j];
+        d[j] = Math.min(d[j] + 1, d[j - 1] + 1, prev + (a[i - 1] === b[j - 1] ? 0 : 1));
+        prev = tmp;
+      }
+    }
+    return d[b.length];
+  }
+  const tol = len => len <= 4 ? 0 : len <= 7 ? 1 : 2;
+  function synHit(n, syns) {
+    return syns.some(syn => n === syn || ` ${n} `.includes(` ${syn} `) || (syn.length >= 5 && n.includes(syn)) || lev(n, syn) <= tol(syn.length)
+      || n.split(' ').some(w => w.length >= 5 && lev(w, syn) <= tol(syn.length)));
+  }
+  function checkRecall(list, entries) {
+    const found = new Map();
+    const extra = [];
+    entries.forEach(e => {
+      const n = norm(e);
+      if (!n) return;
+      const hits = list.items.filter(it => synHit(n, it.syn));
+      hits.forEach(it => { if (!found.has(it.name)) found.set(it.name, e); });
+      if (!hits.length) {
+        const hint = (list.hints || []).find(h => synHit(n, h.syn));
+        extra.push({ e, hint: hint ? hint.text : '' });
+      }
+    });
+    return { found, missing: list.items.filter(it => !found.has(it.name)), extra };
+  }
+
+  function renderRecall() {
+    const chooser = RECALL.map((l, i) => {
+      const id = `rc-${l.id}`;
+      return `<button class="tab" data-act="rcList" data-arg="${l.id}" aria-pressed="${rc.list === l.id}">${esc(l.title)} <small>${dots(lvl(id))}</small></button>`;
+    }).join('');
+    const l = RECALL.find(x => x.id === rc.list);
+    let body;
+    if (!rc.res) {
+      body = `
+        <h2>${esc(l.ask)}</h2>
+        <p class="muted">Ohne Spicken! Schreib jeden Begriff einzeln und tippe auf „Dazu“. Die Rechtschreibung muss nicht perfekt sein.</p>
+        <form class="answer" data-form="recall" autocomplete="off">
+          <input id="rcIn" type="text" enterkeyhint="enter" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" aria-label="Begriff">
+          <button class="btn" type="submit">Dazu</button>
+        </form>
+        <div class="entries">${rc.entries.map((e, i) => `<span class="entry">${esc(e)}<button data-act="rcDel" data-arg="${i}" aria-label="${esc(e)} löschen">${ICON_CLOSE}</button></span>`).join('')}</div>
+        <div class="row spread"><span class="muted">${rc.entries.length} aufgeschrieben</span><button class="btn" data-act="rcCheck">${rc.entries.length ? 'Fertig: vergleichen' : 'Mir fällt nichts ein'}</button></div>`;
+    } else {
+      const r = rc.res;
+      const n = l.items.length;
+      body = `
+        <h2>${esc(l.ask)}</h2>
+        <section class="feedback ${r.missing.length ? 'almost' : ''}">
+          <div class="verdict">${r.missing.length ? `${r.found.size} von ${n} gefunden` : `Alle ${n} gefunden!`}</div>
+          ${r.found.size ? `<ul class="reslist">${l.items.filter(it => r.found.has(it.name)).map(it => `<li><span class="ic" style="color:var(--good);font-weight:800">✓</span><span><strong>${esc(it.name)}</strong>${norm(r.found.get(it.name)) !== norm(it.name) ? ` <span class="muted">(du: ${esc(r.found.get(it.name))})</span>` : ''}</span></li>`).join('')}</ul>` : ''}
+          ${r.missing.length ? `<p><strong>Vergessen:</strong></p><ul class="reslist">${r.missing.map(it => `<li><span style="color:var(--bad);font-weight:800">✗</span><strong>${esc(it.name)}</strong></li>`).join('')}</ul>` : ''}
+          ${r.extra.length ? `<p><strong>Gehört nicht in diese Liste:</strong></p><ul class="reslist">${r.extra.map(x => `<li><span class="muted">–</span><span>${esc(x.e)}${x.hint ? `<br><span class="muted">${esc(x.hint)}</span>` : ''}</span></li>`).join('')}</ul>` : ''}
+          ${heftQuote(l.heft)}
+          ${rc.newly ? '<p><strong>Gelernt:</strong> Diese Liste kannst du jetzt auswendig!</p>' : ''}
+          ${r.missing.length ? '<p class="muted">Lies die Liste nochmal laut und versuch es gleich noch einmal. Erst wenn alle drin sind, zählt es.</p>' : ''}
+          <div class="row spread">${speakBtn(l.heft)}<button class="btn" data-act="rcAgain">Nochmal</button></div>
+        </section>`;
+    }
+    return `
+      <div class="qbar">${closeBtn()}<h2 style="flex:1">Gedächtnis leeren</h2><span class="pill">${modDone('recall')}/${modCards('recall').length}</span></div>
+      <div class="tabs">${chooser}</div>
+      <section class="sheet stack">${body}</section>`;
+  }
+
+  // ---------- Cell lab ----------
+  function newLabTab(tab) {
+    const keys = tab === 'pflanze' ? PLANT : ANIMAL;
+    lab = { tab, sel: null, done: {}, first: {}, fb: null, terms: shuffle(tab === 'pflanze' ? PLANT : [...ANIMAL, 'wand', 'vakuole', 'chloro']),
+      vsel: null, placed: {}, vfirst: {}, vorder: shuffle(PLANT), keys };
+  }
+  function renderLab() {
+    const tabs = [['pflanze', 'Pflanzenzelle', CARDS.filter(c => c.type === 'label' && c.cell === 'pflanze')], ['tier', 'Tierzelle', CARDS.filter(c => c.type === 'label' && c.cell === 'tier')], ['venn', 'Vergleichen', CARDS.filter(c => c.type === 'venn')]]
+      .map(([id, t, cs]) => `<button class="tab" data-act="labTab" data-arg="${id}" aria-pressed="${lab.tab === id}">${t} <small>${cs.filter(c => mastered(c.id)).length}/${cs.length}</small></button>`).join('');
+    const head = `<div class="qbar">${closeBtn()}<h2 style="flex:1">Zell-Labor</h2><span class="pill">${modDone('zellen')}/${modCards('zellen').length}</span></div><div class="tabs">${tabs}</div>`;
+    return head + (lab.tab === 'venn' ? renderVenn() : renderLabel());
+  }
+  function renderLabel() {
+    const keys = lab.keys;
+    const cellName = lab.tab === 'pflanze' ? 'Pflanzenzelle' : 'Tierzelle';
+    const complete = keys.every(k => lab.done[k]);
+    const firstOk = keys.filter(k => lab.first[k] === true).length;
+    const terms = lab.sel && !lab.done[lab.sel] ? `<span class="label">Wie heißt das leuchtende Teil?</span><div class="bank">${lab.terms.map(k => `<button class="term" data-act="labPick" data-arg="${k}">${esc(ORG[k].name)}</button>`).join('')}</div>` : '';
+    return `
+      <section class="sheet stack">
+        <p>${complete ? `Die ${cellName} ist fertig beschriftet.` : `Tippe auf ein Teil der ${cellName}. Es leuchtet auf. Dann wählst du den richtigen Namen.`}</p>
+        <div class="scope">${cellSVG(lab.tab, { sel: lab.sel, done: lab.done, pick: true })}</div>
+        ${terms}
+        ${labFeedback()}
+        <ol class="legend">${keys.map((k, i) => `<li class="${lab.done[k] || ''}"><b>${i + 1}</b><span>${lab.done[k] ? esc(ORG[k].name) : '?'}</span></li>`).join('')}</ol>
+      </section>
+      ${complete ? `<section class="feedback ${firstOk === keys.length ? '' : 'almost'}"><div class="verdict">Alles beschriftet!</div><p>${firstOk} von ${keys.length} Teilen auf Anhieb richtig.${firstOk === keys.length ? ' Perfekt!' : ' Orange Teile übst du am besten gleich nochmal.'}</p>
+        <div class="row"><button class="btn ghost" data-act="labTab" data-arg="${lab.tab}">Nochmal</button><button class="btn" data-act="labTab" data-arg="${lab.tab === 'pflanze' ? 'tier' : 'venn'}">${lab.tab === 'pflanze' ? 'Weiter: Tierzelle' : 'Weiter: Vergleichen'}</button></div></section>` : ''}`;
+  }
+  function labFeedback() {
+    const f = lab.fb;
+    if (!f) return '';
+    const k = f.part;
+    const num = lab.keys.indexOf(k) + 1;
+    if (f.kind === 'info') return `<section class="feedback info"><div class="verdict">${num} ${esc(ORG[k].name)}</div>${heftQuote(ORG_HEFT(k))}</section>`;
+    if (f.kind === 'ok') return `<section class="feedback"><div class="verdict">${esc(f.msg)} ${num} ${esc(ORG[k].name)}</div>${heftQuote(ORG_HEFT(k))}${newlyNote(f)}</section>`;
+    const notHere = lab.tab === 'tier' && !ANIMAL.includes(f.chosen);
+    return `<section class="feedback no"><div class="verdict">${esc(f.msg)}</div>
+      <p>${PLURAL(k) ? 'Die leuchtenden Teile heißen' : 'Das leuchtende Teil heißt'}: <strong>${esc(ORG[k].name)}</strong> (Nummer ${num}).</p>
+      ${notHere ? `<p>„${esc(ORG[f.chosen].name)}“ hat die Tierzelle gar nicht.</p>${heftQuote(HEFT_UNTERSCHIED)}` : `<p>${esc(ORG[f.chosen].name)} ist ein anderes Teil. Such es gleich mal!</p>`}
+      ${heftQuote(ORG_HEFT(k))}</section>`;
+  }
+  const newlyNote = f => `${f.newly ? '<p><strong>Gelernt!</strong> Diese Karte sitzt jetzt.</p>' : ''}${f.modDone ? '<p><strong>Stempel!</strong> Dieser Bereich ist komplett gelernt.</p>' : ''}`;
+
+  function renderVenn() {
+    const unplaced = lab.vorder.filter(k => !lab.placed[k]);
+    const complete = !unplaced.length;
+    const firstOk = PLANT.filter(k => lab.vfirst[k] === true).length;
+    const zone = (z, cls, title) => `<button class="zone ${cls} ${lab.vsel ? 'ready' : ''}" data-act="vennZone" data-arg="${z}" ${lab.vsel ? '' : 'aria-disabled="true"'}><span class="label">${title}</span><span class="placed">${PLANT.filter(k => lab.placed[k] && zoneOf(k) === z).map(k => `<span class="chipok ${lab.placed[k]}">${esc(ORG[k].name)}</span>`).join('')}</span></button>`;
+    const f = lab.fb;
+    let fb = '';
+    if (f) {
+      const quote = zoneOf(f.part) === 'beide' ? HEFT_GEMEINSAM : HEFT_UNTERSCHIED;
+      fb = f.ok
+        ? `<section class="feedback"><div class="verdict">${esc(f.msg)}</div><p>${esc(ORG[f.part].name)}: ${ZONES[zoneOf(f.part)]}.</p>${heftQuote(quote)}${newlyNote(f)}</section>`
+        : `<section class="feedback no"><div class="verdict">${esc(f.msg)}</div><p><strong>${esc(ORG[f.part].name)}</strong> gibt es ${ZONES[zoneOf(f.part)]}, nicht ${ZONES[f.zone]}.</p>${heftQuote(quote)}</section>`;
+    }
+    return `
+      <section class="sheet stack">
+        <p><em>Vergleichen bedeutet Gemeinsamkeiten und Unterschiede zu beschreiben.</em> ${complete ? '' : 'Tippe ein Kärtchen an und dann den Bereich, in den es gehört.'}</p>
+        ${complete ? '' : `<div class="tray">${unplaced.map(k => `<button class="term ${lab.vsel === k ? 'sel' : ''}" data-act="vennPick" data-arg="${k}" aria-pressed="${lab.vsel === k}">${esc(ORG[k].name)}</button>`).join('')}</div>`}
+        <div class="venn">${zone('pflanze', 'z-p', 'nur Pflanzenzelle')}${zone('beide', 'z-b', 'beide')}${zone('tier', 'z-t', 'nur Tierzelle')}</div>
+      </section>
+      ${fb}
+      ${complete ? `<section class="feedback ${firstOk === PLANT.length ? '' : 'almost'}"><div class="verdict">Fertig sortiert!</div><p>${firstOk} von ${PLANT.length} auf Anhieb richtig. Fällt dir etwas auf? Bei „nur Tierzelle“ ist nichts gelandet: In deinem Heft hat die Tierzelle kein Teil, das die Pflanzenzelle nicht auch hat.</p>${heftQuote(`${HEFT_GEMEINSAM} ${HEFT_UNTERSCHIED}`)}<div class="row"><button class="btn ghost" data-act="labTab" data-arg="venn">Nochmal</button><button class="btn" data-act="home">Zum Labor</button></div></section>` : ''}`;
+  }
+
+  // ---------- Senses puzzle ----------
+  function newPuzzle(row) {
+    const r = row ?? SENSES.reduce((best, s, i) => {
+      const n = COLS.filter(c => mastered(`s-${s.id}-${c.id}`)).length;
+      return n < best[1] ? [i, n] : best;
+    }, [0, 99])[0];
+    pz = { row: r, active: 0, res: {}, fb: null, opts: COLS.map(c => shuffle(SENSES.map(s => s[c.id]))), rowsDone: pz?.rowsDone || new Set() };
+  }
+  function renderSinne() {
+    const s = SENSES[pz.row];
+    const tabs = SENSES.map((x, i) => `<button class="tab" data-act="pzRow" data-arg="${i}" aria-pressed="${pz.row === i}">${esc(x.sinn)} <small>${COLS.filter(c => mastered(`s-${x.id}-${c.id}`)).length}/4</small></button>`).join('');
+    const rowDone = COLS.every((c, i) => pz.res[i]);
+    const f = pz.fb;
+    const fbHtml = !f ? '' : f.ok
+      ? `<div class="feedback"><div class="verdict">${esc(f.msg)}</div>${newlyNote(f)}</div>`
+      : `<div class="feedback no"><div class="verdict">${esc(f.msg)}</div><p>„${esc(f.chosen)}“ gehört zum <strong>${esc(f.owner.sinn)}</strong>. Beim ${esc(s.sinn)} steht im Heft: <strong>${esc(s[COLS[f.col].id])}</strong>.</p></div>`;
+    const slots = COLS.map((c, i) => {
+      const st = pz.res[i];
+      const active = !st && pz.active === i;
+      const tray = active ? `<span class="label">Welches Kärtchen passt?</span><div class="options">${pz.opts[i].map(v => `<button class="opt" data-act="pzPick" data-arg="${esc(v)}">${esc(v)}</button>`).join('')}</div>` : '';
+      return `<div class="prow" ${active ? 'id="pzActive"' : ''}><span class="label">${esc(c.label)}</span><button class="slot ${st || ''} ${active ? 'active' : ''}" data-act="pzSlot" data-arg="${i}" ${st ? 'disabled' : ''}>${st ? esc(s[c.id]) : `<span class="muted">${active ? 'Wähle unten ein Kärtchen' : 'Tippe hier'}</span>`}</button>${f && f.col === i ? fbHtml : ''}${tray}</div>`;
+    }).join('');
+    const allDone = pz.rowsDone.size === SENSES.length;
+    return `
+      <div class="qbar">${closeBtn()}<h2 style="flex:1">Sinnes-Tabelle</h2><span class="pill">${modDone('sinne')}/${modCards('sinne').length}</span></div>
+      <div class="tabs">${tabs}</div>
+      <section class="sheet stack">
+        <h2>${esc(s.sinn)} <span class="muted">(≙ ${esc(s.act)})</span></h2>
+        ${slots}
+      </section>
+      ${rowDone ? `<section class="feedback ${COLS.every((c, i) => pz.res[i] === 'ok') ? '' : 'almost'}"><div class="verdict">Zeile fertig!</div>${heftQuote(senseHeft(s))}<div class="row">${allDone ? '' : '<button class="btn" data-act="pzNext">Nächster Sinn</button>'}<button class="btn ${allDone ? '' : 'ghost'}" data-act="gleich">Lückentext Gleichgewichtssinn</button></div></section>` : ''}
+      ${rowDone ? '' : `<div class="row center"><button class="linkbtn" data-act="gleich">Zum Lückentext Gleichgewichtssinn</button></div>`}`;
+  }
+
+  // ---------- Quiz engine (multiple choice, order, living check, gap text) ----------
+  function startRound(mod, ids, opts = {}) {
+    if (!ids.length) return;
+    round = { mod, mix: mod === 'mix', items: ids.slice(), idx: 0, total: ids.length, correct: 0, streak: 0, points: 0, marks: [], newly: [], modsDone: [], mistakes: [], retried: new Set(), answered: null, q: null, back: opts.back || 'home', video: opts.video || null };
+    round.q = makeQ(CARD[ids[0]]);
+    show('quiz');
+  }
+  function makeQ(card) {
+    const type = round.mix ? 'mc' : card.type;
+    if (type === 'order') return { kind: 'order', card, pool: shuffle(card.steps.map((_, i) => i)), placed: [], help: new Set(), errors: 0, posErr: 0, hint: '', wrongK: null };
+    if (type === 'living') return { kind: 'living', card, ex: card.ex, step: 1, pick: null };
+    if (type === 'gaps') return { kind: 'gaps', card, g: card.gaps, bank: shuffle([...card.gaps.answers, ...card.gaps.distract]), filled: {}, active: 0, errors: 0, gapErr: {}, hint: '' };
+    return { kind: 'mc', card, ...card.mc() };
+  }
+  function trackHtml() {
+    return `<div class="track" aria-label="Frage ${round.idx + 1} von ${round.total}">${Array.from({ length: round.total }, (_, i) => `<span class="${round.marks[i] || (i === round.idx ? 'now' : '')}"></span>`).join('')}</div><span class="pill">${round.streak >= 3 ? `Serie ${round.streak}` : `${round.idx + 1}/${round.total}`}</span>`;
+  }
+  function renderQuiz() {
+    const q = round.q;
+    const head = `<div class="qbar">${closeBtn('quit', 'Runde beenden')}${trackHtml()}</div>`;
+    const modLabel = esc(MOD[q.card.mod].title) + (round.mix ? ' · Mix' : '') + (q.card.example ? ' · Anwendung' : '');
+    if (q.kind === 'order') return head + renderOrder(q, modLabel);
+    if (q.kind === 'living') return head + renderLiving(q, modLabel);
+    if (q.kind === 'gaps') return head + renderGaps(q, modLabel);
+    const a = round.answered;
+    const say = [q.scene, q.clue, q.prompt].filter(Boolean).join(' ');
+    const opts = q.options.map((o, i) => {
+      let cls = '';
+      if (a) cls = i === q.correct ? 'correct' : i === a.i ? 'wrong' : 'dim';
+      else if (q.pending === i) cls = 'chosen';
+      return `<button class="opt ${cls}" data-act="answer" data-arg="${i}" ${a || q.pending !== undefined ? 'disabled' : ''}><span class="key">${i + 1}</span><span>${esc(o)}</span></button>`;
+    }).join('');
+    const conf = round.mix && q.pending !== undefined && !a ? `
+      <section class="confask"><h3>Wie sicher bist du?</h3><div class="options two"><button class="btn" data-act="conf" data-arg="1">Ganz sicher</button><button class="btn ghost" data-act="conf" data-arg="0">Eher geraten</button></div><button class="linkbtn" data-act="unpick">Doch eine andere Antwort</button></section>` : '';
+    return `${head}
+      <section class="sheet prompt">
+        <span class="label">${modLabel}</span>
+        ${q.visual || ''}
+        ${q.scene ? `<div class="scenario">${esc(q.scene)}</div>` : ''}
+        ${q.clue ? `<div class="clue">${esc(q.clue)}</div>` : ''}
+        <div class="question">${esc(q.prompt)}</div>
+        ${a ? '' : speakBtn(say)}
+      </section>
+      <div class="options ${q.options.length === 2 || q.options.every(o => o.length < 14) ? 'two' : ''}">${opts}</div>
+      ${conf}
+      ${a ? feedbackMc(q, a) : ''}`;
+  }
+  const nextBtn = () => `<button class="btn" data-act="next" id="nextBtn">${round.idx + 1 >= round.total ? 'Ergebnis' : 'Weiter'}</button>`;
+  function feedbackTail(a, sayText) {
+    return `${a.retry ? '<p class="muted">Diese Karte kommt in dieser Runde gleich nochmal.</p>' : ''}${newlyNote(a)}<div class="row spread"><div class="row">${speakBtn(sayText)}</div>${nextBtn()}</div>`;
+  }
+  function feedbackMc(q, a) {
+    const card = q.card;
+    let conf = '';
+    if (round.mix && a.sure !== undefined) {
+      conf = a.ok
+        ? (a.sure ? '' : '<p class="muted">Geraten und richtig. Beim nächsten Mal weißt du es sicher.</p>')
+        : (a.sure ? '<p><strong>Du warst dir sicher.</strong> Genau solche Karten sind am wichtigsten: Lies den Heftsatz zweimal.</p>' : '<p class="muted">Gut, dass du ehrlich „geraten“ gesagt hast. Jetzt weißt du es.</p>');
+    }
+    return `
+      <section class="feedback ${a.ok ? '' : 'no'}">
+        <div class="verdict">${esc(a.msg)}${a.ok && round.streak >= 3 ? ` ${round.streak} in Folge!` : ''}</div>
+        ${a.ok ? '' : `<p>Richtig ist: <strong>${esc(q.options[q.correct])}</strong></p>`}
+        ${conf}
+        ${heftQuote(card.heft)}
+        ${feedbackTail(a, card.heft)}
+      </section>`;
+  }
+
+  function renderOrder(q, modLabel) {
+    const a = round.answered;
+    const steps = q.card.steps;
+    const chain = q.placed.map((k, i) => `<li class="${q.help.has(k) ? 'help' : ''}"><b>${i + 1}</b><span>${esc(steps[k])}${q.card.map && a ? `<br><span class="muted">Im Heft: ${esc(CHAIN[k])}</span>` : ''}</span></li>`).join('');
+    const pool = q.pool.filter(k => !q.placed.includes(k));
+    return `
+      <section class="sheet prompt"><span class="label">${modLabel}</span><div class="question">${esc(q.card.ask)}</div>${a ? '' : speakBtn(q.card.ask)}</section>
+      <section class="sheet stack"><span class="label">Deine Kette</span><ol class="chain">${chain}${a ? '' : `<li class="slot"><b>${q.placed.length + 1}</b><span>${q.placed.length ? 'Was passiert danach?' : 'Womit fängt es an?'}</span></li>`}</ol></section>
+      ${q.hint && !a ? `<div class="hintbox">${q.hint}</div>` : ''}
+      ${a ? '' : `<div class="options">${pool.map(k => `<button class="opt ${q.wrongK === k ? 'wrong shake' : ''}" data-act="orderTap" data-arg="${k}">${esc(steps[k])}</button>`).join('')}</div>`}
+      ${a ? `<section class="feedback ${a.ok ? '' : 'almost'}"><div class="verdict">${a.ok ? `${esc(a.msg)} Ohne Fehler!` : `Geschafft, mit ${q.errors} ${q.errors === 1 ? 'Fehler' : 'Fehlern'}.`}</div>${a.ok ? '' : '<p>Oben steht die Kette jetzt richtig. Orange Schritte waren knifflig.</p>'}${heftQuote(q.card.heft)}${feedbackTail(a, q.card.heft)}</section>` : ''}`;
+  }
+
+  function renderLiving(q, modLabel) {
+    const a = round.answered;
+    const ex = q.ex;
+    const question = q.step === 1 ? 'Ist das ein Lebewesen?' : 'Stimmt, kein Lebewesen! Welches Kennzeichen fehlt?';
+    let opts = '';
+    if (!a && q.step === 1) opts = `<div class="options two"><button class="opt" data-act="live" data-arg="ja">Ja, ein Lebewesen</button><button class="opt" data-act="live" data-arg="nein">Nein, kein Lebewesen</button></div>`;
+    if (!a && q.step === 2) opts = `<div class="options">${KZ.map(k => `<button class="opt" data-act="liveKz" data-arg="${k.id}">${esc(k.name)}</button>`).join('')}</div>`;
+    let fb = '';
+    if (a) {
+      const checks = KZ.map(k => {
+        let st, txt;
+        if (ex.living) { st = 'ok'; txt = ex.has[k.id]; }
+        else if (ex.looks[k.id]) { st = 'looks'; txt = `sieht so aus: ${ex.looks[k.id]}`; }
+        else if (ex.sure[k.id]) { st = 'no'; txt = ex.sure[k.id]; }
+        else { st = 'na'; txt = 'nicht geprüft, ein fehlendes Kennzeichen reicht schon'; }
+        return `<li class="${st}"><span class="ic">${{ ok: '✓', looks: '≈', no: '✗', na: '–' }[st]}</span><span><strong>${esc(k.name)}</strong>: ${esc(txt)}</span></li>`;
+      }).join('');
+      const lead = ex.living
+        ? `${esc(ex.is)} ein Lebewesen: Alle sechs Kennzeichen treffen zu.`
+        : `${esc(ex.is)} kein Lebewesen. ${a.kzPick && ex.looks[a.kzPick] ? `„${esc(KZ_BY[a.kzPick].name)}“ sieht nur so aus, als wäre es da. ` : ''}Ganz sicher fehlt: ${Object.keys(ex.sure).map(k => esc(KZ_BY[k].name)).join(', ')}.`;
+      fb = `<section class="feedback ${a.ok ? '' : 'no'}"><div class="verdict">${esc(a.msg)}</div><p>${lead}</p><ul class="checks">${checks}</ul>${heftQuote(MERK)}${feedbackTail(a, `${ex.name}. ${MERK}`)}</section>`;
+    }
+    return `
+      <section class="sheet prompt"><span class="label">${modLabel}</span><div class="bigicon" aria-hidden="true">${ex.icon}</div><h2>${esc(ex.name)}</h2><div class="scenario">${esc(ex.desc)}</div><div class="question">${question}</div>${a ? '' : speakBtn(`${ex.desc} ${question}`)}</section>
+      ${opts}
+      ${fb}`;
+  }
+
+  function renderGaps(q, modLabel) {
+    const a = round.answered;
+    const g = q.g;
+    const text = g.parts.map(p => {
+      if (typeof p !== 'number') return esc(p);
+      const st = q.filled[p];
+      return `<button class="gap ${st || ''} ${!st && q.active === p ? 'active' : ''}" data-act="gapSel" data-arg="${p}" ${st ? 'disabled' : ''} aria-label="Lücke ${p + 1}">${st ? esc(g.answers[p]) : '…'}</button>`;
+    }).join('');
+    const used = Object.keys(q.filled).map(i => g.answers[i]);
+    return `
+      <section class="sheet stack"><span class="label">${modLabel} · Lückentext</span><p class="gaptext">${text}</p></section>
+      ${q.hint && !a ? `<div class="hintbox">${q.hint}</div>` : ''}
+      ${a ? '' : `<span class="label">Tippe eine Lücke an und dann das passende Wort</span><div class="bank">${q.bank.filter(w => !used.includes(w)).map(w => `<button class="term" data-act="gapWord" data-arg="${esc(w)}">${esc(w)}</button>`).join('')}</div>`}
+      ${a ? `<section class="feedback ${a.ok ? '' : 'almost'}"><div class="verdict">${a.ok ? `${esc(a.msg)} Alle Lücken auf Anhieb!` : `Geschafft, mit ${q.errors} ${q.errors === 1 ? 'Fehler' : 'Fehlern'}.`}</div>${heftQuote(q.card.heft)}${feedbackTail(a, q.card.heft)}</section>` : ''}`;
+  }
+
+  function finishQ(ok, extra = {}) {
+    const q = round.q;
+    const res = record(q.card, ok);
+    if (ok) {
+      round.correct++;
+      round.streak++;
+      addPoints(10 + (round.streak >= 3 ? 5 : 0));
+    } else {
+      round.streak = 0;
+      round.mistakes.push(q.card);
+    }
+    if (res.newly) round.newly.push(q.card);
+    if (res.modDone) round.modsDone.push(q.card.mod);
+    round.marks[round.idx] = ok ? 'ok' : 'no';
+    let retry = false;
+    if (!ok && !round.retried.has(q.card.id) && round.retried.size < MAX_RETRY) {
+      round.retried.add(q.card.id);
+      round.items.push(q.card.id);
+      round.total++;
+      retry = true;
+    }
+    round.answered = { ok, retry, msg: ok ? pick(PRAISE) : pick(COMFORT), ...res, ...extra };
+    save();
+    render();
+    focusFeedback();
+  }
+  function focusFeedback() {
+    document.getElementById('nextBtn')?.focus({ preventScroll: true });
+    document.querySelector('.feedback')?.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'nearest' });
+  }
+  function answer(i) {
+    const q = round?.q;
+    if (!q || q.kind !== 'mc' || round.answered || q.pending !== undefined) return;
+    if (round.mix) {
+      q.pending = i;
+      render();
+      document.querySelector('.confask')?.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'nearest' });
+      return;
+    }
+    finishQ(i === q.correct, { i });
+  }
+  function setConf(sure) {
+    const q = round?.q;
+    if (!q || q.pending === undefined || round.answered) return;
+    const ok = q.pending === q.correct;
+    const c = P.conf[q.card.id] || { sr: 0, sw: 0, gr: 0, gw: 0 };
+    c[(sure ? 's' : 'g') + (ok ? 'r' : 'w')]++;
+    P.conf[q.card.id] = c;
+    finishQ(ok, { i: q.pending, sure });
+  }
+  function orderTap(k) {
+    const q = round.q;
+    if (round.answered) return;
+    const expected = q.placed.length;
+    const steps = q.card.steps;
+    if (k === expected) {
+      q.placed.push(k);
+      q.hint = '';
+      q.posErr = 0;
+      q.wrongK = null;
+    } else {
+      q.errors++;
+      q.posErr++;
+      if (q.posErr >= 2) {
+        q.placed.push(expected);
+        q.help.add(expected);
+        q.hint = '';
+        q.posErr = 0;
+        q.wrongK = null;
+      } else {
+        q.wrongK = k;
+        q.hint = `„${esc(steps[k])}“ kommt noch nicht. ${expected ? `Was passiert direkt nach „${esc(steps[expected - 1])}“?` : 'Womit fängt alles an? Zuerst muss etwas aufgenommen werden.'}`;
+      }
+    }
+    if (q.placed.length === steps.length) return finishQ(q.errors === 0);
+    render();
+  }
+  function livePick(v) {
+    const q = round.q;
+    if (round.answered || q.step !== 1) return;
+    if (q.ex.living) return finishQ(v === 'ja');
+    if (v === 'ja') return finishQ(false);
+    q.step = 2;
+    render();
+  }
+  function liveKz(id) {
+    const q = round.q;
+    if (round.answered || q.step !== 2) return;
+    finishQ(!q.ex.looks[id], { kzPick: id });
+  }
+  function gapWord(w) {
+    const q = round.q;
+    if (round.answered) return;
+    const g = q.g;
+    if (q.filled[q.active]) q.active = g.answers.findIndex((_, i) => !q.filled[i]);
+    const i = q.active;
+    if (w === g.answers[i]) {
+      q.filled[i] = q.gapErr[i] ? 'help' : 'ok';
+      q.hint = '';
+    } else {
+      q.errors++;
+      q.gapErr[i] = (q.gapErr[i] || 0) + 1;
+      if (q.gapErr[i] >= 2) {
+        q.filled[i] = 'help';
+        q.hint = '';
+      } else {
+        q.hint = `„${esc(w)}“ passt in diese Lücke nicht. Lies den Satz nochmal genau.`;
+      }
+    }
+    const nextEmpty = g.answers.findIndex((_, j) => !q.filled[j]);
+    if (nextEmpty < 0) return finishQ(q.errors === 0);
+    if (q.filled[i]) q.active = nextEmpty;
+    render();
+  }
+
+  function next() {
+    if (!round || !round.answered) return;
+    round.answered = null;
+    round.idx++;
+    if (round.idx >= round.total) return finishRound();
+    round.q = makeQ(CARD[round.items[round.idx]]);
+    render();
+    window.scrollTo(0, 0);
+  }
+  function finishRound() {
+    show('result');
+    if ((round.correct === round.total && round.total >= 2) || round.modsDone.length) confetti();
+  }
+
+  function renderResult() {
+    const r = round;
+    const stars = r.correct === r.total ? 3 : r.correct >= r.total * 0.8 ? 2 : r.correct >= r.total * 0.5 ? 1 : 0;
+    const title = ['Weiter üben, du schaffst das!', 'Gut geübt!', 'Toll gemacht!', 'Forscherblick! Alles richtig!'][stars];
+    const starHtml = [0, 1, 2].map(i => `<span class="${i < stars ? 's-on' : 's-off'}">★</span>`).join('');
+    let vid = '';
+    if (r.video) {
+      const v = VIDEOS.find(x => x.id === r.video);
+      const g = P.vid[v.id]?.guess;
+      if (g !== undefined) vid = `<section class="sheet stack"><span class="label">Und dein Tipp vor dem Video?</span><p>Du hast „<strong>${esc(v.pre.options[g])}</strong>“ getippt. ${g === v.pre.correct ? 'Das war richtig!' : `Richtig ist „<strong>${esc(v.pre.options[v.pre.correct])}</strong>“.`}</p></section>`;
+    }
+    const newly = r.newly.length || r.modsDone.length ? `
+      <section class="sheet stack"><h2>Neu gelernt</h2>
+        <ul class="reslist">${r.newly.map(c => `<li><span style="color:var(--good);font-weight:800">✓</span><span>${esc(c.title)}</span></li>`).join('')}</ul>
+        ${r.modsDone.map(m => `<p><strong>Stempel:</strong> „${esc(MOD[m].title)}“ ist komplett gelernt!</p>`).join('')}
+      </section>` : '';
+    const misses = [...new Map(r.mistakes.map(c => [c.id, c])).values()];
+    const mist = misses.length ? `
+      <section class="sheet mistakes stack"><h2>Das üben wir noch</h2>
+        <ul>${misses.map(c => `<li>${heftQuote(c.heft)}</li>`).join('')}</ul>
+      </section>` : '';
+    const again = r.video ? `data-act="videoQuiz"` : `data-act="mod" data-arg="${r.mod}"`;
+    return `
+      <section class="sheet result">
+        <div class="stars" aria-label="${stars} von 3 Sternen">${starHtml}</div>
+        <h2>${title}</h2>
+        <div>${r.correct} von ${r.total} richtig, ${r.points} Punkte.</div>
+        <div class="row center">
+          <button class="btn" ${again}>Nochmal</button>
+          <button class="btn ghost" data-act="${r.back}" ${r.back === 'mod' ? `data-arg="${r.video ? 'videos' : 'sinne'}"` : ''}>${r.video ? 'Zu den Videos' : r.back === 'mod' ? 'Zur Tabelle' : 'Zum Labor'}</button>
+        </div>
+      </section>
+      ${vid}
+      ${newly}
+      ${mist}`;
+  }
+
+  // ---------- Parents ----------
+  function renderParents() {
+    const conf = Object.values(P.conf).reduce((s, c) => ({ sr: s.sr + c.sr, sw: s.sw + c.sw, gr: s.gr + c.gr, gw: s.gw + c.gw }), { sr: 0, sw: 0, gr: 0, gw: 0 });
+    const sureWrong = CARDS.filter(c => P.conf[c.id]?.sw).sort((a, b) => P.conf[b.id].sw - P.conf[a.id].sw);
+    const rows = CARD_MODS.map(m => {
+      const cs = modCards(m.id).slice().sort((a, b) => (P.wrong[b.id] || 0) - (P.wrong[a.id] || 0) || lvl(a.id) - lvl(b.id));
+      return `<tr><th colspan="4" style="padding-top:14px">${esc(m.title)} (${modDone(m.id)}/${cs.length})</th></tr>` + cs.map(c => {
+        const k = P.conf[c.id];
+        return `<tr><td>${esc(c.title)}${c.example ? ' <span class="muted">(Anwendung)</span>' : ''}</td><td class="lv" aria-label="Stufe ${lvl(c.id)} von ${MASTER}">${dots(lvl(c.id))}</td><td class="num">${P.wrong[c.id] || 0}</td><td class="num">${k ? `${k.sw ? `<strong style="color:var(--bad)">${k.sw}×</strong> ` : ''}${k.sr + k.sw}/${k.sr + k.sw + k.gr + k.gw}` : '–'}</td></tr>`;
+      }).join('');
+    }).join('');
+    const vids = VIDEOS.map(v => {
+      const st = P.vid[v.id] || {};
+      return `<li>${esc(v.title)}: ${st.watched ? 'angeschaut' : 'noch nicht angeschaut'}${st.guess !== undefined ? `, Tipp vorher „${esc(v.pre.options[st.guess])}“ (${st.guess === v.pre.correct ? 'richtig' : 'falsch'})` : ''}</li>`;
+    }).join('');
+    const reset = resetAsk
+      ? `<div class="confirm"><strong>Wirklich den ganzen Fortschritt löschen?</strong><span>Punkte, Sicherheits-Angaben, Video-Tipps und alle gelernten Karten werden auf null gesetzt.</span><div class="row"><button class="btn" data-act="resetYes">Ja, alles löschen</button><button class="btn ghost" data-act="resetNo">Abbrechen</button></div></div>`
+      : `<button class="btn ghost" data-act="resetAsk">Fortschritt zurücksetzen</button>`;
+    return `
+      <div class="qbar">${closeBtn()}<h2 style="flex:1">Für Eltern</h2></div>
+      <section class="sheet stack">
+        <span class="label">Stand</span>
+        <div>${doneCount()} von ${TOTAL} Karten gelernt, ${P.points} Punkte.</div>
+        <div class="muted">„Gelernt“ heißt: ${MASTER}-mal hintereinander richtig. Ein Fehler setzt die Karte auf Stufe 0 zurück. Gelernte Karten kommen nach ${REVIEW_DAYS} Tagen zur Wiederholung. Der Fortschritt bleibt nur auf diesem Gerät.</div>
+      </section>
+      <section class="sheet stack">
+        <span class="label">Mix-Runde: Wie gut schätzt sich das Kind ein?</span>
+        <div class="kpis">
+          <div class="kpi"><b>${conf.sr}</b>sicher und richtig</div>
+          <div class="kpi ${conf.sw ? 'alert' : ''}"><b>${conf.sw}</b>sicher, aber falsch</div>
+          <div class="kpi"><b>${conf.gr}</b>geraten und richtig</div>
+          <div class="kpi"><b>${conf.gw}</b>geraten und falsch</div>
+        </div>
+        <div class="muted">„Sicher, aber falsch“ ist am wichtigsten: Hier hat sich etwas Falsches festgesetzt. Diese Karten zusammen mit dem Heftsatz besprechen. „Geraten und richtig“ ist Glück, noch kein Wissen.</div>
+        ${sureWrong.length ? `<ul class="reslist">${sureWrong.map(c => `<li><strong style="color:var(--bad)">${P.conf[c.id].sw}×</strong><span>${esc(c.title)}<br><span class="muted">${esc(c.heft)}</span></span></li>`).join('')}</ul>` : '<div>Noch keine Karte „sicher, aber falsch“ beantwortet.</div>'}
+      </section>
+      <section class="sheet stack">
+        <span class="label">Videos</span>
+        <ul style="margin:0;padding-left:1.2em">${vids}</ul>
+        <div class="muted">Die Videos liegen im Unterordner „videos/“. Fehlt eine Datei, zeigt das Spiel „Video folgt bald“.</div>
+      </section>
+      <section class="sheet stack">
+        <span class="label">Alle Karten, schwierigste zuerst</span>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Karte</th><th>Stufe</th><th style="text-align:right">Fehler</th><th style="text-align:right">Sicher</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table></div>
+        <div class="muted">„Sicher“: wie oft in der Mix-Runde „ganz sicher“ gewählt (von allen Mix-Antworten); rot = davon falsch. „Anwendung“ = Beispiel, das nicht im Heft steht.</div>
+      </section>
+      <section class="stack">${reset}</section>`;
+  }
+
+  // ---------- Module start ----------
+  function startModule(id) {
+    resetAsk = false;
+    const cards = modCards(id);
+    if (id === 'zettel') return show('zettel');
+    if (id === 'videos') return show('videos');
+    if (id === 'recall') {
+      const weakest = RECALL.slice().sort((a, b) => lvl(`rc-${a.id}`) - lvl(`rc-${b.id}`))[0];
+      rc = { list: rc?.list || weakest.id, entries: [], res: null };
+      return show('recall');
+    }
+    if (id === 'zellen') { newLabTab(lab?.tab === 'tier' || lab?.tab === 'venn' ? lab.tab : 'pflanze'); return show('lab'); }
+    if (id === 'sinne') { newPuzzle(); return show('sinne'); }
+    if (id === 'kette') {
+      const gaps = weightedSample(cards.filter(c => c.type === 'mc'), 5).map(c => c.id);
+      return startRound(id, ['r-kette', ...gaps, 'r-ball']);
+    }
+    if (id === 'mix') return startRound('mix', spread(weightedSample(MIXABLE, 12)).map(c => c.id));
+    const n = { organell: 10, schutz: 8, leben: 8 }[id] || 8;
+    startRound(id, weightedSample(cards, n).map(c => c.id));
+  }
+  // Interleaving: avoid two cards from the same area in a row where possible
+  function spread(list) {
+    const out = [];
+    const rest = list.slice();
+    while (rest.length) {
+      const prev = out[out.length - 1];
+      let i = rest.findIndex(c => !prev || c.mod !== prev.mod);
+      if (i < 0) i = 0;
+      out.push(rest.splice(i, 1)[0]);
+    }
+    return out;
+  }
+
+  // ---------- Confetti ----------
+  function confetti() {
+    if (reduced()) return;
+    const c = document.getElementById('confetti');
+    const ctx = c.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    const W = window.innerWidth, H = window.innerHeight;
+    c.width = W * dpr;
+    c.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const cs = getComputedStyle(document.documentElement);
+    const cols = ['rot', 'gelb', 'gruen', 'hellblau', 'rosa', 'lila', 'orange', 'tuerkis'].map(g => cs.getPropertyValue(`--g-${g}`).trim());
+    const parts = Array.from({ length: 130 }, () => ({
+      x: W / 2 + (Math.random() - 0.5) * 160, y: H * 0.3,
+      vx: (Math.random() - 0.5) * 14, vy: -Math.random() * 13 - 4,
+      w: 6 + Math.random() * 8, h: 10 + Math.random() * 10,
+      r: Math.random() * 6, vr: (Math.random() - 0.5) * 0.3, c: pick(cols)
+    }));
+    const t0 = performance.now();
+    function frame(t) {
+      ctx.clearRect(0, 0, W, H);
+      parts.forEach(p => {
+        p.vy += 0.35; p.x += p.vx; p.y += p.vy; p.vx *= 0.99; p.r += p.vr;
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r);
+        ctx.fillStyle = p.c; ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      });
+      if (t - t0 < 2800) requestAnimationFrame(frame);
+      else ctx.clearRect(0, 0, W, H);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // ---------- Events ----------
+  const ACTIONS = {
+    home: () => { resetAsk = false; round = null; show('home'); },
+    mod: id => startModule(id),
+    parents: () => show('parents'),
+    speak: (arg, el) => speak(el.dataset.say),
+    speakSection: i => speak(document.getElementById(`z${i}`)?.innerText.replace(/Vorlesen$/, '') || ''),
+    answer: i => answer(Number(i)),
+    conf: v => setConf(v === '1'),
+    unpick: () => { if (round?.q && !round.answered) { delete round.q.pending; render(); } },
+    next: () => next(),
+    quit: () => {
+      const r = round;
+      round = null;
+      if (r?.video) { vd = { id: r.video, step: 'watch' }; show('video'); }
+      else if (r?.back === 'mod') startModule('sinne');
+      else show('home');
+    },
+    orderTap: k => orderTap(Number(k)),
+    live: v => livePick(v),
+    liveKz: id => liveKz(id),
+    gapSel: i => { if (!round.answered) { round.q.active = Number(i); round.q.hint = ''; render(); } },
+    gapWord: w => gapWord(w),
+    // videos
+    openVideo: id => { const g = P.vid[id]?.guess; vd = { id, step: g === undefined ? 'pre' : 'watch' }; show('video'); },
+    preGuess: i => { P.vid[vd.id] = { ...(P.vid[vd.id] || {}), guess: Number(i) }; save(); vd.step = 'watch'; render(); },
+    videoQuiz: () => {
+      const id = round?.video || vd.id;
+      startRound('videos', shuffle(CARDS.filter(c => c.video === id).map(c => c.id)), { video: id, back: 'mod' });
+    },
+    // recall
+    rcList: id => { rc = { list: id, entries: [], res: null }; render(); document.getElementById('rcIn')?.focus({ preventScroll: true }); },
+    rcDel: i => { rc.entries.splice(Number(i), 1); render(); },
+    rcCheck: () => {
+      const inp = document.getElementById('rcIn');
+      if (inp?.value.trim()) rc.entries.push(...inp.value.split(/[,;\n]/).map(s => s.trim()).filter(Boolean));
+      const l = RECALL.find(x => x.id === rc.list);
+      rc.res = checkRecall(l, rc.entries);
+      const ok = !rc.res.missing.length;
+      const res = record(CARD[`rc-${l.id}`], ok);
+      addPoints(3 * rc.res.found.size + (ok ? 10 : 0));
+      rc.newly = res.newly;
+      save();
+      render();
+      if (ok) confetti();
+      document.querySelector('.feedback')?.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'nearest' });
+    },
+    rcAgain: () => { rc = { list: rc.list, entries: [], res: null }; render(); document.getElementById('rcIn')?.focus({ preventScroll: true }); },
+    // cell lab
+    labTab: t => { newLabTab(t); render(); },
+    labPart: k => {
+      if (lab.tab === 'venn') return;
+      lab.sel = k;
+      lab.fb = lab.done[k] ? { kind: 'info', part: k } : null;
+      render();
+    },
+    labPick: k => {
+      const part = lab.sel;
+      if (!part || lab.done[part]) return;
+      const ok = k === part;
+      const card = CARD[`l-${lab.tab === 'pflanze' ? 'p' : 't'}-${part}`];
+      const res = record(card, ok);
+      lab.first[part] = ok;
+      lab.done[part] = ok ? 'ok' : 'help';
+      if (ok) addPoints(10);
+      lab.fb = { kind: ok ? 'ok' : 'no', part, chosen: k, msg: ok ? pick(PRAISE) : pick(COMFORT), ...res };
+      save();
+      render();
+      if (lab.keys.every(x => lab.done[x]) && (lab.keys.every(x => lab.first[x]) || res.modDone)) confetti();
+      else if (res.modDone) confetti();
+      document.querySelector('.feedback')?.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'nearest' });
+    },
+    vennPick: k => { lab.vsel = lab.vsel === k ? null : k; render(); },
+    vennZone: z => {
+      const k = lab.vsel;
+      if (!k) return;
+      const ok = zoneOf(k) === z;
+      const res = record(CARD[`vn-${k}`], ok);
+      lab.vfirst[k] = ok;
+      lab.placed[k] = ok ? 'ok' : 'help';
+      lab.vsel = null;
+      if (ok) addPoints(10);
+      lab.fb = { ok, part: k, zone: z, msg: ok ? pick(PRAISE) : pick(COMFORT), ...res };
+      save();
+      render();
+      if (PLANT.every(x => lab.placed[x]) && (PLANT.every(x => lab.vfirst[x]) || res.modDone)) confetti();
+      else if (res.modDone) confetti();
+    },
+    // senses puzzle
+    pzRow: i => { newPuzzle(Number(i)); render(); },
+    pzNext: () => {
+      const i = SENSES.findIndex((_, j) => !pz.rowsDone.has(j) && j !== pz.row);
+      newPuzzle(i < 0 ? (pz.row + 1) % SENSES.length : i);
+      render();
+      window.scrollTo(0, 0);
+    },
+    pzSlot: i => { if (!pz.res[Number(i)]) { pz.active = Number(i); pz.fb = null; render(); } },
+    pzPick: v => {
+      const i = pz.active;
+      if (pz.res[i]) return;
+      const s = SENSES[pz.row];
+      const col = COLS[i];
+      const ok = v === s[col.id];
+      const res = record(CARD[`s-${s.id}-${col.id}`], ok);
+      pz.res[i] = ok ? 'ok' : 'help';
+      if (ok) addPoints(10);
+      pz.fb = { ok, chosen: v, col: i, owner: SENSES.find(x => x[col.id] === v), msg: ok ? pick(PRAISE) : pick(COMFORT), ...res };
+      const nxt = COLS.findIndex((_, j) => !pz.res[j]);
+      if (nxt >= 0) pz.active = nxt;
+      else {
+        pz.rowsDone.add(pz.row);
+        if (COLS.every((_, j) => pz.res[j] === 'ok') || res.modDone) confetti();
+      }
+      save();
+      render();
+      (document.getElementById('pzActive') || document.querySelector('.feedback:last-of-type'))?.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'nearest' });
+    },
+    gleich: () => startRound('sinne', ['s-gleichgewicht'], { back: 'mod' }),
+    resetAsk: () => { resetAsk = true; render(); },
+    resetNo: () => { resetAsk = false; render(); },
+    resetYes: () => { P = fresh(); resetAsk = false; save(); show('home'); }
+  };
+
+  document.addEventListener('click', e => {
+    const part = e.target.closest('.cellsvg.pick [data-part]');
+    if (part) return ACTIONS.labPart(part.dataset.part);
+    const el = e.target.closest('[data-act]');
+    if (!el || el.disabled) return;
+    ACTIONS[el.dataset.act]?.(el.dataset.arg, el);
+  });
+
+  document.addEventListener('submit', e => {
+    if (!e.target.matches('[data-form="recall"]')) return;
+    e.preventDefault();
+    const inp = document.getElementById('rcIn');
+    const vals = (inp?.value || '').split(/[,;\n]/).map(s => s.trim()).filter(Boolean);
+    if (!vals.length) return;
+    rc.entries.push(...vals);
+    render();
+    document.getElementById('rcIn')?.focus({ preventScroll: true });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.metaKey || e.ctrlKey || e.altKey || view !== 'quiz' || !round) return;
+    const q = round.q;
+    if (!round.answered && q.kind === 'mc' && q.pending === undefined && /^[1-9]$/.test(e.key)) {
+      const i = Number(e.key) - 1;
+      if (i < q.options.length) answer(i);
+    } else if (round.answered && e.key === 'Enter' && document.activeElement?.id !== 'nextBtn') {
+      e.preventDefault();
+      next();
+    }
+  });
+
+  render();
+</script>
