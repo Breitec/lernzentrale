@@ -715,21 +715,49 @@
   }
   const canSpeak = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
   if (canSpeak) { findVoice(); speechSynthesis.onvoiceschanged = findVoice; }
-  function speak(text, slow = false) {
+  // iOS can list a voice that then stays silent: if the chosen voice does not start, retry once with the
+  // system default for en-GB and keep using that. The utterance is kept referenced so Safari fires its events.
+  let voiceOk = true;
+  let utter = null;
+  function speak(text, slow = false, onNote = () => {}) {
     if (!canSpeak || !text) return;
     try {
-      speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(text);
-      u.lang = 'en-GB';
-      if (enVoice) u.voice = enVoice;
-      u.rate = slow ? 0.6 : 0.9;
-      speechSynthesis.speak(u);
+      if (navigator.audioSession) navigator.audioSession.type = 'playback';
     } catch (e) {}
+    const attempt = withVoice => {
+      try {
+        if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = 'en-GB';
+        if (withVoice && enVoice) u.voice = enVoice;
+        u.rate = slow ? 0.6 : 0.9;
+        let started = false;
+        const fail = why => {
+          if (utter !== u) return;
+          utter = null;
+          if (withVoice && enVoice) {
+            voiceOk = false;
+            onNote(`„${enVoice.name}“ bleibt stumm (${why}), versuche Standardstimme …`);
+            speechSynthesis.cancel();
+            setTimeout(() => attempt(false), 150);
+          } else onNote(`Fehler: ${why}`);
+        };
+        u.onstart = () => { started = true; onNote('Vorlesen läuft …'); };
+        u.onend = () => { if (started) onNote('Fertig vorgelesen. Wenn nichts zu hören war: Lautlos-Modus und Lautstärke prüfen.'); };
+        u.onerror = ev => { if (ev.error !== 'interrupted' && ev.error !== 'canceled') fail(ev.error); };
+        utter = u;
+        speechSynthesis.speak(u);
+        setTimeout(() => { if (!started) fail('startet nicht'); }, 2000);
+      } catch (e) {
+        onNote(`Fehler: ${e.message}`);
+      }
+    };
+    attempt(voiceOk);
   }
   const sayText = e => e.say || e.en.replace(/\s*…$/, '');
   const letterSay = c => `${c.toUpperCase()}.`;
   const spellSay = w => w.toUpperCase().split('').join(', ') + '.';
-  const voiceName = () => enVoice ? `${enVoice.name} (${enVoice.lang.replace('_', '-')})` : canSpeak ? 'Standardstimme' : 'keine';
+  const voiceName = () => enVoice && voiceOk ? `${enVoice.name} (${enVoice.lang.replace('_', '-')})` : canSpeak ? 'Standardstimme Englisch (GB)' : 'keine';
 
   const ICON_SPEAK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
   const ICON_CLOSE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>';
@@ -836,7 +864,7 @@
         </div>
         <div class="chips">${chips}</div>
         <div class="muted">${activeWords().length} Vokabeln ausgewählt. Tippe eine Lektion an, um sie an- oder auszuschalten. Gemischt üben hilft beim Merken.</div>
-        ${canSpeak ? `<button class="switch" data-act="toggleAuto" aria-pressed="${P.auto}"><span class="knob" aria-hidden="true"></span>Englisch automatisch vorlesen</button>` : ''}
+        ${canSpeak ? `<button class="switch" data-act="toggleAuto" aria-pressed="${P.auto}"><span class="knob" aria-hidden="true"></span>Englisch automatisch vorlesen</button><div class="muted">Kein Ton? Lautlos-Modus ausschalten und lauter stellen.</div>` : ''}
       </section>
       <div class="row spread">
         <button class="linkbtn" data-act="parents">Für Eltern</button>
@@ -1090,6 +1118,12 @@
         <div class="muted">„Gelernt“ heißt: ${MASTER}-mal hintereinander richtig auf Englisch getippt. Ein Fehler setzt auf Stufe 0 zurück, ein kleiner Tippfehler nicht. Multiple-Choice-Fragen zählen nur für „Erkennen“. Gelernte Vokabeln kommen nach ${REVIEW_DAYS} Tagen zur Wiederholung. Der Fortschritt bleibt nur auf diesem Gerät.</div>
         <div class="muted">Vorlesestimme: ${esc(voiceName())}. Es wird kein Mikrofon benutzt; beim Nachsprechen bewertet das Kind selbst.</div>
       </section>
+      ${canSpeak ? `<section class="sheet stack">
+        <span class="label">Vorlesen testen</span>
+        <div class="row"><button class="btn ghost small" data-act="speechTest">${ICON_SPEAK}Testsatz abspielen</button></div>
+        <div id="speechTest" class="muted" aria-live="polite">Stimme: ${esc(voiceName())}</div>
+        <div class="muted">Kein Ton? Auf dem iPhone den Lautlos-Modus ausschalten (Schalter oder Aktionstaste an der Seite), auf dem iPad im Kontrollzentrum. Dann die Lautstärke hochdrehen.</div>
+      </section>` : '<section class="sheet">Dieser Browser hat keine Vorlesestimme.</section>'}
       <section class="sheet stack">
         <span class="label">Vokabeln, schwierigste zuerst</span>
         <div class="tablewrap"><table>
@@ -1369,6 +1403,12 @@
     next: () => next(),
     quit: () => { stopTimers(); const back = round && (round.type === 'letters' || round.type === 'spell') ? 'abc' : 'home'; round = null; show(back); },
     speak: (arg, el) => speakArg(arg, !!el.dataset.slow),
+    speechTest: () => {
+      const out = document.getElementById('speechTest');
+      const note = msg => { if (out) out.textContent = `Stimme: ${voiceName()} · ${msg}`; };
+      note('starte …');
+      speak('Hello! This is the vocabulary bus.', false, note);
+    },
     letter: i => { abcSel = Number(i); render(); speak(letterSay(LETTERS[abcSel].c)); },
     flip: () => {
       learn.open = !learn.open;
