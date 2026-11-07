@@ -10,7 +10,7 @@
 <link rel="icon" href="/lernzentrale/icon.png">
 <style>:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }</style>
 <title>Vokabel-Bus</title>
-<meta name="description" content="Englisch, Vokabeln aus dem Heft: 148 Wörter und Sätze hören, nachsprechen und schreiben, dazu das Alphabet.">
+<meta name="description" content="Englisch, Vokabeln aus dem Heft: 153 Wörter und Sätze hören, nachsprechen und schreiben, dazu das Alphabet.">
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -47,6 +47,7 @@
     --g-orange: #f59b5c;
     --g-hellblau: #63bdea;
     --g-dunkelblau: #8fa8e6;
+    --g-tuerkis: #6fcdb8;
     --g-rosa: #f4a8cb;
     --f-hand: 'Playpen Sans', 'Chalkboard SE', 'Comic Sans MS', cursive;
     --f-body: 'Andika', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
@@ -316,7 +317,8 @@
     { id: 'freizeit', label: 'Freizeit & Farben', short: 'Freizeit', color: 'orange' },
     { id: 'zuhause', label: 'Zuhause & Möbel', short: 'Zuhause', color: 'hellblau' },
     { id: 'familie', label: 'Familie', short: 'Familie', color: 'rosa' },
-    { id: 'orte', label: 'Orte & Präpositionen', short: 'Orte', color: 'lila' }
+    { id: 'orte', label: 'Orte & Präpositionen', short: 'Orte', color: 'lila' },
+    { id: 'unterricht', label: 'Im Unterricht', short: 'Schule', color: 'tuerkis' }
   ];
 
   // [lesson, English, German, options] – exactly the notebook entries, spelling corrected (see README).
@@ -474,7 +476,13 @@
     ['orte', 'own', 'eigene/-r/-s'],
     ['orte', 'in the middle (of)', 'in der Mitte (von); mitten in', { say: 'in the middle of', ans: ['in the middle'] }],
     ['orte', 'on the right', 'auf der rechten Seite; rechts'],
-    ['orte', 'on the left', 'auf der linken Seite; links']
+    ['orte', 'on the left', 'auf der linken Seite; links'],
+
+    ['unterricht', 'Listen!', 'Zuhören!', { tip: 'Aufforderung im Unterricht' }],
+    ['unterricht', 'Repeat!', 'Wiederholen!', { tip: 'Aufforderung im Unterricht' }],
+    ['unterricht', 'Answer the questions.', 'Beantworte die Fragen.'],
+    ['unterricht', 'Use short answers.', 'Benutze Kurzantworten.'],
+    ['unterricht', 'margin', 'Rand']
   ];
 
   // Alphabet box from the notebook: [letter, IPA, memory aid]
@@ -501,6 +509,8 @@
   };
 
   const KEY = 'vokabel-bus-v1';
+  // Lessons of the first version; saves from then have no "known" list
+  const FIRST_LESSONS = ['hallo', 'tiere', 'freizeit', 'zuhause', 'familie', 'orte'];
   const HUB_KEY = 'lernzentrale:2026-10_Englisch-Vokabeln';
   if (location.pathname.includes('/lernzentrale/')) document.getElementById('hubLink').hidden = false;
   const MASTER = 3;
@@ -529,15 +539,20 @@
   let pending = null;
 
   function fresh(lessons = LESSONS.map(l => l.id)) {
-    return { prod: {}, rec: {}, wrong: {}, seen: {}, said: {}, last: {}, abc: {}, points: 0, blitzBest: 0, auto: true, lessons };
+    return { prod: {}, rec: {}, wrong: {}, seen: {}, said: {}, last: {}, abc: {}, points: 0, blitzBest: 0, auto: true, lessons, known: LESSONS.map(l => l.id) };
   }
   function load() {
     const base = fresh();
     try {
       const raw = localStorage.getItem(KEY);
       if (raw) {
-        const p = Object.assign(base, JSON.parse(raw));
+        const saved = JSON.parse(raw);
+        const known = Array.isArray(saved.known) ? saved.known : FIRST_LESSONS;
+        const p = Object.assign(base, saved);
         p.lessons = (Array.isArray(p.lessons) ? p.lessons : []).filter(id => LESSON[id]);
+        // Lessons added since the last visit start switched on
+        LESSONS.forEach(l => { if (!known.includes(l.id) && !p.lessons.includes(l.id)) p.lessons.push(l.id); });
+        p.known = LESSONS.map(l => l.id);
         if (!p.lessons.length) p.lessons = LESSONS.map(l => l.id);
         return p;
       }
@@ -782,23 +797,25 @@
       }),
       { short: 'ABC', c: 'dunkelblau', n: LETTERS.length, done: LETTERS.filter(letterDone).length, started: LETTERS.filter(l => abcLvl(l) > 0).length }
     ];
-    const pos = [[34, 40], [114, 40], [194, 40], [274, 40], [34, 128], [114, 128], [194, 128]];
-    const W = 70, H = 62;
+    // Upper deck 4 windows, lower deck 3 plus the wide front window under the destination sign
+    const pos = [[34, 40], [114, 40], [194, 40], [274, 40], [34, 128], [114, 128], [194, 128], [274, 128]];
+    const H = 62;
     let s = `<svg class="bus" viewBox="0 0 400 252" role="img" aria-label="Vokabel-Bus: ${doneCount()} von ${TOTAL} gelernt">`;
     s += '<rect class="roof" x="22" y="14" width="356" height="16" rx="8"/>';
     s += '<rect class="body" x="14" y="20" width="372" height="200" rx="20"/>';
     s += '<rect class="band" x="14" y="108" width="372" height="12"/>';
     units.forEach((u, i) => {
       const [x, y] = pos[i];
+      const front = i === pos.length - 1;
+      const W = front ? 98 : 70, dy = front ? 10 : 0;
       const light = H * u.started / u.n, solid = H * u.done / u.n;
       s += `<clipPath id="win${i}"><rect x="${x}" y="${y}" width="${W}" height="${H}" rx="7"/></clipPath>`;
       s += `<g clip-path="url(#win${i})"><rect class="glass" x="${x}" y="${y}" width="${W}" height="${H}"/>`;
       s += `<rect x="${x}" y="${(y + H - light).toFixed(1)}" width="${W}" height="${light.toFixed(1)}" style="fill:color-mix(in srgb, var(--g-${u.c}) 40%, var(--glass))"/>`;
       s += `<rect x="${x}" y="${(y + H - solid).toFixed(1)}" width="${W}" height="${solid.toFixed(1)}" style="fill:var(--g-${u.c})"/></g>`;
-      s += `<text class="win-label" x="${x + W / 2}" y="${y + 26}">${esc(u.short)}${u.done === u.n ? ' ★' : ''}</text>`;
-      s += `<text class="win-count" x="${x + W / 2}" y="${y + 46}">${u.done}/${u.n}</text>`;
+      s += `<text class="win-label" x="${x + W / 2}" y="${y + 26 + dy}">${esc(u.short)}${u.done === u.n ? ' ★' : ''}</text>`;
+      s += `<text class="win-count" x="${x + W / 2}" y="${y + 46 + dy}">${u.done}/${u.n}</text>`;
     });
-    s += '<rect class="glass" x="274" y="128" width="98" height="62" rx="7" style="opacity:.75"/>';
     s += '<rect class="sign" x="274" y="128" width="98" height="20" rx="5"/><text class="sign-text" x="323" y="142">GREENWICH</text>';
     s += '<circle class="lamp" cx="379" cy="204" r="5"/>';
     [92, 312].forEach(cx => { s += `<circle class="tyre" cx="${cx}" cy="220" r="25"/><circle class="hub" cx="${cx}" cy="220" r="9"/>`; });
@@ -1360,7 +1377,7 @@
     c.height = H * dpr;
     ctx.scale(dpr, dpr);
     const cs = getComputedStyle(document.documentElement);
-    const cols = ['rot', 'gelb', 'gruen', 'hellblau', 'rosa', 'lila', 'orange', 'dunkelblau'].map(g => cs.getPropertyValue(`--g-${g}`).trim());
+    const cols = ['rot', 'gelb', 'gruen', 'hellblau', 'rosa', 'lila', 'orange', 'dunkelblau', 'tuerkis'].map(g => cs.getPropertyValue(`--g-${g}`).trim());
     const parts = Array.from({ length: 130 }, () => ({
       x: W / 2 + (Math.random() - 0.5) * 160, y: H * 0.3,
       vx: (Math.random() - 0.5) * 14, vy: -Math.random() * 13 - 4,
