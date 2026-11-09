@@ -6,6 +6,7 @@ Kleine Lernspiele für die Schule, gebaut für Tablet und Handy. Jedes Spiel beh
 
 ## Spiele
 
+- **[Erd-Atlas](https://breitec.github.io/lernzentrale/2026-11_Geographie-Erde-Sonnensystem-Klima/)** – Geographie: Kopernikus, Sonnensystem, Besonderheiten der Erde und Treibhauseffekt.
 - **[Sagen-Sonne](https://breitec.github.io/lernzentrale/2026-10_Wortfeld-Sagen/)** – Deutsch, Wortfeld „sagen“: 62 Verben kennenlernen, abfragen und in Sätze einsetzen.
 - **[Vokabel-Bus](https://breitec.github.io/lernzentrale/2026-10_Englisch-Vokabeln/)** – Englisch, Vokabeln aus dem Heft: 168 Wörter und Sätze hören, nachsprechen und schreiben, dazu das Alphabet.
 - **[Bio-Labor](https://breitec.github.io/lernzentrale/2026-10_Biologie-Lebewesen-Zellen-Sinne/)** – Natur und Technik, Biologie: Kennzeichen von Lebewesen, Zellen, Sinnesorgane und Reiz-Reaktions-Kette.

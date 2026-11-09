@@ -1,0 +1,1924 @@
+<!doctype html>
+<html lang="de">
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Lernzentrale">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="/lernzentrale/icon.png">
+<link rel="icon" href="/lernzentrale/icon.png">
+<style>:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }</style>
+<title>Erd-Atlas</title>
+<meta name="description" content="Geographie: Kopernikus, Sonnensystem, Besonderheiten der Erde und Treibhauseffekt.">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<style>
+  /* Layout: one calm learning path on squared paper, night blue and ochre like an old atlas; diagrams are drawn inline as SVG */
+  :root {
+    --paper: #f5f7fb;
+    --sheet: #ffffff;
+    --rule: #dde3ee;
+    --line: #c5cfdf;
+    --ink: #17223b;
+    --ink-soft: #55617a;
+    --pen: #1e3a6e;
+    --on-pen: #ffffff;
+    --ocker: #c98a1b;
+    --ocker-ink: #8a5a10;
+    --ocker-bg: #fbf1dc;
+    --good: #23824f;
+    --good-bg: #e2f4e9;
+    --almost: #8a5a00;
+    --almost-bg: #fdf1d3;
+    --bad: #b8460f;
+    --bad-bg: #fde9dd;
+    --sky: #eaf1fa;
+    --ground: #2f6f6a;
+    --snow: #f4f9fc;
+    --snow-edge: #9bb7cc;
+    --cloud: #ffffff;
+    --cloud-edge: #7d93b4;
+    --gas: #1c1c1c;
+    --sun: #f2b632;
+    --sun-edge: #d48a10;
+    --kurz: #e07b12;
+    --lang: #c4372c;
+    --sunray: #e8c21e;
+    --tree: #6b4a2b;
+    --leaf: #5f8f3a;
+    --orbit: #b9c4d8;
+    --c-co2: #c4372c;
+    --c-ch4: #2f5fb3;
+    --c-n2o: #2f7d4a;
+    --c-f: #7a4fb0;
+    --f-hand: 'Playpen Sans', 'Chalkboard SE', 'Comic Sans MS', cursive;
+    --f-body: 'Andika', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0b1222;
+      --sheet: #121b30;
+      --rule: #162038;
+      --line: #2a3a58;
+      --ink: #e7ecf6;
+      --ink-soft: #a3afc6;
+      --pen: #9db8f0;
+      --on-pen: #0b1222;
+      --ocker: #e0a94a;
+      --ocker-ink: #f0c27a;
+      --ocker-bg: #3a2c12;
+      --good: #68d39a;
+      --good-bg: #16392a;
+      --almost: #f3c35b;
+      --almost-bg: #3d3115;
+      --bad: #ffa477;
+      --bad-bg: #44261a;
+      --sky: #0f1a30;
+      --ground: #3f8f88;
+      --snow: #dfe9f2;
+      --snow-edge: #8fb0c8;
+      --cloud: #2a3a58;
+      --cloud-edge: #9db8f0;
+      --gas: #e7ecf6;
+      --sun: #f5c24a;
+      --sun-edge: #ffd77a;
+      --kurz: #f5a54a;
+      --lang: #ff7a6e;
+      --sunray: #f3d64a;
+      --tree: #b08a63;
+      --leaf: #86b85c;
+      --orbit: #3a4a6a;
+      --c-co2: #ff7a6e;
+      --c-ch4: #82a8ff;
+      --c-n2o: #6fd39a;
+      --c-f: #c3a1f0;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0b1222;
+    --sheet: #121b30;
+    --rule: #162038;
+    --line: #2a3a58;
+    --ink: #e7ecf6;
+    --ink-soft: #a3afc6;
+    --pen: #9db8f0;
+    --on-pen: #0b1222;
+    --ocker: #e0a94a;
+    --ocker-ink: #f0c27a;
+    --ocker-bg: #3a2c12;
+    --good: #68d39a;
+    --good-bg: #16392a;
+    --almost: #f3c35b;
+    --almost-bg: #3d3115;
+    --bad: #ffa477;
+    --bad-bg: #44261a;
+    --sky: #0f1a30;
+    --ground: #3f8f88;
+    --snow: #dfe9f2;
+    --snow-edge: #8fb0c8;
+    --cloud: #2a3a58;
+    --cloud-edge: #9db8f0;
+    --gas: #e7ecf6;
+    --sun: #f5c24a;
+    --sun-edge: #ffd77a;
+    --kurz: #f5a54a;
+    --lang: #ff7a6e;
+    --sunray: #f3d64a;
+    --tree: #b08a63;
+    --leaf: #86b85c;
+    --orbit: #3a4a6a;
+    --c-co2: #ff7a6e;
+    --c-ch4: #82a8ff;
+    --c-n2o: #6fd39a;
+    --c-f: #c3a1f0;
+    color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body {
+    margin: 0;
+    background-color: var(--paper);
+    background-image: linear-gradient(var(--rule) 1px, transparent 1px), linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+    background-size: 22px 22px;
+    color: var(--ink);
+    font: 400 17px/1.5 var(--f-body);
+    -webkit-tap-highlight-color: transparent;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  button, input, textarea { font: inherit; color: inherit; }
+  button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible { outline: 3px solid var(--pen); outline-offset: 2px; }
+  .wrap { max-width: 760px; margin: 0 auto; padding-block: 10px 48px; display: flex; flex-direction: column; gap: 18px; }
+
+  header.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .hublink { align-self: flex-start; display: inline-flex; align-items: center; min-height: 36px; color: var(--pen); font-weight: 700; text-decoration: none; margin-bottom: -10px; }
+  .brand { display: inline-flex; align-items: center; gap: 8px; font: 800 clamp(1.45rem, 5vw, 2rem)/1.1 var(--f-hand); color: var(--pen); background: none; border: 0; padding: 0; min-height: 44px; cursor: pointer; text-align: left; }
+  .brand svg { width: 34px; height: 34px; flex: none; }
+  .pill { font: 700 .95rem/1 var(--f-body); padding: .5em .85em; border-radius: 999px; background: var(--sheet); border: 1.5px solid var(--line); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .pill.due { border-color: var(--ocker); background: var(--ocker-bg); color: var(--ocker-ink); }
+
+  h2 { font: 800 1.35rem/1.2 var(--f-hand); margin: 0; color: var(--ink); text-wrap: balance; }
+  h3 { font: 800 1.1rem/1.25 var(--f-hand); margin: 0; }
+  p { margin: 0; }
+  .muted { color: var(--ink-soft); }
+  .small { font-size: .9rem; }
+  .label { font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
+
+  .sheet { background: var(--sheet); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 18px; min-width: 0; }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .spread { justify-content: space-between; }
+  .center { justify-content: center; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 0 22px; border-radius: 12px; border: 2px solid var(--pen); background: var(--pen); color: var(--on-pen); font-weight: 700; font-size: 1.05rem; cursor: pointer; text-align: center; }
+  .btn.ghost { background: var(--sheet); color: var(--pen); }
+  .btn.small { min-height: 48px; padding: 0 14px; font-size: .95rem; }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .btn[disabled] { opacity: .45; cursor: default; }
+  .linkbtn { background: none; border: 0; color: var(--pen); font-weight: 700; padding: 8px 0; min-height: 44px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+  .iconbtn { width: 48px; height: 48px; flex: none; border-radius: 50%; border: 1.5px solid var(--line); background: var(--sheet); display: grid; place-items: center; cursor: pointer; color: var(--ink); }
+  .iconbtn svg { width: 20px; height: 20px; }
+  .speak { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; }
+  .speak .hint { font-size: .82rem; color: var(--ink-soft); }
+
+  /* Home */
+  .hero { display: grid; grid-template-columns: minmax(0, 200px) minmax(0, 1fr); gap: 20px; align-items: center; }
+  .orbitmap { width: 100%; height: auto; display: block; }
+  .count { font: 800 clamp(1.9rem, 7vw, 2.5rem)/1 var(--f-hand); color: var(--pen); font-variant-numeric: tabular-nums; }
+  .bar { height: 12px; border-radius: 99px; background: var(--rule); overflow: hidden; }
+  .bar > span { display: block; height: 100%; background: var(--pen); border-radius: 99px; transition: width .4s; }
+  .bar.thin { height: 8px; }
+  .bar.ocker > span { background: var(--ocker); }
+  .today { border: 2px solid var(--ocker); background: var(--ocker-bg); border-radius: var(--radius); padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; }
+  .today h2 { color: var(--ocker-ink); }
+  .today.calm { border-color: var(--line); background: var(--sheet); }
+  .today.calm h2 { color: var(--ink); }
+  .forecast { display: flex; flex-wrap: wrap; gap: 6px; }
+  .forecast span { font-size: .85rem; padding: 3px 10px; border-radius: 99px; border: 1.5px solid var(--line); background: var(--sheet); font-variant-numeric: tabular-nums; }
+
+  .path { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; position: relative; }
+  .path::before { content: ''; position: absolute; left: 27px; top: 20px; bottom: 20px; border-left: 3px dashed var(--line); }
+  .station { position: relative; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; align-items: start; width: 100%; text-align: left; background: none; border: 0; padding: 0; cursor: pointer; }
+  .station .num { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; font: 800 1.4rem/1 var(--f-hand); background: var(--sheet); border: 3px solid var(--line); color: var(--ink-soft); z-index: 1; }
+  .station.started .num { border-color: var(--pen); color: var(--pen); }
+  .station.complete .num { background: var(--pen); border-color: var(--pen); color: var(--on-pen); }
+  .station.next .num { border-color: var(--ocker); color: var(--ocker-ink); box-shadow: 0 0 0 5px var(--ocker-bg); }
+  .station .card { background: var(--sheet); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .station.next .card { border-color: var(--ocker); }
+  .station:active .card { transform: scale(.99); }
+  .station .card .top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .stars { color: var(--ocker); letter-spacing: .08em; white-space: nowrap; font-size: 1.15rem; }
+  .stars .off { color: var(--line); }
+  .steps { display: flex; flex-wrap: wrap; gap: 6px; }
+  .steps span { font-size: .8rem; font-weight: 700; padding: 2px 9px; border-radius: 99px; border: 1.5px solid var(--line); color: var(--ink-soft); }
+  .steps span.on { border-color: var(--good); color: var(--good); background: var(--good-bg); }
+  .mini { display: flex; align-items: center; gap: 8px; font-size: .85rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .mini .bar { flex: 1; }
+  .nexttag { font-size: .78rem; font-weight: 800; color: var(--ocker-ink); text-transform: uppercase; letter-spacing: .06em; }
+
+  .tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .tile { text-align: left; background: var(--sheet); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 14px; display: flex; flex-direction: column; gap: 6px; cursor: pointer; min-height: 110px; min-width: 0; }
+  .tile:active { transform: scale(.98); }
+  .tile h3 { color: var(--pen); }
+  .tile p { font-size: .92rem; color: var(--ink-soft); }
+
+  /* Chapter */
+  .stepcard { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 12px; align-items: start; }
+  .stepcard .dot { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; border: 2.5px solid var(--line); background: var(--sheet); color: var(--ink-soft); }
+  .stepcard.on .dot { border-color: var(--good); background: var(--good); color: var(--on-pen); }
+  .stepcard .stack { gap: 8px; }
+
+  /* Learning card */
+  .notes ul, .notes ol { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 4px; }
+  .merk { border: 2.5px solid var(--ocker); background: var(--ocker-bg); border-radius: 10px; padding: 10px 14px; font: 600 1.05rem/1.45 var(--f-hand); }
+  .merk .label { display: block; color: var(--ocker-ink); font-family: var(--f-body); }
+  .merkpick { display: grid; gap: 8px; }
+  .merkpick button { text-align: left; border: 2px solid var(--line); background: var(--sheet); border-radius: 10px; padding: 10px 14px; font: 600 1.02rem/1.45 var(--f-hand); cursor: pointer; min-height: 52px; }
+  .merkpick button[aria-pressed="true"] { border-color: var(--ocker); background: var(--ocker-bg); }
+  .merkpick b { color: var(--ocker-ink); font-size: 1.15em; }
+  .muster { border: 2px dashed var(--ocker); background: color-mix(in srgb, var(--ocker-bg) 60%, var(--sheet)); border-radius: 10px; padding: 10px 14px; display: flex; flex-direction: column; gap: 6px; }
+  .muster > .label { color: var(--ocker-ink); }
+  .task { border-left: 4px solid var(--pen); padding: 4px 0 4px 12px; font-weight: 700; }
+  .facts { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 12px; }
+  .facts dt { font-weight: 700; }
+  .facts dd { margin: 0; overflow-wrap: anywhere; }
+  .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .pair figure { margin: 0; display: flex; flex-direction: column; align-items: stretch; gap: 6px; text-align: center; border: 1.5px solid var(--line); border-radius: 12px; padding: 10px; }
+  .pair figcaption { font-weight: 700; }
+  .timeline { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0; }
+  .timeline li { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 10px; align-items: stretch; }
+  .timeline li b { font: 800 1rem/1.4 var(--f-hand); color: var(--ocker-ink); text-align: right; padding-top: 6px; }
+  .timeline li span { border-left: 3px solid var(--ocker); padding: 6px 0 6px 12px; }
+  .temps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .temps div { border: 1.5px solid var(--line); border-radius: 12px; padding: 10px 12px; text-align: center; }
+  .temps b { display: block; font: 800 1.8rem/1.1 var(--f-hand); color: var(--pen); }
+  .gascards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 10px; }
+  .gascard { border: 1.5px solid var(--line); border-top: 5px solid var(--c); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .gascard dl { margin: 0; display: grid; gap: 2px; }
+  .gascard dt { font-size: .75rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-soft); margin-top: 4px; }
+  .gascard dd { margin: 0; overflow-wrap: anywhere; }
+  .two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .toc { display: flex; flex-wrap: wrap; gap: 8px; }
+  .toc a { color: var(--pen); font-weight: 700; padding: 6px 12px; border: 1.5px solid var(--line); border-radius: 99px; text-decoration: none; background: var(--sheet); font-size: .92rem; }
+
+  /* Diagrams */
+  .fig { width: 100%; height: auto; display: block; }
+  .figwrap { display: flex; flex-direction: column; gap: 6px; }
+  .figcap { font-size: .85rem; color: var(--ink-soft); text-align: center; }
+  .legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 16px; }
+  .legend li { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; }
+  .sw { display: inline-block; width: 34px; height: 0; border-top: 3px dotted var(--kurz); vertical-align: middle; flex: none; }
+  .sw.lang { border-top: 3px dashed var(--lang); }
+  .sw.gelb { border-top: 3px dashed var(--sunray); }
+  .sw.dot { width: 9px; height: 9px; border: 0; border-radius: 50%; background: var(--gas); }
+  .sw.line { border-top: 3px solid var(--c); }
+  .m2 .sky { fill: var(--sky); }
+  .m2 .ground { fill: var(--ground); }
+  .m2 .snow { fill: var(--snow); stroke: var(--snow-edge); stroke-width: 1.5; }
+  .m2 .cloud { fill: var(--cloud); stroke: var(--cloud-edge); stroke-width: 2; stroke-linejoin: round; }
+  .m2 .gasdot { fill: var(--gas); }
+  .m2 .sunbody { fill: var(--sun); stroke: var(--sun-edge); stroke-width: 2; }
+  .m2 .ray { stroke: var(--sun-edge); stroke-width: 2.5; stroke-linecap: round; }
+  .m2 .trunk { stroke: var(--tree); stroke-width: 5; stroke-linecap: round; fill: none; }
+  .m2 .crown { fill: var(--leaf); opacity: .85; }
+  .m2 .lbl { font: 600 12px var(--f-hand); fill: var(--ink); }
+  .m2 .divider { stroke: var(--line); stroke-width: 2; }
+  .arr line, .arr path { fill: none; stroke-width: 3; stroke-linecap: round; }
+  .arr.kurz line { stroke: var(--kurz); stroke-dasharray: .5 6; stroke-width: 3.5; }
+  .arr.kurz polygon { fill: var(--kurz); }
+  .arr.lang line { stroke: var(--lang); stroke-dasharray: 8 6; }
+  .arr.lang polygon { fill: var(--lang); }
+  .arr.gelb line { stroke: var(--sunray); stroke-dasharray: 8 6; }
+  .arr.gelb polygon { fill: var(--sunray); }
+  .badge circle { fill: var(--sheet); stroke: var(--ink); stroke-width: 1.8; }
+  .badge text { font: 800 13px var(--f-body); fill: var(--ink); text-anchor: middle; dominant-baseline: central; }
+  .badge.ok circle { fill: var(--good); stroke: var(--good); }
+  .badge.help circle { fill: var(--almost); stroke: var(--almost); }
+  .badge.ok text, .badge.help text { fill: var(--on-pen); }
+  .m2.has-sel .step:not(.sel) { opacity: .22; }
+  .m2 .step.sel .badge circle { fill: var(--ocker); stroke: var(--ocker-ink); stroke-width: 3; animation: pulse 1.2s ease-in-out infinite; }
+  .m2 .step.sel .badge text { fill: #1b1200; }
+  @keyframes pulse { 50% { stroke-opacity: .3; } }
+  .m3 .axis { stroke: var(--ink); stroke-width: 1.5; fill: none; }
+  .m3 .grid { stroke: var(--rule); stroke-width: 1; }
+  .m3 .tick { font: 600 11px var(--f-body); fill: var(--ink-soft); }
+  .m3 .ttl { font: 700 12px var(--f-body); fill: var(--ink); }
+  .m3 .curve { fill: none; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+  .m3 .band { fill: var(--ocker); opacity: .18; }
+  .m3 .bandtxt { font: 700 11px var(--f-body); fill: var(--ocker-ink); }
+  .kop .orbit { fill: none; stroke: var(--orbit); stroke-width: 1.5; stroke-dasharray: 4 4; }
+  .kop text { font: 700 17px var(--f-body); fill: var(--ink); }
+  .ss text { font: 700 12px var(--f-body); fill: var(--ink); }
+  .ss .lbl { font: 600 12.5px var(--f-body); fill: var(--ink); text-anchor: middle; }
+  .orbitmap .orbit { fill: none; stroke: var(--orbit); stroke-width: 1.6; stroke-dasharray: 3 5; }
+  .orbitmap .st { stroke: var(--sheet); stroke-width: 2; }
+  .orbitmap text { font: 800 11px var(--f-body); text-anchor: middle; dominant-baseline: central; }
+
+  /* Quiz */
+  .qbar { display: flex; align-items: center; gap: 12px; }
+  .qbar .track { flex: 1; display: flex; gap: 4px; min-width: 0; }
+  .qbar .track span { flex: 1; height: 10px; border-radius: 99px; background: var(--rule); }
+  .qbar .track span.ok { background: var(--good); }
+  .qbar .track span.almost { background: var(--almost); }
+  .qbar .track span.no { background: var(--bad); }
+  .qbar .track span.now { background: var(--pen); }
+  .prompt { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; padding-block: 20px; }
+  .prompt .fig { max-width: 520px; }
+  .question { font: 600 clamp(1.12rem, 4.2vw, 1.4rem)/1.4 var(--f-hand); max-width: 38ch; text-wrap: balance; overflow-wrap: anywhere; }
+  .options { display: grid; gap: 10px; }
+  .options.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .opt { min-height: 58px; text-align: left; padding: 12px 16px; border-radius: 12px; border: 2px solid var(--line); background: var(--sheet); cursor: pointer; font-size: 1.04rem; line-height: 1.35; display: flex; align-items: center; gap: 12px; overflow-wrap: anywhere; min-width: 0; }
+  .options.two .opt { justify-content: center; text-align: center; font-weight: 700; }
+  .opt.pic { flex-direction: column; padding: 8px; }
+  .opt.pic svg { max-width: 220px; }
+  .opt:active { transform: scale(.98); }
+  .opt .key { flex: none; width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; font-size: .8rem; color: var(--ink-soft); }
+  .options.two .key { display: none; }
+  .opt.correct { border-color: var(--good); background: var(--good-bg); }
+  .opt.wrong { border-color: var(--bad); background: var(--bad-bg); }
+  .opt.chosen { border-color: var(--pen); border-width: 3px; }
+  .opt.dim { opacity: .45; }
+  .opt[disabled] { cursor: default; }
+  .shake { animation: shake .35s; }
+  @keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+  .confask { border: 2px solid var(--pen); border-radius: var(--radius); padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; background: var(--sheet); }
+  .feedback { border-radius: var(--radius); padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; border: 2px solid var(--good); background: var(--good-bg); min-width: 0; }
+  .feedback.no { border-color: var(--bad); background: var(--bad-bg); }
+  .feedback.almost { border-color: var(--almost); background: var(--almost-bg); }
+  .feedback.info { border-color: var(--line); background: var(--sheet); }
+  .feedback .verdict { font: 800 1.3rem/1.2 var(--f-hand); color: var(--good); }
+  .feedback.no .verdict { color: var(--bad); }
+  .feedback.almost .verdict { color: var(--almost); }
+  .feedback.info .verdict { color: var(--pen); }
+  .heft { margin: 0; padding: 10px 14px; border-left: 4px solid var(--pen); background: var(--sheet); border-radius: 0 10px 10px 0; font: 500 1rem/1.5 var(--f-hand); display: flex; flex-direction: column; gap: 2px; overflow-wrap: anywhere; }
+  .heft .label { font-family: var(--f-body); }
+  .when { font-size: .88rem; color: var(--ink-soft); }
+
+  .tline { font: 500 1.12rem/2.4 var(--f-body); text-align: left; }
+  .tin { min-height: 48px; min-width: 0; width: 100%; padding: 8px 14px; border-radius: 10px; border: 2px solid var(--line); background: var(--sheet); font-size: 1.12rem; }
+  .tline .tin { width: auto; display: inline-block; min-width: 5ch; max-width: 100%; min-height: 44px; padding: 4px 10px; line-height: 1.3; vertical-align: middle; border-style: dashed; border-color: var(--pen); }
+  .tin.ok { border: 2px solid var(--good); background: var(--good-bg); }
+  .tin.no { border: 2px solid var(--bad); background: var(--bad-bg); }
+  textarea.tin { min-height: 110px; resize: vertical; line-height: 1.45; }
+  .reslist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .reslist li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 8px; align-items: start; }
+  .ok-t { color: var(--good); font-weight: 800; }
+  .no-t { color: var(--bad); font-weight: 800; }
+  .yours { border: 1.5px dashed var(--line); border-radius: 10px; padding: 8px 12px; white-space: pre-wrap; overflow-wrap: anywhere; }
+
+  .chain { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .chain li { display: flex; gap: 10px; align-items: center; padding: 10px 12px; border-radius: 12px; border: 2px solid var(--good); background: var(--good-bg); }
+  .chain li.help { border-color: var(--almost); background: var(--almost-bg); }
+  .chain li.slot { border: 2px dashed var(--line); background: transparent; color: var(--ink-soft); }
+  .chain li b { flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--sheet); border: 1.5px solid var(--line); font-size: .9rem; }
+  .bank { display: flex; flex-wrap: wrap; gap: 10px; }
+  .term { min-height: 50px; padding: 8px 14px; border-radius: 10px; border: 2px solid var(--line); background: var(--sheet); cursor: pointer; font-weight: 700; text-align: left; overflow-wrap: anywhere; display: inline-flex; align-items: center; gap: 8px; max-width: 100%; }
+  .term:active { transform: scale(.97); }
+  .term.sel { border-color: var(--pen); border-width: 3px; background: color-mix(in srgb, var(--ocker) 18%, var(--sheet)); }
+  .term[disabled] { opacity: .4; cursor: default; }
+  .term svg { width: 30px; height: 30px; flex: none; }
+
+  .answer { display: flex; gap: 10px; }
+  .answer input { flex: 1; }
+  .entries { display: flex; flex-wrap: wrap; gap: 8px; }
+  .entry { display: inline-flex; align-items: center; gap: 4px; padding: 4px 4px 4px 12px; border-radius: 99px; border: 1.5px solid var(--line); background: var(--sheet); font-weight: 700; max-width: 100%; overflow-wrap: anywhere; }
+  .entry button { width: 40px; height: 40px; border: 0; background: none; cursor: pointer; border-radius: 50%; color: var(--ink-soft); flex: none; display: grid; place-items: center; }
+  .entry button svg { width: 16px; height: 16px; }
+
+  .rate { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .rate button { min-height: 52px; border-radius: 12px; border: 2px solid var(--line); background: var(--sheet); font-weight: 700; cursor: pointer; padding: 6px; }
+  .rate button[aria-pressed="true"].r-h { border-color: var(--good); background: var(--good-bg); }
+  .rate button[aria-pressed="true"].r-t { border-color: var(--almost); background: var(--almost-bg); }
+  .rate button[aria-pressed="true"].r-f { border-color: var(--bad); background: var(--bad-bg); }
+  .checklist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .checklist li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 8px; align-items: start; }
+  .checklist .ic { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; border: 2px solid var(--line); font-size: .85rem; }
+  .checklist .found .ic { border-color: var(--good); color: var(--good); }
+  .critbtn { display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; gap: 10px; align-items: center; text-align: left; width: 100%; min-height: 52px; padding: 8px 12px; border-radius: 12px; border: 2px solid var(--line); background: var(--sheet); cursor: pointer; }
+  .critbtn .box { width: 28px; height: 28px; border-radius: 8px; border: 2px solid var(--line); display: grid; place-items: center; font-weight: 800; }
+  .critbtn[aria-pressed="true"] { border-color: var(--good); background: var(--good-bg); }
+  .critbtn[aria-pressed="true"] .box { border-color: var(--good); background: var(--good); color: var(--on-pen); }
+  .critbtn small { color: var(--ink-soft); white-space: nowrap; }
+
+  .zones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .zone { min-height: 120px; padding: 10px; border-radius: 12px; border: 2px solid var(--line); border-top: 6px solid var(--c); background: var(--sheet); cursor: pointer; display: flex; flex-direction: column; gap: 6px; text-align: left; min-width: 0; }
+  .zone.ready { outline: 3px solid var(--pen); outline-offset: 2px; }
+  .zone h3 { font-size: 1rem; }
+  .chipok { font-size: .86rem; font-weight: 700; padding: 4px 8px; border-radius: 8px; background: var(--good-bg); border: 2px solid var(--good); overflow-wrap: anywhere; }
+  .chipok.help { border-color: var(--almost); background: var(--almost-bg); }
+
+  /* Videos */
+  .vcard { text-align: left; display: flex; gap: 14px; align-items: center; padding: 14px; border-radius: var(--radius); border: 1.5px solid var(--line); background: var(--sheet); cursor: pointer; min-height: 76px; width: 100%; }
+  .vcard .play { width: 50px; height: 50px; border-radius: 50%; flex: none; display: grid; place-items: center; background: var(--ocker); color: #1b1200; }
+  .vcard .play svg { width: 22px; height: 22px; }
+  .vbox { position: relative; border-radius: 12px; overflow: hidden; background: #000; aspect-ratio: 16 / 9; }
+  .vbox video { width: 100%; height: 100%; display: block; }
+  .vph { border-radius: 12px; border: 2px dashed var(--line); aspect-ratio: 16 / 9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; padding: 16px; background: var(--sheet); }
+  .vph b { font: 800 1.3rem/1.2 var(--f-hand); color: var(--pen); }
+  .vbox, .vph { width: 100%; max-width: calc(70vh * 16 / 9); margin-inline: auto; }
+
+  /* Parents */
+  .tablewrap { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: .92rem; }
+  th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
+  td.num { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+  .lv { letter-spacing: .12em; color: var(--pen); white-space: nowrap; }
+  .confirm { border: 2px solid var(--bad); background: var(--bad-bg); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .kpis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .kpi { border: 1.5px solid var(--line); border-radius: 10px; padding: 8px 10px; }
+  .kpi b { display: block; font: 800 1.4rem/1.1 var(--f-hand); font-variant-numeric: tabular-nums; }
+  .kpi.alert { border-color: var(--bad); background: var(--bad-bg); }
+  .note { border-left: 4px solid var(--ocker); padding: 6px 0 6px 12px; }
+
+  .legal { text-align: center; font-size: .82rem; color: var(--ink-soft); padding-top: 8px; }
+  .legal a { color: inherit; display: inline-block; padding: 6px 4px; }
+
+  @media (max-width: 600px) {
+    .hero { grid-template-columns: minmax(0, 1fr); justify-items: center; }
+    .hero .orbitmap { max-width: 210px; }
+    .hero .stats { width: 100%; }
+    .sheet { padding: 14px; }
+    .two-col { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 400px) {
+    .options.two { grid-template-columns: minmax(0, 1fr); }
+    .rate { grid-template-columns: minmax(0, 1fr); }
+    .zones { grid-template-columns: minmax(0, 1fr); }
+    .zone { min-height: 70px; }
+    .tiles { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bar > span { transition: none; }
+    .m2 .step.sel .badge circle, .shake { animation: none; }
+  }
+</style>
+
+<div class="wrap">
+  <a class="hublink" id="hubLink" href="../" hidden>‹ Lernzentrale</a>
+  <header class="top">
+    <button class="brand" data-act="home" aria-label="Zur Startseite">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><ellipse cx="16" cy="16" rx="5.5" ry="12"/><path d="M4.5 12h23M4.5 20h23"/><circle cx="27" cy="6" r="2.6" fill="currentColor" stroke="none"/></svg>
+      Erd-Atlas
+    </button>
+    <span class="pill" id="duePill"></span>
+  </header>
+  <main id="view" aria-live="polite"></main>
+  <footer class="legal"><a href="https://breitec.de/#impressum" target="_blank" rel="noopener">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></footer>
+</div>
+
+<script>
+  // ---------- Content: notebook pages word for word, only real typos corrected (see README) ----------
+  const KOP = {
+    head: 'Nikolaus Kopernikus – Der Mann, der die Sicht auf den Himmel veränderte',
+    facts: [
+      ['Geboren', '19. Februar 1473 in Thorn (heute Toruń, Polen)'],
+      ['Gestorben', '24. Mai 1543 in Frauenburg (heute Frombork, Polen)'],
+      ['Berufe', 'Astronom, Mathematiker, Gelehrter'],
+      ['Hauptwerk', '„De revolutionibus orbium coelestium“ (erschien 1543, kurz vor seinem Tod)']
+    ],
+    idee: 'Kopernikus stellte die Sonne in das Zentrum des Planetensystems. Die Erde ist nur ein Planet – und bewegt sich um die Sonne. Außerdem dreht sich die Erde täglich um ihre eigene Achse.',
+    alt: 'Die Erde steht im Mittelpunkt.',
+    neu: 'Die Sonne steht im Mittelpunkt.',
+    warum: ['Es veränderte das Verständnis vom Weltall.', 'Es war ein wichtiger Schritt in der modernen Wissenschaft.', 'Seine Idee beeinflusste spätere Astronomen und unser heutiges Bild vom Universum.'],
+    weg: [['1473', 'Geburt in Thorn'], ['', 'Studium u. a. in Krakau, Bologna und Padua'], ['', 'Beobachtungen und Berechnungen über viele Jahre'], ['1543', 'Veröffentlichung seines Hauptwerks']],
+    merk: 'Die Erde ist ein Planet – und sie ist nicht das Zentrum.'
+  };
+  const HEFT_WEG = `Sein Lebensweg – in kurz: ${KOP.weg.map(([y, t]) => `${y ? y + ' ' : ''}${t}`).join(' → ')}`;
+
+  const SONNE = 'Neben der Erde umkreisen sieben weitere Planeten die Sonne. Diese steht im Zentrum unseres Sonnensystems und ist ein Fixstern. Die meisten Planeten besitzen ein oder mehrere Monde.';
+  const MERKSAETZE = ['Mein Vater erklärt mir jeden Samstag unseren Nachthimmel.', 'Meine verrückte erwachsene Mama jagt jeden Samstag unseren Nachbarn'];
+  const PLANETS = ['Merkur', 'Venus', 'Erde', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptun'];
+  const PLANET_LOOK = [['#9b9b9b', 6], ['#e3c68a', 9], ['#3f7fd6', 9.5], ['#cf5a3a', 7.5], ['#d9a066', 19], ['#e2c47c', 16], ['#86d3dc', 12], ['#4a6fd8', 12]];
+  const HEFT_PLANETS = `Unser Sonnensystem, von der Sonne aus: ${PLANETS.join(', ')}.`;
+
+  const BESONDERS = [
+    'feste Oberfläche',
+    'mittlere Temperatur von +15 °C',
+    'einen Mond',
+    'das Wasser bleibt in einem Kreislauf des Systems Erde.',
+    'Atmosphäre mit Sauerstoff',
+    'Treibhausgase in der Atmosphäre, welche einen Teil der Wärmestrahlung, die von der Erdoberfläche abgegeben wird, zurückhalten.',
+    'Schutzfunktion der Atmosphäre: Sie schützt uns vor gefährlicher UV-Strahlung.',
+    'der Schalenbau der Erde'
+  ];
+  const HEFT_BESONDERS = `Besonderheiten der Erde: ${BESONDERS.join(' · ')}`;
+
+  const M1 = [
+    'Der **Motor des Klimas** auf der Erde ist die **Sonne**. Sie brennt mit einer Temperatur von 5.500 °C und schickt ihre Energie in Form von **kurzwelliger Strahlung** Richtung Erde. Doch nicht alle Sonnenstrahlen erreichen ungehindert die Erdoberfläche. Die Hälfte wird von der **Atmosphäre** (insbesondere von Gasen und Wolken) „geschluckt“ (**absorbiert**) oder direkt in den Weltraum zurückgeworfen (**reflektiert**).',
+    'Von den Sonnenstrahlen, die die Erdoberfläche erreichen, wird wiederum ein Teil direkt reflektiert und in den Weltraum zurückgeschickt. Wie viel Strahlung direkt reflektiert wird, hängt von der Beschaffenheit der Erdoberfläche ab. So reflektieren helle, mit Schnee bedeckte Flächen viel mehr Strahlung als dunkle Waldflächen. Der verbleibende Teil der kurzwelligen Sonnenstrahlen wird von der Erdoberfläche aufgenommen (absorbiert). Immer wenn ein Körper Strahlung aufnimmt, also **absorbiert**, erwärmt er sich. Einen Teil dieser aufgenommenen Energie strahlt die Erdoberfläche in Form von langwelliger Wärme-Strahlung wieder ab (**=Emission**). Diese langwellige Strahlung gelangt aber nicht wieder ungehindert aus der Atmosphäre in den Weltraum. In der Atmosphäre befinden sich die sogenannten **Treibhausgase** wie z.B. Wasserdampf, Kohlenstoffdioxid (CO₂), Methan und Lachgas. Sie stellen Hindernisse für die langwellige Strahlung dar. Diese Gase nehmen die Wärmestrahlung auf (Absorption) und geben sie in alle Richtungen ab – auch wieder zurück zur Erdoberfläche. Damit bleibt die Wärmestrahlung quasi „gefangen“ und die Erdoberfläche erwärmt sich. Dieser Prozess wird natürlicher Treibhauseffekt genannt.',
+    'Der Treibhauseffekt ist ein natürlicher Prozess und ermöglicht uns das Leben auf der Erde mit einer angenehmen Durchschnittstemperatur von ca. 15 °C. Ohne diesen Effekt läge die Oberflächentemperatur der Erde gerade einmal bei -18 °C.'
+  ];
+  const M1_SONNE = 'M1: Der Motor des Klimas auf der Erde ist die Sonne. Sie brennt mit einer Temperatur von 5.500 °C und schickt ihre Energie in Form von kurzwelliger Strahlung Richtung Erde.';
+  const M1_HAELFTE = 'M1: Die Hälfte wird von der Atmosphäre (insbesondere von Gasen und Wolken) „geschluckt“ (absorbiert) oder direkt in den Weltraum zurückgeworfen (reflektiert).';
+  const M1_SCHNEE = 'M1: So reflektieren helle, mit Schnee bedeckte Flächen viel mehr Strahlung als dunkle Waldflächen.';
+  const M1_EMISSION = 'M1: Einen Teil dieser aufgenommenen Energie strahlt die Erdoberfläche in Form von langwelliger Wärme-Strahlung wieder ab (=Emission).';
+  const M1_GASE = 'M1: In der Atmosphäre befinden sich die sogenannten Treibhausgase wie z.B. Wasserdampf, Kohlenstoffdioxid (CO₂), Methan und Lachgas.';
+  const M1_ABGEBEN = 'M1: Diese Gase nehmen die Wärmestrahlung auf (Absorption) und geben sie in alle Richtungen ab – auch wieder zurück zur Erdoberfläche.';
+  const M1_TEMP = 'M1: … mit einer angenehmen Durchschnittstemperatur von ca. 15 °C. Ohne diesen Effekt läge die Oberflächentemperatur der Erde gerade einmal bei -18 °C.';
+  const BEGRIFFE = [['Reflexion', 'Strahlung wird zurückgeworfen'], ['Absorption', 'Strahlung wird aufgenommen'], ['Emission', 'Strahlung wird abgegeben']];
+  const STEPS = [
+    'Sonne schickt kurzwellige Sonnenstrahlen Richtung Erde',
+    'Strahlen werden von Wolken und Treibhausgasen teilweise reflektiert – zurück ins All geschickt.',
+    'Kurzwellige Sonnenstrahlen werden teilweise direkt vom Boden reflektiert',
+    'Boden absorbiert einen Teil der Strahlen (erwärmt sich dabei)',
+    'wandelt sie in langwellige Wärmestrahlung um, gibt diese wieder ab (=Emission)',
+    'Langwellige Strahlen werden wiederum von Wolken absorbiert und wieder Richtung Erde geschickt.',
+    'Langwellige Strahlen werden von Gasen absorbiert und Richtung Erde geschickt.'
+  ];
+  // Short labels for the M2 tasks: built only from the notebook wording, nothing that contradicts it
+  const STEP_SHORT = [
+    'Die Sonne schickt kurzwellige Sonnenstrahlen Richtung Erde.',
+    'Wolken werfen einen Teil der Sonnenstrahlen zurück ins All.',
+    'Der Schnee am Boden reflektiert Sonnenstrahlen direkt.',
+    'Der Boden absorbiert Strahlen und erwärmt sich dabei.',
+    'Der Boden gibt langwellige Wärmestrahlung ab (Emission).',
+    'Wolken absorbieren langwellige Strahlen und schicken sie wieder Richtung Erde.',
+    'Treibhausgase absorbieren langwellige Strahlen und schicken sie Richtung Erde.'
+  ];
+  const LEGENDE_HEFT = ['kurzwellige Sonnenstrahlen', 'langwellige Sonnenstrahlen', 'Treibhausgase'];
+  const DACH_TASK = 'Ein nachhaltiges Stadtquartier möchte sich auf eine gemeinsame Dachfarbe einigen. Welche Dachfarbe empfiehlst du der Stadtplanung? Begründe!';
+  const DACH_MUSTER = 'Ich empfehle eine helle Dachfarbe, zum Beispiel Weiß. Begründung: Helle Flächen reflektieren viel mehr Strahlung als dunkle Flächen (wie Schnee im Vergleich zu dunklen Waldflächen in M1). Ein helles Dach nimmt deshalb weniger Strahlung auf (Absorption) und erwärmt sich weniger. So bleibt es in den Häusern und im Stadtquartier kühler.';
+
+  const LUECKE = 'Treibhausgase absorbieren Wärme-Strahlung und geben sie zurück zur Erdoberfläche ab.';
+  const A2_TASK = 'Beschreibe die Veränderung der Konzentration der Treibhausgase in den letzten 2000 Jahren.';
+  const A2_HEFT = 'Von 0–1500 Jahre: konstant auf niedrigem Niveau. Extrem starker Anstieg ab der Industriellen Revolution. Heute: Doppelt so hohe Werte wie vor 2000 Jahren.';
+  const A2_KERN = ['Von 0–1500 Jahre: konstant auf niedrigem Niveau.', 'Extrem starker Anstieg ab der Industriellen Revolution.'];
+  const M3_TITLE = 'Atmosphärische Konzentration wichtiger Treibhausgase 0-2022';
+  const M3_LINES = [['Kohlendioxid (CO₂)', '--c-co2'], ['Methan (CH₄)', '--c-ch4'], ['Distickstoffoxid (N₂O)', '--c-n2o']];
+  const A3_TASK = 'Nenne die Quellen der anthropogen verursachten Treibhausgase und trage diese in die Tabelle ein.';
+  const M4_COLS = ['Anteil des Treibhausgases an den jährlichen Treibhausgasemissionen', 'Zunahme der Konzentration seit Beginn der Industrialisierung', 'Anteil der Treibhausgase am Treibhauseffekt'];
+  const GASES = [
+    { id: 'co2', name: 'Kohlendioxid (CO₂)', c: '--c-co2', q: ['fossile Rohstoffe wie Kohle, Erdöl, Erdgas', 'Verkehr, Industrie, private Haushalte'], v: ['88 %', '+28 %', '64 %'] },
+    { id: 'ch4', name: 'Methan (CH₄)', c: '--c-ch4', q: ['Fäulnisprozesse', 'Viehhaltung', 'Reisanbau'], v: ['6 %', '+146 %', '20 %'] },
+    { id: 'n2o', name: 'Lachgas', c: '--c-n2o', q: ['verstärkte Düngung (→ Stickstoff)', 'Nylonproduktion und Verbrennung fossiler Rohstoffe'], v: ['4 %', '+13 %', '6 %'] },
+    { id: 'f', name: 'F-Gase (Fluorierte Treibhausgase)', c: '--c-f', q: ['gezielt produziert und als Arbeitsmittel eingesetzt', 'als Kühlmittel in Klimaanlagen und Feuerlöschmittel'], v: ['1,7 %', '+13 %', '10 %'] }
+  ];
+  const GAS = Object.fromEntries(GASES.map(g => [g.id, g]));
+  const gasHeft = g => `M4, ${g.name} – Anthropogene Quellen: ${g.q.join('; ')}`;
+  const A4_TASK = 'Stelle den anthropogen verstärkten Treibhauseffekt in M2 (AB04a, rechte Seite) dar. a. Zeichne dazu den anthropogen verstärkten Treibhauseffekt ein. b. Ergänze die Legende mit den von dir zusätzlich verwendeten Symbolen.';
+  const A4_HILFE = 'Erhöhe dazu die Anzahl der Treibhausgase in der Atmosphäre.';
+  const A4_MUSTER = 'Zusätzliche Symbole in der Legende: viele zusätzliche schwarze Punkte = mehr Treibhausgase in der Atmosphäre; gelb gestrichelter Pfeil = kurzwellige Sonnenstrahlen; viele rote gestrichelte Pfeile zwischen Boden und Treibhausgasen = mehr Wärmestrahlung wird aufgenommen und wieder zur Erdoberfläche abgegeben.';
+  const A5_TASK = 'Häufig wird der Treibhauseffekt mit einem Gewächshaus verglichen. Nenne möglichst viele Gemeinsamkeiten und Unterschiede.';
+  const A5_GEMEINSAM = ['Sonnenstrahlen kommen hinein und erwärmen den Boden.', 'Die Wärme bleibt zum Teil „gefangen“.', 'Dadurch ist es wärmer, als es ohne wäre.'];
+  const A5_UNTERSCHIED = ['Das Gewächshaus hat ein Dach und Wände aus Glas, die Erde hat stattdessen die Atmosphäre mit Treibhausgasen.', 'Das Glas hält vor allem die warme Luft fest. In der Atmosphäre nehmen Treibhausgase die Wärmestrahlung auf und geben sie in alle Richtungen ab.', 'Die Atmosphäre hat kein Dach.', 'Ein Gewächshaus bauen Menschen, der Treibhauseffekt ist ein natürlicher Prozess.'];
+  const A5_MUSTER = `Gemeinsamkeiten: ${A5_GEMEINSAM.join(' ')} Unterschiede: ${A5_UNTERSCHIED.join(' ')}`;
+  const TEUFEL_TASK = 'Das Schmelzen von Eis- und Schneemassen an den Polen ist ein Teufelskreis, da es sich selbst immer weiter verstärkt. Erkläre.';
+  const TEUFEL_MUSTER = 'Es wird wärmer, deshalb schmelzen Eis und Schnee. Darunter kommen dunklerer Boden oder dunkles Meer zum Vorschein. Dunkle Flächen reflektieren weniger Strahlung als helle Schneeflächen und nehmen mehr Strahlung auf (Absorption). Dadurch erwärmt sich die Erde noch mehr, und noch mehr Eis und Schnee schmelzen. Der Vorgang verstärkt sich also selbst.';
+
+  // ---------- Chapters (learning path) ----------
+  const CHAPTERS = [
+    { n: 1, title: 'Kopernikus', sub: 'Wer steht im Mittelpunkt?', video: 'v1' },
+    { n: 2, title: 'Unser Sonnensystem', sub: 'Die Sonne und ihre acht Planeten', video: 'v2' },
+    { n: 3, title: 'Besonderheiten der Erde', sub: 'Was die Erde besonders macht', video: null },
+    { n: 4, title: 'Natürlicher Treibhauseffekt', sub: 'Wie beeinflusst CO₂ unser Klima?', video: 'v3' },
+    { n: 5, title: 'Anthropogener Treibhauseffekt', sub: 'Wie beeinflussen wir das Klima?', video: 'v4' }
+  ];
+  const CHAP = Object.fromEntries(CHAPTERS.map(c => [c.n, c]));
+
+  const VIDEOS = [
+    { id: 'v1', ch: 1, file: 'v1-kopernikus', title: 'Wer steht im Mittelpunkt?', pre: { q: 'In welchem Jahr wurde Kopernikus geboren?', options: ['1066', '1473', '1789', '1945'], correct: 1 } },
+    { id: 'v2', ch: 2, file: 'v2-sonnensystem', title: 'Unser Sonnensystem und die Besonderheiten der Erde', pre: { q: 'Wie viele Planeten kreisen um unsere Sonne?', options: ['6', '8', '9', '12'], correct: 1 } },
+    { id: 'v3', ch: 4, file: 'v3-treibhauseffekt', title: 'Der natürliche Treibhauseffekt', pre: { q: 'Wie kalt wäre es auf der Erde ohne den Treibhauseffekt?', options: ['+15 °C', '0 °C', '-18 °C', '-50 °C'], correct: 2 } },
+    { id: 'v4', ch: 5, file: 'v4-anthropogen', title: 'Wie wir den Treibhauseffekt verstärken', pre: { q: 'Seit wann steigen die Treibhausgase extrem stark an?', options: ['seit 2000 Jahren', 'seit dem Jahr 1000', 'ab der Industriellen Revolution', 'erst seit 2020'], correct: 2 } }
+  ];
+  const VID = Object.fromEntries(VIDEOS.map(v => [v.id, v]));
+
+  // ---------- Cards (Leitner + spaced repetition) ----------
+  const CARDS = [];
+  const add = c => CARDS.push(c);
+  const shuffle = a => {
+    a = a.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  };
+  const pick = a => a[Math.floor(Math.random() * a.length)];
+
+  // Chapter 1: Kopernikus (only core data is asked: 1473, 1543, Thorn, idea, Merksatz)
+  add({ id: 'k1-geb', ch: 1, type: 'type', title: 'Geburtsjahr von Kopernikus', prompt: 'In welchem Jahr wurde Nikolaus Kopernikus geboren?', fields: [{ num: 1473 }], solution: '1473', heft: `Geboren: ${KOP.facts[0][1]}` });
+  add({ id: 'k1-ort', ch: 1, type: 'type', title: 'Geburtsort von Kopernikus', prompt: 'In welcher Stadt wurde Kopernikus geboren?', fields: [{ acc: ['thorn', 'torun'] }], solution: 'in Thorn (heute Toruń, Polen)', heft: `Geboren: ${KOP.facts[0][1]}` });
+  add({ id: 'k1-1543', ch: 1, type: 'type', title: 'Jahr des Hauptwerks', prompt: 'In welchem Jahr erschien sein Hauptwerk, kurz vor seinem Tod?', fields: [{ num: 1543 }], solution: '1543', heft: HEFT_WEG });
+  add({ id: 'k1-idee', ch: 1, type: 'self', title: 'Die große Idee von Kopernikus', prompt: 'Was war die große Idee von Kopernikus? Schreib sie in deinen eigenen Worten auf.', model: KOP.idee, modelLabel: 'Im Heft: Seine große Idee',
+    checks: [{ t: 'Die Sonne steht im Zentrum.', k: ['sonne'] }, { t: 'Die Erde ist nur ein Planet und bewegt sich um die Sonne.', k: ['planet', 'um die sonne', 'bewegt', 'kreist'] }, { t: 'Die Erde dreht sich täglich um ihre eigene Achse.', k: ['achse'] }] });
+  add({ id: 'k1-merk', ch: 1, type: 'type', title: 'Merksatz Kopernikus', prompt: 'Ergänze den Merksatz.', tpl: 'Die Erde ist ein Planet – und sie ist nicht das {0}.', fields: [{ acc: ['zentrum', 'mittelpunkt'] }], solution: 'Zentrum', heft: `Merksatz: ${KOP.merk}` });
+  add({ id: 'k1-bild', ch: 1, type: 'mc', title: 'Bild: die Idee von Kopernikus', heft: `${KOP.idee} Die alte Vorstellung: ${KOP.alt}`,
+    mk: () => { const o = shuffle(['neu', 'alt']); return { prompt: 'Welches Bild zeigt die Idee von Kopernikus?', options: o.map(k => kopSVG(k, false)), html: true, names: o.map(k => k === 'neu' ? 'Sonne im Zentrum' : 'Erde im Mittelpunkt'), correct: o.indexOf('neu'), two: true }; } });
+  add({ id: 'k1-weg', ch: 1, type: 'order', title: 'Lebensweg ordnen', prompt: 'Bring den Lebensweg von Kopernikus in die richtige Reihenfolge.', items: ['Geburt in Thorn', 'Studium', 'Beobachtungen und Berechnungen über viele Jahre', 'Veröffentlichung seines Hauptwerks'], heft: HEFT_WEG });
+  add({ id: 'k1-freund', ch: 1, type: 'mc', title: 'Anwenden: Kreist die Sonne um die Erde?', heft: `${KOP.idee} Merksatz: ${KOP.merk}`,
+    prompt: 'Jemand sagt: „Die Sonne kreist um die Erde. Die Erde steht in der Mitte.“ Was hätte Kopernikus geantwortet?', right: 'Nein. Die Sonne steht im Zentrum, die Erde bewegt sich um die Sonne.', wrongs: ['Stimmt genau. Die Erde ist das Zentrum.', 'Nein. Der Mond steht im Zentrum.', 'Nein. Die Erde steht still, nur der Mond bewegt sich.'] });
+  add({ id: 'v1-a', ch: 1, video: 'v1', type: 'mc', title: 'Video 1: die alte Vorstellung', heft: `Die alte Vorstellung: ${KOP.alt}`,
+    prompt: 'Was glaubten die Menschen lange, bevor Kopernikus kam?', right: 'Die Erde steht im Mittelpunkt, und alles kreist um sie.', wrongs: ['Die Sonne steht im Mittelpunkt.', 'Alle Planeten stehen still.', 'Der Mond steht im Mittelpunkt.'] });
+  add({ id: 'v1-b', ch: 1, video: 'v1', type: 'mc', title: 'Video 1: die Erde dreht sich', heft: 'Außerdem dreht sich die Erde täglich um ihre eigene Achse.',
+    prompt: 'Was macht die Erde laut Kopernikus außerdem jeden Tag?', right: 'Sie dreht sich um ihre eigene Achse.', wrongs: ['Sie bleibt ganz still stehen.', 'Sie wechselt ihren Platz mit dem Mond.', 'Sie wird ein kleines bisschen größer.'] });
+
+  // Chapter 2: solar system
+  add({ id: 'k2-anzahl', ch: 2, type: 'type', title: 'Anzahl der Planeten', prompt: 'Wie viele Planeten umkreisen die Sonne? Zähl die Erde mit.', fields: [{ num: 8 }], solution: '8: die Erde und sieben weitere Planeten', heft: SONNE });
+  add({ id: 'k2-zentrum', ch: 2, type: 'type', title: 'Zentrum des Sonnensystems', prompt: 'Was steht im Zentrum unseres Sonnensystems?', fields: [{ acc: ['sonne'] }], solution: 'die Sonne', heft: SONNE });
+  add({ id: 'k2-fix', ch: 2, type: 'type', title: 'Die Sonne ist ein Fixstern', prompt: 'Ergänze den Satz aus deinem Heft.', tpl: 'Die Sonne steht im Zentrum unseres Sonnensystems und ist ein {0}.', fields: [{ acc: ['fixstern'] }], solution: 'Fixstern', heft: SONNE });
+  add({ id: 'k2-monde', ch: 2, type: 'mc', title: 'Monde der Planeten', heft: SONNE, prompt: 'Was besitzen die meisten Planeten?', right: 'ein oder mehrere Monde', wrongs: ['keinen Mond', 'eine Atmosphäre mit Sauerstoff', 'eine eigene Sonne'] });
+  add({ id: 'k2-order', ch: 2, type: 'order', planets: true, title: 'Planeten in der richtigen Reihenfolge', prompt: 'Tippe die Planeten in der richtigen Reihenfolge an, von der Sonne aus.', items: PLANETS, heft: HEFT_PLANETS });
+  add({ id: 'k2-merk', ch: 2, type: 'recall', ordered: true, title: 'Planeten mit dem Merksatz aufschreiben', prompt: 'Schreib die acht Planeten der Reihe nach auf. Der Merksatz hilft dir.', merk: true, heft: HEFT_PLANETS,
+    items: PLANETS.map(p => ({ name: p, syn: [norm(p)] })) });
+  add({ id: 'k2-nach', ch: 2, type: 'mc', title: 'Welcher Planet kommt danach?', heft: HEFT_PLANETS,
+    mk: () => { const i = Math.floor(Math.random() * 7); const o = shuffle([PLANETS[i + 1], ...shuffle(PLANETS.filter((_, j) => j !== i + 1 && j !== i)).slice(0, 3)]); return { prompt: `Welcher Planet kommt von der Sonne aus direkt nach ${PLANETS[i]}?`, options: o, correct: o.indexOf(PLANETS[i + 1]), two: true, right: PLANETS[i + 1] }; } });
+  add({ id: 'k2-platz', ch: 2, type: 'type', title: 'Platz der Erde', prompt: 'Der wievielte Planet von der Sonne aus ist die Erde?', fields: [{ num: 3, unit: '.' }], solution: 'der 3. Planet: Merkur, Venus, Erde', heft: HEFT_PLANETS });
+  add({ id: 'v2-a', ch: 2, video: 'v2', type: 'mc', title: 'Video 2: sieben weitere Planeten', heft: SONNE, prompt: 'Wie viele weitere Planeten umkreisen neben der Erde die Sonne?', options: ['6', '7', '8', '9'], correct: 1, two: true, fixed: true });
+  add({ id: 'v2-b', ch: 2, video: 'v2', type: 'mc', title: 'Video 2: eine Besonderheit der Erde', heft: HEFT_BESONDERS, prompt: 'Was ist eine Besonderheit der Erde?', right: 'Sie hat eine mittlere Temperatur von +15 °C.', wrongs: ['Sie ist der größte Planet.', 'Sie hat keinen Mond.', 'Sie steht im Zentrum des Sonnensystems.'] });
+
+  // Chapter 3: what makes the Earth special
+  add({ id: 'k3-liste', ch: 3, type: 'recall', title: 'Besonderheiten der Erde aufzählen', prompt: 'Schreib alle 8 Besonderheiten der Erde auf, die in deinem Heft stehen.', heft: HEFT_BESONDERS,
+    items: [
+      { name: 'feste Oberfläche', syn: ['feste oberflaeche', 'fester boden', 'festen boden', 'oberflaeche'] },
+      { name: 'mittlere Temperatur von +15 °C', syn: ['15', 'mittlere temperatur', 'temperatur', 'fuenfzehn grad', 'angenehme temperatur'] },
+      { name: 'einen Mond', syn: ['einen mond', 'ein mond', '1 mond', 'mond'] },
+      { name: 'Wasserkreislauf (das Wasser bleibt in einem Kreislauf)', syn: ['wasserkreislauf', 'kreislauf', 'wasser'] },
+      { name: 'Atmosphäre mit Sauerstoff', syn: ['sauerstoff', 'atemluft', 'luft zum atmen'] },
+      { name: 'Treibhausgase in der Atmosphäre', syn: ['treibhausgase', 'treibhausgas', 'treibhauseffekt', 'waermestrahlung'] },
+      { name: 'Schutzfunktion der Atmosphäre (vor UV-Strahlung)', syn: ['uv', 'uv strahlung', 'schutzfunktion', 'schutz', 'schuetzt', 'ozon'] },
+      { name: 'Schalenbau der Erde', syn: ['schalenbau', 'schalen', 'schale', 'schalenaufbau'] }
+    ],
+    hints: [{ syn: ['atmosphaere', 'luft'], text: 'Zur Atmosphäre stehen drei Punkte im Heft. Schreib genauer, was du meinst: Sauerstoff? Treibhausgase? Schutz?' }] });
+  add({ id: 'k3-temp', ch: 3, type: 'type', title: 'Mittlere Temperatur der Erde', prompt: 'Wie hoch ist die mittlere Temperatur der Erde?', fields: [{ num: 15, unit: '°C' }], solution: '+15 °C', heft: HEFT_BESONDERS });
+  add({ id: 'k3-mond', ch: 3, type: 'type', title: 'Monde der Erde', prompt: 'Wie viele Monde hat die Erde?', fields: [{ acc: ['einen', 'ein', '1', 'eins', 'mond', 'einen mond', 'ein mond'] }], solution: 'einen Mond', heft: HEFT_BESONDERS });
+  add({ id: 'k3-uv', ch: 3, type: 'mc', title: 'Schutzfunktion der Atmosphäre', heft: `Schutzfunktion der Atmosphäre: Sie schützt uns vor gefährlicher UV-Strahlung.`, prompt: 'Welche Schutzfunktion hat die Atmosphäre?', right: 'Sie schützt uns vor gefährlicher UV-Strahlung.', wrongs: ['Sie schützt uns vor Wind.', 'Sie schützt uns vor Erdbeben.', 'Sie schützt uns vor dem Mondlicht.'] });
+  add({ id: 'k3-th', ch: 3, type: 'mc', title: 'Treibhausgase als Besonderheit', heft: BESONDERS[5], prompt: 'Was machen die Treibhausgase in der Atmosphäre?', right: 'Sie halten einen Teil der Wärmestrahlung zurück, die von der Erdoberfläche abgegeben wird.', wrongs: ['Sie erzeugen den Sauerstoff zum Atmen.', 'Sie halten das Wasser im Kreislauf.', 'Sie halten den Mond auf seiner Bahn.'] });
+  add({ id: 'k3-nicht', ch: 3, type: 'mc', title: 'Was gehört nicht zu den Besonderheiten?', heft: HEFT_BESONDERS,
+    mk: () => {
+      const real = ['feste Oberfläche', 'mittlere Temperatur von +15 °C', 'einen Mond', 'Wasser bleibt in einem Kreislauf', 'Atmosphäre mit Sauerstoff', 'Treibhausgase in der Atmosphäre', 'Schutz vor gefährlicher UV-Strahlung', 'Schalenbau der Erde'];
+      const fake = pick(['größter Planet im Sonnensystem', 'zwei Monde', 'Ringe aus Eis', 'Zentrum des Sonnensystems']);
+      const o = shuffle([fake, ...shuffle(real).slice(0, 3)]);
+      return { prompt: 'Was steht NICHT bei den Besonderheiten der Erde in deinem Heft?', options: o, correct: o.indexOf(fake), right: fake };
+    } });
+  add({ id: 'k3-wasser', ch: 3, type: 'type', title: 'Wasser im Kreislauf', prompt: 'Ergänze die Besonderheit.', tpl: 'Das Wasser bleibt in einem {0} des Systems Erde.', fields: [{ acc: ['kreislauf', 'wasserkreislauf'] }], solution: 'Kreislauf', heft: BESONDERS[3] });
+  add({ id: 'k3-schalen', ch: 3, type: 'type', title: 'Schalenbau der Erde', prompt: 'Ein Stichwort aus der Liste fehlt. Ergänze:', tpl: 'der {0} der Erde', fields: [{ acc: ['schalenbau', 'schalenaufbau'] }], solution: 'Schalenbau', heft: BESONDERS[7] });
+
+  // Chapter 4: natural greenhouse effect
+  add({ id: 'k4-motor', ch: 4, type: 'type', title: 'Motor des Klimas', prompt: 'Ergänze den ersten Satz von M1.', tpl: 'Der Motor des Klimas auf der Erde ist die {0}.', fields: [{ acc: ['sonne'] }], solution: 'Sonne', heft: M1_SONNE });
+  add({ id: 'k4-kurz', ch: 4, type: 'mc', title: 'Strahlung der Sonne', heft: M1_SONNE, prompt: 'In welcher Form schickt die Sonne ihre Energie Richtung Erde?', right: 'als kurzwellige Strahlung', wrongs: ['als langwellige Wärme-Strahlung', 'als Treibhausgase', 'als Wasserdampf'] });
+  BEGRIFFE.forEach(([b, d], i) => add({ id: ['k4-refl', 'k4-abs', 'k4-emi'][i], ch: 4, type: 'self', group: 'g-begriffe', title: `Begriff: ${b}`, part: b, prompt: `Was bedeutet ${b}?`, model: `${b}: ${d}`, modelLabel: 'Im Heft (Aufgabe 1a)',
+    checks: [[{ t: 'zurückgeworfen', k: ['zurueckgeworfen', 'zurueck geworfen', 'zurueckgeschickt', 'zurueck'] }], [{ t: 'aufgenommen', k: ['aufgenommen', 'aufnehmen', 'nimmt', 'geschluckt', 'schluck'] }], [{ t: 'abgegeben', k: ['abgegeben', 'abgeben', 'gibt', 'abgestrahlt', 'strahlt'] }]][i] }));
+  add({ id: 'k4-temp', ch: 4, type: 'type', title: 'Temperatur mit und ohne Treibhauseffekt', prompt: 'Wie warm ist es auf der Erde mit und ohne Treibhauseffekt?', tpl: 'Mit Treibhauseffekt: ca. {0} °C.|Ohne Treibhauseffekt: {1} °C.', fields: [{ num: 15 }, { num: -18, minus: true }], solution: 'mit ca. 15 °C, ohne -18 °C', heft: M1_TEMP });
+  add({ id: 'k4-gase', ch: 4, type: 'recall', title: 'Treibhausgase aus M1', prompt: 'Nenne die Treibhausgase, die in M1 als Beispiele stehen.', heft: M1_GASE,
+    items: [
+      { name: 'Wasserdampf', syn: ['wasserdampf', 'dampf'] },
+      { name: 'Kohlenstoffdioxid (CO₂)', syn: ['kohlenstoffdioxid', 'kohlendioxid', 'co2', 'kohlenstoff dioxid'] },
+      { name: 'Methan', syn: ['methan', 'ch4'] },
+      { name: 'Lachgas', syn: ['lachgas', 'distickstoffoxid', 'n2o'] }
+    ] });
+  STEPS.forEach((s, i) => add({ id: `m2-${i + 1}`, ch: 4, type: 'm2', group: 'g-m2', step: i + 1, title: `M2 beschriften: Nummer ${i + 1}`, heft: `Aufgabe 1c, Nummer ${i + 1}: ${s}` }));
+  add({ id: 'k4-order', ch: 4, type: 'order', title: 'Vorgänge in M2 ordnen', prompt: 'Bring die Vorgänge beim natürlichen Treibhauseffekt in die richtige Reihenfolge (1 bis 7).', items: STEP_SHORT, heft: `Aufgabe 1c: ${STEPS.map((s, i) => `${i + 1}. ${s}`).join(' ')}` });
+  add({ id: 'k4-legende', ch: 4, type: 'type', title: 'Legende von M2', prompt: 'Beschrifte die Legende der Abbildung M2.', tpl: '{K} {0} Sonnenstrahlen|{L} {1} Strahlen|{D} {2}', fields: [{ acc: ['kurzwellige', 'kurzwellig', 'kurzwelliger', 'kurzwelligen'] }, { acc: ['langwellige', 'langwellig', 'langwelliger', 'langwelligen'] }, { acc: ['treibhausgase', 'treibhausgas'] }], solution: 'kurzwellige · langwellige · Treibhausgase', heft: `${M1_SONNE} ${M1_EMISSION}` });
+  add({ id: 'k4-luecke', ch: 4, type: 'type', title: 'Lückensatz 04b', prompt: 'Ergänze den Lückensatz vom Arbeitsblatt 04b.', tpl: 'Treibhausgase absorbieren {0}-Strahlung und {1} sie zurück zur Erdoberfläche {2}.', fields: [{ acc: ['waerme', 'langwellige', 'langwellig', 'waerme strahlung'] }, { acc: ['geben'] }, { acc: ['ab'] }], solution: 'Wärme · geben · ab', heft: `${LUECKE} ${M1_ABGEBEN}` });
+  add({ id: 'k4-schnee', ch: 4, type: 'mc', title: 'Schnee oder Wald', heft: M1_SCHNEE, prompt: 'Was reflektiert mehr Strahlung?', options: ['helle, mit Schnee bedeckte Flächen', 'dunkle Waldflächen'], correct: 0, two: true, fixed: true });
+  add({ id: 'k4-dach', ch: 4, type: 'self', muster: true, title: 'Sternaufgabe: Dachfarbe', prompt: DACH_TASK, model: DACH_MUSTER, heft: M1_SCHNEE,
+    checks: [{ t: 'Eine helle Dachfarbe (z. B. Weiß) empfehlen.', k: ['hell', 'weiss'] }, { t: 'Helle Flächen reflektieren mehr Strahlung.', k: ['reflekt', 'zurueckgeworfen', 'zurueck'] }, { t: 'Das Dach nimmt weniger Strahlung auf und erwärmt sich weniger.', k: ['weniger', 'kuehl', 'nicht so warm', 'erwaermt'] }] });
+  add({ id: 'k4-erklaer', ch: 4, type: 'self', title: 'Den natürlichen Treibhauseffekt erklären', prompt: 'Erkläre den natürlichen Treibhauseffekt in deinen eigenen Worten. Stell dir vor, du erklärst ihn einem Freund.', model: M1.slice(0, 1).join(' ').replace(/\*\*/g, '') + ' … ' + [M1_EMISSION, M1_ABGEBEN].map(s => s.replace('M1: ', '')).join(' '), modelLabel: 'Im Heft (M1, gekürzt)',
+    checks: [
+      { t: 'Die Sonne schickt kurzwellige Strahlung Richtung Erde.', k: ['kurzwellig'] },
+      { t: 'Ein Teil wird von der Atmosphäre (Gase, Wolken) absorbiert oder in den Weltraum reflektiert.', k: ['reflekt', 'zurueckgeworfen', 'wolke'] },
+      { t: 'Die Erdoberfläche absorbiert den Rest und erwärmt sich.', k: ['erwaerm', 'absorb', 'aufgenommen'] },
+      { t: 'Sie strahlt langwellige Wärme-Strahlung ab (Emission).', k: ['langwellig', 'emission', 'waermestrahlung', 'waerme strahlung'] },
+      { t: 'Treibhausgase nehmen die Wärmestrahlung auf und geben sie in alle Richtungen ab, auch zurück zur Erdoberfläche.', k: ['treibhausgas', 'gase'] },
+      { t: 'Mit Treibhauseffekt ca. 15 °C, ohne nur -18 °C.', k: ['15', '18'] }
+    ] });
+  add({ id: 'v3-a', ch: 4, video: 'v3', type: 'mc', title: 'Video 3: die Hälfte der Sonnenstrahlen', heft: M1_HAELFTE, prompt: 'Was passiert mit der Hälfte der Sonnenstrahlen?', right: 'Sie wird von der Atmosphäre absorbiert oder in den Weltraum zurückgeworfen.', wrongs: ['Sie wird ganz vom Schnee geschluckt.', 'Sie wird zu Treibhausgasen.', 'Sie erreicht ungehindert die Erdoberfläche.'] });
+  add({ id: 'v3-b', ch: 4, video: 'v3', type: 'mc', title: 'Video 3: Treibhausgase und Wärmestrahlung', heft: M1_ABGEBEN, prompt: 'Was machen die Treibhausgase mit der Wärmestrahlung?', right: 'Sie nehmen sie auf und geben sie in alle Richtungen ab, auch zurück zur Erde.', wrongs: ['Sie lassen sie ungehindert in den Weltraum.', 'Sie machen daraus kurzwellige Strahlung.', 'Sie machen daraus Sauerstoff.'] });
+
+  // Chapter 5: anthropogenic greenhouse effect (M4 numbers only in the notes; only core statements are asked)
+  add({ id: 'k5-name', ch: 5, type: 'type', title: 'Name des verstärkten Treibhauseffekts', prompt: 'Wie heißt der Treibhauseffekt auf der rechten Seite von M2?', visual: () => m2SVG({ side: 'anthro', caption: false }), tpl: '{0} Treibhauseffekt', fields: [{ acc: ['anthropogener', 'anthropogen', 'anthropogene'] }], solution: 'anthropogener Treibhauseffekt', heft: 'M2, rechte Seite: anthropogener Treibhauseffekt' });
+  add({ id: 'k5-mehr', ch: 5, type: 'mc', title: 'Hilfekasten Aufgabe 4', heft: `Aufgabe 4, Hilfekasten: ${A4_HILFE}`, prompt: 'Aufgabe 4: Du zeichnest den anthropogen verstärkten Treibhauseffekt in M2 ein. Was rät der Hilfekasten?', right: 'Erhöhe die Anzahl der Treibhausgase in der Atmosphäre.', wrongs: ['Male die Sonne größer.', 'Lass alle Wolken weg.', 'Male mehr Schnee auf den Boden.'] });
+  const GAS_OPTS = GASES.map(g => g.name);
+  add({ id: 'k5-em', ch: 5, type: 'mc', title: 'M4: größter Anteil an den Emissionen', heft: `M4, Spalte „${M4_COLS[0]}“: Kohlendioxid (CO₂) hat den größten Anteil.`, prompt: 'Welches Treibhausgas hat laut M4 den größten Anteil an den jährlichen Treibhausgasemissionen?', options: GAS_OPTS, correct: 0, fixed: true });
+  add({ id: 'k5-th', ch: 5, type: 'mc', title: 'M4: größter Anteil am Treibhauseffekt', heft: `M4, Spalte „${M4_COLS[2]}“: Kohlendioxid (CO₂) hat den größten Anteil.`, prompt: 'Welches Treibhausgas hat laut M4 den größten Anteil am Treibhauseffekt?', options: GAS_OPTS, correct: 0, fixed: true });
+  add({ id: 'k5-zu', ch: 5, type: 'mc', title: 'M4: stärkste Zunahme', heft: `M4, Spalte „${M4_COLS[1]}“: Methan (CH₄) hat am stärksten zugenommen.`, prompt: 'Bei welchem Gas hat die Konzentration seit Beginn der Industrialisierung laut M4 am stärksten zugenommen?', options: GAS_OPTS.slice(0, 3), correct: 1, fixed: true });
+  add({ id: 'k5-m3-konst', ch: 5, type: 'mc', title: 'M3 lesen: Jahr 0 bis 1500', heft: `Aufgabe 2: ${A2_KERN[0]}`, visual: () => m3SVG(), prompt: 'Wie verlaufen die Kurven in M3 von Jahr 0 bis etwa 1500?', right: 'konstant auf niedrigem Niveau', wrongs: ['extrem starker Anstieg', 'starker Abfall', 'mal hoch, mal tief wie eine Zickzacklinie'] });
+  add({ id: 'k5-m3-anstieg', ch: 5, type: 'mc', title: 'M3 lesen: starker Anstieg', heft: `Aufgabe 2: ${A2_KERN[1]}`, visual: () => m3SVG(), visualAfter: () => m3SVG({ band: true }), prompt: 'Ab wann steigen die Kurven in M3 extrem stark an?', right: 'ab der Industriellen Revolution', wrongs: ['ab dem Jahr 0', 'ab dem Jahr 500', 'ab dem Jahr 1000'] });
+  add({ id: 'k5-m3-gase', ch: 5, type: 'recall', title: 'M3 lesen: drei Treibhausgase', prompt: 'Welche drei Treibhausgase zeigt das Diagramm M3? Schau auf die Legende.', visual: () => m3SVG({ legend: false }), heft: `M3: ${M3_LINES.map(l => l[0]).join(', ')}`,
+    items: [{ name: 'Kohlendioxid (CO₂)', syn: ['kohlendioxid', 'kohlenstoffdioxid', 'co2'] }, { name: 'Methan (CH₄)', syn: ['methan', 'ch4'] }, { name: 'Distickstoffoxid (N₂O)', syn: ['distickstoffoxid', 'stickstoffoxid', 'n2o', 'lachgas'] }] });
+  add({ id: 'k5-m3-text', ch: 5, type: 'self', title: 'Aufgabe 2: Diagramm beschreiben', prompt: A2_TASK, visual: () => m3SVG(), model: A2_KERN.join(' '), modelLabel: 'Im Heft (Aufgabe 2)',
+    checks: [{ t: 'Lange Zeit (Jahr 0 bis etwa 1500) konstant auf niedrigem Niveau.', k: ['konstant', 'gleich', 'niedrig'] }, { t: 'Extrem starker Anstieg ab der Industriellen Revolution.', k: ['anstieg', 'steigt', 'industriel'] }] });
+  GASES.forEach(g => g.q.forEach((q, i) => add({ id: `q-${g.id}-${i}`, ch: 5, type: 'sort', group: 'g-sort', gas: g.id, text: q, title: `Quelle zuordnen: ${q}`, heft: gasHeft(g) })));
+  add({ id: 'k5-gewaechs', ch: 5, type: 'self', muster: true, title: 'Aufgabe 5: Gewächshaus-Vergleich', prompt: A5_TASK, model: A5_MUSTER, heft: M1_ABGEBEN,
+    checks: [{ t: 'Gemeinsamkeit: Sonnenstrahlen kommen hinein, die Wärme bleibt zum Teil drin, es wird wärmer.', k: ['warm', 'waerme', 'sonne'] }, { t: 'Unterschied: Glasdach statt Atmosphäre mit Treibhausgasen.', k: ['glas', 'dach'] }, { t: 'Unterschied: Glas hält warme Luft fest, Treibhausgase nehmen Wärmestrahlung auf und geben sie ab.', k: ['luft', 'gase', 'treibhausgas'] }, { t: 'Unterschied: Gewächshaus bauen Menschen, der Treibhauseffekt ist natürlich.', k: ['natuerlich', 'mensch', 'gebaut'] }] });
+  add({ id: 'k5-teufel', ch: 5, type: 'self', muster: true, title: 'Sternaufgabe: Teufelskreis', prompt: TEUFEL_TASK, model: TEUFEL_MUSTER, heft: M1_SCHNEE,
+    checks: [{ t: 'Es wird wärmer, Eis und Schnee schmelzen.', k: ['schmelz', 'schmilz', 'waermer'] }, { t: 'Darunter kommt dunklerer Boden oder dunkles Meer zum Vorschein.', k: ['dunk', 'boden', 'meer', 'wasser'] }, { t: 'Dunkle Flächen reflektieren weniger und absorbieren mehr Strahlung.', k: ['reflekt', 'absorb', 'aufnehm'] }, { t: 'Dadurch wird es noch wärmer und noch mehr schmilzt.', k: ['noch mehr', 'noch waermer', 'verstaerkt', 'immer'] }] });
+  add({ id: 'k5-legende', ch: 5, type: 'self', muster: true, title: 'Aufgabe 4b: Legende ergänzen', prompt: 'Aufgabe 4b: Welche Symbole ergänzt du in der Legende für den anthropogen verstärkten Treibhauseffekt?', visual: () => m2SVG({ side: 'anthro' }), model: A4_MUSTER, heft: `Hilfekasten: ${A4_HILFE}`,
+    checks: [{ t: 'Mehr schwarze Punkte = mehr Treibhausgase in der Atmosphäre.', k: ['punkt', 'treibhausgas', 'gase'] }, { t: 'Mehr rote gestrichelte Pfeile = mehr Wärmestrahlung wird zur Erdoberfläche abgegeben.', k: ['rot', 'pfeil', 'waerme'] }] });
+  add({ id: 'v4-a', ch: 5, video: 'v4', type: 'mc', title: 'Video 4: Quellen von Methan', heft: gasHeft(GAS.ch4), prompt: 'Woher kommt Methan?', right: 'aus Fäulnisprozessen, Viehhaltung und Reisanbau', wrongs: ['aus Klimaanlagen und Feuerlöschmitteln', 'aus der Nylonproduktion', 'aus Wolken und Schnee'] });
+  add({ id: 'v4-b', ch: 5, video: 'v4', type: 'mc', title: 'Video 4: Kohle, Erdöl, Erdgas', heft: gasHeft(GAS.co2), prompt: 'Welches Treibhausgas entsteht, wenn wir Kohle, Erdöl und Erdgas verbrennen?', right: 'Kohlendioxid (CO₂)', wrongs: ['Methan (CH₄)', 'F-Gase', 'Sauerstoff'] });
+
+  const CARD = Object.fromEntries(CARDS.map(c => [c.id, c]));
+  const TOTAL = CARDS.length;
+  const GROUPS = {};
+  CARDS.forEach(c => { if (c.group) (GROUPS[c.group] = GROUPS[c.group] || { type: c.type, ids: [] }).ids.push(c.id); });
+
+  // Path per chapter: "abrufen" right after the learning card, then "anwenden"
+  const PATH = {
+    1: { abruf: ['k1-geb', 'k1-ort', 'k1-1543', 'k1-idee', 'k1-merk'], anwenden: ['k1-bild', 'k1-weg', 'k1-freund'] },
+    2: { abruf: ['k2-anzahl', 'k2-zentrum', 'k2-fix', 'k2-monde', 'k2-order'], anwenden: ['k2-merk', 'k2-nach', 'k2-platz'] },
+    3: { abruf: ['k3-liste', 'k3-temp', 'k3-mond', 'k3-uv', 'k3-th'], anwenden: ['k3-nicht', 'k3-wasser', 'k3-schalen'] },
+    4: { abruf: ['k4-motor', 'k4-kurz', 'g-begriffe', 'k4-temp', 'k4-gase'], anwenden: ['g-m2', 'k4-order', 'k4-legende', 'k4-luecke', 'k4-schnee', 'k4-dach', 'k4-erklaer'] },
+    5: { abruf: ['k5-name', 'k5-mehr', 'k5-em', 'k5-th', 'k5-zu'], anwenden: ['k5-m3-konst', 'k5-m3-anstieg', 'k5-m3-gase', 'k5-m3-text', 'g-sort', 'k5-gewaechs', 'k5-teufel', 'k5-legende'] }
+  };
+
+  // ---------- Probe (exam simulation) with expectation horizon ----------
+  const PROBE = [
+    { id: 'p-geb', ch: 1, q: 'Wann und wo wurde Nikolaus Kopernikus geboren?', crit: [{ t: '1473', k: ['1473'] }, { t: 'in Thorn', k: ['thorn', 'torun'] }], heft: `Geboren: ${KOP.facts[0][1]}` },
+    { id: 'p-idee', ch: 1, q: 'Beschreibe die alte Vorstellung und die Idee von Kopernikus.', crit: [{ t: 'Alte Vorstellung: Die Erde steht im Mittelpunkt.', k: ['erde'] }, { t: 'Kopernikus: Die Sonne steht im Zentrum.', k: ['sonne'] }, { t: 'Die Erde ist nur ein Planet und bewegt sich um die Sonne.', k: ['planet', 'um die sonne', 'bewegt'] }, { t: 'Die Erde dreht sich täglich um ihre eigene Achse.', k: ['achse'] }], heft: `Die alte Vorstellung: ${KOP.alt} Kopernikus' Idee: ${KOP.idee}` },
+    { id: 'p-merk', ch: 1, q: 'Schreib den Merksatz zu Kopernikus auf.', crit: [{ t: 'Die Erde ist ein Planet …', k: ['planet'] }, { t: '… und sie ist nicht das Zentrum.', k: ['zentrum', 'nicht'] }], heft: `Merksatz: ${KOP.merk}` },
+    { id: 'p-planeten', ch: 2, q: 'Nenne die acht Planeten unseres Sonnensystems in der richtigen Reihenfolge, von der Sonne aus.', crit: [{ t: 'Alle acht Planeten genannt.', auto: 'planetsAll' }, { t: 'Reihenfolge stimmt: Merkur, Venus, Erde, Mars, Jupiter, Saturn, Uranus, Neptun.', auto: 'planetsOrder' }], heft: HEFT_PLANETS },
+    { id: 'p-sonne', ch: 2, q: 'Was steht im Zentrum unseres Sonnensystems, und was ist es?', crit: [{ t: 'die Sonne', k: ['sonne'] }, { t: 'ein Fixstern', k: ['fixstern'] }], heft: SONNE },
+    { id: 'p-besonders', ch: 3, q: 'Nenne vier Besonderheiten der Erde.', max: 4, crit: [{ t: 'feste Oberfläche', k: ['oberflaeche', 'fest'] }, { t: 'mittlere Temperatur von +15 °C', k: ['15', 'temperatur'] }, { t: 'einen Mond', k: ['mond'] }, { t: 'Wasser bleibt in einem Kreislauf', k: ['wasser', 'kreislauf'] }, { t: 'Atmosphäre mit Sauerstoff', k: ['sauerstoff'] }, { t: 'Treibhausgase halten Wärmestrahlung zurück', k: ['treibhaus'] }, { t: 'Schutz vor gefährlicher UV-Strahlung', k: ['uv', 'schutz'] }, { t: 'Schalenbau der Erde', k: ['schale'] }], heft: HEFT_BESONDERS },
+    { id: 'p-begriffe', ch: 4, q: 'Definiere die Begriffe Reflexion, Absorption und Emission.', crit: [{ t: 'Reflexion: Strahlung wird zurückgeworfen.', k: ['zurueck'] }, { t: 'Absorption: Strahlung wird aufgenommen.', k: ['aufgenommen', 'aufnehm', 'geschluckt'] }, { t: 'Emission: Strahlung wird abgegeben.', k: ['abgegeben', 'abgeben', 'gibt'] }], heft: `Aufgabe 1a: ${BEGRIFFE.map(([b, d]) => `${b}: ${d}`).join('; ')}` },
+    { id: 'p-m2', ch: 4, q: 'Beschreibe die Vorgänge beim natürlichen Treibhauseffekt mithilfe der Nummern in M2.', visual: () => m2SVG({ side: 'natural' }), crit: [{ t: 'Die Sonne schickt kurzwellige Sonnenstrahlen Richtung Erde (1).', k: ['kurzwellig'] }, { t: 'Ein Teil wird von Wolken reflektiert, zurück ins All (2).', k: ['wolke', 'all', 'weltraum'] }, { t: 'Ein Teil wird direkt vom Boden (Schnee) reflektiert (3).', k: ['schnee', 'boden'] }, { t: 'Der Boden absorbiert einen Teil und erwärmt sich (4).', k: ['absorb', 'erwaerm', 'aufgenommen'] }, { t: 'Er gibt langwellige Wärmestrahlung ab, Emission (5).', k: ['langwellig', 'emission'] }, { t: 'Wolken und Treibhausgase absorbieren sie und schicken sie wieder Richtung Erde (6, 7).', k: ['richtung erde', 'zurueck', 'gase'] }], heft: `Aufgabe 1c: ${STEPS.map((s, i) => `${i + 1}. ${s}`).join(' ')}` },
+    { id: 'p-temp', ch: 4, q: 'Wie hoch ist die Durchschnittstemperatur der Erde mit dem Treibhauseffekt, und wie hoch wäre sie ohne ihn?', crit: [{ t: 'mit: ca. 15 °C', k: ['15'] }, { t: 'ohne: -18 °C', k: ['18'] }], heft: M1_TEMP },
+    { id: 'p-luecke', ch: 4, q: 'Ergänze: Treibhausgase absorbieren ___-Strahlung und ___ sie zurück zur Erdoberfläche ___.', crit: [{ t: 'Wärme', k: ['waerme'] }, { t: 'geben … ab', k: ['geben'] }], heft: LUECKE },
+    { id: 'p-dach', ch: 4, muster: true, q: DACH_TASK, crit: [{ t: 'helle Dachfarbe (z. B. Weiß)', k: ['hell', 'weiss'] }, { t: 'Helle Flächen reflektieren mehr Strahlung.', k: ['reflekt', 'zurueck'] }, { t: 'Das Dach erwärmt sich weniger, es bleibt kühler.', k: ['weniger', 'kuehl'] }], model: DACH_MUSTER },
+    { id: 'p-m3', ch: 5, q: A2_TASK, visual: () => m3SVG(), crit: [{ t: 'Lange Zeit (0–1500) konstant auf niedrigem Niveau.', k: ['konstant', 'gleich', 'niedrig'] }, { t: 'Extrem starker Anstieg ab der Industriellen Revolution.', k: ['anstieg', 'steig', 'industriel'] }], heft: A2_KERN.join(' ') },
+    { id: 'p-quellen', ch: 5, q: 'Nenne je eine anthropogene Quelle für Kohlendioxid, Methan und Lachgas.', crit: [{ t: 'Kohlendioxid: fossile Rohstoffe (Kohle, Erdöl, Erdgas), Verkehr, Industrie oder private Haushalte', k: ['kohle', 'erdoel', 'erdgas', 'fossil', 'verkehr', 'industrie', 'haushalt'] }, { t: 'Methan: Fäulnisprozesse, Viehhaltung oder Reisanbau', k: ['faeulnis', 'vieh', 'reis'] }, { t: 'Lachgas: verstärkte Düngung oder Nylonproduktion', k: ['dueng', 'nylon'] }], heft: GASES.slice(0, 3).map(gasHeft).join(' · ') },
+    { id: 'p-m4', ch: 5, q: 'Welches Treibhausgas hat laut M4 den größten Anteil am Treibhauseffekt?', crit: [{ t: 'Kohlendioxid (CO₂)', k: ['kohlendioxid', 'kohlenstoffdioxid', 'co2'] }], heft: `M4, Spalte „${M4_COLS[2]}“: Kohlendioxid (CO₂) hat den größten Anteil.` },
+    { id: 'p-gewaechs', ch: 5, muster: true, q: A5_TASK, max: 4, crit: [{ t: 'Gemeinsamkeit: Sonnenstrahlen kommen hinein, es wird wärmer.', k: ['warm', 'sonne'] }, { t: 'Gemeinsamkeit: Die Wärme bleibt zum Teil gefangen.', k: ['gefangen', 'bleibt'] }, { t: 'Unterschied: Glasdach statt Atmosphäre mit Treibhausgasen.', k: ['glas', 'dach'] }, { t: 'Unterschied: Glas hält warme Luft fest, Gase nehmen Wärmestrahlung auf und geben sie ab.', k: ['luft', 'gase'] }, { t: 'Unterschied: Gewächshaus von Menschen gebaut, Treibhauseffekt natürlich.', k: ['natuerlich', 'mensch'] }], model: A5_MUSTER },
+    { id: 'p-teufel', ch: 5, muster: true, q: TEUFEL_TASK, crit: [{ t: 'Es wird wärmer, Eis und Schnee schmelzen.', k: ['schmelz', 'schmilz'] }, { t: 'Darunter kommt dunklerer Boden oder dunkles Meer zum Vorschein.', k: ['dunk'] }, { t: 'Dunkle Flächen reflektieren weniger und absorbieren mehr.', k: ['reflekt', 'absorb'] }, { t: 'Dadurch wird es noch wärmer, noch mehr schmilzt.', k: ['noch', 'verstaerk', 'immer'] }], model: TEUFEL_MUSTER }
+  ];
+  const PRB = Object.fromEntries(PROBE.map(p => [p.id, p]));
+  const pmax = p => Math.min(p.max || p.crit.length, p.crit.length);
+  const PROBE_PLAN = [[1, 2], [2, 1], [3, 1], [4, 3], [5, 3]];
+  const TRANSFER = ['p-dach', 'p-gewaechs', 'p-teufel'];
+
+  // ---------- State ----------
+  const KEY = 'erd-atlas-v1';
+  const HUB_KEY = 'lernzentrale:2026-11_Geographie-Erde-Sonnensystem-Klima';
+  if (location.pathname.includes('/lernzentrale/')) document.getElementById('hubLink').hidden = false;
+  const MASTER = 3;
+  const INTERVALS = [1, 3, 7, 14];
+  const DAY = 864e5;
+  const REVIEW_MAX = 15;
+  const PRAISE = ['Richtig.', 'Genau.', 'Stimmt.', 'Gut erinnert.'];
+
+  const $view = document.getElementById('view');
+  let P = load();
+  let view = 'home';
+  let chap = 1;
+  let round = null;
+  let vd = null;
+  let pr = null;
+  let resetAsk = false;
+
+  function fresh() {
+    return { c: {}, conf: {}, self: {}, path: {}, vid: {}, merk: null, probe: [] };
+  }
+  function load() {
+    const base = fresh();
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (raw) {
+        const p = JSON.parse(raw);
+        if (p && typeof p === 'object') return Object.assign(base, p);
+      }
+    } catch (e) {}
+    return base;
+  }
+  function save() {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(P));
+      localStorage.setItem(HUB_KEY, JSON.stringify({ done: doneCount(), total: TOTAL, last: Date.now() }));
+    } catch (e) {}
+  }
+
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const fmt = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  const plain = s => String(s).replace(/\*\*/g, '');
+  const dayNum = (t = Date.now()) => { const d = new Date(t); return Math.round(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / DAY); };
+  const today = () => dayNum();
+  const fmtDay = dn => new Date(dn * DAY).toLocaleDateString('de-DE', { weekday: 'short', day: 'numeric', month: 'numeric', timeZone: 'UTC' });
+  const inDays = dn => { const d = dn - today(); return d <= 0 ? 'heute' : d === 1 ? 'morgen' : `in ${d} Tagen`; };
+  const seen = id => !!P.c[id];
+  const streak = id => Math.min(MASTER, P.c[id]?.s || 0);
+  const mastered = id => (P.c[id]?.s || 0) >= MASTER;
+  const isDue = id => seen(id) && P.c[id].due <= today();
+  const doneCount = () => CARDS.filter(c => mastered(c.id)).length;
+  const chCards = n => CARDS.filter(c => c.ch === n);
+  const dueIds = () => CARDS.filter(c => isDue(c.id)).sort((a, b) => P.c[a.id].due - P.c[b.id].due).map(c => c.id);
+  const dots = n => `${'●'.repeat(n)}${'○'.repeat(MASTER - n)}`;
+  const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const pathOf = n => P.path[n] || {};
+  const pathDone = n => { const p = pathOf(n); return !!(p.e && p.a && p.w); };
+  function starsOf(n) {
+    const cs = chCards(n);
+    return [pathDone(n), cs.every(c => (P.c[c.id]?.s || 0) >= 1), cs.every(c => mastered(c.id))].filter(Boolean).length;
+  }
+  const starHtml = n => { const s = starsOf(n); return `<span class="stars" aria-label="${s} von 3 Sternen">${'★'.repeat(s)}<span class="off">${'★'.repeat(3 - s)}</span></span>`; };
+  const nextChapter = () => CHAPTERS.find(c => !pathDone(c.n))?.n || null;
+
+  // Spaced repetition: a correct answer only moves a card up when it is new or due (1, 3, 7, 14 days); a mistake resets it and brings it back tomorrow
+  function record(id, ok, sure) {
+    const c = P.c[id] || { s: 0, st: 0, due: 0, r: 0, w: 0 };
+    const counts = !P.c[id] || c.due <= today();
+    const before = c.s >= MASTER;
+    if (ok) {
+      c.r++;
+      if (counts) {
+        c.s++;
+        c.st = Math.min(c.st + 1, INTERVALS.length);
+        c.due = today() + INTERVALS[c.st - 1];
+      }
+    } else {
+      c.w++;
+      c.s = 0;
+      c.st = 0;
+      c.due = today() + 1;
+    }
+    c.last = Date.now();
+    P.c[id] = c;
+    if (sure !== undefined) {
+      const k = P.conf[id] || { sr: 0, sw: 0, gr: 0, gw: 0 };
+      k[(sure ? 's' : 'g') + (ok ? 'r' : 'w')]++;
+      P.conf[id] = k;
+    }
+    return { newly: !before && c.s >= MASTER, counted: ok && counts, due: c.due };
+  }
+  const whenLine = r => r.retry ? '' : `<p class="when">${r.newly ? '<strong>Gelernt!</strong> Drei Mal hintereinander richtig. ' : ''}${r.counted || r.due === today() + 1 ? `Kommt ${inDays(r.due)} wieder (${fmtDay(r.due)}).` : `Schon gewusst. Die nächste Wiederholung ist ${inDays(r.due)}.`}</p>`;
+
+  const heftQuote = (text, label = 'Im Heft') => `<blockquote class="heft"><span class="label">${esc(label)}</span>${esc(text)}</blockquote>`;
+  const musterBox = text => `<div class="muster"><span class="label">Ergänzung: Musterlösung</span><p>${esc(text)}</p></div>`;
+
+  // ---------- Speech (German voice) ----------
+  let deVoice = null;
+  function findVoice() {
+    try {
+      const voices = speechSynthesis.getVoices();
+      deVoice = voices.find(v => v.lang === 'de-DE' && /Anna|Petra|Helena|Google/i.test(v.name)) || voices.find(v => v.lang && v.lang.startsWith('de')) || null;
+    } catch (e) {}
+  }
+  const canSpeak = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+  if (canSpeak) { findVoice(); speechSynthesis.onvoiceschanged = findVoice; }
+  const sayText = t => plain(t).replace(/\+15 °C/g, 'plus 15 Grad').replace(/-18 °C/g, 'minus 18 Grad').replace(/°C/g, 'Grad').replace(/CO₂/g, 'C O 2').replace(/CH₄/g, 'C H 4').replace(/N₂O/g, 'N 2 O')
+    .replace(/u\. a\./g, 'unter anderem').replace(/z\.\s?B\./g, 'zum Beispiel').replace(/ca\./g, 'circa').replace(/=Emission/g, 'gleich Emission').replace(/→/g, ', dann ').replace(/ – /g, ', ').replace(/0–1500/g, '0 bis 1500');
+  function speak(text) {
+    if (!canSpeak || !text) return;
+    try {
+      speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(sayText(text));
+      u.lang = 'de-DE';
+      if (deVoice) u.voice = deVoice;
+      u.rate = 0.92;
+      speechSynthesis.speak(u);
+    } catch (e) {}
+  }
+  const ICON_SPEAK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+  const ICON_CLOSE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>';
+  const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+  const SOUND_HINT = '<span class="hint">Kein Ton? Lautlos-Modus ausschalten und lauter stellen.</span>';
+  const speakBtn = (text, label = 'Vorlesen') => canSpeak ? `<div class="speak"><button class="btn ghost small" data-act="speak" data-say="${esc(plain(text))}">${ICON_SPEAK}${label}</button>${SOUND_HINT}</div>` : '';
+  const closeBtn = (act = 'home', label = 'Zurück', arg = '') => `<button class="iconbtn" data-act="${act}" ${arg ? `data-arg="${arg}"` : ''} aria-label="${label}">${ICON_CLOSE}</button>`;
+
+  // ---------- Drawings (all self-drawn SVG) ----------
+  function arrow(x1, y1, x2, y2, cls) {
+    const a = Math.atan2(y2 - y1, x2 - x1), h = 10, w = 5.5;
+    const bx = x2 - h * Math.cos(a), by = y2 - h * Math.sin(a);
+    const p = [[x2, y2], [bx + w * Math.sin(a), by - w * Math.cos(a)], [bx - w * Math.sin(a), by + w * Math.cos(a)]].map(q => q.map(v => v.toFixed(1)).join(',')).join(' ');
+    return `<g class="arr ${cls}"><line x1="${x1}" y1="${y1}" x2="${bx.toFixed(1)}" y2="${by.toFixed(1)}"/><polygon points="${p}"/></g>`;
+  }
+  const cloud = (x, y, s = 1) => `<path class="cloud" transform="translate(${x} ${y}) scale(${s})" d="M-30 10 C-42 10 -42 -6 -28 -6 C-28 -20 -10 -24 -2 -14 C4 -26 26 -24 26 -8 C40 -8 42 10 28 10 Z"/>`;
+  const badge = (n, x, y, st = '') => `<g class="badge ${st}"><circle cx="${x}" cy="${y}" r="11"/><text x="${x}" y="${y + 0.5}">${n}</text></g>`;
+  function dotsIn(n, seed, x0, x1, y0, y1, avoid = []) {
+    let s = seed, out = '';
+    const rnd = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+    let made = 0, tries = 0;
+    while (made < n && tries < 500) {
+      tries++;
+      const x = x0 + rnd() * (x1 - x0), y = y0 + rnd() * (y1 - y0);
+      if (avoid.some(([ax, ay, r]) => Math.hypot(x - ax, y - ay) < r)) continue;
+      out += `<circle class="gasdot" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.4"/>`;
+      made++;
+    }
+    return out;
+  }
+  // M2: natural greenhouse effect (left, numbers 1–7) and anthropogenic one (right)
+  function m2SVG(o = {}) {
+    const side = o.side || 'full';
+    const vb = { natural: '0 0 400 330', anthro: '400 0 240 330', full: '0 0 640 330' }[side];
+    const st = n => `step ${o.sel === n ? 'sel' : ''}`;
+    const b = (n, x, y) => o.badges === false ? '' : badge(n, x, y, o.done?.[n] || '');
+    const avoidN = [[172, 40, 40], [92, 146, 42], [306, 128, 42], [360, 200, 22]];
+    let s = `<svg class="fig m2 ${o.sel ? 'has-sel' : ''}" viewBox="${vb}" role="img" aria-label="Abbildung M2: ${side === 'anthro' ? 'anthropogener Treibhauseffekt' : 'natürlicher Treibhauseffekt mit den Nummern 1 bis 7'}${o.sel ? `, Nummer ${o.sel} leuchtet` : ''}">`;
+    if (side !== 'anthro') {
+      s += '<rect class="sky" x="0" y="0" width="400" height="300"/>';
+      s += `<g class="gasdots">${dotsIn(14, 7, 10, 390, 30, 250, avoidN)}</g>`;
+      s += '<rect class="ground" x="0" y="300" width="400" height="16"/>';
+      s += '<g aria-hidden="true"><path class="trunk" d="M150 300 V262 M150 276 L138 266 M150 270 L163 258"/><circle class="crown" cx="150" cy="250" r="20"/><circle class="crown" cx="134" cy="258" r="13"/><circle class="crown" cx="167" cy="256" r="14"/></g>';
+      s += `<g class="${st(3)}"><rect class="snow" x="12" y="292" width="96" height="12" rx="6"/><text class="lbl" x="60" y="326" text-anchor="middle">Schnee</text>${arrow(162, 60, 66, 290, 'kurz')}${arrow(54, 290, 14, 100, 'kurz')}${b(3, 30, 270)}</g>`;
+      s += `<g class="${st(2)}">${cloud(92, 148)}${arrow(158, 56, 102, 134, 'kurz')}${arrow(82, 134, 40, 34, 'kurz')}${b(2, 92, 178)}</g>`;
+      s += `<g class="${st(4)}">${arrow(182, 62, 214, 296, 'kurz')}${b(4, 196, 318)}</g>`;
+      s += `<g class="${st(5)}">${arrow(224, 296, 298, 30, 'lang')}${b(5, 318, 26)}</g>`;
+      s += `<g class="${st(6)}">${cloud(306, 128)}${arrow(236, 296, 294, 142, 'lang')}${arrow(316, 142, 338, 294, 'lang')}${b(6, 342, 106)}</g>`;
+      s += `<g class="${st(7)}"><circle class="gasdot" cx="356" cy="200" r="4"/><circle class="gasdot" cx="366" cy="192" r="4"/><circle class="gasdot" cx="364" cy="208" r="4"/>${arrow(250, 298, 350, 206, 'lang')}${arrow(368, 214, 388, 294, 'lang')}${b(7, 382, 178)}</g>`;
+      s += `<g class="${st(1)}"><g aria-hidden="true">${[0, 45, 90, 135, 180, 225, 270, 315].map(d => { const r = d * Math.PI / 180; return `<line class="ray" x1="${(172 + 26 * Math.cos(r)).toFixed(1)}" y1="${(40 + 26 * Math.sin(r)).toFixed(1)}" x2="${(172 + 33 * Math.cos(r)).toFixed(1)}" y2="${(40 + 33 * Math.sin(r)).toFixed(1)}"/>`; }).join('')}</g><circle class="sunbody" cx="172" cy="40" r="20"/>${b(1, 210, 60)}</g>`;
+    }
+    if (side !== 'natural') {
+      s += '<rect class="sky" x="400" y="0" width="240" height="300"/>';
+      s += `<g class="gasdots">${dotsIn(34, 11, 410, 632, 24, 270, [[470, 108, 36], [585, 150, 36]])}</g>`;
+      s += '<rect class="ground" x="400" y="300" width="240" height="16"/>';
+      s += cloud(470, 110, .85) + cloud(585, 150, .85);
+      s += arrow(505, 6, 505, 296, 'gelb');
+      s += arrow(522, 296, 556, 186, 'lang') + arrow(562, 190, 586, 296, 'lang') + arrow(596, 296, 616, 170, 'lang') + arrow(612, 176, 548, 240, 'lang') + arrow(544, 246, 552, 296, 'lang') + arrow(432, 296, 452, 210, 'lang') + arrow(460, 214, 476, 296, 'lang');
+      if (side === 'full') s += '<line class="divider" x1="400" y1="0" x2="400" y2="316"/>';
+    }
+    return s + '</svg>';
+  }
+  function m2Figure(o = {}) {
+    const leg = o.legend === 'heft'
+      ? `<ul class="legend"><li><span class="sw"></span>${esc(LEGENDE_HEFT[0])}</li><li><span class="sw lang"></span>${esc(LEGENDE_HEFT[1])}</li><li><span class="sw dot"></span>${esc(LEGENDE_HEFT[2])}</li></ul>`
+      : '';
+    const cap = o.side === 'anthro' ? 'M2, rechte Seite: anthropogener Treibhauseffekt' : o.side === 'natural' ? 'M2: natürlicher Treibhauseffekt' : 'M2: Treibhauseffekt (links natürlicher, rechts anthropogener Treibhauseffekt)';
+    return `<div class="figwrap">${m2SVG(o)}<p class="figcap">${esc(cap)} · selbst nachgezeichnet</p>${leg}</div>`;
+  }
+
+  // M3: simplified redrawing that follows the notebook statements (long flat, extreme rise since the Industrial Revolution)
+  function m3SVG(o = {}) {
+    const X = yr => 52 + yr * 0.158;
+    const flat = (y0, wig) => [0, 125, 250, 375, 500, 625, 750, 875, 1000, 1125, 1250, 1375, 1500, 1600, 1700].map((yr, i) => [yr, y0 + wig[i % wig.length]]);
+    const curves = [
+      flat(150, [0, -2, 1, -1, 2, 0, -1, 1, 0, -2, 1, 0, 1, 5, 2]).concat([[1800, 148], [1850, 142], [1900, 134], [1950, 118], [1980, 86], [2000, 62], [2022, 44]]),
+      flat(190, [1, -1, 0, 2, -1, 1, 0, -2, 1, 0, -1, 1, 0, 2, 0]).concat([[1800, 186], [1850, 178], [1900, 162], [1950, 124], [1980, 74], [2000, 50], [2022, 36]]),
+      flat(172, [0, 2, -1, 1, -2, 0, 2, -1, 1, 0, 1, -1, 0, 3, 1]).concat([[1800, 170], [1850, 168], [1900, 164], [1950, 154], [1980, 136], [2000, 120], [2022, 104]])
+    ];
+    let s = `<svg class="fig m3" viewBox="0 0 400 250" role="img" aria-label="Diagramm M3, vereinfacht: Die Kurven für Kohlendioxid, Methan und Distickstoffoxid verlaufen lange waagerecht auf niedrigem Niveau und steigen ab etwa 1800 extrem stark an.">`;
+    if (o.band) s += `<rect class="band" x="${X(1760)}" y="22" width="${X(2022) - X(1760)}" height="186"/><text class="bandtxt" x="${X(1740)}" y="34" text-anchor="end">Industrielle Revolution →</text>`;
+    [0, 500, 1000, 1500, 2000].forEach(yr => { s += `<line class="grid" x1="${X(yr)}" y1="22" x2="${X(yr)}" y2="208"/><text class="tick" x="${X(yr)}" y="224" text-anchor="middle">${yr}</text>`; });
+    s += `<path class="axis" d="M52 18 V208 H${X(2022) + 8}"/><path class="axis" d="M46 26 L52 16 L58 26"/>`;
+    s += `<text class="ttl" x="${X(1000)}" y="244" text-anchor="middle">Jahr</text><text class="ttl" transform="translate(30 ${115}) rotate(-90)" text-anchor="middle">Konzentration</text>`;
+    curves.forEach((pts, i) => { s += `<path class="curve" style="stroke:var(${M3_LINES[i][1]})" d="M${pts.map(([yr, y]) => `${X(yr).toFixed(1)} ${y}`).join(' L')}"/>`; });
+    if (o.legend !== false) M3_LINES.forEach(([n, c], i) => { s += `<line x1="70" y1="${40 + i * 18}" x2="92" y2="${40 + i * 18}" style="stroke:var(${c});stroke-width:3"/><text class="tick" x="98" y="${44 + i * 18}" style="fill:var(--ink)">${esc(n)}</text>`; });
+    return s + '</svg>';
+  }
+  const m3Figure = (o = {}) => `<div class="figwrap">${m3SVG(o)}<p class="figcap">M3: ${esc(M3_TITLE)} · vereinfacht nachgezeichnet, ohne Zahlenwerte</p></div>`;
+
+  // Old idea vs. Copernicus
+  function kopSVG(kind, labels = true) {
+    const R = [36, 60, 86];
+    const at = (r, deg) => [110 + r * Math.cos(deg * Math.PI / 180), 110 + r * Math.sin(deg * Math.PI / 180)].map(v => v.toFixed(1));
+    const body = (r, deg, rad, fill, name) => { const [x, y] = at(r, deg); return `<circle cx="${x}" cy="${y}" r="${rad}" fill="${fill}" stroke="rgba(0,0,0,.25)"/>${name && labels ? `<text x="${x}" y="${(+y + rad + 16).toFixed(1)}" text-anchor="middle">${name}</text>` : ''}`; };
+    const earth = (x, y, r) => `<circle cx="${x}" cy="${y}" r="${r}" fill="#3f7fd6" stroke="rgba(0,0,0,.3)"/><path d="M${x - r * .5} ${y - r * .3} q${r * .3} ${-r * .4} ${r * .7} ${-r * .1} q${-r * .1} ${r * .4} ${-r * .5} ${r * .5} Z M${x + r * .1} ${y + r * .25} q${r * .4} 0 ${r * .5} ${r * .35} q${-r * .4} ${r * .2} ${-r * .6} ${-r * .1} Z" fill="#5fae54"/>`;
+    const sun = (x, y, r) => `<circle cx="${x}" cy="${y}" r="${r + 5}" fill="var(--sun)" opacity=".35"/><circle cx="${x}" cy="${y}" r="${r}" fill="var(--sun)" stroke="var(--sun-edge)" stroke-width="2"/>`;
+    let s = `<svg class="fig kop" viewBox="0 0 220 220" role="img" aria-label="${kind === 'alt' ? `${labels ? 'Die alte Vorstellung: ' : ''}Die Erde in der Mitte, Mond, Sonne und Mars kreisen um sie.` : `${labels ? 'Kopernikus’ Idee: ' : ''}Die Sonne in der Mitte, die Erde und andere Planeten kreisen um sie.`}">`;
+    s += R.map(r => `<circle class="orbit" cx="110" cy="110" r="${r}"/>`).join('');
+    if (kind === 'alt') {
+      s += earth(110, 110, 15) + (labels ? '<text x="110" y="144" text-anchor="middle">Erde</text>' : '');
+      s += body(R[0], -40, 5, '#b9b9b9', 'Mond') + sun(...at(R[1], 210).map(Number), 11) + (labels ? `<text x="${at(R[1], 210)[0]}" y="${(+at(R[1], 210)[1] + 28).toFixed(1)}" text-anchor="middle">Sonne</text>` : '') + body(R[2], 20, 7, '#cf5a3a', 'Mars');
+    } else {
+      s += sun(110, 110, 17) + (labels ? '<text x="110" y="150" text-anchor="middle">Sonne</text>' : '');
+      s += body(R[0], -50, 5, '#9b9b9b', '') + earth(...at(R[1], 205).map(Number), 9) + (labels ? `<text x="${at(R[1], 205)[0]}" y="${(+at(R[1], 205)[1] + 26).toFixed(1)}" text-anchor="middle">Erde</text>` : '') + body(R[2], 25, 7, '#cf5a3a', 'Mars');
+    }
+    return s + '</svg>';
+  }
+
+  function planetIcon(i, size = 30) {
+    const [c, r] = PLANET_LOOK[i];
+    const rr = Math.max(5, Math.min(12, r * 0.6));
+    const ring = i === 5 ? `<ellipse cx="15" cy="15" rx="${rr + 5}" ry="3.5" fill="none" stroke="#b89a5a" stroke-width="2"/>` : '';
+    return `<svg viewBox="0 0 30 30" width="${size}" height="${size}" aria-hidden="true"><circle cx="15" cy="15" r="${rr}" fill="${c}" stroke="rgba(0,0,0,.25)"/>${ring}</svg>`;
+  }
+  // Row of planets from the sun (sizes not to scale)
+  function solarSVG() {
+    const xs = [96, 136, 180, 222, 290, 386, 470, 540];
+    let s = '<svg class="fig ss" viewBox="0 0 590 150" role="img" aria-label="Die Sonne links, dann die Planeten Merkur, Venus, Erde, Mars, Jupiter, Saturn, Uranus und Neptun. Größen nicht maßstabsgetreu.">';
+    s += '<circle cx="-40" cy="72" r="100" fill="var(--sun)" stroke="var(--sun-edge)" stroke-width="2"/><text x="14" y="76" style="font-weight:800;fill:#3a2a00">Sonne</text>';
+    PLANETS.forEach((p, i) => {
+      const [c, r] = PLANET_LOOK[i];
+      if (i === 5) s += `<ellipse cx="${xs[i]}" cy="72" rx="${r + 12}" ry="6" fill="none" stroke="#b89a5a" stroke-width="3"/>`;
+      s += `<circle cx="${xs[i]}" cy="72" r="${r}" fill="${c}" stroke="rgba(0,0,0,.25)"/>`;
+      s += `<text class="lbl" x="${xs[i]}" y="${i % 2 ? 72 - r - 12 : 72 + r + 20}">${p}</text>`;
+    });
+    return s + '</svg>';
+  }
+
+  // Home illustration: the five chapters as planets on their orbits
+  function orbitMap() {
+    const cols = ['var(--ocker)', 'var(--pen)', 'var(--good)', 'var(--kurz)', 'var(--lang)'];
+    let s = `<svg class="orbitmap" viewBox="0 0 220 220" role="img" aria-label="Lernpfad: ${CHAPTERS.map(c => `Kapitel ${c.n} ${starsOf(c.n)} Sterne`).join(', ')}">`;
+    s += '<circle cx="110" cy="110" r="18" fill="var(--sun)" stroke="var(--sun-edge)" stroke-width="2"/>';
+    CHAPTERS.forEach((c, i) => {
+      const r = 34 + i * 16, deg = -70 + i * 62, x = 110 + r * Math.cos(deg * Math.PI / 180), y = 110 + r * Math.sin(deg * Math.PI / 180);
+      const stars = starsOf(c.n), started = chCards(c.n).some(k => seen(k.id)) || pathOf(c.n).e;
+      s += `<circle class="orbit" cx="110" cy="110" r="${r}"/>`;
+      s += `<circle class="st" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="11" fill="${started ? cols[i] : 'var(--line)'}"/>`;
+      s += `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" fill="${started ? 'var(--on-pen)' : 'var(--ink-soft)'}">${c.n}</text>`;
+      if (stars) s += `<text x="${x.toFixed(1)}" y="${(y + 19).toFixed(1)}" fill="var(--ocker)" style="font-size:10px">${'★'.repeat(stars)}</text>`;
+    });
+    return s + '</svg>';
+  }
+
+  // ---------- Learning cards (chapter content, notebook wording) ----------
+  function merkPicker() {
+    return `<div class="merkpick" role="group" aria-label="Merksatz wählen">${MERKSAETZE.map((m, i) => `<button data-act="merk" data-arg="${i}" aria-pressed="${P.merk === i}">${m.split(' ').map(w => `<b>${esc(w[0])}</b>${esc(w.slice(1))}`).join(' ')}</button>`).join('')}</div>`;
+  }
+  const LEARN = {
+    1: () => ({
+      html: `<h3>${esc(KOP.head)}</h3>
+        <dl class="facts"><dt>Geboren</dt><dd>${esc(KOP.facts[0][1])}</dd><dt>Gestorben</dt><dd>${esc(KOP.facts[1][1])}</dd></dl>
+        <p><strong>Seine große Idee:</strong> ${esc(KOP.idee)}</p>
+        <div class="pair"><figure>${kopSVG('alt')}<figcaption>Die alte Vorstellung</figcaption><span class="small">${esc(KOP.alt)}</span></figure><figure>${kopSVG('neu')}<figcaption>Kopernikus' Idee</figcaption><span class="small">${esc(KOP.neu)}</span></figure></div>
+        <h3>Sein Lebensweg – in kurz</h3>
+        <ol class="timeline">${KOP.weg.map(([y, t]) => `<li><b>${esc(y || '·')}</b><span>${esc(t)}</span></li>`).join('')}</ol>
+        <div class="merk"><span class="label">Merksatz</span>${esc(KOP.merk)}</div>`,
+      say: `${KOP.head}. Geboren: ${KOP.facts[0][1]}. Gestorben: ${KOP.facts[1][1]}. Seine große Idee: ${KOP.idee} Die alte Vorstellung: ${KOP.alt} Kopernikus' Idee: ${KOP.neu} ${HEFT_WEG}. Merksatz: ${KOP.merk}`
+    }),
+    2: () => ({
+      html: `<h3>Wo befindet sich die Erde?</h3><p>${esc(SONNE)}</p>
+        <div class="figwrap">${solarSVG()}<p class="figcap">Von der Sonne aus. Größen nicht maßstabsgetreu.</p></div>
+        <h3>Merksätze zum Sonnensystem</h3><p class="muted small">In deinem Heft stehen zwei. Tipp den an, den du dir besser merken kannst.</p>${merkPicker()}`,
+      say: `Wo befindet sich die Erde? ${SONNE} Die Planeten von der Sonne aus: ${PLANETS.join(', ')}. Merksätze: ${MERKSAETZE.join(' Oder: ')}`
+    }),
+    3: () => ({
+      html: `<h3>Besonderheiten der Erde</h3><ul>${BESONDERS.map(b => `<li>${esc(b)}</li>`).join('')}</ul>
+        <p class="muted small">Tipp: Lies die Liste zweimal laut. Gleich schreibst du sie aus dem Kopf auf.</p>`,
+      say: `Besonderheiten der Erde: ${BESONDERS.join('. ')}`
+    }),
+    4: () => ({
+      html: `<span class="label">Arbeitsblatt 04a · Wie beeinflusst CO₂ unser Klima?</span><h3>M1: natürlicher Treibhauseffekt</h3>${M1.map(p => `<p>${fmt(p)}</p>`).join('')}
+        <div class="merk"><span class="label">Begriffe (Aufgabe 1a)</span>${BEGRIFFE.map(([b, d]) => `${esc(b)}: ${esc(d)}`).join('<br>')}</div>
+        ${m2Figure({ side: 'natural', legend: 'heft' })}
+        <ol>${STEPS.map(s => `<li>${esc(s)}</li>`).join('')}</ol>
+        <div class="temps"><div><b>ca. 15 °C</b>mit Treibhauseffekt</div><div><b>-18 °C</b>ohne Treibhauseffekt</div></div>`,
+      say: `M1, natürlicher Treibhauseffekt. ${M1.join(' ')} Begriffe: ${BEGRIFFE.map(([b, d]) => `${b}: ${d}`).join('. ')}.`
+    }),
+    5: () => ({
+      html: `<span class="label">Arbeitsblatt 04b · Wie beeinflussen wir das Klima?</span>
+        <div class="merk">${esc(LUECKE)}</div>
+        <h3>M3: Diagramm</h3>${m3Figure()}<p class="task">${esc(A2_TASK)}</p><p>${esc(A2_KERN.join(' '))}</p>
+        <h3>M4: Quellen der anthropogen verursachten Treibhausgase</h3>
+        <div class="gascards">${GASES.map(g => `<div class="gascard" style="--c:var(${g.c})"><h3>${esc(g.name)}</h3><ul>${g.q.map(q => `<li>${esc(q)}</li>`).join('')}</ul></div>`).join('')}</div>
+        <p>In der Tabelle M4 steht außerdem: Kohlendioxid hat den größten Anteil an den jährlichen Treibhausgasemissionen und am Treibhauseffekt. Bei Methan hat die Konzentration seit Beginn der Industrialisierung am stärksten zugenommen. Die genauen Zahlen stehen im Lernzettel.</p>
+        <h3>Aufgabe 4: anthropogener Treibhauseffekt in M2</h3>${m2Figure({ side: 'anthro' })}<div class="merk"><span class="label">Hilfekasten</span>${esc(A4_HILFE)}</div>`,
+      say: `Arbeitsblatt 04b. Wie beeinflussen wir das Klima? ${LUECKE} Diagramm M3. ${A2_TASK} ${A2_KERN.join(' ')} Quellen der anthropogen verursachten Treibhausgase: ${GASES.map(g => `${g.name}: ${g.q.join(', ')}`).join('. ')}. Kohlendioxid hat den größten Anteil an den jährlichen Treibhausgasemissionen und am Treibhauseffekt. Bei Methan hat die Konzentration am stärksten zugenommen. Aufgabe 4, Hilfekasten: ${A4_HILFE}`
+    })
+  };
+
+  // ---------- Views ----------
+  function show(v) {
+    view = v;
+    render();
+    window.scrollTo(0, 0);
+  }
+  function render() {
+    const due = dueIds().length;
+    const pill = document.getElementById('duePill');
+    pill.textContent = due ? `Heute fällig: ${due}` : `${doneCount()} von ${TOTAL} gelernt`;
+    pill.classList.toggle('due', !!due);
+    const fn = { home: renderHome, chapter: renderChapter, learn: renderLearn, video: renderVideo, quiz: renderQuiz, result: renderResult, zettel: renderZettel, probe: renderProbe, parents: renderParents }[view];
+    $view.innerHTML = fn();
+    if (view === 'video') wireVideo();
+  }
+
+  function forecast() {
+    const t = today(), byDay = {};
+    CARDS.forEach(c => { const d = P.c[c.id]?.due; if (d && d > t && d <= t + 14) byDay[d] = (byDay[d] || 0) + 1; });
+    return Object.keys(byDay).map(Number).sort((a, b) => a - b).slice(0, 4).map(d => `<span>${inDays(d)}: ${byDay[d]}</span>`).join('');
+  }
+
+  function renderHome() {
+    const done = doneCount(), due = dueIds(), nx = nextChapter();
+    const anySeen = CARDS.some(c => seen(c.id));
+    const todayBox = due.length
+      ? `<section class="today"><h2>Heute fällig: ${due.length} ${due.length === 1 ? 'Karte' : 'Karten'}</h2><p>Diese Karten hast du vor ein paar Tagen gelernt. Jetzt ist der beste Zeitpunkt, sie zu wiederholen.</p><div class="row"><button class="btn" data-act="review">Jetzt wiederholen${due.length > REVIEW_MAX ? ` (${REVIEW_MAX})` : ''}</button></div></section>`
+      : `<section class="today calm"><h2>${anySeen ? 'Heute ist nichts fällig' : 'So funktioniert der Erd-Atlas'}</h2><p>${anySeen ? 'Super, alles wiederholt. Mach im Lernpfad weiter oder schau morgen wieder vorbei.' : 'Geh die fünf Kapitel der Reihe nach durch: erst lesen, dann sofort abrufen, dann anwenden. Was du gelernt hast, kommt nach 1, 3, 7 und 14 Tagen zur Wiederholung wieder.'}</p>${forecast() ? `<div class="forecast" aria-label="Nächste Wiederholungen">${forecast()}</div>` : ''}</section>`;
+    const stations = CHAPTERS.map(c => {
+      const cs = chCards(c.n), d = cs.filter(k => mastered(k.id)).length, p = pathOf(c.n);
+      const started = cs.some(k => seen(k.id)) || p.e;
+      return `<li><button class="station ${started ? 'started' : ''} ${pathDone(c.n) ? 'complete' : ''} ${nx === c.n ? 'next' : ''}" data-act="chapter" data-arg="${c.n}">
+        <span class="num">${c.n}</span>
+        <span class="card">
+          <span class="top"><h3>${esc(c.title)}</h3>${starHtml(c.n)}</span>
+          ${nx === c.n ? `<span class="nexttag">${started ? 'Hier geht es weiter' : 'Als Nächstes'}</span>` : ''}
+          <span class="muted small">${esc(c.sub)}</span>
+          <span class="steps"><span class="${p.e ? 'on' : ''}">Erklären</span><span class="${p.a ? 'on' : ''}">Abrufen</span><span class="${p.w ? 'on' : ''}">Anwenden</span></span>
+          <span class="mini"><span class="bar thin ocker" aria-hidden="true"><span style="width:${Math.round(100 * d / cs.length)}%"></span></span>${d}/${cs.length} gelernt</span>
+        </span></button></li>`;
+    }).join('');
+    return `
+      <section class="sheet hero">
+        ${orbitMap()}
+        <div class="stats stack" style="gap:8px">
+          <span class="label">Dein Lernstand</span>
+          <div class="count">${done} von ${TOTAL}</div>
+          <div>Karten gelernt. Eine Karte ist gelernt, wenn du sie ${MASTER}-mal hintereinander richtig weißt, jedes Mal ein paar Tage später.</div>
+          <div class="bar" aria-hidden="true"><span style="width:${Math.round(100 * done / TOTAL)}%"></span></div>
+          <div class="muted small">Sterne pro Kapitel: ★ Lernpfad geschafft · ★★ jede Karte einmal richtig · ★★★ alles gelernt.</div>
+        </div>
+      </section>
+      ${todayBox}
+      <section class="stack"><h2>Lernpfad</h2><ol class="path">${stations}</ol></section>
+      <section class="tiles">
+        <button class="tile" data-act="probe"><h3>Probe-Modus</h3><p>10 gemischte Fragen wie in einer Ex. Danach vergleichst du mit dem Erwartungshorizont.</p></button>
+        <button class="tile" data-act="zettel"><h3>Lernzettel</h3><p>Alles aus dem Heft zum Nachlesen und Anhören.</p></button>
+      </section>
+      <div class="row spread">
+        <button class="linkbtn" data-act="parents">Für Eltern</button>
+        <span class="muted small">Aus dem Heft „Geographie“</span>
+      </div>`;
+  }
+
+  function renderChapter() {
+    const c = CHAP[chap], p = pathOf(chap), pa = PATH[chap];
+    const nQ = list => list.reduce((s, x) => s + (GROUPS[x] ? 1 : 1), 0);
+    const cs = chCards(chap), d = cs.filter(k => mastered(k.id)).length;
+    const step = (on, n, title, text, btn) => `<section class="sheet stepcard ${on ? 'on' : ''}"><span class="dot">${on ? '✓' : n}</span><div class="stack"><h3>${title}</h3><p class="muted">${text}</p><div class="row">${btn}</div></div></section>`;
+    const vid = c.video ? VID[c.video] : null;
+    return `
+      <div class="qbar">${closeBtn('home', 'Zurück zum Lernpfad')}<h2 style="flex:1">Kapitel ${c.n}: ${esc(c.title)}</h2>${starHtml(c.n)}</div>
+      <p class="muted">${esc(c.sub)} · ${d} von ${cs.length} Karten gelernt</p>
+      ${step(p.e, 1, 'Erklären', `Lernkarte lesen oder anhören${vid ? ', dazu das Video' : ''}.`, `<button class="btn ${p.e ? 'ghost' : ''}" data-act="learn">${p.e ? 'Nochmal lesen' : 'Lernkarte öffnen'}</button>${vid ? `<button class="btn ghost" data-act="openVideo" data-arg="${vid.id}">${ICON_PLAY}Video</button>` : ''}`)}
+      ${step(p.a, 2, 'Abrufen', `${nQ(pa.abruf)} Fragen ohne Spicken, direkt nach dem Lesen.`, `<button class="btn ${p.a ? 'ghost' : ''}" data-act="path" data-arg="abruf">${p.a ? 'Nochmal abrufen' : 'Abrufen'}</button>`)}
+      ${step(p.w, 3, 'Anwenden', `${nQ(pa.anwenden)} Aufgaben: Grafiken, Ordnen, Erklären.`, `<button class="btn ${p.w ? 'ghost' : ''}" data-act="path" data-arg="anwenden">${p.w ? 'Nochmal anwenden' : 'Anwenden'}</button>`)}
+      <p class="muted small">Zählt für die Wiederholung: Jede Karte kommt nach 1, 3, 7 und 14 Tagen wieder. Wer zwischendurch nochmal übt, festigt das Wissen, die Karte steigt aber erst am fälligen Tag auf.</p>`;
+  }
+
+  function renderLearn() {
+    const c = CHAP[chap], l = LEARN[chap]();
+    const vid = c.video ? VID[c.video] : null;
+    const vst = vid ? P.vid[vid.id] || {} : null;
+    return `
+      <div class="qbar">${closeBtn('chapter', 'Zurück zum Kapitel', chap)}<h2 style="flex:1">Lernkarte ${c.n}: ${esc(c.title)}</h2></div>
+      <section class="sheet stack notes">${l.html}${speakBtn(l.say)}</section>
+      ${vid ? `<button class="vcard" data-act="openVideo" data-arg="${vid.id}"><span class="play">${ICON_PLAY}</span><span class="stack" style="gap:2px"><strong>Video: ${esc(vid.title)}</strong><span class="muted">${vst.watched ? 'Schon geschaut' : 'Erst raten, dann schauen, dann 2 Fragen'}</span></span></button>` : ''}
+      <div class="row center"><button class="btn" data-act="learned">Verstanden: weiter zum Abrufen</button></div>`;
+  }
+
+  // ---------- Video ----------
+  function renderVideo() {
+    const v = VID[vd.id];
+    const st = P.vid[v.id] || {};
+    let body;
+    if (vd.step === 'pre') {
+      body = `
+        <section class="sheet prompt"><span class="label">Rate vorher</span><div class="question">${esc(v.pre.q)}</div><p class="muted">Kein Problem, wenn du es nicht weißt. Tipp einfach. Im Video kommt die Antwort.</p></section>
+        <div class="options two">${v.pre.options.map((o, i) => `<button class="opt" data-act="preGuess" data-arg="${i}">${esc(o)}</button>`).join('')}</div>`;
+    } else {
+      const base = `videos/${v.file}`;
+      body = `
+        ${st.guess !== undefined ? `<p class="muted">Dein Tipp vorher: <strong>${esc(v.pre.options[st.guess])}</strong>. Ob er stimmt, erfährst du nach den Fragen.</p>` : ''}
+        <div id="vwrap">${vd.missing ? videoMissing() : `<div class="vbox"><video id="vid" controls playsinline preload="none" poster="${base}.jpg"><source src="${base}.mp4" type="video/mp4"><track kind="captions" srclang="de" label="Deutsch" src="${base}.vtt" default></video></div>`}</div>
+        <div class="row spread"><button class="btn ghost" data-act="chapter" data-arg="${v.ch}">Zum Kapitel</button><button class="btn" data-act="videoQuiz">Zu den 2 Fragen</button></div>`;
+    }
+    return `<div class="qbar">${closeBtn('chapter', 'Zurück zum Kapitel', v.ch)}<h2 style="flex:1">Video: ${esc(v.title)}</h2></div>${body}`;
+  }
+  const videoMissing = () => '<div class="vph"><b>Video folgt bald</b><span>Das Video ist noch nicht fertig. Die Fragen kannst du trotzdem schon beantworten, alles steht auch auf der Lernkarte.</span></div>';
+  function wireVideo() {
+    const el = document.getElementById('vid');
+    if (!el) return;
+    const v = VID[vd.id];
+    const fail = () => {
+      if (vd.missing) return;
+      vd.missing = true;
+      const w = document.getElementById('vwrap');
+      if (w) w.innerHTML = videoMissing();
+    };
+    el.addEventListener('error', fail, true);
+    el.querySelector('source')?.addEventListener('error', fail);
+    const mark = () => { P.vid[v.id] = { ...(P.vid[v.id] || {}), watched: true }; save(); };
+    el.addEventListener('play', mark, { once: true });
+    el.addEventListener('ended', mark);
+    const probe = new Image();
+    probe.onerror = fail;
+    probe.src = `videos/${v.file}.jpg`;
+  }
+
+  // ---------- Text matching ----------
+  function norm(s) {
+    return String(s).toLowerCase().replace(/[₀-₉]/g, d => String(d.charCodeAt(0) - 8320)).replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss').replace(/ń/g, 'n')
+      .replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+  const stripArticles = n => n.replace(/^(der|die|das|ein|eine|einen|einem|in|im|als) /, '');
+  function lev(a, b) {
+    const d = Array.from({ length: b.length + 1 }, (_, j) => j);
+    for (let i = 1; i <= a.length; i++) {
+      let prev = d[0];
+      d[0] = i;
+      for (let j = 1; j <= b.length; j++) {
+        const tmp = d[j];
+        d[j] = Math.min(d[j] + 1, d[j - 1] + 1, prev + (a[i - 1] === b[j - 1] ? 0 : 1));
+        prev = tmp;
+      }
+    }
+    return d[b.length];
+  }
+  const tol = len => len <= 4 ? 0 : len <= 7 ? 1 : 2;
+  function synHit(n, syns) {
+    return syns.some(syn => n === syn || ` ${n} `.includes(` ${syn} `) || (syn.length >= 5 && n.includes(syn)) || lev(n, syn) <= tol(syn.length)
+      || n.split(' ').some(w => w.length >= 5 && lev(w, syn) <= tol(syn.length)));
+  }
+  const NUM_WORDS = { eins: 1, ein: 1, einen: 1, zwei: 2, drei: 3, vier: 4, fuenf: 5, sechs: 6, sieben: 7, acht: 8, neun: 9, zehn: 10, elf: 11, zwoelf: 12, fuenfzehn: 15, achtzehn: 18, dritte: 3, dritter: 3 };
+  function parseNum(s) {
+    const w = norm(s).replace(/^minus /, '-').split(' ');
+    const hit = w.map(x => x.replace(/^-/, '')).find(x => NUM_WORDS[x] !== undefined);
+    if (hit && !/\d/.test(s)) return (w.join(' ').startsWith('-') || /minus/.test(norm(s)) ? -1 : 1) * NUM_WORDS[hit];
+    const t = String(s).toLowerCase().replace(/−/g, '-').replace(/minus\s*/g, '-').replace(/(\d)[.\s](\d{3})\b/g, '$1$2').replace(/,/g, '.');
+    const m = t.match(/-?\s*\d+(\.\d+)?/);
+    return m ? Number(m[0].replace(/\s/g, '')) : NaN;
+  }
+  function fieldOk(f, val) {
+    if (f.num !== undefined) return parseNum(val) === f.num;
+    const n = stripArticles(norm(val));
+    if (!n) return false;
+    return f.acc.some(a => n === a || lev(n, a) <= tol(a.length) || (a.length >= 4 && ` ${n} `.includes(` ${a} `)));
+  }
+  const keyHit = (text, keys) => { const n = norm(text); return !!n && keys.some(k => n.includes(k)); };
+  function checkRecall(card, entries) {
+    const found = new Map(), extra = [], seq = [];
+    entries.forEach(e => {
+      const n = norm(e);
+      if (!n) return;
+      const hits = card.items.filter(it => synHit(n, it.syn));
+      hits.forEach(it => { if (!found.has(it.name)) found.set(it.name, e); seq.push(card.items.indexOf(it)); });
+      if (!hits.length) {
+        const hint = (card.hints || []).find(h => synHit(n, h.syn));
+        extra.push({ e, hint: hint ? hint.text : '' });
+      }
+    });
+    const missing = card.items.filter(it => !found.has(it.name));
+    const inOrder = card.ordered ? seq.length === card.items.length && seq.every((x, i) => x === i) : true;
+    return { found, missing, extra, inOrder, seq };
+  }
+
+  // ---------- Rounds ----------
+  const itemOf = x => GROUPS[x] ? { type: GROUPS[x].type, ids: GROUPS[x].ids.slice() } : { type: CARD[x].type, ids: [x] };
+  function spread(list) {
+    const out = [], rest = list.slice();
+    while (rest.length) {
+      const prev = out[out.length - 1];
+      let i = rest.findIndex(c => !prev || CARD[c].ch !== CARD[prev].ch);
+      if (i < 0) i = 0;
+      out.push(rest.splice(i, 1)[0]);
+    }
+    return out;
+  }
+  function startRound(kind, items, extra = {}) {
+    round = { kind, items, idx: 0, log: [], newly: [], ...extra };
+    round.q = makeQ(items[0]);
+    show('quiz');
+  }
+  function makeQ(item) {
+    const q = { type: item.type, ids: item.ids, retry: !!item.retry, vals: [], done: false };
+    const card = CARD[item.ids[0]];
+    if (item.type === 'mc') {
+      const m = card.mk ? card.mk() : card.options ? { prompt: card.prompt, options: card.options.slice(), correct: card.correct, two: card.two } : (() => { const o = shuffle([card.right, ...shuffle(card.wrongs).slice(0, 3)]); return { prompt: card.prompt, options: o, correct: o.indexOf(card.right) }; })();
+      if (card.options && !card.fixed) { const o = shuffle(m.options.map((t, i) => [t, i])); m.correct = o.findIndex(([, i]) => i === card.correct); m.options = o.map(([t]) => t); }
+      Object.assign(q, m);
+    } else if (item.type === 'order') {
+      q.bank = shuffle(card.items.map((_, i) => i));
+      q.placed = [];
+      q.help = new Set();
+      q.errors = 0;
+      q.miss = 0;
+    } else if (item.type === 'recall') {
+      q.entries = [];
+    } else if (item.type === 'self') {
+      q.rate = {};
+      q.phase = 'write';
+    } else if (item.type === 'm2') {
+      q.pos = 0;
+      q.res = {};
+      q.fb = null;
+      q.bank = item.ids.length > 1 ? shuffle(item.ids.map(id => CARD[id].step)) : shuffle([CARD[item.ids[0]].step, ...shuffle([1, 2, 3, 4, 5, 6, 7].filter(n => n !== CARD[item.ids[0]].step)).slice(0, 3)]);
+    } else if (item.type === 'sort') {
+      q.order = shuffle(item.ids);
+      q.placed = {};
+      q.sel = q.order[0];
+      q.fb = null;
+    }
+    return q;
+  }
+  function log(id, ok, extra = {}) {
+    if (round.q.retry) { round.log.push({ id, ok, retry: true }); return { newly: false, counted: false, due: P.c[id]?.due || today(), retry: true }; }
+    const r = record(id, ok, extra.sure);
+    round.log.push({ id, ok, sure: extra.sure });
+    if (r.newly) round.newly.push(id);
+    return r;
+  }
+  function finishItem(ok) {
+    round.q.done = true;
+    round.q.allOk = ok;
+    const it = round.items[round.idx];
+    if (!ok && !it.retry && ['mc', 'type'].includes(it.type)) round.items.push({ ...it, retry: true });
+    save();
+    render();
+    focusFeedback();
+  }
+  function focusFeedback() {
+    const f = document.querySelector('.feedback:last-of-type') || document.querySelector('.feedback');
+    f?.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'nearest' });
+  }
+  function next() {
+    round.idx++;
+    if (round.idx >= round.items.length) return finishRound();
+    round.q = makeQ(round.items[round.idx]);
+    render();
+    window.scrollTo(0, 0);
+  }
+  function finishRound() {
+    if (round.kind === 'abruf' || round.kind === 'anwenden') {
+      const p = P.path[round.ch] = { ...pathOf(round.ch) };
+      p[round.kind === 'abruf' ? 'a' : 'w'] = true;
+    }
+    save();
+    show('result');
+  }
+  const qLabel = () => round.kind === 'review' ? `Wiederholung · Kapitel ${CARD[round.q.ids[0]].ch}` : round.kind === 'video' ? 'Video-Fragen' : `Kapitel ${round.ch} · ${round.kind === 'abruf' ? 'Abrufen' : 'Anwenden'}`;
+  function trackHtml() {
+    return round.items.map((it, i) => {
+      if (i === round.idx && !round.q.done) return '<span class="now"></span>';
+      if (i > round.idx || (i === round.idx && !round.q.done)) return '<span></span>';
+      const ls = round.log.filter(l => it.ids.includes(l.id) && !!l.retry === !!it.retry);
+      const okAll = ls.length && ls.every(l => l.ok);
+      return `<span class="${okAll ? 'ok' : ls.some(l => l.ok) ? 'almost' : 'no'}"></span>`;
+    }).join('');
+  }
+
+  function renderQuiz() {
+    const q = round.q, card = CARD[q.ids[0]];
+    const body = { mc: renderMC, type: renderType, order: renderOrder, recall: renderRecall, self: renderSelf, m2: renderM2, sort: renderSort }[q.type](q, card);
+    return `
+      <div class="qbar">${closeBtn('quit', 'Runde beenden')}<div class="track" aria-label="Frage ${round.idx + 1} von ${round.items.length}">${trackHtml()}</div></div>
+      ${q.retry ? '<p class="muted small">Gleich nochmal, damit es sitzt. Diese Wiederholung zählt nicht für die Karte.</p>' : ''}
+      ${body}`;
+  }
+  const nextBtn = () => `<button class="btn" data-act="next" id="nextBtn">${round.idx + 1 >= round.items.length ? 'Fertig' : 'Weiter'}</button>`;
+  const visualOf = (card, after) => (after && card.visualAfter ? card.visualAfter() : card.visual ? card.visual() : '');
+
+  function renderMC(q, card) {
+    const a = q.answer;
+    const opts = q.options.map((o, i) => {
+      let cls = '';
+      if (a) cls = i === q.correct ? 'correct' : i === a.i ? 'wrong' : 'dim';
+      else if (q.pending === i) cls = 'chosen';
+      return `<button class="opt ${q.html ? 'pic' : ''} ${cls}" data-act="answer" data-arg="${i}" ${a ? 'disabled' : ''}>${q.two || q.html ? '' : `<span class="key">${i + 1}</span>`}${q.html ? o : `<span>${esc(o)}</span>`}${q.html && a ? `<span>${esc(q.names[i])}</span>` : ''}</button>`;
+    }).join('');
+    const conf = q.pending !== undefined && !a ? `<section class="confask"><h3>Wie sicher bist du?</h3><div class="options two"><button class="btn" data-act="conf" data-arg="1">Ganz sicher</button><button class="btn ghost" data-act="conf" data-arg="0">Eher geraten</button></div><button class="linkbtn" data-act="unpick">Doch eine andere Antwort</button></section>` : '';
+    const right = q.html ? q.names[q.correct] : q.options[q.correct];
+    const fb = a ? `<section class="feedback ${a.ok ? '' : 'no'}"><div class="verdict">${a.ok ? esc(pick(PRAISE)) : 'Nicht ganz.'}</div>${a.ok ? '' : `<p>Richtig ist: <strong>${esc(right)}</strong></p>`}${heftQuote(card.heft)}${whenLine(a.r)}<div class="row spread">${speakBtn(card.heft, 'Heftsatz vorlesen')}${nextBtn()}</div></section>` : '';
+    return `
+      <section class="sheet prompt"><span class="label">${esc(qLabel())}</span>${visualOf(card, !!a)}<div class="question">${esc(q.prompt)}</div>${a ? '' : speakBtn(q.prompt + (q.html ? '' : ' ' + q.options.join('. ')))}</section>
+      <div class="options ${q.two || q.html ? 'two' : ''}">${opts}</div>
+      ${conf}${fb}`;
+  }
+
+  function renderType(q, card) {
+    const a = q.answer;
+    const input = (i, f) => `<input class="tin ${a ? (a.res[i] ? 'ok' : 'no') : ''}" data-in="${i}" type="text" value="${esc(q.vals[i] || '')}" ${a ? 'disabled' : ''} enterkeyhint="next" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" aria-label="Lücke ${i + 1}" style="${card.tpl ? `width:${Math.max(5, (f.acc?.[0]?.length || 4) + 1)}ch` : ''}">`;
+    let field;
+    if (card.tpl) {
+      const sw = { K: '<span class="sw"></span>', L: '<span class="sw lang"></span>', D: '<span class="sw dot"></span>' };
+      field = `<p class="tline">${card.tpl.split('|').map(line => esc(line).replace(/\{([KLD])\}/g, (_, k) => sw[k]).replace(/\{(\d)\}/g, (_, i) => input(Number(i), card.fields[Number(i)]))).join('<br>')}</p>`;
+    } else field = `<div class="answer">${input(0, card.fields[0])}${card.fields[0].unit ? `<span style="align-self:center;font-weight:700">${esc(card.fields[0].unit)}</span>` : ''}</div>`;
+    const actions = a ? '' : `<div class="stack" style="gap:8px"><span class="label">Prüfen: Wie sicher bist du?</span><div class="options two"><button class="btn" data-act="typeCheck" data-arg="1">Ganz sicher</button><button class="btn ghost" data-act="typeCheck" data-arg="0">Eher geraten</button></div><button class="linkbtn" data-act="typeCheck" data-arg="x">Weiß ich nicht</button></div>`;
+    const minusHint = a && !a.ok && card.fields.some((f, i) => f.minus && !a.res[i] && parseNum(q.vals[i]) === -f.num) ? '<p>Fast! Achte auf das <strong>Minus</strong>.</p>' : '';
+    const fb = a ? `<section class="feedback ${a.ok ? '' : a.res.some(Boolean) ? 'almost' : 'no'}"><div class="verdict">${a.ok ? esc(pick(PRAISE)) : a.res.some(Boolean) ? 'Teilweise richtig.' : 'Nicht ganz.'}</div>${a.ok ? '' : `<p>Lösung: <strong>${esc(card.solution)}</strong></p>`}${minusHint}${heftQuote(card.heft)}${whenLine(a.r)}<div class="row spread">${speakBtn(card.heft, 'Heftsatz vorlesen')}${nextBtn()}</div></section>` : '';
+    return `
+      <section class="sheet prompt"><span class="label">${esc(qLabel())}</span>${visualOf(card, !!a)}<div class="question">${esc(card.prompt)}</div>${a ? '' : speakBtn(card.prompt + (card.tpl ? ' ' + card.tpl.replace(/\{[KLD]\}/g, '').replace(/\{\d\}/g, ' Lücke ').replace(/\|/g, '. ') : ''))}</section>
+      <section class="sheet stack"><form data-form="type" class="stack" autocomplete="off">${field}</form>${actions}</section>
+      ${fb}`;
+  }
+
+  function renderOrder(q, card) {
+    const items = card.items;
+    const icon = i => card.planets ? planetIcon(i) : '';
+    const chain = q.placed.map((k, i) => `<li class="${q.help.has(k) ? 'help' : ''}"><b>${i + 1}</b>${icon(k)}<span>${esc(items[k])}</span></li>`).join('');
+    const left = q.bank.filter(k => !q.placed.includes(k));
+    const fb = q.done ? `<section class="feedback ${q.allOk ? '' : 'almost'}"><div class="verdict">${q.allOk ? 'Alles in der richtigen Reihenfolge.' : `Geschafft, mit ${q.errors} ${q.errors === 1 ? 'Fehler' : 'Fehlern'}.`}</div>${q.allOk ? '' : '<p>Oben steht die Reihenfolge jetzt richtig. Orange Schritte waren knifflig.</p>'}${heftQuote(card.heft)}${whenLine(q.r)}<div class="row spread">${speakBtn(card.heft, 'Heftsatz vorlesen')}${nextBtn()}</div></section>` : '';
+    return `
+      <section class="sheet prompt"><span class="label">${esc(qLabel())}</span><div class="question">${esc(card.prompt)}</div>${q.done ? '' : speakBtn(card.prompt)}</section>
+      <section class="sheet stack"><span class="label">${card.planets ? 'Von der Sonne aus' : 'Deine Reihenfolge'}</span><ol class="chain">${chain}${q.done ? '' : `<li class="slot"><b>${q.placed.length + 1}</b><span>${q.placed.length ? 'Was kommt danach?' : 'Womit fängt es an?'}</span></li>`}</ol></section>
+      ${q.done ? '' : `<div class="bank">${left.map(k => `<button class="term ${q.shake === k ? 'shake' : ''}" data-act="orderTap" data-arg="${k}">${icon(k)}${esc(items[k])}</button>`).join('')}</div>${q.hint ? `<p class="muted">${esc(q.hint)}</p>` : ''}`}
+      ${fb}`;
+  }
+
+  function renderRecall(q, card) {
+    const merk = card.merk ? `<div class="merk"><span class="label">Dein Merksatz</span>${(P.merk === null ? MERKSAETZE : [MERKSAETZE[P.merk]]).map(m => m.split(' ').map(w => `<b>${esc(w[0])}</b>${esc(w.slice(1))}`).join(' ')).join('<br>')}</div>` : '';
+    let body;
+    if (!q.res) {
+      body = `
+        ${merk}
+        <p class="muted">Ohne Spicken! Schreib jeden Begriff einzeln und tippe auf „Dazu“. Die Rechtschreibung muss nicht perfekt sein.${card.ordered ? ' Achte auf die Reihenfolge.' : ''}</p>
+        <form class="answer" data-form="recall" autocomplete="off">
+          <input id="rcIn" class="tin" type="text" enterkeyhint="enter" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" aria-label="Begriff">
+          <button class="btn" type="submit">Dazu</button>
+        </form>
+        <div class="entries">${q.entries.map((e, i) => `<span class="entry">${card.ordered ? `${i + 1}. ` : ''}${esc(e)}<button data-act="rcDel" data-arg="${i}" aria-label="${esc(e)} löschen">${ICON_CLOSE}</button></span>`).join('')}</div>
+        <div class="row spread"><span class="muted">${q.entries.length} aufgeschrieben</span><button class="btn" data-act="rcCheck">${q.entries.length ? 'Fertig: vergleichen' : 'Mir fällt nichts ein'}</button></div>`;
+    } else {
+      const r = q.res, n = card.items.length;
+      const orderNote = card.ordered && !r.missing.length && !r.inOrder ? `<p><strong>Alle da, aber die Reihenfolge stimmt noch nicht.</strong> Richtig ist: ${esc(card.items.map(i => i.name).join(', '))}.</p>` : '';
+      body = `
+        <section class="feedback ${q.allOk ? '' : 'almost'}">
+          <div class="verdict">${q.allOk ? `Alle ${n} gefunden!` : r.missing.length ? `${r.found.size} von ${n} gefunden` : 'Fast!'}</div>
+          ${r.found.size ? `<ul class="reslist">${card.items.filter(it => r.found.has(it.name)).map(it => `<li><span class="ok-t">✓</span><span><strong>${esc(it.name)}</strong>${norm(r.found.get(it.name)) !== norm(it.name) ? ` <span class="muted">(du: ${esc(r.found.get(it.name))})</span>` : ''}</span></li>`).join('')}</ul>` : ''}
+          ${r.missing.length ? `<p><strong>Vergessen:</strong></p><ul class="reslist">${r.missing.map(it => `<li><span class="no-t">✗</span><strong>${esc(it.name)}</strong></li>`).join('')}</ul>` : ''}
+          ${orderNote}
+          ${r.extra.length ? `<p><strong>Gehört nicht in diese Liste:</strong></p><ul class="reslist">${r.extra.map(x => `<li><span class="muted">–</span><span>${esc(x.e)}${x.hint ? `<br><span class="muted">${esc(x.hint)}</span>` : ''}</span></li>`).join('')}</ul>` : ''}
+          ${heftQuote(card.heft)}
+          ${q.allOk ? '' : '<p class="muted">Lies die Liste nochmal laut. Die Karte kommt morgen wieder.</p>'}
+          ${whenLine(q.r)}
+          <div class="row spread">${speakBtn(card.heft, 'Liste vorlesen')}${nextBtn()}</div>
+        </section>`;
+    }
+    return `
+      <section class="sheet prompt"><span class="label">${esc(qLabel())} · Gedächtnis leeren</span>${visualOf(card)}<div class="question">${esc(card.prompt)}</div>${q.res ? '' : speakBtn(card.prompt)}</section>
+      <section class="sheet stack">${body}</section>`;
+  }
+
+  function renderSelf(q) {
+    const cards = q.ids.map(id => CARD[id]);
+    const first = cards[0];
+    const multi = cards.length > 1;
+    const head = multi ? 'Erkläre die Begriffe in deinen eigenen Worten.' : first.prompt;
+    if (q.phase === 'write') {
+      return `
+        <section class="sheet prompt"><span class="label">${esc(qLabel())} · in eigenen Worten</span>${visualOf(first)}<div class="question">${esc(head)}</div>${speakBtn(head)}</section>
+        <section class="sheet stack">
+          ${cards.map((c, i) => `<label class="stack" style="gap:6px">${multi ? `<strong>${esc(c.part)}</strong>` : '<span class="label">Deine Antwort</span>'}<textarea class="tin" data-in="${i}" rows="${multi ? 2 : 5}" autocomplete="off" spellcheck="true" ${multi ? 'style="min-height:64px"' : ''}>${esc(q.vals[i] || '')}</textarea></label>`).join('')}
+          <p class="muted small">Schreib so, wie du es in einer Ex schreiben würdest. Danach vergleichst du selbst mit dem Heft.</p>
+          <div class="row spread"><button class="linkbtn" data-act="selfShow">Weiß ich nicht</button><button class="btn" data-act="selfShow">Vergleichen</button></div>
+        </section>`;
+    }
+    const parts = cards.map((c, i) => {
+      const val = q.vals[i] || '';
+      const checks = (c.checks || []).map(k => `<li class="${keyHit(val, k.k) ? 'found' : ''}"><span class="ic" aria-hidden="true">${keyHit(val, k.k) ? '✓' : '?'}</span><span>${esc(k.t)}</span></li>`).join('');
+      const r = q.rate[c.id];
+      return `<section class="sheet stack">
+        ${multi ? `<h3>${esc(c.part)}</h3>` : ''}
+        <span class="label">Deine Antwort</span><div class="yours">${val.trim() ? esc(val) : '<span class="muted">(nichts geschrieben)</span>'}</div>
+        ${c.muster ? musterBox(c.model) : heftQuote(c.model, c.modelLabel || 'Im Heft')}
+        ${c.muster && c.heft ? heftQuote(c.heft, 'Dazu im Heft') : ''}
+        ${checks ? `<span class="label">Das gehört hinein</span><ul class="checklist">${checks}</ul><p class="muted small">✓ = dieses Stichwort steht schon in deiner Antwort. Entscheide selbst, ob der Gedanke stimmt.</p>` : ''}
+        <span class="label">Wie viel davon hattest du?</span>
+        <div class="rate" role="group" aria-label="Selbstbewertung ${esc(c.part || '')}">
+          <button class="r-h" data-act="rate" data-arg="${c.id}|h" aria-pressed="${r === 'h'}">Hatte ich</button>
+          <button class="r-t" data-act="rate" data-arg="${c.id}|t" aria-pressed="${r === 't'}">Teilweise</button>
+          <button class="r-f" data-act="rate" data-arg="${c.id}|f" aria-pressed="${r === 'f'}">Fehlte</button>
+        </div>
+      </section>`;
+    }).join('');
+    const allRated = cards.every(c => q.rate[c.id]);
+    const fb = q.done ? `<section class="feedback ${q.allOk ? '' : 'almost'}"><div class="verdict">${q.allOk ? 'Prima, das hattest du.' : 'Gut, dass du ehrlich vergleichst.'}</div><p>${q.allOk ? 'Diese Karte kommt in ein paar Tagen wieder.' : 'Lies die Heftfassung nochmal laut. Die Karte kommt morgen wieder.'}</p><div class="row spread">${speakBtn(cards.map(c => c.model).join(' '), 'Vorlesen')}${nextBtn()}</div></section>` : '';
+    return `
+      <section class="sheet prompt"><span class="label">${esc(qLabel())} · vergleichen</span><div class="question">${esc(head)}</div></section>
+      ${parts}
+      ${q.done ? fb : `<div class="row center"><button class="btn" data-act="selfDone" ${allRated ? '' : 'disabled'}>${allRated ? 'Fertig' : 'Erst überall bewerten'}</button></div>`}`;
+  }
+
+  function renderM2(q) {
+    const cards = q.ids.map(id => CARD[id]);
+    const cur = cards[q.pos];
+    const done = Object.fromEntries(Object.entries(q.res).map(([n, ok]) => [n, ok ? 'ok' : 'help']));
+    const finished = q.done;
+    const fb = q.fb ? (q.fb.ok
+      ? `<section class="feedback"><div class="verdict">${esc(q.fb.msg)} Nummer ${q.fb.step}</div><p><strong>${esc(STEP_SHORT[q.fb.step - 1])}</strong></p>${heftQuote(CARD[`m2-${q.fb.step}`].heft)}`
+      : `<section class="feedback no"><div class="verdict">Nicht ganz.</div><p>Das passt zu Nummer ${q.fb.chosen}. Bei Nummer ${q.fb.step} passiert: <strong>${esc(STEP_SHORT[q.fb.step - 1])}</strong></p>${heftQuote(CARD[`m2-${q.fb.step}`].heft)}`)
+      + `${whenLine(q.fb.r)}<div class="row center">${finished ? '' : '<button class="btn" data-act="m2Next">Nächste Nummer</button>'}</div></section>` : '';
+    const firstOk = Object.values(q.res).filter(Boolean).length;
+    const end = finished ? `<section class="feedback ${firstOk === cards.length ? '' : 'almost'}"><div class="verdict">${cards.length > 1 ? 'M2 ist beschriftet!' : 'Erledigt.'}</div>${cards.length > 1 ? `<p>${firstOk} von ${cards.length} auf Anhieb richtig.${firstOk === cards.length ? '' : ' Orange Nummern kommen morgen wieder.'}</p>` : ''}<div class="row center">${nextBtn()}</div></section>` : '';
+    return `
+      <section class="sheet prompt"><span class="label">${esc(qLabel())} · M2 beschriften</span>
+        ${m2Figure({ side: 'natural', sel: q.fb ? null : cur.step, done })}
+        <div class="question">${q.fb ? (finished ? 'Alle Nummern erledigt.' : 'Gleich geht es weiter.') : `Was passiert bei Nummer ${cur.step}?`}</div>
+      </section>
+      ${q.fb ? '' : `<div class="options">${q.bank.map(n => `<button class="opt" data-act="m2Pick" data-arg="${n}" ${q.res[n] !== undefined && cards.length > 1 ? 'disabled style="opacity:.4"' : ''}><span>${esc(STEP_SHORT[n - 1])}</span></button>`).join('')}</div>`}
+      ${fb}${end}`;
+  }
+
+  function renderSort(q) {
+    const left = q.order.filter(id => !q.placed[id]);
+    const zones = GASES.map(g => {
+      const here = q.order.filter(id => q.placed[id] && CARD[id].gas === g.id);
+      return `<button class="zone ${q.sel ? 'ready' : ''}" data-act="sortZone" data-arg="${g.id}" style="--c:var(${g.c})" ${q.sel ? '' : 'aria-disabled="true"'}><h3>${esc(g.name)}</h3>${here.map(id => `<span class="chipok ${q.placed[id] === 'help' ? 'help' : ''}">${esc(CARD[id].text)}</span>`).join('')}</button>`;
+    }).join('');
+    const fb = q.fb ? `<section class="feedback ${q.fb.ok ? '' : 'no'}"><div class="verdict">${q.fb.ok ? esc(pick(PRAISE)) : 'Nicht ganz.'}</div>${q.fb.ok ? '' : `<p><strong>${esc(CARD[q.fb.id].text)}</strong> gehört zu <strong>${esc(GAS[CARD[q.fb.id].gas].name)}</strong>, nicht zu ${esc(GAS[q.fb.zone].name)}.</p>`}${heftQuote(CARD[q.fb.id].heft)}${whenLine(q.fb.r)}</section>` : '';
+    const firstOk = Object.values(q.placed).filter(v => v === 'ok').length;
+    const end = q.done ? `<section class="feedback ${firstOk === q.ids.length ? '' : 'almost'}"><div class="verdict">${q.ids.length > 1 ? 'Alle Quellen zugeordnet!' : 'Erledigt.'}</div>${q.ids.length > 1 ? `<p>${firstOk} von ${q.ids.length} auf Anhieb richtig.</p>` : ''}<div class="row center">${nextBtn()}</div></section>` : '';
+    return `
+      <section class="sheet prompt"><span class="label">${esc(qLabel())} · Tabelle M4</span><div class="question">${esc(A3_TASK.replace(' und trage diese in die Tabelle ein', ''))}</div><p class="muted">Tippe für jede Quelle das passende Gas an.</p></section>
+      ${q.sel ? `<section class="sheet stack" style="align-items:center;text-align:center"><span class="label">Quelle ${q.ids.length - left.length + 1} von ${q.ids.length}</span><span class="term sel" style="cursor:default">${esc(CARD[q.sel].text)}</span><span class="muted small">Zu welchem Gas gehört das?</span></section>` : ''}
+      <div class="zones">${zones}</div>
+      ${fb}
+      ${end}`;
+  }
+
+  function renderResult() {
+    const r = round;
+    const real = r.log.filter(l => !l.retry);
+    const wrongIds = [...new Set(real.filter(l => !l.ok).map(l => l.id))];
+    const okN = real.filter(l => l.ok).length;
+    let vid = '';
+    if (r.kind === 'video') {
+      const v = VID[r.video], g = P.vid[v.id]?.guess;
+      if (g !== undefined) vid = `<section class="sheet stack"><span class="label">Und dein Tipp vor dem Video?</span><p>Du hast „<strong>${esc(v.pre.options[g])}</strong>“ getippt. ${g === v.pre.correct ? 'Das war richtig!' : `Richtig ist „<strong>${esc(v.pre.options[v.pre.correct])}</strong>“.`}</p></section>`;
+    }
+    const ch = r.ch;
+    const nextAct = r.kind === 'abruf' ? `<button class="btn" data-act="path" data-arg="anwenden">Weiter: Anwenden</button>`
+      : r.kind === 'anwenden' && ch < 5 ? `<button class="btn" data-act="chapter" data-arg="${ch + 1}">Weiter: Kapitel ${ch + 1}</button>`
+        : r.kind === 'video' ? `<button class="btn" data-act="path" data-arg="abruf">Weiter: Abrufen</button>`
+          : r.kind === 'review' && dueIds().length ? `<button class="btn" data-act="review">Weiter wiederholen (${dueIds().length} fällig)</button>` : '';
+    const title = { abruf: 'Abrufen geschafft', anwenden: 'Anwenden geschafft', review: 'Wiederholung geschafft', video: 'Video-Fragen geschafft' }[r.kind];
+    return `
+      <section class="sheet stack" style="text-align:center;align-items:center">
+        <h2>${title}</h2>
+        ${ch && r.kind !== 'review' ? `<div>${starHtml(ch)}</div>` : ''}
+        <p>${okN} von ${real.length} Antworten richtig.${r.newly.length ? ` ${r.newly.length} ${r.newly.length === 1 ? 'Karte ist' : 'Karten sind'} jetzt fertig gelernt.` : ''}</p>
+        ${r.kind === 'anwenden' && pathDone(ch) ? `<p>Kapitel ${ch} ist durchgearbeitet. Die Karten kommen ab morgen zur Wiederholung.</p>` : ''}
+      </section>
+      ${vid}
+      ${wrongIds.length ? `<section class="sheet stack"><h2>Das schaust du dir nochmal an</h2><p class="muted">Diese Karten kommen morgen wieder.</p><ul class="reslist">${wrongIds.map(id => `<li><span class="no-t">!</span><span><strong>${esc(CARD[id].title)}</strong><br><span class="muted">${esc(CARD[id].heft || CARD[id].model || '')}</span></span></li>`).join('')}</ul></section>` : ''}
+      <div class="row center">${nextAct}<button class="btn ${nextAct ? 'ghost' : ''}" data-act="${ch && r.kind !== 'review' ? 'chapter' : 'home'}" ${ch && r.kind !== 'review' ? `data-arg="${ch}"` : ''}>${ch && r.kind !== 'review' ? 'Zum Kapitel' : 'Zum Lernpfad'}</button></div>`;
+  }
+
+  // ---------- Notes (complete notebook content) ----------
+  function zettelSections() {
+    return [
+      ['Nikolaus Kopernikus', `<h3>${esc(KOP.head)}</h3><dl class="facts">${KOP.facts.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
+        <p><strong>Seine große Idee:</strong> ${esc(KOP.idee)}</p>
+        <div class="pair"><figure>${kopSVG('alt')}<figcaption>Die alte Vorstellung</figcaption><span class="small">${esc(KOP.alt)} Erde im Mittelpunkt</span></figure><figure>${kopSVG('neu')}<figcaption>Kopernikus' Idee</figcaption><span class="small">${esc(KOP.neu)} Sonne im Zentrum</span></figure></div>
+        <h3>Warum war das wichtig?</h3><ul>${KOP.warum.map(w => `<li>${esc(w)}</li>`).join('')}</ul>
+        <h3>Sein Lebensweg – in kurz</h3><ol class="timeline">${KOP.weg.map(([y, t]) => `<li><b>${esc(y || '·')}</b><span>${esc(t)}</span></li>`).join('')}</ol>
+        <div class="merk"><span class="label">Merksatz</span>${esc(KOP.merk)}</div>`, `${KOP.head}. ${KOP.facts.map(([k, v]) => `${k}: ${v}`).join('. ')}. Seine große Idee: ${KOP.idee} Die alte Vorstellung: ${KOP.alt} Kopernikus' Idee: ${KOP.neu} Warum war das wichtig? ${KOP.warum.join(' ')} ${HEFT_WEG}. Merksatz: ${KOP.merk}`],
+      ['Unser Sonnensystem', `<h3>Wo befindet sich die Erde?</h3><p>${esc(SONNE)}</p><div class="figwrap">${solarSVG()}<p class="figcap">Größen nicht maßstabsgetreu.</p></div>
+        <div class="merk"><span class="label">Merksätze zum Sonnensystem</span>${MERKSAETZE.map(esc).join('<br>')}</div>`, `Wo befindet sich die Erde? ${SONNE} ${HEFT_PLANETS} Merksätze zum Sonnensystem: ${MERKSAETZE.join(' Oder: ')}`],
+      ['Besonderheiten der Erde', `<ul>${BESONDERS.map(b => `<li>${esc(b)}</li>`).join('')}</ul>`, HEFT_BESONDERS.replace(/ · /g, '. ')],
+      ['Wie beeinflusst CO₂ unser Klima? (04a)', `<h3>M1: natürlicher Treibhauseffekt</h3>${M1.map(p => `<p>${fmt(p)}</p>`).join('')}
+        <p class="task">Aufgabe 1a: Definiere die folgenden Begriffe: Reflexion, Absorption, Emission, indem du den Text liest.</p>
+        <ul>${BEGRIFFE.map(([b, d]) => `<li><strong>${esc(b)}:</strong> ${esc(d)}</li>`).join('')}</ul>
+        <p class="task">Aufgabe 1b und 1c: Legende von M2 und Vorgänge 1 bis 7</p>
+        ${m2Figure({ side: 'natural', legend: 'heft' })}
+        <ol>${STEPS.map(s => `<li>${esc(s)}</li>`).join('')}</ol>
+        <p class="task">Sternaufgabe: ${esc(DACH_TASK)}</p>${musterBox(DACH_MUSTER)}`, `M1, natürlicher Treibhauseffekt. ${M1.join(' ')} Aufgabe 1a: ${BEGRIFFE.map(([b, d]) => `${b}: ${d}`).join('. ')}. Legende: ${LEGENDE_HEFT.join(', ')}. Aufgabe 1c: ${STEPS.map((x, i) => `${i + 1}: ${x}`).join('. ')}. Sternaufgabe: ${DACH_TASK} Ergänzung, Musterlösung: ${DACH_MUSTER}`],
+      ['Wie beeinflussen wir das Klima? (04b)', `<div class="merk">${esc(LUECKE)}</div>
+        <p class="task">Aufgabe 2: ${esc(A2_TASK)}</p>${m3Figure()}<p>${esc(A2_HEFT)}</p>
+        <p class="task">Aufgabe 3: ${esc(A3_TASK)}</p>
+        <div class="gascards">${GASES.map(g => `<div class="gascard" style="--c:var(${g.c})"><h3>${esc(g.name)}</h3><dl><dt>Anthropogene Quellen</dt><dd><ul>${g.q.map(q => `<li>${esc(q)}</li>`).join('')}</ul></dd>${M4_COLS.map((col, i) => `<dt>${esc(col)}</dt><dd>${esc(g.v[i])}</dd>`).join('')}</dl></div>`).join('')}</div>
+        <p class="figcap">Tabelle M4 mit den Werten aus dem Arbeitsblatt.</p>
+        <p class="task">Aufgabe 4: ${esc(A4_TASK)}</p><div class="merk"><span class="label">Hilfekasten</span>${esc(A4_HILFE)}</div>
+        ${m2Figure({ side: 'anthro' })}${musterBox(A4_MUSTER)}
+        <p class="task">Aufgabe 5: ${esc(A5_TASK)}</p>
+        <div class="muster"><span class="label">Ergänzung: Musterlösung</span><div class="two-col"><div><strong>Gemeinsamkeiten</strong><ul>${A5_GEMEINSAM.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div><div><strong>Unterschiede</strong><ul>${A5_UNTERSCHIED.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div></div></div>
+        <p class="task">Sternaufgabe: ${esc(TEUFEL_TASK)}</p>${musterBox(TEUFEL_MUSTER)}`, `${LUECKE} Aufgabe 2: ${A2_TASK} ${A2_HEFT} Aufgabe 3: ${A3_TASK} ${GASES.map(g => `${g.name}: ${g.q.join(', ')}. ${M4_COLS.map((c, i) => `${c}: ${g.v[i]}`).join('. ')}`).join('. ')}. Aufgabe 4: ${A4_TASK} Hilfekasten: ${A4_HILFE} Ergänzung, Musterlösung: ${A4_MUSTER} Aufgabe 5: ${A5_TASK} Ergänzung, Musterlösung: ${A5_MUSTER} Sternaufgabe: ${TEUFEL_TASK} Ergänzung, Musterlösung: ${TEUFEL_MUSTER}`]
+    ];
+  }
+  function renderZettel() {
+    const secs = zettelSections();
+    return `
+      <div class="qbar">${closeBtn()}<h2 style="flex:1">Lernzettel</h2></div>
+      <p class="muted">Alles aus deinem Heft, sauber abgeschrieben. Die Grafiken sind selbst nachgezeichnet. Kästen mit „Ergänzung: Musterlösung“ stehen nicht im Heft.</p>
+      <nav class="toc">${secs.map(([t], i) => `<a href="#z${i}">${esc(t)}</a>`).join('')}</nav>
+      ${secs.map(([t, body, say], i) => `<section class="sheet stack notes" id="z${i}"><h2>${esc(t)}</h2>${body}${speakBtn(`${t}. ${say}`)}</section>`).join('')}
+      <div class="row center"><button class="btn" data-act="home">Zum Lernpfad</button></div>`;
+  }
+
+  // ---------- Probe mode ----------
+  function pickProbe() {
+    let ids = [];
+    PROBE_PLAN.forEach(([ch, n]) => ids.push(...shuffle(PROBE.filter(p => p.ch === ch).map(p => p.id)).slice(0, n)));
+    if (!ids.some(id => TRANSFER.includes(id))) {
+      const t = pick(TRANSFER), ch = PRB[t].ch;
+      const swap = ids.findIndex(id => PRB[id].ch === ch);
+      ids[swap] = t;
+    }
+    return ids;
+  }
+  function autoCrit(p, c, val) {
+    if (c.auto === 'planetsAll' || c.auto === 'planetsOrder') {
+      const seq = [];
+      val.split(/[,;\n]|\s+und\s+|\s+/).forEach(w => { const n = norm(w); const i = PLANETS.findIndex(pl => n && lev(n, norm(pl)) <= tol(pl.length)); if (i >= 0 && !seq.includes(i)) seq.push(i); });
+      return c.auto === 'planetsAll' ? seq.length === 8 : seq.length === 8 && seq.every((x, i) => x === i);
+    }
+    return keyHit(val, c.k);
+  }
+  function renderProbe() {
+    if (!pr) return '';
+    if (pr.idx >= pr.ids.length) return renderProbeEnd();
+    const p = PRB[pr.ids[pr.idx]];
+    const val = pr.vals[p.id] || '';
+    const head = `<div class="qbar">${closeBtn('home', 'Probe beenden')}<div class="track" aria-label="Aufgabe ${pr.idx + 1} von ${pr.ids.length}">${pr.ids.map((_, i) => `<span class="${i < pr.idx ? 'ok' : i === pr.idx ? 'now' : ''}"></span>`).join('')}</div></div>`;
+    if (pr.phase === 'write') {
+      return `${head}
+        <section class="sheet prompt"><span class="label">Probe · Aufgabe ${pr.idx + 1} von ${pr.ids.length}</span>${p.visual ? p.visual() : ''}<div class="question">${esc(p.q)}</div>${speakBtn(p.q)}</section>
+        <section class="sheet stack"><label class="stack" style="gap:6px"><span class="label">Deine Antwort</span><textarea class="tin" data-pin="${p.id}" rows="5" spellcheck="true">${esc(val)}</textarea></label>
+        <div class="row spread"><button class="linkbtn" data-act="prShow">Weiß ich nicht</button><button class="btn" data-act="prShow">Fertig: Erwartungshorizont</button></div></section>`;
+    }
+    const chk = pr.checks[p.id];
+    const pts = Math.min(pmax(p), chk.filter(Boolean).length);
+    return `${head}
+      <section class="sheet stack"><span class="label">Aufgabe ${pr.idx + 1}</span><h3>${esc(p.q)}</h3><span class="label">Deine Antwort</span><div class="yours">${val.trim() ? esc(val) : '<span class="muted">(nichts geschrieben)</span>'}</div></section>
+      <section class="sheet stack"><h3>Erwartungshorizont</h3>
+        <p class="muted small">Hake an, was in deiner Antwort steht. Vorausgewählt ist, was der Erd-Atlas als Stichwort gefunden hat. Prüf es und sei ehrlich, das hilft dir am meisten.${p.max && p.max < p.crit.length ? ` Es reichen ${p.max} Punkte aus der Liste.` : ''}</p>
+        ${p.crit.map((c, i) => `<button class="critbtn" data-act="prCheck" data-arg="${i}" aria-pressed="${!!chk[i]}"><span class="box" aria-hidden="true">${chk[i] ? '✓' : ''}</span><span>${esc(c.t)}</span></button>`).join('')}
+        ${p.model ? musterBox(p.model) : heftQuote(p.heft)}
+        <p class="muted small">${pts === pmax(p) ? 'Alles drin.' : 'Was fehlt, schaust du dir im Lernzettel nochmal an.'}</p>
+        <div class="row center"><button class="btn" data-act="prNext">${pr.idx + 1 >= pr.ids.length ? 'Probe abschließen' : 'Nächste Aufgabe'}</button></div>
+      </section>`;
+  }
+  function renderProbeEnd() {
+    const rows = pr.ids.map(id => { const p = PRB[id], got = Math.min(pmax(p), pr.checks[id].filter(Boolean).length); return { p, full: got === pmax(p) }; });
+    const good = rows.filter(r => r.full), again = rows.filter(r => !r.full);
+    return `
+      <div class="qbar">${closeBtn()}<h2 style="flex:1">Probe fertig</h2></div>
+      <section class="sheet stack"><p>Du hast alle ${pr.ids.length} Aufgaben bearbeitet und selbst mit dem Erwartungshorizont verglichen. Das ist genau das, was in einer Ex hilft.</p></section>
+      ${good.length ? `<section class="sheet stack"><h3>Das saß</h3><ul class="reslist">${good.map(r => `<li><span class="ok-t">✓</span><span>${esc(r.p.q)}</span></li>`).join('')}</ul></section>` : ''}
+      ${again.length ? `<section class="sheet stack"><h3>Das schaust du dir nochmal an</h3><ul class="reslist">${again.map(r => `<li><span class="no-t">!</span><span>${esc(r.p.q)} <span class="muted">(Kapitel ${r.p.ch}: ${esc(CHAP[r.p.ch].title)})</span></span></li>`).join('')}</ul></section>` : ''}
+      <div class="row center"><button class="btn" data-act="zettel">Zum Lernzettel</button><button class="btn ghost" data-act="home">Zum Lernpfad</button></div>`;
+  }
+
+  // ---------- Parents ----------
+  const grade = pct => pct >= 0.88 ? '1' : pct >= 0.75 ? '2' : pct >= 0.62 ? '3' : pct >= 0.5 ? '4' : pct >= 0.25 ? '5' : '6';
+  function renderParents() {
+    const conf = Object.values(P.conf).reduce((s, c) => ({ sr: s.sr + c.sr, sw: s.sw + c.sw, gr: s.gr + c.gr, gw: s.gw + c.gw }), { sr: 0, sw: 0, gr: 0, gw: 0 });
+    const sureWrong = CARDS.filter(c => P.conf[c.id]?.sw).sort((a, b) => P.conf[b.id].sw - P.conf[a.id].sw);
+    const hardest = CARDS.filter(c => P.c[c.id]?.w).sort((a, b) => P.c[b.id].w - P.c[a.id].w || streak(a.id) - streak(b.id)).slice(0, 10);
+    const selfStats = Object.values(P.self).reduce((s, v) => ({ h: s.h + (v.h || 0), t: s.t + (v.t || 0), f: s.f + (v.f || 0) }), { h: 0, t: 0, f: 0 });
+    const chRows = CHAPTERS.map(c => {
+      const cs = chCards(c.n), p = pathOf(c.n);
+      return `<tr><td>${c.n}. ${esc(c.title)}</td><td>${starHtml(c.n)}</td><td>${['e', 'a', 'w'].map(k => p[k] ? '✓' : '–').join(' ')}</td><td class="num">${cs.filter(k => mastered(k.id)).length}/${cs.length}</td><td class="num">${cs.filter(k => isDue(k.id)).length}</td></tr>`;
+    }).join('');
+    const probes = P.probe.slice().reverse().map(r => `<tr><td>${new Date(r.t).toLocaleDateString('de-DE')}</td><td class="num">${r.pts}/${r.max}</td><td class="num">${Math.round(100 * r.pts / r.max)} %</td><td class="num"><strong>${grade(r.pts / r.max)}</strong></td><td class="small">${r.items.filter(i => i.pts < i.max).map(i => esc(PRB[i.id] ? (PRB[i.id].q.length > 50 ? PRB[i.id].q.slice(0, 48) + '…' : PRB[i.id].q) : i.id)).join('<br>')}</td></tr>`).join('');
+    const allRows = CHAPTERS.map(ch => `<tr><th colspan="4" style="padding-top:14px">${ch.n}. ${esc(ch.title)}</th></tr>` + chCards(ch.n).map(c => {
+      const s = P.c[c.id];
+      return `<tr><td>${esc(c.title)}</td><td class="lv" aria-label="Stufe ${streak(c.id)} von ${MASTER}">${dots(streak(c.id))}</td><td class="num">${s ? (s.due <= today() ? '<strong>heute</strong>' : fmtDay(s.due)) : '–'}</td><td class="num">${s?.w || 0}</td></tr>`;
+    }).join('')).join('');
+    const vids = VIDEOS.map(v => { const st = P.vid[v.id] || {}; return `<li>${esc(v.title)}: ${st.watched ? 'angeschaut' : 'noch nicht angeschaut'}${st.guess !== undefined ? `, Tipp vorher „${esc(v.pre.options[st.guess])}“ (${st.guess === v.pre.correct ? 'richtig' : 'falsch'})` : ''}</li>`; }).join('');
+    const reset = resetAsk
+      ? `<div class="confirm"><strong>Wirklich den ganzen Fortschritt löschen?</strong><span>Alle Karten, Fälligkeiten, Sterne, Selbstbewertungen, Video-Tipps und Probe-Ergebnisse werden gelöscht. Das lässt sich nicht rückgängig machen.</span><div class="row"><button class="btn" data-act="resetYes">Ja, alles löschen</button><button class="btn ghost" data-act="resetNo">Abbrechen</button></div></div>`
+      : `<button class="btn ghost" data-act="resetAsk">Fortschritt zurücksetzen</button>`;
+    return `
+      <div class="qbar">${closeBtn()}<h2 style="flex:1">Für Eltern</h2></div>
+      <section class="sheet stack">
+        <span class="label">Stand</span>
+        <div>${doneCount()} von ${TOTAL} Karten gelernt, heute fällig: ${dueIds().length}.</div>
+        <div class="muted small">„Gelernt“ heißt: ${MASTER}-mal hintereinander richtig, jeweils am fälligen Tag (Abstände ${INTERVALS.join(', ')} Tage). Ein Fehler setzt die Karte zurück und holt sie am nächsten Tag wieder. Wer vor dem fälligen Tag übt, festigt, steigt aber nicht auf. Der Fortschritt bleibt nur auf diesem Gerät.</div>
+        <div class="tablewrap"><table><thead><tr><th>Kapitel</th><th>Sterne</th><th>Pfad</th><th style="text-align:right">Gelernt</th><th style="text-align:right">Fällig</th></tr></thead><tbody>${chRows}</tbody></table></div>
+        <div class="muted small">Pfad: Erklären, Abrufen, Anwenden. Sterne: ★ Pfad geschafft, ★★ jede Karte einmal richtig, ★★★ alle Karten gelernt.</div>
+      </section>
+      <section class="sheet stack">
+        <span class="label">Probe-Modus (nur hier sichtbar)</span>
+        ${probes ? `<div class="tablewrap"><table><thead><tr><th>Datum</th><th style="text-align:right">Punkte</th><th style="text-align:right">Anteil</th><th style="text-align:right">Note ca.</th><th>Lücken</th></tr></thead><tbody>${probes}</tbody></table></div>` : '<div>Noch keine Probe gemacht.</div>'}
+        <div class="muted small">Grobe Einschätzung nach Selbstbewertung des Kindes mit dem Erwartungshorizont (1 ab 88 %, 2 ab 75 %, 3 ab 62 %, 4 ab 50 %, 5 ab 25 %). Ersetzt keine Bewertung durch die Lehrkraft. Das Kind sieht keine Note und keine Punkte.</div>
+      </section>
+      <section class="sheet stack">
+        <span class="label">Wie gut schätzt sich das Kind ein?</span>
+        <div class="kpis">
+          <div class="kpi"><b>${conf.sr}</b>sicher und richtig</div>
+          <div class="kpi ${conf.sw ? 'alert' : ''}"><b>${conf.sw}</b>sicher, aber falsch</div>
+          <div class="kpi"><b>${conf.gr}</b>geraten und richtig</div>
+          <div class="kpi"><b>${conf.gw}</b>geraten und falsch</div>
+        </div>
+        <div class="muted small">„Sicher, aber falsch“ ist am wichtigsten: Hier hat sich etwas Falsches festgesetzt. Diese Karten mit dem Heftsatz besprechen.</div>
+        ${sureWrong.length ? `<ul class="reslist">${sureWrong.map(c => `<li><strong style="color:var(--bad)">${P.conf[c.id].sw}×</strong><span>${esc(c.title)}<br><span class="muted">${esc(c.heft || '')}</span></span></li>`).join('')}</ul>` : '<div>Noch keine Karte „sicher, aber falsch“ beantwortet.</div>'}
+        <span class="label">Offene Antworten, selbst bewertet</span>
+        <div>Hatte ich: ${selfStats.h} · teilweise: ${selfStats.t} · fehlte: ${selfStats.f}</div>
+      </section>
+      <section class="sheet stack">
+        <span class="label">Schwierigste Karten</span>
+        ${hardest.length ? `<ul class="reslist">${hardest.map(c => `<li><strong>${P.c[c.id].w}×</strong><span>${esc(c.title)}<br><span class="muted">${esc(c.heft || c.model || '')}</span></span></li>`).join('')}</ul>` : '<div>Noch keine Fehler.</div>'}
+      </section>
+      <section class="sheet stack">
+        <span class="label">Hinweise zum Inhalt</span>
+        <p class="note">Die Werte in Tabelle M4 sind ältere Zahlen (etwa Mitte der 1990er Jahre, die Emissionsanteile gelten für Deutschland). Heute liegen die Zunahmen höher. Im Erd-Atlas stehen die Zahlen nur im Lernzettel. Abgefragt werden nur die Kernaussagen (CO₂ größter Anteil, Methan stärkste Zunahme), die Zunahme der F-Gase gar nicht.</p>
+        <p class="note">Die Inhalte stehen wörtlich wie im Heft, auch die Lösungen aus dem Heft. Nur echte Tippfehler sind korrigiert. Musterlösungen für unbeantwortete Aufgaben sind als „Ergänzung: Musterlösung“ gekennzeichnet. Diagramme M2 und M3 sind selbst nachgezeichnet, M3 vereinfacht ohne Zahlen.</p>
+      </section>
+      <section class="sheet stack"><span class="label">Videos</span><ul style="margin:0;padding-left:1.2em">${vids}</ul><div class="muted small">Die Videos liegen im Unterordner „videos/“. Fehlt eine Datei, zeigt der Erd-Atlas „Video folgt bald“.</div></section>
+      <section class="sheet stack">
+        <span class="label">Alle Karten</span>
+        <div class="tablewrap"><table><thead><tr><th>Karte</th><th>Stufe</th><th style="text-align:right">Nächste</th><th style="text-align:right">Fehler</th></tr></thead><tbody>${allRows}</tbody></table></div>
+      </section>
+      <section class="stack">${reset}</section>`;
+  }
+
+  // ---------- Actions ----------
+  function startPath(kind) {
+    const list = PATH[chap][kind === 'abruf' ? 'abruf' : 'anwenden'];
+    startRound(kind, list.map(itemOf), { ch: chap });
+  }
+  function startReview() {
+    // Interleave: oldest due first within each chapter, then take turns between chapters
+    const by = {};
+    dueIds().forEach(id => (by[CARD[id].ch] = by[CARD[id].ch] || []).push(id));
+    const pickIds = [];
+    while (pickIds.length < REVIEW_MAX && Object.values(by).some(l => l.length)) Object.values(by).forEach(l => { if (l.length && pickIds.length < REVIEW_MAX) pickIds.push(l.shift()); });
+    const ids = spread(shuffle(pickIds));
+    if (!ids.length) return show('home');
+    startRound('review', ids.map(id => ({ type: CARD[id].type, ids: [id] })));
+  }
+  function answerMC(sure) {
+    const q = round.q;
+    const ok = q.pending === q.correct;
+    const r = log(q.ids[0], ok, { sure });
+    q.answer = { i: q.pending, ok, r };
+    finishItem(ok);
+  }
+  function checkType(arg) {
+    const q = round.q, card = CARD[q.ids[0]];
+    document.querySelectorAll('[data-in]').forEach(el => { q.vals[Number(el.dataset.in)] = el.value; });
+    const res = card.fields.map((f, i) => fieldOk(f, q.vals[i] || ''));
+    const ok = arg !== 'x' && res.every(Boolean);
+    const r = log(q.ids[0], ok, arg === 'x' ? { sure: false } : { sure: arg === '1' });
+    q.answer = { res: arg === 'x' ? res.map(() => false) : res, ok, r };
+    finishItem(ok);
+  }
+  function orderTap(k) {
+    const q = round.q, card = CARD[q.ids[0]];
+    const want = q.placed.length;
+    if (k === want) {
+      q.placed.push(k);
+      q.miss = 0;
+      q.hint = '';
+      q.shake = null;
+    } else {
+      q.errors++;
+      q.miss++;
+      q.shake = k;
+      if (q.miss >= 2) {
+        q.placed.push(want);
+        q.help.add(want);
+        q.miss = 0;
+        q.hint = `Das war knifflig: An Stelle ${want + 1} kommt „${card.items[want]}“.`;
+      } else q.hint = want === 0 ? 'Nicht ganz. Was kommt ganz am Anfang?' : `Nicht ganz. Was kommt nach „${card.items[want - 1]}“?`;
+    }
+    if (q.placed.length === card.items.length) {
+      q.r = log(q.ids[0], q.errors === 0);
+      return finishItem(q.errors === 0);
+    }
+    render();
+  }
+
+  const ACTIONS = {
+    home: () => { resetAsk = false; round = null; pr = null; show('home'); },
+    chapter: n => { chap = Number(n) || chap; round = null; show('chapter'); },
+    learn: () => show('learn'),
+    learned: () => { P.path[chap] = { ...pathOf(chap), e: true }; save(); startPath('abruf'); },
+    path: kind => { if (round?.ch) chap = round.ch; startPath(kind); },
+    review: () => startReview(),
+    zettel: () => show('zettel'),
+    parents: () => { resetAsk = false; show('parents'); },
+    merk: i => { P.merk = Number(i); save(); render(); },
+    speak: (arg, el) => speak(el.dataset.say),
+    quit: () => {
+      const r = round;
+      round = null;
+      if (r?.kind === 'video') { vd = { id: r.video, step: 'watch' }; show('video'); }
+      else if (r?.ch) { chap = r.ch; show('chapter'); }
+      else show('home');
+    },
+    next: () => next(),
+    answer: i => { if (!round.q.answer) { round.q.pending = Number(i); render(); document.querySelector('.confask')?.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'nearest' }); } },
+    conf: v => { if (round.q.pending !== undefined && !round.q.answer) answerMC(v === '1'); },
+    unpick: () => { delete round.q.pending; render(); },
+    typeCheck: arg => { if (!round.q.answer) checkType(arg); },
+    orderTap: k => { if (!round.q.done) orderTap(Number(k)); },
+    rcDel: i => { round.q.entries.splice(Number(i), 1); render(); },
+    rcCheck: () => {
+      const q = round.q, card = CARD[q.ids[0]];
+      const inp = document.getElementById('rcIn');
+      if (inp?.value.trim()) q.entries.push(...inp.value.split(/[,;\n]/).map(s => s.trim()).filter(Boolean));
+      q.res = checkRecall(card, q.entries);
+      const ok = !q.res.missing.length && q.res.inOrder;
+      q.r = log(q.ids[0], ok);
+      finishItem(ok);
+    },
+    selfShow: () => {
+      const q = round.q;
+      document.querySelectorAll('[data-in]').forEach(el => { q.vals[Number(el.dataset.in)] = el.value; });
+      q.phase = 'rate';
+      render();
+      window.scrollTo(0, 0);
+    },
+    rate: arg => {
+      const q = round.q;
+      if (q.done) return;
+      const [id, v] = arg.split('|');
+      q.rate[id] = v;
+      render();
+    },
+    selfDone: () => {
+      const q = round.q;
+      if (q.done || !q.ids.every(id => q.rate[id])) return;
+      let all = true;
+      q.ids.forEach(id => {
+        const v = q.rate[id];
+        const s = P.self[id] = P.self[id] || { h: 0, t: 0, f: 0 };
+        s[v]++;
+        log(id, v === 'h');
+        if (v !== 'h') all = false;
+      });
+      finishItem(all);
+    },
+    m2Pick: n => {
+      const q = round.q;
+      if (q.fb || q.done) return;
+      const card = CARD[q.ids[q.pos]];
+      const ok = Number(n) === card.step;
+      const r = log(card.id, ok);
+      q.res[card.step] = ok;
+      q.fb = { ok, step: card.step, chosen: Number(n), r, msg: pick(PRAISE) };
+      if (q.pos + 1 >= q.ids.length) return finishItem(Object.values(q.res).every(Boolean));
+      save();
+      render();
+      focusFeedback();
+    },
+    m2Next: () => { const q = round.q; q.pos++; q.fb = null; render(); },
+    sortZone: z => {
+      const q = round.q;
+      if (!q.sel || q.done) return;
+      const card = CARD[q.sel];
+      const ok = card.gas === z;
+      const r = log(card.id, ok);
+      q.placed[card.id] = ok ? 'ok' : 'help';
+      q.fb = { ok, id: card.id, zone: z, r };
+      q.sel = q.order.find(id => !q.placed[id]) || null;
+      if (q.ids.every(id => q.placed[id])) return finishItem(q.ids.every(id => q.placed[id] === 'ok'));
+      save();
+      render();
+    },
+    // videos
+    openVideo: id => { const g = P.vid[id]?.guess; vd = { id, step: g === undefined ? 'pre' : 'watch' }; chap = VID[id].ch; show('video'); },
+    preGuess: i => { P.vid[vd.id] = { ...(P.vid[vd.id] || {}), guess: Number(i) }; save(); vd.step = 'watch'; render(); },
+    videoQuiz: () => { const v = VID[vd.id]; chap = v.ch; startRound('video', shuffle(CARDS.filter(c => c.video === v.id).map(c => ({ type: 'mc', ids: [c.id] }))), { video: v.id, ch: v.ch }); },
+    // probe
+    probe: () => { pr = { ids: pickProbe(), idx: 0, phase: 'write', vals: {}, checks: {} }; show('probe'); },
+    prShow: () => {
+      const p = PRB[pr.ids[pr.idx]];
+      const el = document.querySelector('[data-pin]');
+      if (el) pr.vals[p.id] = el.value;
+      const val = pr.vals[p.id] || '';
+      pr.checks[p.id] = p.crit.map(c => autoCrit(p, c, val));
+      pr.phase = 'rate';
+      render();
+      window.scrollTo(0, 0);
+    },
+    prCheck: i => { const id = pr.ids[pr.idx]; pr.checks[id][Number(i)] = !pr.checks[id][Number(i)]; render(); },
+    prNext: () => {
+      pr.idx++;
+      pr.phase = 'write';
+      if (pr.idx >= pr.ids.length) {
+        const items = pr.ids.map(id => ({ id, pts: Math.min(pmax(PRB[id]), pr.checks[id].filter(Boolean).length), max: pmax(PRB[id]) }));
+        P.probe.push({ t: Date.now(), pts: items.reduce((s, i) => s + i.pts, 0), max: items.reduce((s, i) => s + i.max, 0), items });
+        P.probe = P.probe.slice(-20);
+        save();
+      }
+      render();
+      window.scrollTo(0, 0);
+    },
+    resetAsk: () => { resetAsk = true; render(); document.querySelector('.confirm')?.scrollIntoView({ block: 'nearest' }); },
+    resetNo: () => { resetAsk = false; render(); },
+    resetYes: () => { P = fresh(); resetAsk = false; save(); show('home'); }
+  };
+
+  document.addEventListener('click', e => {
+    const el = e.target.closest('[data-act]');
+    if (!el || el.disabled) return;
+    ACTIONS[el.dataset.act]?.(el.dataset.arg, el);
+  });
+  document.addEventListener('input', e => {
+    const t = e.target;
+    if (t.dataset.in !== undefined && round?.q) round.q.vals[Number(t.dataset.in)] = t.value;
+    if (t.dataset.pin && pr) pr.vals[t.dataset.pin] = t.value;
+  });
+  document.addEventListener('submit', e => {
+    e.preventDefault();
+    if (e.target.matches('[data-form="recall"]')) {
+      const inp = document.getElementById('rcIn');
+      const vals = (inp?.value || '').split(/[,;\n]/).map(s => s.trim()).filter(Boolean);
+      if (!vals.length) return;
+      round.q.entries.push(...vals);
+      render();
+      document.getElementById('rcIn')?.focus({ preventScroll: true });
+    }
+  });
+  document.addEventListener('keydown', e => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const t = e.target;
+    if (e.key === 'Enter' && t.matches?.('input[data-in]')) {
+      e.preventDefault();
+      const all = [...document.querySelectorAll('input[data-in]')];
+      const i = all.indexOf(t);
+      if (i < all.length - 1) all[i + 1].focus();
+      else document.querySelector('[data-act="typeCheck"]')?.focus();
+      return;
+    }
+    if (view === 'quiz' && round?.q?.done && e.key === 'Enter' && !t.matches?.('textarea, input')) {
+      if (document.activeElement?.id === 'nextBtn') return;
+      e.preventDefault();
+      next();
+    }
+  });
+  window.addEventListener('pageshow', e => { if (e.persisted) { P = load(); render(); } });
+
+  render();
+</script>
