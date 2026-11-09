@@ -7,7 +7,7 @@ Kleine Lernspiele für die Schule, gebaut für Tablet und Handy. Jedes Spiel beh
 ## Spiele
 
 - **[Sagen-Sonne](https://breitec.github.io/lernzentrale/2026-10_Wortfeld-Sagen/)** – Deutsch, Wortfeld „sagen“: 62 Verben kennenlernen, abfragen und in Sätze einsetzen.
-- **[Vokabel-Bus](https://breitec.github.io/lernzentrale/2026-10_Englisch-Vokabeln/)** – Englisch, Vokabeln aus dem Heft: 153 Wörter und Sätze hören, nachsprechen und schreiben, dazu das Alphabet.
+- **[Vokabel-Bus](https://breitec.github.io/lernzentrale/2026-10_Englisch-Vokabeln/)** – Englisch, Vokabeln aus dem Heft: 168 Wörter und Sätze hören, nachsprechen und schreiben, dazu das Alphabet.
 - **[Bio-Labor](https://breitec.github.io/lernzentrale/2026-10_Biologie-Lebewesen-Zellen-Sinne/)** – Natur und Technik, Biologie: Kennzeichen von Lebewesen, Zellen, Sinnesorgane und Reiz-Reaktions-Kette.
 
 ## Auf dem iPad oder iPhone einrichten
