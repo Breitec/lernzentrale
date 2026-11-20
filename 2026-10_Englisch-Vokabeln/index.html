@@ -10,7 +10,7 @@
 <link rel="icon" href="/lernzentrale/icon.png">
 <style>:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }</style>
 <title>Vokabel-Bus</title>
-<meta name="description" content="Englisch, Vokabeln aus dem Heft: 168 Wörter und Sätze hören, nachsprechen und schreiben, dazu das Alphabet.">
+<meta name="description" content="Englisch, Vokabeln aus dem Heft: 203 Wörter und Sätze hören, nachsprechen und schreiben, dazu das Alphabet.">
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -49,6 +49,8 @@
     --g-dunkelblau: #8fa8e6;
     --g-tuerkis: #6fcdb8;
     --g-rosa: #f4a8cb;
+    --g-koralle: #ef8a74;
+    --g-sand: #e0b884;
     --f-hand: 'Playpen Sans', 'Chalkboard SE', 'Comic Sans MS', cursive;
     --f-body: 'Andika', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
     --radius: 14px;
@@ -318,7 +320,9 @@
     { id: 'zuhause', label: 'Zuhause & Möbel', short: 'Zuhause', color: 'hellblau' },
     { id: 'familie', label: 'Familie', short: 'Familie', color: 'rosa' },
     { id: 'orte', label: 'Orte & Unterwegs', short: 'Orte', color: 'lila' },
-    { id: 'unterricht', label: 'Im Unterricht', short: 'Schule', color: 'tuerkis' }
+    { id: 'unterricht', label: 'Im Unterricht', short: 'Schule', color: 'tuerkis' },
+    { id: 'treffen', label: 'Treffen & Spielen', short: 'Treffen', color: 'koralle' },
+    { id: 'hobbys', label: 'Hobbys', short: 'Hobbys', color: 'sand' }
   ];
 
   // [lesson, English, German, options] – exactly the notebook entries, spelling corrected (see README).
@@ -336,7 +340,7 @@
     ['hallo', "I'm Pia.", 'Ich heiße Pia. / Ich bin Pia.', { ok: ['My name is Pia.'] }],
     ['hallo', "You're a nice dog.", 'Du bist ein lieber Hund.'],
     ['hallo', "What's your name?", 'Wie heißt du? / Wie heißen Sie?'],
-    ['hallo', 'Sorry!', 'Entschuldigung! / Tut mir leid!'],
+    ['hallo', 'Sorry!', 'Entschuldigung! / Tut mir leid!', { ok: ["I'm sorry!"] }],
     ['hallo', 'My dog is crazy.', 'Mein Hund ist verrückt.'],
     ['hallo', 'My name is Luke.', 'Ich heiße Luke.', { ok: ["I'm Luke."] }],
     ['hallo', "We're from Greenwich.", 'Wir sind aus Greenwich.'],
@@ -494,10 +498,47 @@
     ['unterricht', 'Answer the questions.', 'Beantworte die Fragen.'],
     ['unterricht', 'Use short answers.', 'Benutze Kurzantworten.'],
     ['unterricht', 'margin', 'Rand'],
-    ['unterricht', "Don't worry!", 'Keine Sorge!'],
-    ['unterricht', 'sentence', 'Satz'],
-    ['unterricht', 'right', 'richtig; korrekt'],
-    ['unterricht', 'ending', 'Ende; Schluss (einer Geschichte)']
+
+    ['treffen', "Don't worry!", 'Keine Sorge!'],
+    ['treffen', 'sentence', 'Satz'],
+    ['treffen', 'right', 'richtig; korrekt'],
+    ['treffen', 'ending', 'Ende; Schluss (einer Geschichte)'],
+    ['treffen', 'from … to', 'von … bis', { say: 'from, to' }],
+    ['treffen', 'answer', 'Antwort'],
+    ['treffen', 'wall', 'Wand; Mauer'],
+    ['treffen', 'fridge', 'Kühlschrank'],
+    ['treffen', 'address', 'Adresse'],
+    ['treffen', 'its', 'sein/-e; ihr/-e'],
+    ['treffen', 'to remember', 'sich erinnern (an); sich merken; denken an'],
+    ['treffen', 'or', 'oder'],
+    ['treffen', 'more', 'mehr; weitere'],
+    ['treffen', 'day', 'Tag'],
+    ['treffen', 'happy', 'glücklich; froh; fröhlich'],
+    ['treffen', "can't", 'kann nicht; können nicht'],
+    ['treffen', 'to meet', 'treffen; sich treffen'],
+    ['treffen', 'to show', 'zeigen'],
+    ['treffen', 'game', 'Spiel'],
+    ['treffen', 'to want (to)', 'wollen; mögen', { say: 'to want to', ans: ['to want'] }],
+    ['treffen', 'to play', 'spielen'],
+    ['treffen', 'boring', 'langweilig'],
+    ['treffen', "You're into sports.", 'Du magst doch Sport. / Du stehst doch auf Sport.'],
+    ['treffen', 'Try skating!', 'Versuch es mal mit Inlineskating. / Probier mal Inlineskating.'],
+    ['treffen', 'fast', 'schnell'],
+    ['treffen', 'so', 'so; also'],
+    ['treffen', "I'm sorry!", 'Tut mir leid!', { ok: ['Sorry!'] }],
+    ['treffen', "I'm fine.", "Mir geht's gut."],
+    ['treffen', 'cute', 'niedlich; süß'],
+
+    ['hobbys', 'lucky charm', 'Glücksbringer; Talisman'],
+    ['hobbys', 'text (message)', 'SMS; Kurznachricht', { say: 'text message', ans: ['text', 'text message'] }],
+    ['hobbys', 'reading', 'Lesen', { tip: 'das Lesen als Hobby' }],
+    ['hobbys', 'music', 'Musik'],
+    ['hobbys', 'to paint', 'anmalen; malen'],
+    ['hobbys', 'to go swimming', 'schwimmen gehen'],
+    ['hobbys', 'to read', 'lesen'],
+    ['hobbys', 'book', 'Buch'],
+    ['hobbys', 'to take photos', 'fotografieren; Fotos machen'],
+    ['hobbys', 'to watch', 'beobachten; (sich) ansehen; zuschauen']
   ];
 
   // Alphabet box from the notebook: [letter, IPA, memory aid]
@@ -812,28 +853,37 @@
       }),
       { short: 'ABC', c: 'dunkelblau', n: LETTERS.length, done: LETTERS.filter(letterDone).length, started: LETTERS.filter(l => abcLvl(l) > 0).length }
     ];
-    // Upper deck 4 windows, lower deck 3 plus the wide front window under the destination sign
-    const pos = [[34, 40], [114, 40], [194, 40], [274, 40], [34, 128], [114, 128], [194, 128], [274, 128]];
-    const H = 62;
-    let s = `<svg class="bus" viewBox="0 0 400 252" role="img" aria-label="Vokabel-Bus: ${doneCount()} von ${TOTAL} gelernt">`;
-    s += '<rect class="roof" x="22" y="14" width="356" height="16" rx="8"/>';
-    s += '<rect class="body" x="14" y="20" width="372" height="200" rx="20"/>';
-    s += '<rect class="band" x="14" y="108" width="372" height="12"/>';
+    // Lessons fill the upper deck and the lower deck; the ABC sits in the wide front window under the destination sign.
+    // The bus gets longer when more lessons come in.
+    const k = units.length - 1, low = Math.floor(k / 2), up = k - low;
+    const W = 70, F = 98, G = 10, H = 62, X0 = 34;
+    const inner = Math.max(up * W + (up - 1) * G, low * (W + G) + F);
+    const R = X0 + inner, bodyR = R + 14, VW = bodyR + 14;
+    const gapUp = up > 1 ? (inner - up * W) / (up - 1) : 0;
+    const gapLow = low > 1 ? (inner - F - G - low * W) / (low - 1) : 0;
+    const pos = [
+      ...Array.from({ length: up }, (_, i) => [X0 + i * (W + gapUp), 40, W]),
+      ...Array.from({ length: low }, (_, i) => [X0 + i * (W + gapLow), 128, W]),
+      [R - F, 128, F]
+    ];
+    let s = `<svg class="bus" viewBox="0 0 ${VW} 252" role="img" aria-label="Vokabel-Bus: ${doneCount()} von ${TOTAL} gelernt">`;
+    s += `<rect class="roof" x="22" y="14" width="${bodyR - 30}" height="16" rx="8"/>`;
+    s += `<rect class="body" x="14" y="20" width="${bodyR - 14}" height="200" rx="20"/>`;
+    s += `<rect class="band" x="14" y="108" width="${bodyR - 14}" height="12"/>`;
     units.forEach((u, i) => {
-      const [x, y] = pos[i];
-      const front = i === pos.length - 1;
-      const W = front ? 98 : 70, dy = front ? 10 : 0;
+      const [x, y, w] = pos[i];
+      const dy = i === units.length - 1 ? 10 : 0;
       const light = H * u.started / u.n, solid = H * u.done / u.n;
-      s += `<clipPath id="win${i}"><rect x="${x}" y="${y}" width="${W}" height="${H}" rx="7"/></clipPath>`;
-      s += `<g clip-path="url(#win${i})"><rect class="glass" x="${x}" y="${y}" width="${W}" height="${H}"/>`;
-      s += `<rect x="${x}" y="${(y + H - light).toFixed(1)}" width="${W}" height="${light.toFixed(1)}" style="fill:color-mix(in srgb, var(--g-${u.c}) 40%, var(--glass))"/>`;
-      s += `<rect x="${x}" y="${(y + H - solid).toFixed(1)}" width="${W}" height="${solid.toFixed(1)}" style="fill:var(--g-${u.c})"/></g>`;
-      s += `<text class="win-label" x="${x + W / 2}" y="${y + 26 + dy}">${esc(u.short)}${u.done === u.n ? ' ★' : ''}</text>`;
-      s += `<text class="win-count" x="${x + W / 2}" y="${y + 46 + dy}">${u.done}/${u.n}</text>`;
+      s += `<clipPath id="win${i}"><rect x="${x}" y="${y}" width="${w}" height="${H}" rx="7"/></clipPath>`;
+      s += `<g clip-path="url(#win${i})"><rect class="glass" x="${x}" y="${y}" width="${w}" height="${H}"/>`;
+      s += `<rect x="${x}" y="${(y + H - light).toFixed(1)}" width="${w}" height="${light.toFixed(1)}" style="fill:color-mix(in srgb, var(--g-${u.c}) 40%, var(--glass))"/>`;
+      s += `<rect x="${x}" y="${(y + H - solid).toFixed(1)}" width="${w}" height="${solid.toFixed(1)}" style="fill:var(--g-${u.c})"/></g>`;
+      s += `<text class="win-label" x="${x + w / 2}" y="${y + 26 + dy}">${esc(u.short)}${u.done === u.n ? ' ★' : ''}</text>`;
+      s += `<text class="win-count" x="${x + w / 2}" y="${y + 46 + dy}">${u.done}/${u.n}</text>`;
     });
-    s += '<rect class="sign" x="274" y="128" width="98" height="20" rx="5"/><text class="sign-text" x="323" y="142">GREENWICH</text>';
-    s += '<circle class="lamp" cx="379" cy="204" r="5"/>';
-    [92, 312].forEach(cx => { s += `<circle class="tyre" cx="${cx}" cy="220" r="25"/><circle class="hub" cx="${cx}" cy="220" r="9"/>`; });
+    s += `<rect class="sign" x="${R - F}" y="128" width="${F}" height="20" rx="5"/><text class="sign-text" x="${R - F / 2}" y="142">GREENWICH</text>`;
+    s += `<circle class="lamp" cx="${bodyR - 7}" cy="204" r="5"/>`;
+    [92, bodyR - 74].forEach(cx => { s += `<circle class="tyre" cx="${cx}" cy="220" r="25"/><circle class="hub" cx="${cx}" cy="220" r="9"/>`; });
     return s + '</svg>';
   }
 
@@ -1007,7 +1057,7 @@
     if (q.type === 'type' || q.type === 'spell') {
       if (a.kind === 'ok' && a.alt) lead = `<p>Auch richtig! Im Heft steht:</p>`;
       else if (a.kind === 'ok' && a.hinted) lead = '<p>Mit Tipp geschafft. Nächstes Mal ohne Tipp, dann zählt es für den Bus.</p>';
-      else if (a.kind === 'almost' && a.why === 'apos') lead = '<p>Da fehlt nur der Apostroph (\'). So schreibt man es:</p>';
+      else if (a.kind === 'almost' && a.why === 'apos') lead = /'/.test(e.en) ? '<p>Da fehlt nur der Apostroph (\'). So schreibt man es:</p>' : '<p>Hier gehört kein Apostroph hin. So schreibt man es:</p>';
       else if (a.kind === 'almost') {
         const extra = highlight(a.typed, e.en, 'del');
         lead = `<p>Du hast geschrieben: <strong lang="en">${extra}</strong>.${extra.includes('<del>') ? ' Durchgestrichen = zu viel.' : ''} ${highlight(e.en, a.typed).includes('<mark>') ? 'Gelb = diese Buchstaben musst du noch üben:' : 'Richtig ist:'}</p>`;
@@ -1392,7 +1442,7 @@
     c.height = H * dpr;
     ctx.scale(dpr, dpr);
     const cs = getComputedStyle(document.documentElement);
-    const cols = ['rot', 'gelb', 'gruen', 'hellblau', 'rosa', 'lila', 'orange', 'dunkelblau', 'tuerkis'].map(g => cs.getPropertyValue(`--g-${g}`).trim());
+    const cols = ['rot', 'gelb', 'gruen', 'hellblau', 'rosa', 'lila', 'orange', 'dunkelblau', 'tuerkis', 'koralle', 'sand'].map(g => cs.getPropertyValue(`--g-${g}`).trim());
     const parts = Array.from({ length: 130 }, () => ({
       x: W / 2 + (Math.random() - 0.5) * 160, y: H * 0.3,
       vx: (Math.random() - 0.5) * 14, vy: -Math.random() * 13 - 4,
